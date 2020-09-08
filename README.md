@@ -5,5 +5,3 @@ CART253 B
 I'm excited for class to start!
 
 [Check out my GitHub profile!](https://www.github.com/melissabanoengarde)
-
-testest //refreshing my memory
