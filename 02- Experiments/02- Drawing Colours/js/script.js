@@ -35,7 +35,6 @@ function setup() {
 //TRIANGLES
 //A triangle is a plane created by connecting three points,
 //triangle(x1, y1, x2, y2, x3, y3)
-
   stroke(250,250,0);
   fill(255,255,192);
   triangle(180, 270, 210, 270, 195,245);
