@@ -1,15 +1,17 @@
 /**************************************************
-Template p5 project
-Pippin Barr
+"02- Drawing Colours" exercise and experiments
+Melissa Banoen-Garde
 
-Here is a description of this template p5 project.
+
+Programming Pacman and his 'food' (the triangles)
 **************************************************/
 
 // setup()
 //
-// Description of setup() goes here.
+// Draws Pacman and and his triangular treats
 function setup() {
 
+//BACKGROUND SETTING
   createCanvas(500,500);
   background(242,86,100);    //RGB, colours ranging from 0 to 255
 
@@ -33,8 +35,8 @@ function setup() {
   arc(70, 250, 20, 20, QUARTER_PI, PI+HALF_PI+QUARTER_PI);
 
 //TRIANGLES
-//A triangle is a plane created by connecting three points,
-//triangle(x1, y1, x2, y2, x3, y3)
+  //A triangle is a plane created by connecting three points,
+  //triangle(x1, y1, x2, y2, x3, y3)
   stroke(250,250,0);
   fill(255,255,192);
   triangle(180, 270, 210, 270, 195,245);
@@ -54,7 +56,7 @@ function setup() {
 
 // draw()
 //
-// Description of draw() goes here.
+// Does nothing
 function draw() {
 
 }
