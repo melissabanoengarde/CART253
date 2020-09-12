@@ -34,13 +34,16 @@ function setup() {
 
   //eyes
   fill(0,0,0);
-  ellipse(288,280,48,130);
-  ellipse(352,280,48,130);
+  ellipse(288,283,53,140);
+  ellipse(352,283,53,140);
 
   //nostrils
   fill(0,0,0,150);
   ellipse(317,350,3,3);
   ellipse(324,350,3,3);
+
+  //mouth
+
 
 }
 
