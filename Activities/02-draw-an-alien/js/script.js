@@ -32,6 +32,11 @@ function setup() {
   fill(155, 155, 176);
   ellipse(320,295,145,210);
 
+  //eyes
+  fill(0,0,0);
+  ellipse(288,280,48,130);
+  ellipse(352,280,48,130);
+
 }
 
 // draw()
