@@ -19,7 +19,7 @@ function setup() {
   noStroke();
 
   //core
-  fill(184, 184, 199);
+  fill(184,184,199);
   ellipse(320,418,55,90);
 
   //feet
@@ -29,13 +29,18 @@ function setup() {
   ellipse(343,460,30,15);
 
 //Head
-  fill(155, 155, 176);
+  fill(155,155,176);
   ellipse(320,295,145,210);
 
   //eyes
   fill(0,0,0);
   ellipse(288,280,48,130);
   ellipse(352,280,48,130);
+
+  //nostrils
+  fill(0,0,0,150);
+  ellipse(317,350,3,3);
+  ellipse(324,350,3,3);
 
 }
 
