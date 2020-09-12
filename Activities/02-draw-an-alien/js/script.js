@@ -20,13 +20,17 @@ function setup() {
 
   //core
   fill(184, 184, 199);
-  ellipse(320,400,100,130);
+  ellipse(320,418,55,90);
 
   //feet
   fill(169, 169, 188);
-  ellipse(290,460,35,20);
+  ellipse(298,460,30,15);
   fill(169, 169, 188);
-  ellipse(350,460,35,20);
+  ellipse(343,460,30,15);
+
+//Head
+  fill(155, 155, 176);
+  ellipse(320,295,145,210);
 
 }
 
