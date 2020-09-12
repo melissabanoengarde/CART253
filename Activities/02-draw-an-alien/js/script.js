@@ -43,6 +43,10 @@ function setup() {
   ellipse(324,350,3,3);
 
   //mouth
+  stroke(204, 0, 0);
+  strokeWeight(2);
+  rectMode(CENTER);
+  rect(320,365,15,8,0,0,40,40);
 
 
 }
