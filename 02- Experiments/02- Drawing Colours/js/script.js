@@ -3,7 +3,8 @@
 Melissa Banoen-Garde
 
 
-Programming Pacman and his 'food' (the triangles)
+Programming Pacman and his treats (the triangles)
+Notes are added as well as edited for refining and reminders purposes
 **************************************************/
 
 // setup()

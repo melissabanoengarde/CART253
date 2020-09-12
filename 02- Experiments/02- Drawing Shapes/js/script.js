@@ -1,8 +1,9 @@
 /**************************************************
 Template p5 project
-Pippin Barr
+Melissa Banoen-Garde
 
-Here is a description of this template p5 project.
+Programming exercise: Drawing shapes, referring to video "02-Drawing Shapes"
+Notes are added for prompt purposes
 **************************************************/
 
 // setup()
