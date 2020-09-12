@@ -15,9 +15,18 @@ function setup() {
   background(255,204,204);
 
 //ALIEN
+//Body
   noStroke();
-  fill();
-  ellipse();
+
+  //core
+  fill(184, 184, 199);
+  ellipse(320,400,100,130);
+
+  //feet
+  fill(169, 169, 188);
+  ellipse(290,460,35,20);
+  fill(169, 169, 188);
+  ellipse(350,460,35,20);
 
 }
 
