@@ -58,20 +58,19 @@ function setup() {
   endShape();
   noStroke();
 
-  //fill(50)
-  //triangle(220,160,220,130,253,136);
-  //triangle(264,220,310,230,302,187);
-
-  //fill(0,0,0);
-  //arc(260,180,90,60,0,PI+QUARTER_PI,CHORD);
-  //arc(365,180,100,100,PI,0,CHORD);
-  //ellipse(270,180,53,170);
-  //ellipse(365,180,53,170);
-
   //nostrils
-  fill(0,0,0,150);
-  ellipse(317,350,3,3);
-  ellipse(324,350,3,3);
+  stroke(0,80);
+  strokeWeight(1);
+
+  beginShape();
+  vertex(310,240);
+  vertex(315,260);
+  endShape();
+
+  beginShape();
+  vertex(324,260);
+  vertex(329,240);
+  endShape();
 
   //mouth
   //stroke(204, 0, 0);
