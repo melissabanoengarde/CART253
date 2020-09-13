@@ -12,15 +12,16 @@ function setup() {
 
 //ENVIRONMENT
   createCanvas(640,480);
-  background(255,204,204);
+  background(209, 130, 51);
 
 //ALIEN
 //Body
   noStroke();
 
   //core
-  fill(184,184,199);
-  ellipse(320,418,55,90);
+  fill(109, 109, 141);
+  rectMode(CENTER);
+  rect(320,440,300,90,40,40,0,0)
 
   //feet
   fill(169, 169, 188);
@@ -46,7 +47,7 @@ function setup() {
   stroke(204, 0, 0);
   strokeWeight(2);
   rectMode(CENTER);
-  rect(320,365,15,8,0,0,40,40);
+  rect(320,365,15,8,0,0,50,50);
 
 
 }
