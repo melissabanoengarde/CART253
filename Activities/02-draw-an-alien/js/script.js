@@ -73,10 +73,9 @@ function setup() {
   endShape();
 
   //mouth
-  //stroke(204, 0, 0);
-  //strokeWeight(2);
-  //rectMode(CENTER);
-  //rect(320,365,15,8,0,0,50,50);
+  stroke(49, 65, 78);
+  strokeWeight(3);
+  rect(320,320,50,2,0,0,0,200);
 
 
 }
