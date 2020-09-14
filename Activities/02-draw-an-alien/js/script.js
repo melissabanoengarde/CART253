@@ -15,6 +15,10 @@ function setup() {
   createCanvas(640,480);
   background(0, 0, 102);
 
+  noStroke();
+  fill(0,0,0,50);
+  bezier(-50,480,0,220,640,220,690,480);    //bezier(startingpt,ctrlpt1,cntrlpt2,endpt)
+
 //ALIEN
 //Body
   noStroke();
@@ -46,23 +50,23 @@ ellipseMode(CENTER);
 
 
   //eyes
-  stroke(0);
-  strokeWeight(45);
+//  stroke(0);
+//  strokeWeight(45);
 
-  beginShape();
-  vertex(245,160);
-  vertex(285,200);
-  endShape();
+  //beginShape();
+//  vertex(245,160);
+//  vertex(285,200);
+//  endShape();
 
-  beginShape();
-  vertex(395,160);
-  vertex(350,200);
-  endShape();
-  noStroke();
+//  beginShape();
+//  vertex(395,160);
+//  vertex(350,200);
+//  endShape();
+//  noStroke();
 
-  //fill(0,0,0);
-  //arc(260,180,90,60,0,PI+QUARTER_PI,CHORD);
-  //arc(365,155,90,105,0,HALF_PI+QUARTER_PI,CHORD);
+  fill(0,0,0);
+  arc(260,180,90,60,0,PI+QUARTER_PI,CHORD);
+  arc(365,155,90,105,0,HALF_PI+QUARTER_PI,CHORD);
 
   //nostrils
   stroke(0,80);
