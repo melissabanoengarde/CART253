@@ -28,6 +28,9 @@ function setup() {
   rectMode(CENTER);
   rect(320,400,170,180,15,15,0,0)
 
+  //body details
+  
+
 //Head
 ellipseMode(CENTER);
   fill(88, 116, 141);
