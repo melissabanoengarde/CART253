@@ -50,36 +50,31 @@ ellipseMode(CENTER);
 
 
   //eyes
-//  stroke(0);
-//  strokeWeight(45);
+  angleMode(DEGREES);
 
-  //beginShape();
-//  vertex(245,160);
-//  vertex(285,200);
-//  endShape();
-
-//  beginShape();
-//  vertex(395,160);
-//  vertex(350,200);
-//  endShape();
-//  noStroke();
-
+  //left
   fill(0,0,0);
-  arc(260,180,90,60,0,PI+QUARTER_PI,CHORD);
-  arc(365,155,90,105,0,HALF_PI+QUARTER_PI,CHORD);
+  rotate(30);
+  ellipse(323,31,100,40);
+  rotate(-30);
+
+  //right
+  rotate(150);
+  ellipse(-230,-349,100,40);
+  rotate(-150);
 
   //nostrils
   stroke(0,80);
   strokeWeight(1);
 
   beginShape();
-  vertex(310,240);
-  vertex(315,260);
+  vertex(312,260);
+  vertex(317,240);
   endShape();
 
   beginShape();
-  vertex(324,260);
-  vertex(329,240);
+  vertex(324,240);
+  vertex(329,260);
   endShape();
 
   //mouth
