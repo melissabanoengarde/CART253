@@ -29,9 +29,14 @@ function setup() {
   rect(320,400,170,180,15,15,0,0)
 
   //body details
-  
+  //strokeWeight(2);
+  stroke(0,50);
+  line(265,390,265,480);
+  line(380,390,380,480);
+
 
 //Head
+noStroke();
 ellipseMode(CENTER);
   fill(88, 116, 141);
   ellipse(320,160,200,280);
