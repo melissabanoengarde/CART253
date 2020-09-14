@@ -1,8 +1,9 @@
 /**************************************************
-Template p5 project
+Activity 02: Drawing an alien
 Melissa Banoen-Garde
 
-Activity 02: Drawing an alien
+CART 253-B
+Week 2 activity drawing my alien, Terre-E.
 **************************************************/
 
 // setup()
@@ -12,7 +13,7 @@ function setup() {
 
 //ENVIRONMENT
   createCanvas(640,480);
-  background(186, 122, 59);
+  background(0, 0, 102);
 
 //ALIEN
 //Body
@@ -22,12 +23,6 @@ function setup() {
   fill(79, 104, 125);
   rectMode(CENTER);
   rect(320,400,170,180,15,15,0,0)
-
-  //feet
-  //fill(169, 169, 188);
-  //ellipse(298,460,30,15);
-  //fill(169, 169, 188);
-  //ellipse(343,460,30,15);
 
 //Head
 ellipseMode(CENTER);
@@ -64,6 +59,10 @@ ellipseMode(CENTER);
   vertex(350,200);
   endShape();
   noStroke();
+
+  //fill(0,0,0);
+  //arc(260,180,90,60,0,PI+QUARTER_PI,CHORD);
+  //arc(365,155,90,105,0,HALF_PI+QUARTER_PI,CHORD);
 
   //nostrils
   stroke(0,80);
