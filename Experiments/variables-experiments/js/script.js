@@ -1,14 +1,19 @@
 /**************************************************
-Template p5 project
-Pippin Barr
+Variables Experiments
+CART 253-B
+Melissa Banoen-Garde
 
-Here is a description of this template p5 project.
+Experimenting with variables, referring to videos
+posted on Moodle and lecture notes--both provided
+by Pippin Barr.
 **************************************************/
 
 // setup()
 //
 // Description of setup() goes here.
 function setup() {
+  createCanvas(windowWidth, windowHeight);
+
 
 }
 
@@ -16,5 +21,8 @@ function setup() {
 //
 // Description of draw() goes here.
 function draw() {
+  background(250,0,0);
+  rectMode(CENTER);
+  rect(width/2,height/2,100,100);
 
 }
