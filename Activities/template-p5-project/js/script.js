@@ -1,19 +1,16 @@
 /**************************************************
-Activity 03: Moving Pictures
-CART 253-B
-Melissa Banoen-Garde
+Template p5 project
+Pippin Barr
 
-Programming moving pictures, referring to video
-"03-8 - Moving Pictures" posted on Moodle and
-"Activity 03: Moving Pictures" lecture notes, provided
-by Pippin Barr.
+Here is a description of this template p5 project.
 **************************************************/
 
 // setup()
 //
 // Description of setup() goes here.
 function setup() {
-
+ createCanvas(500,500);
+ background(255);
 }
 
 // draw()
