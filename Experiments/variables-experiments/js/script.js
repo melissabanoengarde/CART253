@@ -19,7 +19,7 @@ let circle = {
   y: 250,
   size: 100,
   speed:1,
-  fill: 250                          //these are property values, here we have 4 properties
+  fill: 255                          //these are property values, here we have 4 properties
 };
 
 // setup()
@@ -34,21 +34,29 @@ function setup() {
 //
 // Variables experiment below
 function draw() {
+  // background(bgShade);
+  //
+  // // circle.speed = random(-5,7)
+  // circle.x += circle.speed;
+  // // circle.y = random(0,height);
+  // circle.size = random(10,100);
+  //
+  //
+  // // circle.fill = random(255,200);
+  // fill(circle.fill);
+  // ellipse(circle.x,circle.y,circle.size);
+  //
+  //
+  // // console.log("circleX:" + circleX);
+
   background(bgShade);
 
-  // circle.speed = random(-5,7)
-  circle.x += circle.speed;
-  // circle.y = random(0,height);
-  circle.size = random(10,100);
+  circle.x = circle.x + circle.speed;
+  circle.x = constrain(circle.x,0,width);
 
-
-  // circle.fill = random(255,200);
+  circle.fill = map(circle.x,0,width,0,255);
   fill(circle.fill);
-  ellipse(circle.x,circle.y,circle.size);
-
-
-
-  // console.log("circleX:" + circleX);
+  ellipse(circle.x, circle.y, circle.size);
 
 
 }
