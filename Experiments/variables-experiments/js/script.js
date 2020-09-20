@@ -1,26 +1,32 @@
 /**************************************************
-Template p5 project
-Pippin Barr
+Variables Experiments
+CART 253-B
+Melissa Banoen-Garde
 
-Here is a description of this template p5 project.
+Experimenting with variables, referring to videos
+posted on Moodle and lecture notes--both provided
+by Pippin Barr.
 **************************************************/
+
+let bgShade = 0;
+let circleX = 250;
+let circleY = 250;
+let circleSize = 200;       //"let" means declaring a variable to js
 
 // setup()
 //
 // Description of setup() goes here.
 function setup() {
   createCanvas(500,500);
-//  background(250,0,0);
+
 }
 
 // draw()
 //
 // Description of draw() goes here.
 function draw() {
-  background(255,0,0);
-  ellipse(250,250,400,400);
-  ellipse(250,250,300,300);
-  ellipse(250,250,200,200);
-  ellipse(250,250,100,100);
+  background(bgShade);
+  ellipse(circleX,circleY,circleSize);
+
 
 }
