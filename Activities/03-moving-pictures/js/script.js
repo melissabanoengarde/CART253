@@ -1,8 +1,12 @@
 /**************************************************
-Template p5 project
+Activity 03: Moving Pictures
+CART 253-B
 Melissa Banoen-Garde
 
-Here is a description of this template p5 project.
+Programming moving pictures, referring to video
+"03-8 - Moving Pictures" posted on Moodle and
+"Activity 03: Moving Pictures" lecture notes, provided
+by Pippin Barr.
 **************************************************/
 
 let bg ={
