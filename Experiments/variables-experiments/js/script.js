@@ -17,8 +17,9 @@ let bgShade = 0;
 let circle = {
   x: 0,
   y: 250,
-  size: 200,
-  speed:2                           //these are property values, here we have 4 properties
+  size: 100,
+  speed:1,
+  fill: 250                          //these are property values, here we have 4 properties
 };
 
 // setup()
@@ -34,8 +35,20 @@ function setup() {
 // Variables experiment below
 function draw() {
   background(bgShade);
+
+  // circle.speed = random(-5,7)
   circle.x += circle.speed;
+  // circle.y = random(0,height);
+  circle.size = random(10,100);
+
+
+  // circle.fill = random(255,200);
+  fill(circle.fill);
   ellipse(circle.x,circle.y,circle.size);
+
+
+
+  // console.log("circleX:" + circleX);
 
 
 }
