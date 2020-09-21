@@ -1,8 +1,8 @@
 /**************************************************
-Template p5 project
-Pippin Barr
+E1: I like to move it!
+Melissa Banoen-Garde
 
-Here is a description of this template p5 project.
+Exercise 1 for CART253-B. Here I program light and moths.
 **************************************************/
 
 // setup()
