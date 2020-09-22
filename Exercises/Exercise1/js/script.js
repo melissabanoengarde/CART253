@@ -76,27 +76,17 @@ alpha:150
 };
 
 
-
-
-
 // setup()
-//
-// Description of setup() goes here.
+// Dimensions of my canvas
 function setup() {
   createCanvas(500,500);
-
-
-
-
 
 }
 
 // draw()
-//
-// Description of draw() goes here.
+//Jar, moths, and fairy.
 function draw() {
   background(bg.r,bg.g,bg.b);
-
 
 
 //Jar
@@ -141,18 +131,6 @@ function draw() {
   fairy.y = constrain(mouseY,0+50,height-15);
   ellipse(fairy.x,fairy.y,fairy.size);
 
-
-
-
-
-
-
-
-
-  // reference
-  // stroke(255);
-  // line(195,0,195,500);
-  // line(303,0,303,500);
 
 
 
