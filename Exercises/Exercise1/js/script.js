@@ -30,10 +30,12 @@ g:102,
 b:153
 
 };
+
 let fairy = {
-
-
-
+  x: 0,
+  y: 0,
+  size:30,
+  colour: 255
 };
 
 
@@ -53,6 +55,7 @@ function setup() {
 function draw() {
   background(49, 49, 104);
 
+
 //Jar
   strokeWeight(3);
   stroke(0,30);
@@ -67,7 +70,13 @@ function draw() {
   rect(lid.x,lid.y - 20,lid.w,lid.h,lid.r);
   noStroke();
 
-//Fairy
+  //Fairy
+    fairy.colour = map(fairy.x,10,300,100,255);
+    // fairy.colour = map(mouseY,100,400,100,255);
+    fill(fairy.colour);
+    fairy.x = constrain(mouseX,0+15,width-15);
+    fairy.y = constrain(mouseY,0+15,height-15);
+    ellipse(fairy.x,fairy.y,fairy.size);
 
 
 }
