@@ -5,6 +5,14 @@ CART 253 - B
 You (your cursor) are a fairy visiting trapped moths
 **************************************************/
 //Variables
+
+let bg = {
+r:43,
+g:43,
+b:104
+
+};
+
 let jar = {
   x:195,
   y:200,
@@ -31,11 +39,29 @@ b:153
 
 };
 
+let fairycolours = {
+
+r:0,
+g:0,
+b:0,
+
+};
 let fairy = {
   x: 0,
-  y: 0,
-  size:30,
-  colour: 255
+  y: 500,
+  size:100,
+  colour:255
+
+};
+
+let moth = {
+
+x:250,
+y:250,
+size:20,
+fill:255,
+speed:1
+
 };
 
 
@@ -47,13 +73,14 @@ function setup() {
   createCanvas(500,500);
 
 
+
 }
 
 // draw()
 //
 // Description of draw() goes here.
 function draw() {
-  background(49, 49, 104);
+  background(bg.r,bg.g,bg.b);
 
 
 //Jar
@@ -70,13 +97,38 @@ function draw() {
   rect(lid.x,lid.y - 20,lid.w,lid.h,lid.r);
   noStroke();
 
-  //Fairy
-    fairy.colour = map(fairy.x,10,300,100,255);
-    // fairy.colour = map(mouseY,100,400,100,255);
-    fill(fairy.colour);
-    fairy.x = constrain(mouseX,0+15,width-15);
-    fairy.y = constrain(mouseY,0+15,height-15);
-    ellipse(fairy.x,fairy.y,fairy.size);
+//Fairy
+  fairycolours.r =random(100,255);
+  fairycolours.g =random(50,170);
+  fairycolours.b =random(200,255);
+  fill(fairycolours.r,fairycolours.g,fairycolours.b);
+
+  fairy.size = map(mouseY, height,0,30,100);
+
+  fairy.x = constrain(mouseX,0+50,width-50);
+  fairy.y = constrain(mouseY,0+50,height-15);
+  ellipse(fairy.x,fairy.y,fairy.size);
+
+//Moth
+  moth.x = moth.x + 1
+  moth.y = moth.y +1
+  fill(moth.fill);
+  moth.size = random(5,20);
+  moth.x = constrain(moth.x,190,290);
+  moth.y = constrain(moth.y,190,360);
+  ellipse(moth.x,moth.y,moth.size);
+
+
+
+
+
+
+  // reference
+  // stroke(255);
+  // line(195,0,195,500);
+  // line(303,0,303,500);
+
+
 
 
 }
