@@ -1,3 +1,3 @@
 # Template p5 project
 
-This is the README file for the entire project. For more official projects you should write information here about the nature of the project, your name, any special explanations of how the project works, etc.
+This exercise, "I like to move it!" explores the content learned in "Week 2" of CART253-B.
