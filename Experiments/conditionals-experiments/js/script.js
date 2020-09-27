@@ -4,7 +4,7 @@ Melissa Banoen-Garde
 
 Experimenting with conditionals
 **************************************************/
-let displayCircle = false;
+let displayCircle = 0;
 
 // setup()
 //
@@ -21,7 +21,7 @@ function draw() {
   background(0);
 
   if (mouseIsPressed) {
-    displayCircle = true;
+    displayCircle = 1;
   }
 
 if (displayCircle) {
