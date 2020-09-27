@@ -4,16 +4,13 @@ Melissa Banoen-Garde
 
 Experimenting with conditionals
 **************************************************/
-let bg = {
-  r:0,
-  g:0,
-  b:0
-}
 
 let circle = {
   x: 250,
   y: 250,
-  size: 100
+  size: 100,
+  vx: 0,         //velocity on the x-axis
+  vy: 0          //velocity on the y-axis
 }
 
 // setup()
@@ -28,13 +25,10 @@ function setup() {
 // Description of draw() goes here.
 function draw() {
 
-  background(bg.r,bg.g,bg.b);
+  background(0);
+
+  circle.x += circle.vx;
+  circle.y += circle.vy;
 
   ellipse(circle.x,circle.y,circle.size);
-}
-
-function mouseDragged() {
-  bg.r = random(0,255);
-  bg.g = random(0,255);
-  bg.b = random(0,255);
 }
