@@ -10,7 +10,7 @@ new functions (dist(), noLoop(), noCursor()).
 
 //VARIABLES
 let user = {
-  x: 250,
+  x: 0,
   y: 250,
   size: 100,
   fill: 255
@@ -32,9 +32,8 @@ let covid19 = {
 
 let numStatic = 1500;
 
-/*************************************************/
+//SETUP******************************************/
 
-//SETUP
 function setup() {
 
   createCanvas(windowWidth, windowHeight);
@@ -45,9 +44,8 @@ function setup() {
   noCursor();
 }
 
-/*************************************************/
+//DRAW********************************************/
 
-//DRAW
 function draw() {
 
   background(0);
