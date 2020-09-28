@@ -9,8 +9,11 @@ new functions (dist(), noLoop(), noCursor()).
 **************************************************/
 let spaceShip;
 
+let asteroid;
+
 function preload() {
-  spaceShip = loadImage ("assets/images/spaceship.png");
+  spaceShip = loadImage("assets/images/spaceship.png");
+  asteroid = loadImage("assets/images/asteroid.png");
 }
 
 
@@ -18,8 +21,13 @@ function preload() {
 let user = {
   x: 0,
   y: 250,
-  size: 100,
-  fill: 255
+  size: 60,
+  vx: 0,
+  vy: 0,
+  ax: 0,
+  ay: 0,
+  acceleration: 0.5,
+  maxSpeed: 5
 }
 
 let covid19 = {
@@ -47,7 +55,7 @@ function setup() {
   covid19.y = random(0, height);
   covid19.vx = covid19.speed;
 
-  noCursor();
+  // noCursor();
 }
 
 //DRAW********************************************/
@@ -66,11 +74,29 @@ function draw() {
 
   //USER'S SPACESHIP
   //Movement
-  user.x = mouseX;
-  user.y = mouseY;
+  if (mouseX < user.x) {
+    user.ax = -user.acceleration;
+  } else {
+    user.ax = user.acceleration;
+  }
+
+  if (mouseY < user.y) {
+    user.ay = -user.acceleration;
+  } else {
+    user.ay = user.acceleration;
+  }
+
+  user.vx += user.ax;
+  user.vx = constrain(user.vx, -user.maxSpeed, user.maxSpeed);
+  user.vy += user.ay;
+  user.vy = constrain(user.vy, -user.maxSpeed, user.maxSpeed);
+
+  user.x += user.vx;
+  user.y += user.vy;
 
   //Display
-  image(spaceShip, mouseX, mouseY, 100, 100);
+  image(spaceShip, user.x, user.y, 100, 100);
+  // ellipse(user.x,user.y,user.size);
 
 
 
