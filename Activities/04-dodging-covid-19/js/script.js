@@ -8,6 +8,13 @@ movement, and intermediate drawing. As well as learn
 new functions (dist(), noLoop(), noCursor()).
 **************************************************/
 
+let user = {
+  x:0,
+  y:250,
+  size:100,
+  fill:255
+}
+
 let covid19 = {
   x: 0,
   y: 250,
@@ -21,6 +28,7 @@ let covid19 = {
     b: 0
   }
 }
+
 
 
 // setup()
@@ -43,6 +51,19 @@ function draw() {
 
   background(133, 163, 224);
 
+
+//USER'S CIRCLE
+  //Movement
+  user.x = mouseX;
+  user.y = mouseY;
+
+  //Display
+  fill(user.fill);
+  ellipse(user.x,user.y,user.size);
+
+
+//COVID19 CIRCLE
+  //Movement
   covid19.x += covid19.vx;
   covid19.y += covid19.vy;
 
@@ -51,10 +72,9 @@ function draw() {
     covid19.y = random(0,windowHeight);
   }
 
-
+  //Display
   fill(covid19.fill.r,covid19.fill.g,covid19.fill.b);
   noStroke();
-
   ellipse(covid19.x,covid19.y,covid19.size);
 
 }
