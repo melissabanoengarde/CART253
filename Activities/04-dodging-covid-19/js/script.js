@@ -77,4 +77,11 @@ function draw() {
   noStroke();
   ellipse(covid19.x,covid19.y,covid19.size);
 
+
+  //Catching COVID19
+  let d = dist(user.x,user.y,covid19.x,covid19.y);
+  if (d < covid19.size/2 + user.size/2) {
+    noLoop();
+  }
+
 }
