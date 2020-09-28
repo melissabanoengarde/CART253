@@ -32,7 +32,7 @@ function setup() {
 
   covid19.y = random(0,height);
   covid19.vx = covid19.speed;
-  
+
 }
 
 
@@ -45,6 +45,12 @@ function draw() {
 
   covid19.x += covid19.vx;
   covid19.y += covid19.vy;
+
+  if (covid19.x > windowWidth) {
+    covid19.x = 0;
+    covid19.y = random(0,windowHeight);
+  }
+
 
   fill(covid19.fill.r,covid19.fill.g,covid19.fill.b);
   noStroke();
