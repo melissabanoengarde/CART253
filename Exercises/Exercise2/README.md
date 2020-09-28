@@ -1,4 +1,4 @@
-#Activity 04: Dodging COVID-19
+#Exercise 02: Dodge-Em
 
 Melissa Banoen-Garde
 CART 253 - B

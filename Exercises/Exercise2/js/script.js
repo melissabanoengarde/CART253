@@ -1,5 +1,5 @@
 /**************************************************
-Activity 04: Dodging COVID-19
+Exercise 02: Dodge-Em
 Melissa Banoen-Garde
 
 This activity implements what we learned in Week 4;
@@ -7,6 +7,12 @@ conditionals, booleans, loops, mouse input,
 movement, and intermediate drawing. As well as learn
 new functions (dist(), noLoop(), noCursor()).
 **************************************************/
+let spaceShip;
+
+function preload() {
+  spaceShip = loadImage ("assets/images/spaceship.png");
+}
+
 
 //VARIABLES
 let user = {
@@ -58,14 +64,14 @@ function draw() {
     point(x, y);
   }
 
-  //USER'S CIRCLE
+  //USER'S SPACESHIP
   //Movement
   user.x = mouseX;
   user.y = mouseY;
 
   //Display
-  fill(user.fill);
-  ellipse(user.x, user.y, user.size);
+  image(spaceShip, mouseX, mouseY, 100, 100);
+
 
 
   //COVID19 CIRCLE
