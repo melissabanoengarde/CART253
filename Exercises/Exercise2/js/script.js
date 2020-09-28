@@ -30,21 +30,16 @@ let user = {
   maxSpeed: 5
 }
 
-let covid19 = {
+let obstacle = {
   x: 0,
   y: 250,
   size: 100,
   vx: 0,
   vy: 0,
-  speed: 15,
-  fill: {
-    r: 255,
-    g: 0,
-    b: 0
-  }
+  speed: 30
 }
 
-let numStatic = 1500;
+let numStatic = 100;
 
 //SETUP******************************************/
 
@@ -52,8 +47,8 @@ function setup() {
 
   createCanvas(windowWidth, windowHeight);
 
-  covid19.y = random(0, height);
-  covid19.vx = covid19.speed;
+  obstacle.y = random(0, height);
+  obstacle.vx = random(10,obstacle.speed);
 
   // noCursor();
 }
@@ -62,7 +57,7 @@ function setup() {
 
 function draw() {
 
-  background(0);
+  background(5, 10, 21);
 
   //STATIC
   for (let i = 0; i < numStatic; i++) {
@@ -96,29 +91,29 @@ function draw() {
 
   //Display
   image(spaceShip, user.x, user.y, 100, 100);
-  // ellipse(user.x,user.y,user.size);
 
 
 
-  //COVID19 CIRCLE
+  //ASTEROID
   //Movement
-  covid19.x += covid19.vx;
-  covid19.y += covid19.vy;
+  obstacle.x += obstacle.vx;
+  obstacle.y += obstacle.vy;
 
-  if (covid19.x > windowWidth) {
-    covid19.x = 0;
-    covid19.y = random(0, windowHeight);
+  if (obstacle.x > windowWidth) {
+    obstacle.x = 0;
+    obstacle.y = random(0, windowHeight);
   }
 
   //Display
-  fill(covid19.fill.r, covid19.fill.g, covid19.fill.b);
   noStroke();
-  ellipse(covid19.x, covid19.y, covid19.size);
+  // ellipse(obstacle.x, obstacle.y, obstacle.size);
+  image(asteroid, obstacle.x, obstacle.y, 100, 100);
 
 
-  //Catching COVID19
-  let d = dist(user.x, user.y, covid19.x, covid19.y);
-  if (d < covid19.size / 2 + user.size / 2) {
+
+  //CRASH
+  let d = dist(user.x, user.y, obstacle.x, obstacle.y);
+  if (d < obstacle.size / 2 + user.size / 2) {
     noLoop();
   }
 
