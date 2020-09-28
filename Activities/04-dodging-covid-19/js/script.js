@@ -49,8 +49,15 @@ function setup() {
 // Description of draw() goes here.
 function draw() {
 
-  background(133, 163, 224);
+  background(0);
 
+//STATIC
+for(let i = 0; i < 100; i++){
+  let x = random(0,width);
+  let y = random(0,height);
+  stroke(255);
+  point(x,y);
+}
 
 //USER'S CIRCLE
   //Movement
