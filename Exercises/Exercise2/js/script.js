@@ -115,15 +115,19 @@ function draw() {
   //Display
   noStroke();
   image(asteroid, obstacle.x, obstacle.y, 100, 100);
-  image(asteroid, obstacle.x + 200, obstacle.y - 400, 100, 100);
+  image(asteroid, obstacle.x + 500, obstacle.y - 400, 150, 150);
+  image(asteroid, obstacle.x - 500, obstacle.y + 500, 140, 140);
 
 
 
   //CRASH
   let d = dist(user.x, user.y, obstacle.x, obstacle.y);
-  let d2 = dist(user.x, user.y, obstacle.x + 200, obstacle.y - 400);
-  if (d < obstacle.size / 2 + user.size / 2 || d2 < obstacle.size / 2 + user.size / 2) {
+  let d2 = dist(user.x, user.y, obstacle.x + 500, obstacle.y - 400);
+  let d3 = dist(user.x, user.y, obstacle.x - 500, obstacle.y + 500);
+  if (d < obstacle.size / 2 + user.size / 2 || d2 < obstacle.size / 2 + user.size / 2 || d3 < obstacle.size / 2 + user.size / 2) {
     noLoop();
   }
+
+
 
 }
