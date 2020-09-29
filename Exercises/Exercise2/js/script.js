@@ -1,9 +1,12 @@
 /**************************************************
 Exercise 02: Dodge-Em
 Melissa Banoen-Garde
+CART 253 - B
 
-Dodge asteroid, we must.
+Dodge asteroids, we must. Spaceship is your cursor.
 **************************************************/
+
+//IMAGES
 let spaceShip;
 
 let asteroid;
@@ -24,6 +27,12 @@ function preload() {
 
 
 //VARIABLES
+let bg = {
+  r: 5,
+  g: 10,
+  b: 21
+}
+
 let user = {
   x: 250,
   y: 250,
@@ -39,7 +48,7 @@ let user = {
 let obstacle = {
   x: 0,
   y: 250,
-  size: 100,
+  size: 180,
   vx: 0,
   vy: 0,
   speed: 15,
@@ -49,7 +58,7 @@ let obstacle = {
 let obstacle2 = {
   x: 0,
   y: 100,
-  size: 170,
+  size: 160,
   vx: 0,
   vy: 0,
   speed: 20
@@ -58,7 +67,7 @@ let obstacle2 = {
 let obstacle3 = {
   x: 0,
   y: 450,
-  size: 100,
+  size: 90,
   vx: 0,
   vy: 0,
   speed: 25
@@ -75,12 +84,12 @@ let obstacle4 = {
 }
 
 let star = {
-  r:0,
-  g:0,
-  b:0
+  r: 0,
+  g: 0,
+  b: 0
 }
 
- let numStatic = 500;
+let numStatic = 500;
 
 //SETUP******************************************/
 
@@ -106,18 +115,19 @@ function setup() {
 
 function draw() {
 
-  background(5, 10, 21);
+  background(bg.r, bg.g, bg.b);
+
 
   //STARS
   for (let i = 0; i < numStatic; i++) {
     let x = random(0, width);
     let y = random(0, height);
     noStroke();
-    fill(star.r,star.g,star.b);
-    star.r = random(200,255);
-    star.g = random(160,255);
-    star.b = random(20,220);
-    ellipse(x,y,2);
+    fill(star.r, star.g, star.b);
+    star.r = random(200, 255);
+    star.g = random(160, 255);
+    star.b = random(20, 220);
+    ellipse(x, y, 2);
   }
 
 
@@ -147,7 +157,7 @@ function draw() {
   image(spaceShip, user.x, user.y, 120, 120);
 
 
-//OBSTACLES....
+  //OBSTACLES....
   //ASTEROID 1
   //Movement
   obstacle.x -= obstacle.vx;
@@ -161,14 +171,14 @@ function draw() {
   }
 
   //Display
+  imageMode(CENTER);
   image(asteroid, obstacle.x, obstacle.y, 200, 200);
-
+  // ellipse(obstacle.x, obstacle.y, obstacle.size);   //to configure d
 
 
   //ASTEROID 2
   //Movement
   obstacle2.x += obstacle2.vx;
-  // obstacle2.speed += obstacle2.acceleration;
   obstacle2.y += obstacle2.vy;
 
   if (obstacle2.x > windowWidth) {
@@ -179,7 +189,7 @@ function draw() {
   //Display
   imageMode(CENTER);
   image(asteroid2, obstacle2.x, obstacle2.y, 170, 170);
-  ellipse(obstacle2.x, obstacle2.y, obstacle2.size);    //to configure d2
+  // ellipse(obstacle2.x, obstacle2.y, obstacle2.size);   //to configure d2
 
 
 
@@ -194,7 +204,9 @@ function draw() {
   }
 
   //Display
+  imageMode(CENTER);
   image(meteoroid, obstacle3.x, obstacle3.y, 150, 150);
+  //ellipse(obstacle3.x, obstacle3.y, obstacle3.size);   //to configure d3
 
 
   //ASTEROID 3
@@ -205,12 +217,13 @@ function draw() {
 
   if (obstacle4.x < -windowWidth) {
     obstacle4.x = windowWidth;
-    // obstacle4.y = 100;
     obstacle4.y = random(0, windowHeight);
   }
 
   //Display
+  imageMode(CENTER);
   image(asteroid3, obstacle4.x, obstacle4.y, 200, 200);
+  //ellipse(obstacle4.x, obstacle4.y, obstacle4.size);   //to configure d4
 
 
 
@@ -219,7 +232,7 @@ function draw() {
   let d2 = dist(user.x, user.y, obstacle2.x, obstacle2.y);
   let d3 = dist(user.x, user.y, obstacle3.x, obstacle3.y);
   let d4 = dist(user.x, user.y, obstacle4.x, obstacle4.y);
-  if (d < obstacle.size / 2 + user.size / 2 || d2 < obstacle2.size / 2 + user.size / 2 || d3 < obstacle3.size/2.5 + user.size/2.5 || d4 < obstacle4.size/2 + user.size/2) {
+  if (d < obstacle.size / 2 + user.size / 2 || d2 < obstacle2.size / 2 + user.size / 2 || d3 < obstacle3.size / 2 + user.size / 2 || d4 < obstacle4.size / 2 + user.size / 2) {
     noLoop();
   }
 
