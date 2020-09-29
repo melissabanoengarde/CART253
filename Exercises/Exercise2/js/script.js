@@ -2,10 +2,7 @@
 Exercise 02: Dodge-Em
 Melissa Banoen-Garde
 
-This activity implements what we learned in Week 4;
-conditionals, booleans, loops, mouse input,
-movement, and intermediate drawing. As well as learn
-new functions (dist(), noLoop(), noCursor()).
+Dodge asteroid, we must.
 **************************************************/
 let spaceShip;
 
@@ -26,8 +23,8 @@ let user = {
   vy: 0,
   ax: 0,
   ay: 0,
-  acceleration: 0.5,
-  maxSpeed: 5
+  acceleration: 1,
+  maxSpeed: 7
 }
 
 let obstacle = {
@@ -117,7 +114,6 @@ function draw() {
 
   //Display
   noStroke();
-  // ellipse(obstacle.x, obstacle.y, obstacle.size);
   image(asteroid, obstacle.x, obstacle.y, 100, 100);
 
 
