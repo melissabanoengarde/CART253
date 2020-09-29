@@ -49,7 +49,7 @@ let obstacle = {
 let obstacle2 = {
   x: 0,
   y: 100,
-  size: 100,
+  size: 170,
   vx: 0,
   vy: 0,
   speed: 20
@@ -96,6 +96,9 @@ function setup() {
 
   obstacle3.y = random(0, height);
   obstacle3.vx = obstacle3.speed;
+
+  obstacle4.y = random(0, height);
+  obstacle4.vx = obstacle4.speed;
 
 }
 
@@ -174,7 +177,9 @@ function draw() {
   }
 
   //Display
+  imageMode(CENTER);
   image(asteroid2, obstacle2.x, obstacle2.y, 170, 170);
+  ellipse(obstacle2.x, obstacle2.y, obstacle2.size);    //to configure d2
 
 
 
@@ -197,7 +202,6 @@ function draw() {
   obstacle4.x -= obstacle4.vx;
   obstacle4.speed += obstacle4.acceleration;
   obstacle4.y -= obstacle4.vy;
-
 
   if (obstacle4.x < -windowWidth) {
     obstacle4.x = windowWidth;
