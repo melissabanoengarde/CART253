@@ -12,17 +12,20 @@ let asteroid2;
 
 let meteoroid;
 
+let asteroid3;
+
 function preload() {
   spaceShip = loadImage("assets/images/spaceship.png");
   asteroid = loadImage("assets/images/asteroid.png");
   asteroid2 = loadImage("assets/images/asteroid2.png");
   meteoroid = loadImage("assets/images/meteoroid.png");
+  asteroid3 = loadImage("assets/images/asteroid3.png");
 }
 
 
 //VARIABLES
 let user = {
-  x: 0,
+  x: 250,
   y: 250,
   size: 60,
   vx: 0,
@@ -39,25 +42,36 @@ let obstacle = {
   size: 100,
   vx: 0,
   vy: 0,
-  speed: 12
+  speed: 15,
+  acceleration: 2
 }
 
 let obstacle2 = {
   x: 0,
-  y: 250,
+  y: 100,
   size: 100,
   vx: 0,
   vy: 0,
-  speed: 15
+  speed: 20
 }
 
 let obstacle3 = {
+  x: 0,
+  y: 450,
+  size: 100,
+  vx: 0,
+  vy: 0,
+  speed: 25
+}
+
+let obstacle4 = {
   x: 0,
   y: 250,
   size: 100,
   vx: 0,
   vy: 0,
-  speed: 20
+  speed: 15,
+  acceleration: 2
 }
 
 let star = {
@@ -83,7 +97,6 @@ function setup() {
   obstacle3.y = random(0, height);
   obstacle3.vx = obstacle3.speed;
 
-  // noCursor();
 }
 
 //DRAW********************************************/
@@ -128,28 +141,31 @@ function draw() {
   user.y += user.vy;
 
   //Display
-  image(spaceShip, user.x, user.y, 100, 100);
+  image(spaceShip, user.x, user.y, 120, 120);
 
 
-
+//OBSTACLES....
   //ASTEROID 1
   //Movement
-  obstacle.x += obstacle.vx;
-  obstacle.y += obstacle.vy;
+  obstacle.x -= obstacle.vx;
+  obstacle.speed += obstacle.acceleration;
+  obstacle.y -= obstacle.vy;
 
 
-  if (obstacle.x > windowWidth) {
-    obstacle.x = 0;
+  if (obstacle.x < -windowWidth) {
+    obstacle.x = windowWidth;
     obstacle.y = random(0, windowHeight);
   }
 
   //Display
-  image(asteroid, obstacle.x, obstacle.y, 180, 180);
+  image(asteroid, obstacle.x, obstacle.y, 200, 200);
+
 
 
   //ASTEROID 2
   //Movement
   obstacle2.x += obstacle2.vx;
+  // obstacle2.speed += obstacle2.acceleration;
   obstacle2.y += obstacle2.vy;
 
   if (obstacle2.x > windowWidth) {
@@ -158,11 +174,11 @@ function draw() {
   }
 
   //Display
-  image(asteroid2, obstacle2.x, obstacle2.y, 130, 130);
+  image(asteroid2, obstacle2.x, obstacle2.y, 170, 170);
 
 
 
-  // ASTEROID 2
+  //METEOROID
   // Movement
   obstacle3.x += obstacle3.vx;
   obstacle3.y += obstacle3.vy;
@@ -176,12 +192,30 @@ function draw() {
   image(meteoroid, obstacle3.x, obstacle3.y, 150, 150);
 
 
+  //ASTEROID 3
+  //Movement
+  obstacle4.x -= obstacle4.vx;
+  obstacle4.speed += obstacle4.acceleration;
+  obstacle4.y -= obstacle4.vy;
+
+
+  if (obstacle4.x < -windowWidth) {
+    obstacle4.x = windowWidth;
+    // obstacle4.y = 100;
+    obstacle4.y = random(0, windowHeight);
+  }
+
+  //Display
+  image(asteroid3, obstacle4.x, obstacle4.y, 200, 200);
+
+
 
   //CRASH
   let d = dist(user.x, user.y, obstacle.x, obstacle.y);
   let d2 = dist(user.x, user.y, obstacle2.x, obstacle2.y);
   let d3 = dist(user.x, user.y, obstacle3.x, obstacle3.y);
-  if (d < obstacle.size / 2 + user.size / 2 || d2 < obstacle2.size / 2 + user.size / 2 || d3 < obstacle3.size/2.5 + user.size/2.5) {
+  let d4 = dist(user.x, user.y, obstacle4.x, obstacle4.y);
+  if (d < obstacle.size / 2 + user.size / 2 || d2 < obstacle2.size / 2 + user.size / 2 || d3 < obstacle3.size/2.5 + user.size/2.5 || d4 < obstacle4.size/2 + user.size/2) {
     noLoop();
   }
 
