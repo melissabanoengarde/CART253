@@ -115,12 +115,14 @@ function draw() {
   //Display
   noStroke();
   image(asteroid, obstacle.x, obstacle.y, 100, 100);
+  image(asteroid, obstacle.x + 200, obstacle.y - 400, 100, 100);
 
 
 
   //CRASH
   let d = dist(user.x, user.y, obstacle.x, obstacle.y);
-  if (d < obstacle.size / 2 + user.size / 2) {
+  let d2 = dist(user.x, user.y, obstacle.x + 200, obstacle.y - 400);
+  if (d < obstacle.size / 2 + user.size / 2 || d2 < obstacle.size / 2 + user.size / 2) {
     noLoop();
   }
 
