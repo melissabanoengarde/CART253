@@ -8,9 +8,15 @@ let spaceShip;
 
 let asteroid;
 
+let asteroid2;
+
+let meteoroid;
+
 function preload() {
   spaceShip = loadImage("assets/images/spaceship.png");
   asteroid = loadImage("assets/images/asteroid.png");
+  asteroid2 = loadImage("assets/images/asteroid2.png");
+  meteoroid = loadImage("assets/images/meteoroid.png");
 }
 
 
@@ -28,6 +34,24 @@ let user = {
 }
 
 let obstacle = {
+  x: 0,
+  y: 250,
+  size: 100,
+  vx: 0,
+  vy: 0,
+  speed: 12
+}
+
+let obstacle2 = {
+  x: 0,
+  y: 250,
+  size: 100,
+  vx: 0,
+  vy: 0,
+  speed: 15
+}
+
+let obstacle3 = {
   x: 0,
   y: 250,
   size: 100,
@@ -52,6 +76,12 @@ function setup() {
 
   obstacle.y = random(0, height);
   obstacle.vx = obstacle.speed;
+
+  obstacle2.y = random(0, height);
+  obstacle2.vx = obstacle2.speed;
+
+  obstacle3.y = random(0, height);
+  obstacle3.vx = obstacle3.speed;
 
   // noCursor();
 }
@@ -102,10 +132,11 @@ function draw() {
 
 
 
-  //ASTEROID
+  //ASTEROID 1
   //Movement
   obstacle.x += obstacle.vx;
   obstacle.y += obstacle.vy;
+
 
   if (obstacle.x > windowWidth) {
     obstacle.x = 0;
@@ -113,18 +144,44 @@ function draw() {
   }
 
   //Display
-  noStroke();
-  image(asteroid, obstacle.x, obstacle.y, 100, 100);
-  image(asteroid, obstacle.x + 500, obstacle.y - 400, 150, 150);
-  image(asteroid, obstacle.x - 500, obstacle.y + 500, 140, 140);
+  image(asteroid, obstacle.x, obstacle.y, 180, 180);
+
+
+  //ASTEROID 2
+  //Movement
+  obstacle2.x += obstacle2.vx;
+  obstacle2.y += obstacle2.vy;
+
+  if (obstacle2.x > windowWidth) {
+    obstacle2.x = 0;
+    obstacle2.y = random(0, windowHeight);
+  }
+
+  //Display
+  image(asteroid2, obstacle2.x, obstacle2.y, 130, 130);
+
+
+
+  // ASTEROID 2
+  // Movement
+  obstacle3.x += obstacle3.vx;
+  obstacle3.y += obstacle3.vy;
+
+  if (obstacle3.x > windowWidth) {
+    obstacle3.x = 0;
+    obstacle3.y = random(0, windowHeight);
+  }
+
+  //Display
+  image(meteoroid, obstacle3.x, obstacle3.y, 150, 150);
 
 
 
   //CRASH
   let d = dist(user.x, user.y, obstacle.x, obstacle.y);
-  let d2 = dist(user.x, user.y, obstacle.x + 500, obstacle.y - 400);
-  let d3 = dist(user.x, user.y, obstacle.x - 500, obstacle.y + 500);
-  if (d < obstacle.size / 2 + user.size / 2 || d2 < obstacle.size / 2 + user.size / 2 || d3 < obstacle.size / 2 + user.size / 2) {
+  let d2 = dist(user.x, user.y, obstacle2.x, obstacle2.y);
+  let d3 = dist(user.x, user.y, obstacle3.x, obstacle3.y);
+  if (d < obstacle.size / 2 + user.size / 2 || d2 < obstacle2.size / 2 + user.size / 2 || d3 < obstacle3.size/2.5 + user.size/2.5) {
     noLoop();
   }
 
