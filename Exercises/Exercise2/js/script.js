@@ -36,10 +36,16 @@ let obstacle = {
   size: 100,
   vx: 0,
   vy: 0,
-  speed: 30
+  speed: 20
 }
 
-let numStatic = 100;
+let star = {
+  r:0,
+  g:0,
+  b:0
+}
+
+ let numStatic = 500;
 
 //SETUP******************************************/
 
@@ -48,7 +54,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
 
   obstacle.y = random(0, height);
-  obstacle.vx = random(10,obstacle.speed);
+  obstacle.vx = obstacle.speed;
 
   // noCursor();
 }
@@ -59,13 +65,18 @@ function draw() {
 
   background(5, 10, 21);
 
-  //STATIC
+  //STARS
   for (let i = 0; i < numStatic; i++) {
     let x = random(0, width);
     let y = random(0, height);
-    stroke(255);
-    point(x, y);
+    noStroke();
+    fill(star.r,star.g,star.b);
+    star.r = random(200,255);
+    star.g = random(160,255);
+    star.b = random(20,220);
+    ellipse(x,y,2);
   }
+
 
   //USER'S SPACESHIP
   //Movement
