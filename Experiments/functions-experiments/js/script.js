@@ -1,8 +1,8 @@
 /**************************************************
-Template p5 project
-Pippin Barr
+Functions
+Melissa Banoen-Garde
 
-Here is a description of this template p5 project.
+Week 5, modularity and reuse
 **************************************************/
 
 // setup()
