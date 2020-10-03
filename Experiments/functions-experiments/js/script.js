@@ -1,15 +1,35 @@
+let hello ={
+  string: `Hello, wold!`,
+  x:0,
+  y:250,
+  vx: 5,
+  vy: 1,
+  size: 64
+};
 
 
-let hamlet1 = "To be or not to be";
+function setup(){
+  createCanvas(500,500);
+}
 
-let hamlet2 = 'That is the question';   //single quote
+function draw(){
+  background(127);
 
-let hamlet3 = `Hello nation`;          //backtick
+  hello.x += hello.vx;
+  hello.y += hello.vy;
 
+  hello.size += 1;
 
+  textAlign(CENTER,CENTER);
+  textSize(hello.size);
+  textStyle(ITALIC);
 
-//Why we should carefully pick how to indicate your strings
+  fill(250,150,100);
+  strokeWeight(5);
+  stroke(255);
 
-//imagine
-let string = "She said, "You can't kill me, i'm a bad b-tch!"";
-//you're confused, javascript is confused, thus use another method
+  text(hello.string, hello.x,hello.y)        //we are specifying a string at this (250,250) position
+
+}
+
+//can look up other fonts, check it out in reference
