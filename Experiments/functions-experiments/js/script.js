@@ -6,20 +6,28 @@ Week 5, modularity and reuse
 **************************************************/
 
 
-// setup()
-//
-// Description of setup() goes here.
 function setup() {
-  createCanvas(500, 500);
-  background(0);
-  oval(undefined, undefined, 250,450);
+  createCanvas(500,500);
 }
 
+function draw() {
+  background(0);
 
-// draw()
-//
-// Description of draw() goes here.
-function oval(x=250,y=250,w=100,h=100) {    //this becomes its default setup
-ellipse(x,y,w,h);
+  parallels({x:0, y:200, numLines:100, lineThickness:1, lineHeight:100, lineSpacing:4});
+  // parallels(0, 300, 20, 10, 50, 12);
+  // parallels(0, 350, 80, 5, 5, 6);
+}
 
+function parallels({x,y,numLines,lineThickness,lineHeight,lineSpacing}) {
+
+  for (let i = 0; i < numLines; i++) {
+
+    noStroke();
+    fill(255);
+    rectMode(CENTER);
+
+    rect(x, y, lineThickness, lineHeight);
+
+    x = x + lineSpacing;
+  }
 }
