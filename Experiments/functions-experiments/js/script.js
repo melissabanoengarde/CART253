@@ -13,21 +13,19 @@ function setup() {
 function draw() {
   background(0);
 
-  parallels({x:0, y:200, numLines:100, lineThickness:1, lineHeight:100, lineSpacing:4});
-  // parallels(0, 300, 20, 10, 50, 12);
-  // parallels(0, 350, 80, 5, 5, 6);
+  parallels(0, 200, 100, 1, 100, 4);
+  parallels(0, 300, 20, 10, 50, 12);
+  parallels(0, 350, 80, 5, 5, 6);
 }
 
-function parallels({x,y,numLines,lineThickness,lineHeight,lineSpacing}) {
+function parallels(x,y,numLines,lineThickness,lineHeight,lineSpacing) {
 
   for (let i = 0; i < numLines; i++) {
-
     noStroke();
-    fill(255);
+    let lineFill = map(i, 0 ,numLines, 0,255);
+    fill(lineFill);
     rectMode(CENTER);
-
     rect(x, y, lineThickness, lineHeight);
-
     x = x + lineSpacing;
   }
 }
