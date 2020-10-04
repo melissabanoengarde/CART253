@@ -9,6 +9,8 @@ Objective: 1 - Use states to manage your program
            2 - Use functions to organize your program
            3 - Write a function with a parameter and return value
 **************************************************/
+
+// Circle 1
 let c1 = {
   x: undefined,
   y: 250,
@@ -18,6 +20,7 @@ let c1 = {
   speed: 5
 };
 
+// Circle 2
 let c2 = {
   x: undefined,
   y: 250,
@@ -37,10 +40,9 @@ function setup() {
   c2.x = 2 * width/3;
 
   c1.vx = random(-c1.speed,c1.speed);
+  c1.vy = random(-c1.speed,c1.speed);
   c2.vx = random(-c2.speed,c2.speed);
-
-
-
+  c2.vy = random(-c2.speed,c2.speed);
 }
 
 // draw()
@@ -49,12 +51,26 @@ function setup() {
 function draw() {
   background(0);
 
+// Moving circles
   c1.x += c1.vx;
   c1.y += c1.vy;
-  ellipse(c1.x, c1.y, c1.size);
 
   c2.x += c2.vx;
   c2.y += c2.vy;
+
+
+//When circles go off screen
+if (c1.x < 0 || c1.x > width) {
+
+}
+
+if (c1.y < 0 || c1.y > height) {
+
+}
+
+
+// Display of circles
+  ellipse(c1.x, c1.y, c1.size);
   ellipse(c2.x, c2.y, c2.size);
 
 
