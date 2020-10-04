@@ -1,16 +1,21 @@
-let bg = 0;
+let typing = ``; // Empty string to begin with
 
 function setup() {
-  createCanvas(500,500);
+  createCanvas(500, 500);
 }
 
 function draw() {
-  background(bg);
+  background(0);
 
+  // Display our cumulative typing variable on the canvas...
+  fill(255);
+  textSize(32);
+  textAlign(CENTER, CENTER);
+  text(typing, width / 2, height / 2);
+}
 
-  if (keyIsDown(65)) { //65 is code for 'A' key
-    rectMode(CENTER);
-    rect(250,250,100,100);
-  }
-
+function keyTyped() {
+  // Whenever a "typeable" key is pressed, add the most recent key to our typing string
+  // (Using + with two strings like this is called concatenation, adding them together)
+  typing = typing + key;
 }
