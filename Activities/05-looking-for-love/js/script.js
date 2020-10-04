@@ -72,6 +72,14 @@ function draw() {
   }
 }
 
+
+function mousePressed() {
+  if (state === `title`){
+    state = `simulation`;
+  }
+}
+
+
 function title() {
   textSize(40);
   fill(255,0,0);
@@ -117,6 +125,7 @@ function checkOverlap(){
 
 function display(){
   // Display of circles
+    fill(255);
     ellipse(c1.x, c1.y, c1.size);
     ellipse(c2.x, c2.y, c2.size);
 }
