@@ -1,20 +1,18 @@
 /**************************************************
-Template p5 project
-Pippin Barr
+Exercise 03: Love, Actually
+Melissa Banoen-Garde
 
-Here is a description of this template p5 project.
+WEEK 05: FUNCTIONS
+CART 253 - B
+OCT. 2020
 **************************************************/
 
-// setup()
-//
-// Description of setup() goes here.
+
 function setup() {
 
 }
 
-// draw()
-//
-// Description of draw() goes here.
+
 function draw() {
 
 }

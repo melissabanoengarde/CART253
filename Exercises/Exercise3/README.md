@@ -1,3 +1,9 @@
-# Template p5 project
+# EXERCISE 03: LOVE, ACTUALLY
 
-This is the README file for the entire project. For more official projects you should write information here about the nature of the project, your name, any special explanations of how the project works, etc.
+MELISSA BANOEN-GARDE
+WEEK 05: FUNCTIONS
+CART 253 - B
+OCT. 2020
+
+OBJECTIVES: 1 - WRITING OWN IF-STATEMENTS
+            2 - WORKING WITH LOOPS FOR DRAWING
