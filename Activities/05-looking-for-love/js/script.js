@@ -39,14 +39,14 @@ function setup() {
 }
 
 
-function setupCircles(){
-  c1.x = width/3;
-  c2.x = 2 * width/3;
+function setupCircles() {
+  c1.x = width / 3;
+  c2.x = 2 * width / 3;
 
-  c1.vx = random(-c1.speed,c1.speed);
-  c1.vy = random(-c1.speed,c1.speed);
-  c2.vx = random(-c2.speed,c2.speed);
-  c2.vy = random(-c2.speed,c2.speed);
+  c1.vx = random(-c1.speed, c1.speed);
+  c1.vy = random(-c1.speed, c1.speed);
+  c2.vx = random(-c2.speed, c2.speed);
+  c2.vy = random(-c2.speed, c2.speed);
 }
 
 
@@ -54,37 +54,34 @@ function draw() {
   background(0);
 
   if (state === `title`) {
-    //Title
     title();
   }
-
-  else if (state === `simulation`) {        // do NOT forget else if concept
-    //Simulation
+  else if (state === `simulation`) { // do NOT forget else if concept
     simulation();
   }
-
   else if (state === `love`) {
-    //Love!
+    love();
   }
-
   else if (state === `sadness`) {
-    //Emo!
+    sadness();
   }
 }
 
 
 function mousePressed() {
-  if (state === `title`){
+  if (state === `title`) {
     state = `simulation`;
   }
 }
 
 
 function title() {
+  push();
   textSize(40);
-  fill(255,0,0);
-  textAlign(CENTER,CENTER);
-  text(`To Love or Not to Love?`, width/2,height/2);
+  fill(255, 0, 0);
+  textAlign(CENTER, CENTER);
+  text(`To Love or Not to Love?`, width / 2, height / 2);
+  pop();
 }
 
 function simulation() {
@@ -94,38 +91,56 @@ function simulation() {
   display();
 }
 
+function love() {
+  push();
+  textSize(40);
+  fill(255, 0, 0);
+  textAlign(CENTER, CENTER);
+  text(`To Love! uwu`, width / 2, height / 2);
+  pop();
+}
+
+function sadness() {
+  push();
+  textSize(40);
+  fill(0, 0, 255);
+  textAlign(CENTER, CENTER);
+  text(`To not Love :,(`, width / 2, height / 2);
+  pop();
+}
+
 
 function move() {
   // Moving circles
-    c1.x += c1.vx;
-    c1.y += c1.vy;
+  c1.x += c1.vx;
+  c1.y += c1.vy;
 
-    c2.x += c2.vx;
-    c2.y += c2.vy;
-  }
+  c2.x += c2.vx;
+  c2.y += c2.vy;
+}
 
 
-function checkOffScreen(){
+function checkOffScreen() {
   //When circles go off screen
-  if (c1.x < 0 || c1.x > width || c1.y < 0 || c1.y > height
-    || c2.x < 0 || c2.x > width || c2.y < 0 || c2.y > height) {
-    //The sad ending
-    }
+  if (c1.x < 0 || c1.x > width || c1.y < 0 || c1.y > height ||
+    c2.x < 0 || c2.x > width || c2.y < 0 || c2.y > height) {
+    state = `sadness`;
   }
+}
 
 
-function checkOverlap(){
-  let d = dist(c1.x,c1.y,c2.x, c2.y);
-    if (d < c1.size / 2 + c2.size / 2) {
-      //True love! uwu
-        noLoop();
-      }
+function checkOverlap() {
+  //When circles touch 
+  let d = dist(c1.x, c1.y, c2.x, c2.y);
+  if (d < c1.size / 2 + c2.size / 2) {
+    state = `love`;
   }
+}
 
 
-function display(){
+function display() {
   // Display of circles
-    fill(255);
-    ellipse(c1.x, c1.y, c1.size);
-    ellipse(c2.x, c2.y, c2.size);
+  fill(255);
+  ellipse(c1.x, c1.y, c1.size);
+  ellipse(c2.x, c2.y, c2.size);
 }
