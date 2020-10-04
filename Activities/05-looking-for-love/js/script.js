@@ -37,9 +37,8 @@ function setup() {
   c2.x = 2 * width/3;
 
   c1.vx = random(-c1.speed,c1.speed);
-  c1.vy = random(-c1.speed,c1.speed);
   c2.vx = random(-c2.speed,c2.speed);
-  c2.vy = random(-c2.speed,c2.speed);
+
 
 
 }
