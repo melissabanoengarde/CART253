@@ -48,6 +48,6 @@ function setup() {
 //
 // Description of draw() goes here.
 function draw() {
-  background(179, 25, 17);
+  background(0); 
 
 }
