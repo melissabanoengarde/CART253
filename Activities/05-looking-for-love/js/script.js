@@ -30,7 +30,7 @@ let c2 = {
   speed: 5
 };
 
-let state = `simulation`; //(will also be title, love, and sadness depending on what happens in the program.)
+let state = `title`; //(will also be title, love, and sadness depending on what happens in the program.)
 
 
 function setup() {
@@ -53,8 +53,9 @@ function setupCircles(){
 function draw() {
   background(0);
 
-  if (state === `title`) { 
+  if (state === `title`) {
     //Title
+    title();
   }
 
   else if (state === `simulation`) {        // do NOT forget else if concept
@@ -69,9 +70,14 @@ function draw() {
   else if (state === `sadness`) {
     //Emo!
   }
-
 }
 
+function title() {
+  textSize(40);
+  fill(255,0,0);
+  textAlign(CENTER,CENTER);
+  text(`To Love or Not to Love?`, width/2,height/2);
+}
 
 function simulation() {
   move();
