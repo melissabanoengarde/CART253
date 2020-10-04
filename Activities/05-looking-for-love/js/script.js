@@ -65,7 +65,10 @@ if (c1.x < 0 || c1.x > width || c1.y < 0 || c1.y > height || c2.x < 0 || c2.x > 
 
 }
 
-if 
+let d = dist(c1.x,c1.y,c2.x, c2.y);
+  if (d < c1.size / 2 + c2.size / 2) {
+      noLoop();
+  }
 
 
 
@@ -78,3 +81,12 @@ if
 
 
 }
+
+
+
+
+//Catching COVID19
+  // let d = dist(user.x, user.y, covid19.x, covid19.y);
+  // if (d < covid19.size / 2 + user.size / 2) {
+  //   noLoop();
+  // }
