@@ -1,3 +1,11 @@
+// //**********************************
+// Week 05: Functions
+// Melissa Banoen-Garde/CART 253 - B
+//
+// Experimenting with functions, parameters, return values
+// text,states, keyboard input, and automated movement.
+// ***************************
+
 let circle = {
   x: 250,
   y: 250,
