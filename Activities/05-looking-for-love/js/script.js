@@ -60,13 +60,15 @@ function draw() {
 
 
 //When circles go off screen
-if (c1.x < 0 || c1.x > width) {
+if (c1.x < 0 || c1.x > width || c1.y < 0 || c1.y > height || c2.x < 0 || c2.x > width || c2.y < 0 || c2.y > height) {
+  //The sad ending
 
 }
 
-if (c1.y < 0 || c1.y > height) {
+if 
 
-}
+
+
 
 
 // Display of circles
