@@ -56,7 +56,6 @@ function draw() {
   checkOffScreen();
   checkOverlap();
   display();
-  // simulation();
 
 
 function move() {
