@@ -48,6 +48,16 @@ function setup() {
 //
 // Description of draw() goes here.
 function draw() {
-  background(0); 
+  background(0);
+
+  c1.x += c1.vx;
+  c1.y += c1.vy;
+  ellipse(c1.x, c1.y, c1.size);
+
+  c2.x += c2.vx;
+  c2.y += c2.vy;
+  ellipse(c2.x, c2.y, c2.size);
+
+
 
 }
