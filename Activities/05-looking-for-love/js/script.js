@@ -30,12 +30,15 @@ let c2 = {
   speed: 5
 };
 
-// setup()
-//
-// Description of setup() goes here.
+
 function setup() {
   createCanvas(500, 500);
 
+  setupCircles();
+}
+
+
+function setupCircles(){
   c1.x = width/3;
   c2.x = 2 * width/3;
 
@@ -45,39 +48,51 @@ function setup() {
   c2.vy = random(-c2.speed,c2.speed);
 }
 
-// draw()
-//
-// Description of draw() goes here.
+
 function draw() {
   background(0);
 
-// Moving circles
-  c1.x += c1.vx;
-  c1.y += c1.vy;
+  move();
+  checkOffScreen();
+  checkOverlap();
+  display();
+  // simulation();
 
-  c2.x += c2.vx;
-  c2.y += c2.vy;
 
+function move() {
+  // Moving circles
+    c1.x += c1.vx;
+    c1.y += c1.vy;
 
-//When circles go off screen
-if (c1.x < 0 || c1.x > width || c1.y < 0 || c1.y > height || c2.x < 0 || c2.x > width || c2.y < 0 || c2.y > height) {
-  //The sad ending
-
-}
-
-let d = dist(c1.x,c1.y,c2.x, c2.y);
-  if (d < c1.size / 2 + c2.size / 2) {
-    //True love! uwu
-      noLoop();
+    c2.x += c2.vx;
+    c2.y += c2.vy;
   }
 
 
+function checkOffScreen(){
+  //When circles go off screen
+  if (c1.x < 0 || c1.x > width || c1.y < 0 || c1.y > height
+    || c2.x < 0 || c2.x > width || c2.y < 0 || c2.y > height) {
+    //The sad ending
+    }
+  }
 
 
+function checkOverlap(){
+  let d = dist(c1.x,c1.y,c2.x, c2.y);
+    if (d < c1.size / 2 + c2.size / 2) {
+      //True love! uwu
+        noLoop();
+      }
+  }
 
-// Display of circles
-  ellipse(c1.x, c1.y, c1.size);
-  ellipse(c2.x, c2.y, c2.size);
+
+function display(){
+  // Display of circles
+    ellipse(c1.x, c1.y, c1.size);
+    ellipse(c2.x, c2.y, c2.size);
+}
+
 
 
 }
