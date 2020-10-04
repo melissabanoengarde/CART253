@@ -30,10 +30,10 @@ let c2 = {
   speed: 5
 };
 
+let state = `simulation`; //(will also be title, love, and sadness depending on what happens in the program.)
 
 function setup() {
   createCanvas(500, 500);
-
   setupCircles();
 }
 
@@ -52,10 +52,32 @@ function setupCircles(){
 function draw() {
   background(0);
 
+  if (state === `title`) {
+    //Title
+  }
+
+  else if (state === `simulation`) {        // do NOT forget else if concept
+    //Simulation
+    simulation();
+  }
+
+  else if (state === `love`) {
+    //Love!
+  }
+
+  else if (state === `sadness`) {
+    //Emo!
+  }
+
+}
+
+
+function simulation() {
   move();
   checkOffScreen();
   checkOverlap();
   display();
+}
 
 
 function move() {
@@ -90,8 +112,4 @@ function display(){
   // Display of circles
     ellipse(c1.x, c1.y, c1.size);
     ellipse(c2.x, c2.y, c2.size);
-}
-
-
-
 }
