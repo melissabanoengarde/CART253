@@ -32,6 +32,7 @@ let c2 = {
 
 let state = `simulation`; //(will also be title, love, and sadness depending on what happens in the program.)
 
+
 function setup() {
   createCanvas(500, 500);
   setupCircles();
@@ -52,7 +53,7 @@ function setupCircles(){
 function draw() {
   background(0);
 
-  if (state === `title`) {
+  if (state === `title`) { 
     //Title
   }
 
