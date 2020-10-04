@@ -7,19 +7,10 @@ function setup() {
 function draw() {
   background(bg);
 
-  textAlign(CENTER,CENTER);
-  textSize(64);
-  fill(255);
-  text(keyCode, width/2,height/2);  //ascii key codes
-}
 
-function keyPressed() {  // a function p5 already knows about
-  if (keyCode === UP_ARROW) {    //38 is the up arrow, refer to keycode.info website
-    bg += 10;
-    bg = constrain(bg,0,255);
+  if (keyIsDown(65)) { //65 is code for 'A' key
+    rectMode(CENTER);
+    rect(250,250,100,100);
   }
-  else if (keyCode === DOWN_ARROW){
-    bg -= 10;
-    bg = constrain(bg,0,255);
-  }
+
 }
