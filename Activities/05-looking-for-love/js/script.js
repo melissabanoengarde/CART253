@@ -40,7 +40,7 @@ function setup() {
 
 
 function setupCircles() {
-  c1.x = width / 3;
+  c1.x = width / 3; 
   c2.x = 2 * width / 3;
 
   c1.vx = random(-c1.speed, c1.speed);
@@ -130,7 +130,7 @@ function checkOffScreen() {
 
 
 function checkOverlap() {
-  //When circles touch 
+  //When circles touch
   let d = dist(c1.x, c1.y, c2.x, c2.y);
   if (d < c1.size / 2 + c2.size / 2) {
     state = `love`;
