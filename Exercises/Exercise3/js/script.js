@@ -23,7 +23,6 @@ function preload() {
 
 function setup() {
   createCanvas(800,500);
-  background(0);
 
 
 
@@ -31,6 +30,11 @@ function setup() {
 
 function draw() {
 
+  scrollingBackground();
+
+}
+
+function scrollingBackground(){
   // Background Scrolling
   imageMode(CORNER);
   image(bg,bgLeft,0,width,height);      // Left
@@ -45,6 +49,7 @@ function draw() {
   if (bgRight < -width) {
     bgRight = bgLeft -bgRight;
   }
+
 }
 
 

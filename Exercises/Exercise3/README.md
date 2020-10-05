@@ -11,4 +11,3 @@ OBJECTIVES: 1 - WRITING OWN IF-STATEMENTS
 Sources:
 1 - https://editor.p5js.org/chjno/sketches/ByZlypKWM
     Continuous scrolling background by chjno
-    
