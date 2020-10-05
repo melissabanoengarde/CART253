@@ -10,7 +10,7 @@ OCT. 2020
 // Variables
 let beeImg;
 let bee = {
-  x: 300,
+  x: 760,
   y: 250,
   size: 100,
   vx: 0,
@@ -28,7 +28,7 @@ let bird1 = {
   vy: 0,
   speed: 4.5,
   img: bird1Img
-}
+};
 
 let bird2Img;
 let bird2 = {
@@ -39,7 +39,7 @@ let bird2 = {
   vy: 0,
   speed: 4.5,
   img: bird2Img
-}
+};
 
 let bird3Img;
 let bird3 = {
@@ -50,7 +50,7 @@ let bird3 = {
   vy: 0,
   speed: 4.5,
   img: bird3Img
-}
+};
 
 let bird4Img;
 let bird4 = {
@@ -61,7 +61,18 @@ let bird4 = {
   vy: 0,
   speed: 5,
   img: bird4Img
-}
+};
+
+let hibiscusImg;
+let hibiscus = {
+  x: 70,
+  y: 420,
+  size: 200,
+  vx: 0,
+  vy: 0,
+  // speed: 5,
+  img: hibiscusImg
+};
 
 let bg;
 let bgLeft = 0;
@@ -76,6 +87,7 @@ function preload() {
   bird2Img = loadImage('assets/images/bird2.png');
   bird3Img = loadImage('assets/images/bird3.png');
   bird4Img = loadImage('assets/images/bird4.png');
+  hibiscusImg = loadImage('assets/images/hibiscus.png');
 }
 
 
@@ -83,6 +95,7 @@ function setup() {
   createCanvas(800, 500);
 
   setupBirds();
+  hibiscusAppearance();
 }
 
 function setupBirds() {
@@ -90,6 +103,11 @@ function setupBirds() {
   bird2.vx = random(0.5, bird2.speed);
   bird3.vx = random(0.8, bird3.speed);
   bird4.vx = random(0.8, bird4.speed);
+}
+
+function hibiscusAppearance(){
+  hibiscus.x -= hibiscus.vx;
+  hibiscus.y += hibiscus.vy;
 }
 
 function draw() {
@@ -176,16 +194,21 @@ function draw() {
     }
   }
 
-
+  // Display of bee and birds
   function display() {
     imageMode(CENTER);
+    image(hibiscusImg, hibiscus.x, hibiscus.y, hibiscus.size, hibiscus.size);
     image(beeImg, bee.x, bee.y, bee.size, bee.size);
     image(bird1Img, bird1.x, bird1.y, bird1.size, bird1.size);
     image(bird2Img, bird2.x, bird2.y, bird2.size, bird2.size);
     image(bird3Img, bird3.x, bird3.y, bird3.size, bird3.size);
     image(bird4Img, bird4.x, bird4.y, bird4.size, bird4.size);
 
+
     // ellipse(bird2.x, bird2.y, bird2.size);
   }
 
 }
+
+
+//NOTES
