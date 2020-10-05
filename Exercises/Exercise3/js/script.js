@@ -11,55 +11,32 @@ Moving background: https://editor.p5js.org/chjno/sketches/ByZlypKWM
 **************************************************/
 
 // Variables
-// let bgPic;
-// let bgLeft = 0;
-// let moveSpeed = 5;
-// let b;
-//
-// function preload() {
-//   bgPic = loadImage("assets/images/E3bg.png");
-// }
-//
-// function setup() {
-//   createCanvas(800, 500);
-//   rectMode(CENTER);
-//
-// }
-//
-// function draw() {
-//   background(0);
-//   image(bgPic, bgLeft, 0);
-//
-//   keyPressed();
-//
-//   // b.show();
-// }
-//
-// function moveBgLeft(){
-//
-//   let minBgLeft = -bg.width + width;
-//
-//     if (bgLeft - moveSpeed > minBgLeft){
-//       bgLeft -= moveSpeed;
-//   }
-// }
-//
-// function moveBgRight(){
-//   if (bgLeft + moveSpeed < 0){
-//     bgLeft += moveSpeed;
-//   }
-// }
-//
-// function keyPressed() {
-//   if (keyCode === 65){    //Move to left
-//
-//
-//   }
-// }
-//
-//
-// }
+let bg;
+
+function preload() {
+  bg = loadImage('assets/images/bg.png');
+}
+
+
+function setup() {
+  createCanvas(800,500);
+  background(0);
+
+}
+
+function draw() {
+  imageMode(CORNER);
+  image(bg,100,100,800,500);
+
+}
 
 
 
 // IDEA: image(CORNER)????
+// The default mode is imageMode(CORNER), which interprets the second and
+// third parameters of image() as the upper-left corner of the image.
+// If two additional parameters are specified, they are used to set the image's
+// width and height.   image(img, x, y, [width], [height])
+
+
+//https://p5js.org/examples/image-background-image.html (scrolling loop but y-axis)
