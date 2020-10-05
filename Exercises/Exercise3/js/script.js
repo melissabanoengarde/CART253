@@ -33,45 +33,56 @@ function preload() {
 
 function setup() {
   createCanvas(800,500);
-
 }
 
 function draw() {
-  background(0);
+  // background(0);
 
+  move();
+  handleInput();
+  display();
   scrollingBackground();    //remember, order MATTERS
 
 
-  if (keyIsDown(65)){
-        bee.vx = -bee.speed;
+ function handleInput(){
+   // Bee movements
+   if (keyIsDown(65)){
+         bee.vx = -bee.speed;
+       }
+
+     else if (keyIsDown(68)){
+         bee.vx = bee.speed;
+       }
+
+     else {
+         bee.vx = 0;
+       }
+
+   if (keyIsDown(87)){
+        bee.vy = -bee.speed;
+       }
+
+     else if (keyIsDown(83)){
+        bee.vy = bee.speed;
       }
-    else if (keyIsDown(68)){
-        bee.vx = bee.speed;
-      }
-    else {
-        bee.vx = 0;
-      }
 
-      if (keyIsDown(87)){
-            bee.vy = -bee.speed;
-          }
-        else if (keyIsDown(83)){
-            bee.vy = bee.speed;
-          }
-        else {
-            bee.vy = 0;
-          }
-
-      bee.x += bee.vx;
-      bee.y += bee.vy;
-
-      image(beeImg, bee.x, bee.y, bee.size,bee.size);
+      else {
+         bee.vy = 0;
+       }
+ }
 
 
+ function move() {
+   bee.x += bee.vx;
+   bee.y += bee.vy;
+ }
+
+ function display(){
+   image(beeImg, bee.x, bee.y, bee.size,bee.size);
+ }
 
 
-
- function scrollingBackground(){
+ function scrollingBackground() {
   // Background Scrolling
   imageMode(CORNER);
   image(bg,bgLeft,0,width,height);      // Left
@@ -87,5 +98,7 @@ function draw() {
     bgRight = bgLeft -bgRight;
   }
 }
+
+
 
 }
