@@ -19,14 +19,14 @@ let beeImg;
     img: beeImg
   };
 
-// let bg;
-// let bgLeft = 0;
-// let bgRight = 800;
-// let bgSpeed = 3;
+let bg;
+let bgLeft = 0;
+let bgRight = 800;
+let bgSpeed = 3;
 
 
 function preload() {
-  // bg = loadImage('assets/images/bg.png');
+  bg = loadImage('assets/images/bg.png');
   beeImg = loadImage('assets/images/bee.png');
 }
 
@@ -38,6 +38,8 @@ function setup() {
 
 function draw() {
   background(0);
+
+  scrollingBackground();    //remember, order MATTERS
 
 
   if (keyIsDown(65)){
@@ -63,27 +65,27 @@ function draw() {
       bee.x += bee.vx;
       bee.y += bee.vy;
 
-  image(beeImg, bee.x, bee.y, bee.size);
+      image(beeImg, bee.x, bee.y, bee.size,bee.size);
 
 
-//   scrollingBackground();
-//
-//
-//  function scrollingBackground(){
-//   // Background Scrolling
-//   imageMode(CORNER);
-//   image(bg,bgLeft,0,width,height);      // Left
-//   image(bg,bgRight,0,width,height);     // Right
-//
-//   bgLeft -= bgSpeed;
-//   bgRight -= bgSpeed;
-//
-//   if (bgLeft < -width) {
-//     bgLeft = bgRight + width;
-//   }
-//   if (bgRight < -width) {
-//     bgRight = bgLeft -bgRight;
-//   }
+
+
+
+ function scrollingBackground(){
+  // Background Scrolling
+  imageMode(CORNER);
+  image(bg,bgLeft,0,width,height);      // Left
+  image(bg,bgRight,0,width,height);     // Right
+
+  bgLeft -= bgSpeed;
+  bgRight -= bgSpeed;
+
+  if (bgLeft < -width) {
+    bgLeft = bgRight + width;
+  }
+  if (bgRight < -width) {
+    bgRight = bgLeft -bgRight;
+  }
 }
-//
-//
+
+}
