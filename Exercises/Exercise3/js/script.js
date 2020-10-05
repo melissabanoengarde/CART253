@@ -40,9 +40,8 @@ function draw() {
 
   move();
   handleInput();
-  display();
   scrollingBackground();    //remember, order MATTERS
-
+  display();
 
  function handleInput(){
    // Bee movements
@@ -77,10 +76,6 @@ function draw() {
    bee.y += bee.vy;
  }
 
- function display(){
-   image(beeImg, bee.x, bee.y, bee.size,bee.size);
- }
-
 
  function scrollingBackground() {
   // Background Scrolling
@@ -100,5 +95,8 @@ function draw() {
 }
 
 
+ function display(){
+   image(beeImg, bee.x, bee.y, bee.size,bee.size);
+ }
 
 }
