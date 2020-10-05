@@ -16,8 +16,19 @@ let bgLeft = 0;
 let bgRight = 800;
 let bgSpeed = 3;
 
+let bee = {
+  x:0,
+  y:0,
+  size:0,
+  vx:0,
+  vy:0,
+  speed: 2,
+  img: bee
+}
+
 function preload() {
   bg = loadImage('assets/images/bg.png');
+  bee = loadImage('assets/images/bee.png');
 }
 
 
