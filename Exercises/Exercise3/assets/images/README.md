@@ -1,3 +1,7 @@
 # Images folder
 
-This is the folder where you would keep all the images associated with your project, such as `.png`, `.jpg`, and other formats. An example image, `clown.png`, is here in case you need something to play around with.
+Source:
+
+Bee - https://www.uihere.com/free-cliparts/bee-insect-clip-art-cartoon-bee-png-1066085/download
+
+Background - https://free-game-assets.itch.io/free-cartoon-forest-2d-backgrounds
