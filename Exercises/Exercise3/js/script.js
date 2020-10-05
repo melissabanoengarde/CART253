@@ -19,6 +19,17 @@ let beeImg;
     img: beeImg
   };
 
+let bird1Img;
+  let bird1; = {
+    x:200,
+    y:300,
+    size:100,
+    vx:0,
+    vy:0,
+    speed: 4.5,
+    img: bird1
+  }
+
 let bg;
 let bgLeft = 0;
 let bgRight = 800;
@@ -28,20 +39,28 @@ let bgSpeed = 3;
 function preload() {
   bg = loadImage('assets/images/bg.png');
   beeImg = loadImage('assets/images/bee.png');
+  birdImg = loadImage('assets/images/bird1.png');
 }
 
 
 function setup() {
   createCanvas(800,500);
+
+  setupBirds();
+}
+
+function setupBirds(){
+  bird1.vx = random(-bird1.speed, bird1.speed);
 }
 
 function draw() {
-  // background(0);
 
-  move();
+  beeMove();
+  birdsMove();
   handleInput();
   scrollingBackground();    //remember, order MATTERS
   display();
+
 
  function handleInput(){
    // Bee movements
@@ -71,9 +90,14 @@ function draw() {
  }
 
 
- function move() {
+ function beeMove() {
    bee.x += bee.vx;
    bee.y += bee.vy;
+ }
+
+ function birdsMove(){
+   bird1.x += bird1.vx;
+   bird1.y += bird1.vy;
  }
 
 
@@ -97,6 +121,7 @@ function draw() {
 
  function display(){
    image(beeImg, bee.x, bee.y, bee.size,bee.size);
+   image(bird1Img, bird1.x, bird1.y, bird1.size,bird1.size);
  }
 
 }
