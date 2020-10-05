@@ -20,15 +20,48 @@ let beeImg;
   };
 
 let bird1Img;
-  let bird1; = {
-    x:200,
+  let bird1 = {
+    x:20,
+    y:200,
+    size:100,
+    vx:0,
+    vy:0,
+    speed:4.5,
+    img: bird1Img
+  }
+
+let bird2Img;
+  let bird2 = {
+    x:50,
     y:300,
     size:100,
     vx:0,
     vy:0,
-    speed: 4.5,
-    img: bird1
+    speed:4.5,
+    img: bird2Img
   }
+
+let bird3Img;
+  let bird3 = {
+    x:30,
+    y:100,
+    size:100,
+    vx:0,
+    vy:0,
+    speed:4.5,
+    img: bird3Img
+  }
+
+let bird4Img;
+  let bird4 = {
+      x:20,
+      y:250,
+      size:100,
+      vx:0,
+      vy:0,
+      speed:5,
+      img: bird4Img
+    }
 
 let bg;
 let bgLeft = 0;
@@ -39,7 +72,10 @@ let bgSpeed = 3;
 function preload() {
   bg = loadImage('assets/images/bg.png');
   beeImg = loadImage('assets/images/bee.png');
-  birdImg = loadImage('assets/images/bird1.png');
+  bird1Img = loadImage('assets/images/bird1.png');
+  bird2Img = loadImage('assets/images/bird2.png');
+  bird3Img = loadImage('assets/images/bird3.png');
+  bird4Img = loadImage('assets/images/bird4.png');
 }
 
 
@@ -50,7 +86,10 @@ function setup() {
 }
 
 function setupBirds(){
-  bird1.vx = random(-bird1.speed, bird1.speed);
+  bird1.vx = random(0.02, bird1.speed);
+  bird2.vx = random(0.5, bird2.speed);
+  bird3.vx = random(0.8, bird3.speed);
+  bird4.vx = random(0.8, bird4.speed);
 }
 
 function draw() {
@@ -61,7 +100,7 @@ function draw() {
   scrollingBackground();    //remember, order MATTERS
   display();
 
-
+// Bee's key info (AWSD)
  function handleInput(){
    // Bee movements
    if (keyIsDown(65)){
@@ -96,8 +135,21 @@ function draw() {
  }
 
  function birdsMove(){
+   // Bird 1
    bird1.x += bird1.vx;
    bird1.y += bird1.vy;
+
+   // Bird 2
+   bird2.x += bird2.vx;
+   bird2.y += bird2.vy;
+
+   // Bird 3
+   bird3.x += bird3.vx;
+   bird3.y += bird3.vy;
+
+   // Bird 4
+   bird4.x += bird4.vx;
+   bird4.y += bird4.vy;
  }
 
 
@@ -122,6 +174,9 @@ function draw() {
  function display(){
    image(beeImg, bee.x, bee.y, bee.size,bee.size);
    image(bird1Img, bird1.x, bird1.y, bird1.size,bird1.size);
+   image(bird2Img, bird2.x, bird2.y, bird2.size,bird2.size);
+   image(bird3Img, bird3.x, bird3.y, bird3.size,bird3.size);
+   image(bird4Img, bird4.x, bird4.y, bird4.size,bird4.size);
  }
 
 }
