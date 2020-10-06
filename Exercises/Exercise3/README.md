@@ -4,7 +4,7 @@
             <strong>MELISSA BANOEN-GARDE</strong><br>
 WEEK 05: FUNCTIONS<br>
 CART 253 - B<br>
-OCT. 2020E<br>
+OCT. 2020<br>
 </p>
 
 <ol>
