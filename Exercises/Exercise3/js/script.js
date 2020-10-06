@@ -5,6 +5,9 @@ Melissa Banoen-Garde
 WEEK 05: FUNCTIONS
 CART 253 - B
 OCT. 2020
+
+Busy bee must reach his prized hibiscus but wait...
+angry birds?
 **************************************************/
 
 // Variables
@@ -15,7 +18,7 @@ let bee = {
   size: 100,
   vx: 0,
   vy: 0,
-  speed: 6,
+  speed: 5.5,
   img: beeImg
 };
 
@@ -70,7 +73,6 @@ let hibiscus = {
   size: 200,
   vx: 0,
   vy: 0,
-  // speed: 5,
   img: hibiscusImg
 };
 
@@ -91,9 +93,11 @@ function preload() {
 }
 
 
+let state = `title`;
+
+
 function setup() {
   createCanvas(800, 500);
-
   setupBirds();
   hibiscusAppearance();
 }
@@ -116,49 +120,109 @@ function setupBirds() {
   bird4.vy = bird4.speed;
 }
 
-function hibiscusAppearance(){
+function hibiscusAppearance() {
   hibiscus.x += hibiscus.vx;
   hibiscus.y += hibiscus.vy;
 }
 
 function draw() {
 
+  if (state === `title`) {
+    title();
+  } else if (state === `simulation`) {
+    simulation();
+  } else if (state === `ggwp`) {
+    ggwp();
+  } else if (state === `badgame`) {
+    badgame();
+  }
+}
+
+function keyPressed() {
+  if (state === `title`) {
+    state = `simulation`;
+  }
+}
+
+function title() {
+  push();
+  textSize(40);
+  fill(255, 219, 88);
+  textAlign(CENTER, CENTER);
+  text(`To Bee or Not to Bee?`, width / 2, height / 2);
+  pop();
+
+  // push();
+  textSize(30);
+  fill(255, 219, 88);
+  textAlign(CENTER, BASELINE);
+  text(`Instructions: A = Left, D = Right, W = Up, S = Down`, width / 2, height / 2);
+  // pop();
+
+  push();
+  textSize(20);
+  fill(255, 219, 88);
+  textAlign(CENTER, CENTER);
+  text(`Press any key to begin`, width / 2, height / 2);
+  pop();
+}
+
+function simulation() {
   beeMove();
   birdsJitteryMovement();
   handleInput();
   scrollingBackground(); //remember, order MATTERS
   overLap();
   display();
+}
 
-  // Bee's key info (AWSD)
-  function handleInput() {
-    // Bee movements
-    if (keyIsDown(65)) {
-      bee.vx = -bee.speed;
-    } else if (keyIsDown(68)) {
-      bee.vx = bee.speed;
-    } else {
-      bee.vx = 0;
-    }
+function ggwp() {
+  push();
+  textSize(40);
+  fill(255, 219, 88);
+  textAlign(CENTER, CENTER);
+  text(`GGWP, BOSS.`, width / 2, height / 2);
+  pop();
+}
 
-    if (keyIsDown(87)) {
-      bee.vy = -bee.speed;
-    } else if (keyIsDown(83)) {
-      bee.vy = bee.speed;
-    } else {
-      bee.vy = 0;
-    }
+function badgame() {
+  push();
+  textSize(40);
+  fill(255, 219, 88);
+  textAlign(CENTER, CENTER);
+  text(`BG-BUT, STILL-WP, BOSS.`, width / 2, height / 2);
+  pop();
+}
+
+
+// Bee's key info (AWSD)
+function handleInput() {
+  // Bee movements
+  if (keyIsDown(65)) {
+    bee.vx = -bee.speed;
+  } else if (keyIsDown(68)) {
+    bee.vx = bee.speed;
+  } else {
+    bee.vx = 0;
   }
 
-
-  function beeMove() {
-    bee.x += bee.vx;
-    bee.y += bee.vy;
+  if (keyIsDown(87)) {
+    bee.vy = -bee.speed;
+  } else if (keyIsDown(83)) {
+    bee.vy = bee.speed;
+  } else {
+    bee.vy = 0;
   }
+}
 
-  function birdsJitteryMovement() {
-    let change = random();
-    if (change < 1) {
+function beeMove() {
+  bee.x += bee.vx;
+  bee.y += bee.vy;
+}
+
+function birdsJitteryMovement() {
+  let change = random();
+  if (change < 1) {
     // Bird 1
     bird1.x += bird1.vx;
     bird1.y += bird1.vy;
@@ -182,95 +246,97 @@ function draw() {
     bird4.y += bird4.vy;
     bird4.vx = random(bird4.speed, bird4.speed);
     bird4.vy = random(-bird4.speed, bird4.speed);
-    }
-
-    birdsChasingBee();
   }
 
-  function birdsChasingBee(){   //Birds 1 and 3 gravitating towards bee
+  birdsChasingBee();
+}
+
+function birdsChasingBee() { //Birds 1 and 3 gravitating towards bee
   // Bird 3
   let dx = bird1.x - bee.x;
   let dy = bird1.y - bee.y;
 
   if (dx < 0) {
     bird1.vx = bird1.speed;
-  }
-    else if (dx > 0) {
-      bird1.vx = -bird1.speed;
-    }
-
-    if (dy < 0) {
-      bird1.vy = bird1.speed;
-    }
-      else if (dy > 0) {
-        bird1.vy = -bird1.speed;
-      }
-
-    // Bird 3
-    let d2x = bird3.x - bee.x;
-    let d2y = bird3.y - bee.y;
-
-    if (d2x < 0) {
-      bird3.vx = bird3.speed;
-    }
-      else if (d2x > 0) {
-        bird3.vx = -bird3.speed;
-      }
-
-      if (d2y < 0) {
-        bird3.vy = bird3.speed;
-      }
-        else if (d2y > 0) {
-          bird3.vy = -bird3.speed;
-        }
+  } else if (dx > 0) {
+    bird1.vx = -bird1.speed;
   }
 
-
-  function scrollingBackground() {
-    // Background Scrolling
-    imageMode(CORNER);
-    image(bg, bgLeft, 0, width, height); // Left
-    image(bg, bgRight, 0, width, height); // Right
-
-    bgLeft -= bgSpeed;
-    bgRight -= bgSpeed;
-
-    if (bgLeft < -width) {
-      bgLeft = bgRight + width;
-    }
-    if (bgRight < -width) {
-      bgRight = bgLeft - bgRight;
-    }
+  if (dy < 0) {
+    bird1.vy = bird1.speed;
+  } else if (dy > 0) {
+    bird1.vy = -bird1.speed;
   }
 
-  //When either birds reaches the busy bee
-  function overLap() {
-    let d = dist(bee.x, bee.y, bird1.x, bird1.y);
-    let d2 = dist(bee.x, bee.y, bird2.x, bird2.y);
-    let d3 = dist(bee.x, bee.y, bird3.x, bird3.y);
-    let d4 = dist(bee.x, bee.y, bird4.x, bird4.y);
+  // Bird 3
+  let d2x = bird3.x - bee.x;
+  let d2y = bird3.y - bee.y;
 
-    if (d < bird1.size / 3 + bee.size / 3 || d2 < bird2.size / 3 + bee.size / 3 || d3 < bird3.size / 3 + bee.size / 3 || d4 < bird4.size / 3 + bee.size / 3) {
-      noLoop();
-      //state = `Bee gone`
-    }
+  if (d2x < 0) {
+    bird3.vx = bird3.speed;
+  } else if (d2x > 0) {
+    bird3.vx = -bird3.speed;
   }
 
-  // Display of bee and birds
-  function display() {
-    imageMode(CENTER);
-    image(hibiscusImg, hibiscus.x, hibiscus.y, hibiscus.size, hibiscus.size);
-    image(beeImg, bee.x, bee.y, bee.size, bee.size);
-    image(bird1Img, bird1.x, bird1.y, bird1.size, bird1.size);
-    image(bird2Img, bird2.x, bird2.y, bird2.size, bird2.size);
-    image(bird3Img, bird3.x, bird3.y, bird3.size, bird3.size);
-    image(bird4Img, bird4.x, bird4.y, bird4.size, bird4.size);
-
-
-    // ellipse(bird2.x, bird2.y, bird2.size);
+  if (d2y < 0) {
+    bird3.vy = bird3.speed;
+  } else if (d2y > 0) {
+    bird3.vy = -bird3.speed;
   }
-
 }
+
+
+function scrollingBackground() {
+  // Background Scrolling
+  imageMode(CORNER);
+  image(bg, bgLeft, 0, width, height); // Left
+  image(bg, bgRight, 0, width, height); // Right
+
+  bgLeft -= bgSpeed;
+  bgRight -= bgSpeed;
+
+  if (bgLeft < -width) {
+    bgLeft = bgRight + width;
+  }
+  if (bgRight < -width) {
+    bgRight = bgLeft - bgRight;
+  }
+}
+
+//Determines whether the user wins or lose
+function overLap() {
+  let d = dist(bee.x, bee.y, bird1.x, bird1.y);
+  let d2 = dist(bee.x, bee.y, bird2.x, bird2.y);
+  let d3 = dist(bee.x, bee.y, bird3.x, bird3.y);
+  let d4 = dist(bee.x, bee.y, bird4.x, bird4.y);
+  let d5 = dist(bee.x, bee.y, hibiscus.x, hibiscus.y);
+
+  //Lose
+  if (d < bird1.size / 3 + bee.size / 3 || d2 < bird2.size / 3 + bee.size / 3 || d3 < bird3.size / 3 + bee.size / 3 || d4 < bird4.size / 3 + bee.size / 3) {
+    state = `badgame`;
+  }
+
+  //Win
+  if (d5 < hibiscus.size / 8 + bee.size / 8) {
+    state = `ggwp`;
+  }
+}
+
+// Display of bee and birds
+function display() {
+  imageMode(CENTER);
+  image(hibiscusImg, hibiscus.x, hibiscus.y, hibiscus.size, hibiscus.size);
+  image(beeImg, bee.x, bee.y, bee.size, bee.size);
+  image(bird1Img, bird1.x, bird1.y, bird1.size, bird1.size);
+  image(bird2Img, bird2.x, bird2.y, bird2.size, bird2.size);
+  image(bird3Img, bird3.x, bird3.y, bird3.size, bird3.size);
+  image(bird4Img, bird4.x, bird4.y, bird4.size, bird4.size);
+
+
+  // ellipse(bird2.x, bird2.y, bird2.size);
+}
+
+// }
 
 
 //NOTES
