@@ -1,13 +1,14 @@
-# EXERCISE 03: LOVE, ACTUALLY
+<h1>EXERCISE 03: LOVE, ACTUALLY</h1>
 
-<p>MELISSA BANOEN-GARDE
-<p>WEEK 05: FUNCTIONS
-<p>CART 253 - B
-OCT. 2020
+<p>
+MELISSA BANOEN-GARDE<br>
+WEEK 05: FUNCTIONSE<br>
+CART 253 - BE<br>
+OCT. 2020E<br>
+</p>
 
-OBJECTIVES: 1 - WRITING OWN IF-STATEMENTS
-            2 - WORKING WITH LOOPS FOR DRAWING
-
+<ol>
 Reference:
-1 - https://editor.p5js.org/chjno/sketches/ByZlypKWM
-    Continuous scrolling background by chjno
+            <li> 1 - https://editor.p5js.org/chjno/sketches/ByZlypKWM </li>
+            Continuous scrolling background by <em>chjno</em><br>
+</ol>
