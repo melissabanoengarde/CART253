@@ -7,7 +7,7 @@ CART 253 - B
 OCT. 2020
 **************************************************/
 
-// Variables    
+// Variables
 let beeImg;
 let bee = {
   x: 760,
@@ -106,7 +106,7 @@ function setupBirds() {
 }
 
 function hibiscusAppearance(){
-  hibiscus.x -= hibiscus.vx;
+  hibiscus.x += hibiscus.vx;
   hibiscus.y += hibiscus.vy;
 }
 
