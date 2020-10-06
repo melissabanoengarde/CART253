@@ -18,7 +18,7 @@ let bee = {
   size: 100,
   vx: 0,
   vy: 0,
-  speed: 5.5,
+  speed: 5.8,
   img: beeImg
 };
 
@@ -81,8 +81,15 @@ let bgLeft = 0;
 let bgRight = 800;
 let bgSpeed = 2;
 
+let myFont;
+let fontColor = {
+  r:0,
+  g:0,
+  b:0
+};
 
 function preload() {
+  myFont = loadFont ('assets/fonts/GlyphWorld-Meadow.otf');
   bg = loadImage('assets/images/bg.png');
   beeImg = loadImage('assets/images/bee.png');
   bird1Img = loadImage('assets/images/bird1.png');
@@ -99,7 +106,7 @@ let state = `title`;
 function setup() {
   createCanvas(800, 500);
   setupBirds();
-  hibiscusAppearance();
+  hibiscusSetup();
 }
 
 function setupBirds() {
@@ -120,7 +127,7 @@ function setupBirds() {
   bird4.vy = bird4.speed;
 }
 
-function hibiscusAppearance() {
+function hibiscusSetup() {
   hibiscus.x += hibiscus.vx;
   hibiscus.y += hibiscus.vy;
 }
@@ -145,58 +152,93 @@ function keyPressed() {
 }
 
 function title() {
+  scrollingBackground();
+
   push();
+  stroke(0);
+  strokeWeight(2);
+  textFont(myFont);
   textSize(40);
   fill(255, 219, 88);
   textAlign(CENTER, CENTER);
-  text(`To Bee or Not to Bee?`, width / 2, height / 2);
+  text(`- A bee's love for his hibiscus -`, width / 2, height / 2);
   pop();
 
   push();
-  let instru = 'Instructions: A = Left, D = Right, W = Up, S = Down';
-  textSize(20);
+  stroke(0);
+  strokeWeight(2);
+  textFont(myFont);
+  textSize(25);
   fill(255, 219, 88);
   textAlign(CENTER, BOTTOM);
-  text(instru, width / 2, height - 200);
+  text(`To Bee or Not to Bee?`, width / 2, height - 190);
   pop();
 
   push();
-  textSize(16);
+  let instru = '{ Busy Bee must reach their cherished hibiscus, but wait... a flock of hungry Angry BirdsTM? }';
+  textSize(12);
   fill(255, 219, 88);
   textAlign(CENTER, BOTTOM);
-  text(`Press any key to begin`, width / 2, height-150);
+  text(instru, width / 2, height - 145);
   pop();
+
+  push();
+  let keyInstru = 'A = Left, D = Right, W = Up, S = Down';
+  textSize(12);
+  fill(255, 219, 88);
+  textAlign(CENTER, BOTTOM);
+  text(keyInstru, width / 2, height - 110);
+  pop();
+
+  push();
+  fill(fontColor.r, fontColor.g, fontColor.b);
+  funkyStart();
+  textSize(11);
+  textAlign(CENTER, BOTTOM);
+  text(`[ Press any key to begin ]`, width / 2, height - 85);
+  pop();
+}
+
+function funkyStart(){
+  fontColor.r = random(200, 255);
+  fontColor.g = random(160, 255);
+  fontColor.b = random(20, 220);
 }
 
 function simulation() {
   beeMove();
   birdsJitteryMovement();
+  scrollingBackground();    //Had to place it here a second time or else my bee and birds execute WindowsXP Solitary win effect.
   handleInput();
-  scrollingBackground(); //remember, order MATTERS
   overLap();
   display();
 }
 
 function ggwp() {
   push();
-  textSize(40);
+  stroke(0);
+  strokeWeight(8);
+  textFont(myFont);
+  textSize(80);
   fill(255, 219, 88);
   textAlign(CENTER, CENTER);
-  text(`GGWP, BOSS.`, width / 2, height / 2);
+  text(`- to Bee! :) -`, width / 2, height / 2);
   pop();
 }
 
 function badgame() {
   push();
-  textSize(40);
-  fill(255, 219, 88);
+  stroke(0);
+  strokeWeight(8);
+  textFont(myFont);
+  textSize(80);
+  fill(255, 0,0);
   textAlign(CENTER, CENTER);
-  text(`BG-BUT, STILL-WP, BOSS.`, width / 2, height / 2);
+  text(`- Not to bee... :( -`, width / 2, height / 2);
   pop();
 }
 
-
-// Bee's key info (AWSD)
+// User's key input (AWSD)
 function handleInput() {
   // Bee movements
   if (keyIsDown(65)) {
@@ -318,7 +360,7 @@ function overLap() {
   }
 
   //Win
-  if (d5 < hibiscus.size / 8 + bee.size / 8) {
+  if (d5 < hibiscus.size / 6 + bee.size / 8) {
     state = `ggwp`;
   }
 }
@@ -332,6 +374,4 @@ function display() {
   image(bird2Img, bird2.x, bird2.y, bird2.size, bird2.size);
   image(bird3Img, bird3.x, bird3.y, bird3.size, bird3.size);
   image(bird4Img, bird4.x, bird4.y, bird4.size, bird4.size);
-
-  // ellipse(bird2.x, bird2.y, bird2.size);
 }
