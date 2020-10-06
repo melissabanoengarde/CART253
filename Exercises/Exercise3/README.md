@@ -1,8 +1,8 @@
 <h1>EXERCISE 03: LOVE, ACTUALLY</h1>
 
 <p>
-MELISSA BANOEN-GARDE<br>
-WEEK 05: FUNCTIONSE<br>
+            <strong>MELISSA BANOEN-GARDE</strong><br>
+WEEK 05: FUNCTIONS<br>
 CART 253 - BE<br>
 OCT. 2020E<br>
 </p>
