@@ -9,6 +9,6 @@ OCT. 2020E<br>
 
 <ol>
 Reference:
-            <li> 1 - https://editor.p5js.org/chjno/sketches/ByZlypKWM </li>
+            <li>  https://editor.p5js.org/chjno/sketches/ByZlypKWM </li>
             Continuous scrolling background by <em>chjno</em><br>
 </ol>
