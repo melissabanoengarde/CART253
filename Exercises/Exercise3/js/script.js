@@ -7,7 +7,7 @@ CART 253 - B
 OCT. 2020
 **************************************************/
 
-// Variables
+// Variables    
 let beeImg;
 let bee = {
   x: 760,
@@ -34,7 +34,7 @@ let bird2Img;
 let bird2 = {
   x: 50,
   y: 300,
-  size: 100, 
+  size: 100,
   vx: 0,
   vy: 0,
   speed: 4.5,
