@@ -15,7 +15,7 @@ let bee = {
   size: 100,
   vx: 0,
   vy: 0,
-  speed: 5,
+  speed: 6,
   img: beeImg
 };
 
@@ -26,7 +26,7 @@ let bird1 = {
   size: 100,
   vx: 0,
   vy: 0,
-  speed: 4.5,
+  speed: 3,
   img: bird1Img
 };
 
@@ -37,7 +37,7 @@ let bird2 = {
   size: 100,
   vx: 0,
   vy: 0,
-  speed: 4.5,
+  speed: 3,
   img: bird2Img
 };
 
@@ -48,7 +48,7 @@ let bird3 = {
   size: 100,
   vx: 0,
   vy: 0,
-  speed: 4.5,
+  speed: 2.5,
   img: bird3Img
 };
 
@@ -59,7 +59,7 @@ let bird4 = {
   size: 100,
   vx: 0,
   vy: 0,
-  speed: 5,
+  speed: 3.5,
   img: bird4Img
 };
 
@@ -99,10 +99,21 @@ function setup() {
 }
 
 function setupBirds() {
-  bird1.vx = random(0.02, bird1.speed);
-  bird2.vx = random(0.5, bird2.speed);
-  bird3.vx = random(0.8, bird3.speed);
-  bird4.vx = random(0.8, bird4.speed);
+  //Bird 1
+  bird1.vx = bird1.speed;
+  bird1.vy = bird1.speed;
+
+  //Bird 2
+  bird2.vx = bird2.speed;
+  bird2.vy = bird2.speed;
+
+  //Bird 3
+  bird3.vx = bird3.speed;
+  bird3.vy = bird3.speed;
+
+  //Bird 4
+  bird4.vx = bird4.speed;
+  bird4.vy = bird4.speed;
 }
 
 function hibiscusAppearance(){
@@ -113,7 +124,7 @@ function hibiscusAppearance(){
 function draw() {
 
   beeMove();
-  birdsMove();
+  birdsJitteryMovement();
   handleInput();
   scrollingBackground(); //remember, order MATTERS
   overLap();
@@ -145,22 +156,73 @@ function draw() {
     bee.y += bee.vy;
   }
 
-  function birdsMove() {
+  function birdsJitteryMovement() {
+    let change = random();
+    if (change < 1) {
     // Bird 1
     bird1.x += bird1.vx;
     bird1.y += bird1.vy;
+    bird1.vx = random(bird1.speed, bird1.speed);
+    bird1.vy = random(-bird1.speed, bird1.speed);
 
     // Bird 2
     bird2.x += bird2.vx;
     bird2.y += bird2.vy;
+    bird2.vx = random(bird2.speed, bird2.speed);
+    bird2.vy = random(-bird2.speed, bird2.speed);
 
     // Bird 3
     bird3.x += bird3.vx;
     bird3.y += bird3.vy;
+    bird3.vx = random(bird3.speed, bird3.speed);
+    bird3.vy = random(-bird3.speed, bird3.speed);
 
     // Bird 4
     bird4.x += bird4.vx;
     bird4.y += bird4.vy;
+    bird4.vx = random(bird4.speed, bird4.speed);
+    bird4.vy = random(-bird4.speed, bird4.speed);
+    }
+
+    birdsChasingBee();
+  }
+
+  function birdsChasingBee(){   //Birds 1 and 3 gravitating towards bee
+  // Bird 3
+  let dx = bird1.x - bee.x;
+  let dy = bird1.y - bee.y;
+
+  if (dx < 0) {
+    bird1.vx = bird1.speed;
+  }
+    else if (dx > 0) {
+      bird1.vx = -bird1.speed;
+    }
+
+    if (dy < 0) {
+      bird1.vy = bird1.speed;
+    }
+      else if (dy > 0) {
+        bird1.vy = -bird1.speed;
+      }
+
+    // Bird 3
+    let d2x = bird3.x - bee.x;
+    let d2y = bird3.y - bee.y;
+
+    if (d2x < 0) {
+      bird3.vx = bird3.speed;
+    }
+      else if (d2x > 0) {
+        bird3.vx = -bird3.speed;
+      }
+
+      if (d2y < 0) {
+        bird3.vy = bird3.speed;
+      }
+        else if (d2y > 0) {
+          bird3.vy = -bird3.speed;
+        }
   }
 
 
