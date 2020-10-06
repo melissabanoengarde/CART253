@@ -152,18 +152,19 @@ function title() {
   text(`To Bee or Not to Bee?`, width / 2, height / 2);
   pop();
 
-  // push();
-  textSize(30);
-  fill(255, 219, 88);
-  textAlign(CENTER, BASELINE);
-  text(`Instructions: A = Left, D = Right, W = Up, S = Down`, width / 2, height / 2);
-  // pop();
-
   push();
+  let instru = 'Instructions: A = Left, D = Right, W = Up, S = Down';
   textSize(20);
   fill(255, 219, 88);
-  textAlign(CENTER, CENTER);
-  text(`Press any key to begin`, width / 2, height / 2);
+  textAlign(CENTER, BOTTOM);
+  text(instru, width / 2, height - 200);
+  pop();
+
+  push();
+  textSize(16);
+  fill(255, 219, 88);
+  textAlign(CENTER, BOTTOM);
+  text(`Press any key to begin`, width / 2, height-150);
   pop();
 }
 
@@ -332,11 +333,5 @@ function display() {
   image(bird3Img, bird3.x, bird3.y, bird3.size, bird3.size);
   image(bird4Img, bird4.x, bird4.y, bird4.size, bird4.size);
 
-
   // ellipse(bird2.x, bird2.y, bird2.size);
 }
-
-// }
-
-
-//NOTES
