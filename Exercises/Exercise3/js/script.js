@@ -6,7 +6,7 @@ WEEK 05: FUNCTIONS
 CART 253 - B
 OCT. 2020
 
-Busy bee must reach his prized hibiscus but wait...
+Busy bee must reach his cherished hibiscus but wait...
 angry birds?
 **************************************************/
 
@@ -138,11 +138,12 @@ function draw() {
     title();
   } else if (state === `simulation`) {
     simulation();
-  } else if (state === `ggwp`) {
+  } else if (state === `ggwp`) {      //win
     ggwp();
-  } else if (state === `badgame`) {
+  } else if (state === `badgame`) {   //lose
     badgame();
   }
+
 }
 
 function keyPressed() {
@@ -153,13 +154,13 @@ function keyPressed() {
 
 function title() {
   scrollingBackground();
+  fill(255, 219, 88);
 
   push();
   stroke(0);
   strokeWeight(2);
   textFont(myFont);
   textSize(40);
-  fill(255, 219, 88);
   textAlign(CENTER, CENTER);
   text(`- A bee's love for his hibiscus -`, width / 2, height / 2);
   pop();
@@ -169,7 +170,6 @@ function title() {
   strokeWeight(2);
   textFont(myFont);
   textSize(25);
-  fill(255, 219, 88);
   textAlign(CENTER, BOTTOM);
   text(`To Bee or Not to Bee?`, width / 2, height - 190);
   pop();
@@ -177,7 +177,6 @@ function title() {
   push();
   let instru = '{ Busy Bee must reach their cherished hibiscus, but wait... a flock of hungry Angry BirdsTM? }';
   textSize(12);
-  fill(255, 219, 88);
   textAlign(CENTER, BOTTOM);
   text(instru, width / 2, height - 145);
   pop();
@@ -185,7 +184,6 @@ function title() {
   push();
   let keyInstru = 'A = Left, D = Right, W = Up, S = Down';
   textSize(12);
-  fill(255, 219, 88);
   textAlign(CENTER, BOTTOM);
   text(keyInstru, width / 2, height - 110);
   pop();
@@ -199,6 +197,7 @@ function title() {
   pop();
 }
 
+//"Press any key to begin"'s flashy color code'
 function funkyStart(){
   fontColor.r = random(200, 255);
   fontColor.g = random(160, 255);
@@ -214,6 +213,7 @@ function simulation() {
   display();
 }
 
+//When user's wins...
 function ggwp() {
   push();
   stroke(0);
@@ -226,6 +226,7 @@ function ggwp() {
   pop();
 }
 
+//When user loses...
 function badgame() {
   push();
   stroke(0);
@@ -238,23 +239,27 @@ function badgame() {
   pop();
 }
 
-// User's key input (AWSD)
+// User's (bee) key input (AWSD)
 function handleInput() {
-  // Bee movements
-  if (keyIsDown(65)) {
+
+  if (keyIsDown(65)) {       //A = LEFT
     bee.vx = -bee.speed;
-  } else if (keyIsDown(68)) {
+  }
+  else if (keyIsDown(68)) {  //D = RIGHT
     bee.vx = bee.speed;
-  } else {
-    bee.vx = 0;
+  }
+  else {
+    bee.vx = 0;              //When user is not pressing anything
   }
 
-  if (keyIsDown(87)) {
+  if (keyIsDown(87)) {      //W = UP
     bee.vy = -bee.speed;
-  } else if (keyIsDown(83)) {
+  }
+  else if (keyIsDown(83)) { //S = DOWN
     bee.vy = bee.speed;
-  } else {
-    bee.vy = 0;
+  }
+  else {
+    bee.vy = 0;             //When user is not pressing anything
   }
 }
 
@@ -263,6 +268,7 @@ function beeMove() {
   bee.y += bee.vy;
 }
 
+//Birds' code
 function birdsJitteryMovement() {
   let change = random();
   if (change < 1) {
@@ -294,46 +300,52 @@ function birdsJitteryMovement() {
   birdsChasingBee();
 }
 
-function birdsChasingBee() { //Birds 1 and 3 gravitating towards bee
-  // Bird 3
+//Birds 1 and 3 gravitating towards bee
+function birdsChasingBee() {
+  // Bird 1
   let dx = bird1.x - bee.x;
+
+    if (dx < 0) {
+      bird1.vx = bird1.speed;
+      }
+        else if (dx > 0) {
+          bird1.vx = -bird1.speed;
+          }
+
   let dy = bird1.y - bee.y;
 
-  if (dx < 0) {
-    bird1.vx = bird1.speed;
-  } else if (dx > 0) {
-    bird1.vx = -bird1.speed;
-  }
-
-  if (dy < 0) {
-    bird1.vy = bird1.speed;
-  } else if (dy > 0) {
-    bird1.vy = -bird1.speed;
-  }
+    if (dy < 0) {
+      bird1.vy = bird1.speed;
+      }
+        else if (dy > 0) {
+          bird1.vy = -bird1.speed;
+          }
 
   // Bird 3
   let d2x = bird3.x - bee.x;
+
+    if (d2x < 0) {
+      bird3.vx = bird3.speed;
+      }
+      else if (d2x > 0) {
+        bird3.vx = -bird3.speed;
+        }
+
   let d2y = bird3.y - bee.y;
-
-  if (d2x < 0) {
-    bird3.vx = bird3.speed;
-  } else if (d2x > 0) {
-    bird3.vx = -bird3.speed;
-  }
-
-  if (d2y < 0) {
-    bird3.vy = bird3.speed;
-  } else if (d2y > 0) {
-    bird3.vy = -bird3.speed;
-  }
+    if (d2y < 0) {
+      bird3.vy = bird3.speed;
+      }
+      else if (d2y > 0) {
+        bird3.vy = -bird3.speed;
+        }
 }
 
-
+//Background Scrolling
 function scrollingBackground() {
-  // Background Scrolling
   imageMode(CORNER);
-  image(bg, bgLeft, 0, width, height); // Left
-  image(bg, bgRight, 0, width, height); // Right
+
+  image(bg, bgLeft, 0, width, height); // Left half
+  image(bg, bgRight, 0, width, height); // Right half
 
   bgLeft -= bgSpeed;
   bgRight -= bgSpeed;
@@ -346,7 +358,7 @@ function scrollingBackground() {
   }
 }
 
-//Determines whether the user wins or lose
+//Determines whether the user wins or loses
 function overLap() {
   let d = dist(bee.x, bee.y, bird1.x, bird1.y);
   let d2 = dist(bee.x, bee.y, bird2.x, bird2.y);
@@ -354,12 +366,12 @@ function overLap() {
   let d4 = dist(bee.x, bee.y, bird4.x, bird4.y);
   let d5 = dist(bee.x, bee.y, hibiscus.x, hibiscus.y);
 
-  //Lose
+  //Loses
   if (d < bird1.size / 3 + bee.size / 3 || d2 < bird2.size / 3 + bee.size / 3 || d3 < bird3.size / 3 + bee.size / 3 || d4 < bird4.size / 3 + bee.size / 3) {
     state = `badgame`;
   }
 
-  //Win
+  //Wins
   if (d5 < hibiscus.size / 6 + bee.size / 8) {
     state = `ggwp`;
   }
