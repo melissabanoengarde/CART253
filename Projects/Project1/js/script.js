@@ -6,15 +6,20 @@ Melissa Banoen-Garde
 
 Here is a description of this template p5 project.
 **************************************************/
-let bg                            //2272 x 881
+
+// Variables
+let bg;                            //2272 x 881
 let bgLeft = -1272;
 let bgUp = -280;
-let goSpeed = 5;
+
 let typeFace;
+let typeFaceImg;
+let goSpeed = 20;
 
 
 function preload() {
   bg = loadImage("assets/images/bg.jpg");
+  typeFaceImg = loadImage("assets/images/typeFace.png");
 }
 
 
@@ -22,7 +27,7 @@ function setup() {
   createCanvas(1000, 600);
   rectMode(CENTER);
 
-  typeFace = new fontIcon(width - 20, height -45);
+  typeFace = new fontIcon(width - 50, height -80);
 }
 
 
@@ -36,33 +41,38 @@ function draw() {
 
 
 // Background movement
-function moveBgLeft(){       //the bigger the negative number, the further to the left it will gget drawn (16:53)
-  bgLeft -= goSpeed;
+function moveBgLeft(){               //the bigger the negative number, the further to the left it will gget drawn (16:53)
+  let minBgLeft = -bg.width + width;
+
+  if (bgLeft - goSpeed > minBgLeft){
+    bgLeft -= goSpeed;
+  }
 }
 
 function moveBgRight(){
-  bgLeft += goSpeed;
+  if (bgLeft + goSpeed < 0){
+    bgLeft += goSpeed;
+  }
 }
 
 function moveBgUp(){
-  bgUp += goSpeed;
+  if (bgUp + goSpeed < 0){
+    bgUp += goSpeed;
+  }
 }
 
 function moveBgDown(){
-  bgUp -= goSpeed;
+  let minBgUp = -bg.height + height;
+
+  if (bgUp - goSpeed > minBgUp){
+    bgUp -= goSpeed;
+  }
 }
 
 
   //===== typeFace =====/
-  //movement
-  // typeFace.x += typeFace.vx;
-  // typeFace.y += typeFace.vy;
-
-  // typeFace.vx += typeFace.ax;
-  // typeFace.vy += typeFace.ay;
-
-  // // key input AWSD
-  if (keyIsDown(65)) {                    // A = Left
+  // key input AWSD
+  if (keyIsDown(65)) {                  // A = Left
     if (typeFace.canGoLeft()){
       typeFace.goLeft();
     }
@@ -70,8 +80,7 @@ function moveBgDown(){
       moveBgRight();
     }
   }
-  //   typeFace.vx = -typeFace.speed;
-  //   typeFace.ax = -typeFace.acceleration;
+
   else if (keyIsDown(68)) {             // D = Right
     if (typeFace.canGoRight()){
     typeFace.goRight();
@@ -80,15 +89,8 @@ function moveBgDown(){
       moveBgLeft();
     }
   }
-  //   typeFace.vx = typeFace.speed;
-  //   typeFace.ax = typeFace.acceleration;
 
-  // else {
-  //   // typeFace.vx = 0;                   // When nothing is pressed, typeFace stops moving
-  //   typeFace.vx = constrain(typeFace.vx, -typeFace.maxSpeed, typeFace.maxSpeed);
-  // }
-
-  else if (keyIsDown(87)) {                    // W = Up
+  else if (keyIsDown(87)) {             // W = Up
     if (typeFace.canGoUp()){
       typeFace.goUp();
     }
@@ -96,9 +98,8 @@ function moveBgDown(){
       moveBgUp();
     }
   }
-  //   typeFace.vy = -typeFace.speed;
-  //   typeFace.ay = -typeFace.acceleration;
-   else if (keyIsDown(83)) {                     // S = Down
+
+   else if (keyIsDown(83)) {           // S = Down
      if (typeFace.canGoDown()){
        typeFace.goDown();
      }
@@ -106,33 +107,7 @@ function moveBgDown(){
        moveBgDown();
      }
    }
-  //   typeFace.vy = typeFace.speed;
-  //   typeFace.ay = typeFace.acceleration;
-  //  else {                                // When nothing is pressed, typeFace stops moving
-  //   // typeFace.vy = 0;
-  //   typeFace.vy = constrain(typeFace.vy, -typeFace.maxSpeed, typeFace.maxSpeed);
-  // }
 
-  // // display
-  // image(typeFaceImg, typeFace.x, typeFace.y, typeFace.size, typeFace.size);
-
-
-
-  //===== Background interaction =====//
-  // imageMode(CORNER);
-  // image(bg, bgBottomLeft, 0);
-  //
-  // //When typeFace moves to the bottom left of background
-  // let minBgBottomLeft = -bg.width + width;
-  //
-  // if (bgBottomLeft - typeFace.x > minBgBottomLeft){
-  //   bgBottomLeft -= typeFace.x;
-  // }
-  //
-  // //When typeFace moves to the bottom right of Background
-  // if (bgBottomLeft + typeFace.x < 0){
-  //   bgBottomLeft += typeFace.x;
-  // }
 
 
 

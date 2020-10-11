@@ -3,7 +3,7 @@ class fontIcon {
   constructor(x, y){
     this.x = x;
     this.y = y;
-    this.size = 20;
+    this.size = 45;
     // this.vx = 0;
     // this.vy = 0;
     this.speed = goSpeed;
@@ -16,7 +16,7 @@ class fontIcon {
 
 // What enables fontIcon to go left, right, up, or down
   canGoLeft(){
-    if (this.x > 50 + this.speed){        //since it's goSpeed is defined as "15" in "script.js", it will be 15 here too.
+    if (this.x > 20 + this.speed){        //since it's goSpeed is defined as "15" in "script.js", it will be 15 here too.
       return(true);
     }
     else {
@@ -25,7 +25,7 @@ class fontIcon {
   }
 
   canGoRight(){
-    if (this.x < width - (50 + this.speed)){
+    if (this.x < width - (20 + this.speed)){
       return(true);
     }
     else {
@@ -34,7 +34,7 @@ class fontIcon {
   }
 
   canGoUp(){
-    if (this.y > 50 + this.speed){
+    if (this.y > 20 + this.speed){
       return(true);
     }
     else {
@@ -51,9 +51,10 @@ class fontIcon {
     }
   }
 
-// fontIcon's movement
+// fontIcon's movement direction
   goLeft(){
   this.x -= this.speed;
+
   }
 
   goRight(){
@@ -71,10 +72,34 @@ class fontIcon {
 
 // Display
   show(){
-    rect(this.x,this.y,this.size,this.size);
+    image(typeFaceImg, this.x, this.y, this.size, this.size);
   }
 
 }
+
+// typeFace.x += typeFace.vx;
+// typeFace.y += typeFace.vy;
+
+// typeFace.vx += typeFace.ax;
+// typeFace.vy += typeFace.ay;
+
+//   typeFace.vx = -typeFace.speed;
+//   typeFace.ax = -typeFace.acceleration;
+
+//   typeFace.vx = typeFace.speed;
+//   typeFace.ax = typeFace.acceleration;
+// else {
+//   typeFace.vx = constrain(typeFace.vx, -typeFace.maxSpeed, typeFace.maxSpeed);
+// }
+
+//   typeFace.vy = -typeFace.speed;
+//   typeFace.ay = -typeFace.acceleration;
+
+//   typeFace.vy = typeFace.speed;
+//   typeFace.ay = typeFace.acceleration;
+//  else {
+//   typeFace.vy = constrain(typeFace.vy, -typeFace.maxSpeed, typeFace.maxSpeed);
+// }
 
 
 
