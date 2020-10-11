@@ -14,18 +14,27 @@ let bgUp = -280;
 
 let typeFace;
 let typeFaceImg;
-let goSpeed = 20;
+let goSpeed = 50;
+
+let fontFolderImg;
+let fontFolder = {
+  x:0,
+  y:0,
+  size: 50,
+};
 
 
 function preload() {
   bg = loadImage("assets/images/bg.jpg");
   typeFaceImg = loadImage("assets/images/typeFace.png");
+  fontFolderImg = loadImage("assets/images/folder.png");
 }
 
 
 function setup() {
   createCanvas(1000, 600);
   rectMode(CENTER);
+
 
   typeFace = new fontIcon(width - 50, height -80);
 }
@@ -38,6 +47,13 @@ function draw() {
   image(bg,bgLeft,bgUp);
 
   typeFace.show();
+
+// Font folder to win!
+// Display
+push();
+imageMode(CENTER);
+image(fontFolderImg, bgLeft + 60, bgUp + 200,fontFolder.size,fontFolder.size);
+pop();
 
 
 // Background movement
@@ -70,11 +86,10 @@ function moveBgDown(){
 }
 
 
-  //===== typeFace =====/
-  // key input AWSD
-  if (keyIsDown(65)) {                  // A = Left
-    if (typeFace.canGoLeft()){
-      typeFace.goLeft();
+//===== typeFace Key Handle =====/
+if (keyIsDown(65)) {                  // A = Left
+ if (typeFace.canGoLeft()){
+   typeFace.goLeft();
     }
     else {
       moveBgRight();
@@ -83,7 +98,7 @@ function moveBgDown(){
 
   else if (keyIsDown(68)) {             // D = Right
     if (typeFace.canGoRight()){
-    typeFace.goRight();
+      typeFace.goRight();
     }
     else {
       moveBgLeft();
@@ -107,6 +122,8 @@ function moveBgDown(){
        moveBgDown();
      }
    }
+
+
 
 
 
