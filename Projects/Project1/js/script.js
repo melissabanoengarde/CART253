@@ -1,8 +1,8 @@
 "use strict";
 
 /**************************************************
-Template p5 project
-Pippin Barr
+Project 01: Simulation
+Melissa Banoen-Garde
 
 Here is a description of this template p5 project.
 **************************************************/
