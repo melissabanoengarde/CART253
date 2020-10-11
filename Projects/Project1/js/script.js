@@ -35,33 +35,55 @@ function draw() {
   //movement
   // typeFace.x += typeFace.vx;
   // typeFace.y += typeFace.vy;
-  //
+
   // typeFace.vx += typeFace.ax;
   // typeFace.vy += typeFace.ay;
-  //
+
   // // key input AWSD
-  // if (keyIsDown(65)) {                    // A = Left
+  if (keyIsDown(65)) {                    // A = Left
+    if (typeFace.canGoLeft()){
+      typeFace.goLeft();
+    }
+    else {
+      moveBgRight();
+    }
+  }
   //   typeFace.vx = -typeFace.speed;
   //   typeFace.ax = -typeFace.acceleration;
-  // } else if (keyIsDown(68)) {             // D = Right
+  else if (keyIsDown(68)) {             // D = Right
+    if (typeFace.canGoRight()){
+    typeFace.goRight();
+    }
+    else {
+      moveBgLeft();
+    }
+  }
   //   typeFace.vx = typeFace.speed;
   //   typeFace.ax = typeFace.acceleration;
-  // } else {
+
+  // else {
   //   // typeFace.vx = 0;                   // When nothing is pressed, typeFace stops moving
   //   typeFace.vx = constrain(typeFace.vx, -typeFace.maxSpeed, typeFace.maxSpeed);
   // }
-  //
-  // if (keyIsDown(87)) {                    // W = Up
+
+  if (keyIsDown(87)) {                    // W = Up
+    if (typeFace.canGoUp()){
+      typeFace.goUp();
+    }
+    else {
+      moveBgUp();
+    }
+  }
   //   typeFace.vy = -typeFace.speed;
   //   typeFace.ay = -typeFace.acceleration;
-  // } else if (keyIsDown(83)) {             // S = Down
+  //  else if (keyIsDown(83)) {             // S = Down
   //   typeFace.vy = typeFace.speed;
   //   typeFace.ay = typeFace.acceleration;
   // } else {                                // When nothing is pressed, typeFace stops moving
   //   // typeFace.vy = 0;
   //   typeFace.vy = constrain(typeFace.vy, -typeFace.maxSpeed, typeFace.maxSpeed);
   // }
-  //
+
   // // display
   // image(typeFaceImg, typeFace.x, typeFace.y, typeFace.size, typeFace.size);
 
