@@ -6,7 +6,10 @@ Melissa Banoen-Garde
 
 Here is a description of this template p5 project.
 **************************************************/
-let bg //2272 x 881
+let bg                            //2272 x 881
+let bgLeft = -1272;
+let bgUp = -280;
+let goSpeed = 5;
 let typeFace;
 
 
@@ -16,10 +19,10 @@ function preload() {
 
 
 function setup() {
-  createCanvas(900, 500);
+  createCanvas(1000, 600);
   rectMode(CENTER);
 
-  typeFace = new fontIcon(width - 10, height -10);
+  typeFace = new fontIcon(width - 20, height -45);
 }
 
 
@@ -27,9 +30,28 @@ function setup() {
 function draw() {
   // Background
   background(0);
-  image(bg,0,0);
+  image(bg,bgLeft,bgUp);
 
   typeFace.show();
+
+
+// Background movement
+function moveBgLeft(){       //the bigger the negative number, the further to the left it will gget drawn (16:53)
+  bgLeft -= goSpeed;
+}
+
+function moveBgRight(){
+  bgLeft += goSpeed;
+}
+
+function moveBgUp(){
+  bgUp += goSpeed;
+}
+
+function moveBgDown(){
+  bgUp -= goSpeed;
+}
+
 
   //===== typeFace =====/
   //movement
@@ -66,7 +88,7 @@ function draw() {
   //   typeFace.vx = constrain(typeFace.vx, -typeFace.maxSpeed, typeFace.maxSpeed);
   // }
 
-  if (keyIsDown(87)) {                    // W = Up
+  else if (keyIsDown(87)) {                    // W = Up
     if (typeFace.canGoUp()){
       typeFace.goUp();
     }
@@ -76,10 +98,17 @@ function draw() {
   }
   //   typeFace.vy = -typeFace.speed;
   //   typeFace.ay = -typeFace.acceleration;
-  //  else if (keyIsDown(83)) {             // S = Down
+   else if (keyIsDown(83)) {                     // S = Down
+     if (typeFace.canGoDown()){
+       typeFace.goDown();
+     }
+     else {
+       moveBgDown();
+     }
+   }
   //   typeFace.vy = typeFace.speed;
   //   typeFace.ay = typeFace.acceleration;
-  // } else {                                // When nothing is pressed, typeFace stops moving
+  //  else {                                // When nothing is pressed, typeFace stops moving
   //   // typeFace.vy = 0;
   //   typeFace.vy = constrain(typeFace.vy, -typeFace.maxSpeed, typeFace.maxSpeed);
   // }
