@@ -10,6 +10,7 @@
 let bg;
 let bgLeft = -1272;       // Bg's beginning x-value
 let bgUp = -280;          // Bg's beginning y-value
+let bgSpeed = 5;
 
 let typeFaceImg;
 let typeFace = {
@@ -18,7 +19,7 @@ let typeFace = {
   size: 45,
   vx:0,
   vy:0,
-  speed: 3,
+  speed: 5,
 };
 
 let fontFolderImg;
@@ -52,13 +53,13 @@ function moveBgLeft(){
   let minBgLeft = -bg.width + width;
 
   if (bgLeft - typeFace.speed > minBgLeft){
-    bgLeft -= typeFace.speed;
+    bgLeft -= typeFace.speed + bgSpeed;
   }
 }
 
 function moveBgRight(){
   if (bgLeft + typeFace.speed < 0){
-    bgLeft += typeFace.speed;
+    bgLeft += typeFace.speed +bgSpeed;
   }
 }
 
@@ -66,13 +67,13 @@ function moveBgUp(){
   let minBgUp = -bg.height + height;
 
     if (bgUp - typeFace.speed > minBgUp) {
-      bgUp -= typeFace.speed;
+      bgUp -= typeFace.speed + bgSpeed;
     }
   }
 
 function moveBgDown(){
   if (bgUp + typeFace.speed < 0) {
-    bgUp += typeFace.speed;
+    bgUp += typeFace.speed + bgSpeed;
   }
 }
 
@@ -81,12 +82,10 @@ function moveBgDown(){
 function canGoLeft(){
   typeFace.vx = -typeFace.speed;
 
-  // if (typeFace.vx > 10 + typeFace.speed){
-  //   return true;
+  // if (typeFace.x > bgLeft + 50){
+  //   typeFace.vx -= typeFace.speed;
   // }
-  // else {
-  //   return false;
-  // }
+
 }
 
 function canGoRight(){
@@ -126,9 +125,7 @@ function canGoDown(){
 // ========== TYPEFACE ========== //
 
 // Key Input
-  //A = LEFT
-
-  if (keyIsDown(65)) {
+  if (keyIsDown(65)) {    //A = LEFT
     canGoLeft();
     moveBgRight();
   }
@@ -152,8 +149,6 @@ function canGoDown(){
     typeFace.vy = 0;        //Pressing nothing
   }
 
-
-
 // Movement
   typeFace.x += typeFace.vx;
   typeFace.y += typeFace.vy;
@@ -162,3 +157,7 @@ function canGoDown(){
   image(typeFaceImg, typeFace.x,typeFace.y,typeFace.size,typeFace.size);
 
   }
+
+
+
+  console.log("typeFace.x is " + typeFace.x);
