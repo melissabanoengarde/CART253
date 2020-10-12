@@ -10,7 +10,7 @@
 let bg;
 let bgLeft = -1272;       // Bg's beginning x-value
 let bgUp = -280;          // Bg's beginning y-value
-let bgSpeed = 5;
+let bgSpeed = 4;
 
 let typeFaceImg;
 let typeFace = {
@@ -32,23 +32,27 @@ let fontFolder = {
 function preload (){
   bg = loadImage("assets/images/bg.jpg");
   typeFaceImg = loadImage("assets/images/typeFace.png");
-  fontFolderImg = ("assets/images/folder.png");
+  fontFolderImg = loadImage("assets/images/fontfolder.png");
 }
 
 function setup() {
   createCanvas(1000, 600);
 
-  //typeFace setup
+  typeFaceSetup();
+}
+
+function typeFaceSetup(){
   typeFace.vx = typeFace.speed;
   typeFace.vy = typeFace.speed;
 }
+
 
 function draw() {
   background(0);
   image(bg,bgLeft,bgUp);
 
 
-// Background Movement
+//=========  Background Movement ========================//
 function moveBgLeft(){
   let minBgLeft = -bg.width + width;
 
@@ -77,54 +81,9 @@ function moveBgDown(){
   }
 }
 
-//============================================//
+//========= TYPE FACE ===================================//
+//========== Handle Input ==========//
 
-function canGoLeft(){
-  typeFace.vx = -typeFace.speed;
-
-  // if (typeFace.x > bgLeft + 50){
-  //   typeFace.vx -= typeFace.speed;
-  // }
-
-}
-
-function canGoRight(){
-  typeFace.vx = typeFace.speed;
-  //
-  //  if (typeFace.vx < width - (10+typeFace.speed)){
-  //   return true;
-  // }
-  // else {
-  //   return false;
-  // }
-}
-
-function canGoUp(){
-  typeFace.vy = -typeFace.speed;
-
- // if (typeFace.y > 10 + typeFace.speed){         //maybe don't need?
- //    return true;
- //  }
- //  else {
- //    return false;
- //  }
-}
-
-function canGoDown(){
-  typeFace.vy = typeFace.speed;
-  //
-  // if (typeFace.y < height - (10+typeFace.speed)){
-  //   return true;
-  // }
-  // else {
-  //   return false;
-  // }
-}
-
-
-// ========== TYPEFACE ========== //
-
-// Key Input
   if (keyIsDown(65)) {    //A = LEFT
     canGoLeft();
     moveBgRight();
@@ -134,7 +93,7 @@ function canGoDown(){
     moveBgLeft();
   }
   else {
-    typeFace.vx = 0;       //Pressing nothing
+    haltXValue();      //Pressing nothing
   }
 
   if (keyIsDown(87)) {      //W = UP
@@ -146,7 +105,32 @@ function canGoDown(){
     moveBgUp();
   }
   else {
-    typeFace.vy = 0;        //Pressing nothing
+    haltYValue();    //Pressing nothing
+  }
+
+//========== canGo's ==========//
+  function canGoLeft(){
+    typeFace.vx = -typeFace.speed;
+  }
+
+  function canGoRight(){
+    typeFace.vx = typeFace.speed;
+  }
+
+  function canGoUp(){
+    typeFace.vy = -typeFace.speed;
+  }
+
+  function canGoDown(){
+    typeFace.vy = typeFace.speed;
+  }
+
+  function haltXValue() {
+    typeFace.vx = 0;
+  }
+
+  function haltYValue(){
+    typeFace.vy = 0;
   }
 
 // Movement
@@ -155,9 +139,10 @@ function canGoDown(){
 
 // Display
   image(typeFaceImg, typeFace.x,typeFace.y,typeFace.size,typeFace.size);
+  image(fontFolderImg, fontFolder.x, fontFolder.y,fontFolder.size, fontFolder.size);
+}
 
-  }
 
 
-
-  console.log("typeFace.x is " + typeFace.x);
+// console.log("typeFace.x is " + typeFace.x);
+console.log("fontFolderImg " +fontFolderImg);
