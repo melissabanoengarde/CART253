@@ -164,5 +164,5 @@ function canGoDown(){
 
 // Display
   image(typeFaceImg, typeFace.x,typeFace.y,typeFace.size,typeFace.size);
-
+ 
   }
