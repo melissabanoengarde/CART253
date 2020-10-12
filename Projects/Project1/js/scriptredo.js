@@ -37,8 +37,9 @@ function preload (){
 function setup() {
   createCanvas(1000, 600);
 
+  //typeFace setup
   typeFace.vx = typeFace.speed;
-  typeFace.vy = typeFace.speed;     
+  typeFace.vy = typeFace.speed;
 }
 
 function draw() {
@@ -62,15 +63,15 @@ function moveBgRight(){
 }
 
 function moveBgUp(){
-  if (bgUp - typeFace.speed < 0){
-    bgUp -= typeFace.speed;
-  }
-}
-
-function moveBgDown(){
   let minBgUp = -bg.height + height;
 
-  if (bgUp + typeFace.speed > minBgUp){
+    if (bgUp - typeFace.speed > minBgUp) {
+      bgUp -= typeFace.speed;
+    }
+  }
+
+function moveBgDown(){
+  if (bgUp + typeFace.speed < 0) {
     bgUp += typeFace.speed;
   }
 }
@@ -78,47 +79,47 @@ function moveBgDown(){
 //============================================//
 
 function canGoLeft(){
-  typeFace.x -= typeFace.speed;
+  typeFace.vx = -typeFace.speed;
 
-  if (typeFace.x > 10 + typeFace.speed){
-    return true;
-  }
-  else {
-    return false;
-  }
+  // if (typeFace.vx > 10 + typeFace.speed){
+  //   return true;
+  // }
+  // else {
+  //   return false;
+  // }
 }
 
 function canGoRight(){
-  typeFace.x += typeFace.speed;
-
-   if (typeFace.vx < width - (10+typeFace.speed)){
-    return true;
-  }
-  else {
-    return false;
-  }
+  typeFace.vx = typeFace.speed;
+  //
+  //  if (typeFace.vx < width - (10+typeFace.speed)){
+  //   return true;
+  // }
+  // else {
+  //   return false;
+  // }
 }
 
 function canGoUp(){
-  typeFace.y -= typeFace.speed;
+  typeFace.vy = -typeFace.speed;
 
- if (typeFace.y > 10 + typeFace.speed){
-    return true;
-  }
-  else {
-    return false;
-  }
+ // if (typeFace.y > 10 + typeFace.speed){         //maybe don't need?
+ //    return true;
+ //  }
+ //  else {
+ //    return false;
+ //  }
 }
 
 function canGoDown(){
-  typeFace.y += typeFace.speed;
-
-  if (typeFace.y < height - (10+typeFace.speed)){
-    return true;
-  }
-  else {
-    return false;
-  }
+  typeFace.vy = typeFace.speed;
+  //
+  // if (typeFace.y < height - (10+typeFace.speed)){
+  //   return true;
+  // }
+  // else {
+  //   return false;
+  // }
 }
 
 
@@ -126,6 +127,7 @@ function canGoDown(){
 
 // Key Input
   //A = LEFT
+
   if (keyIsDown(65)) {
     canGoLeft();
     moveBgRight();
@@ -134,11 +136,11 @@ function canGoDown(){
     canGoRight();
     moveBgLeft();
   }
-  // else {
-  //   typeFace.vx = 0;       //Pressing nothing
-  // }
+  else {
+    typeFace.vx = 0;       //Pressing nothing
+  }
 
-  else if (keyIsDown(87)) {      //W = UP
+  if (keyIsDown(87)) {      //W = UP
     canGoUp();
     moveBgDown();
   }
@@ -146,21 +148,15 @@ function canGoDown(){
     canGoDown();
     moveBgUp();
   }
-  // else {
-  //   typeFace.vy = 0;        //Pressing nothing
-  // }
+  else {
+    typeFace.vy = 0;        //Pressing nothing
+  }
 
 
 
 // Movement
-  // Left
-  // typeFace.x -= typeFace.speed;
-  // // Right
-  // typeFace.x += typeFace.speed;
-  // // Up
-  // typeFace.y += typeFace.speed;
-  // //  Down
-  // typeFace.y -= typeFace.speed;
+  typeFace.x += typeFace.vx;
+  typeFace.y += typeFace.vy;
 
 // Display
   image(typeFaceImg, typeFace.x,typeFace.y,typeFace.size,typeFace.size);
