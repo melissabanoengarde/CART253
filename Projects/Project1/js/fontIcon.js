@@ -16,7 +16,7 @@ class fontIcon {
 
 // What enables fontIcon to go left, right, up, or down
   canGoLeft(){
-    if (this.x > 20 + this.speed){        //since it's goSpeed is defined as "15" in "script.js", it will be 15 here too.
+    if (this.x > 10 + this.speed){        //since it's goSpeed is defined as "15" in "script.js", it will be 15 here too.
       return(true);
     }
     else {
@@ -25,7 +25,7 @@ class fontIcon {
   }
 
   canGoRight(){
-    if (this.x < width - (20 + this.speed)){
+    if (this.x < width - (10 + this.speed)){
       return(true);
     }
     else {
@@ -34,7 +34,7 @@ class fontIcon {
   }
 
   canGoUp(){
-    if (this.y > 20 + this.speed){
+    if (this.y > 10 + this.speed){
       return(true);
     }
     else {
@@ -43,7 +43,7 @@ class fontIcon {
   }
 
   canGoDown(){
-    if (this.y < height - (50 + this.speed)){
+    if (this.y < height - (10 + this.speed)){
       return(true);
     }
     else {

@@ -18,9 +18,9 @@ let goSpeed = 50;
 
 let fontFolderImg;
 let fontFolder = {
-  x:0,
-  y:0,
-  size: 50,
+  x: 0,
+  y: 0,
+  size: 80,
 };
 
 
@@ -48,12 +48,7 @@ function draw() {
 
   typeFace.show();
 
-// Font folder to win!
-// Display
-push();
-imageMode(CENTER);
-image(fontFolderImg, bgLeft + 60, bgUp + 200,fontFolder.size,fontFolder.size);
-pop();
+
 
 
 // Background movement
@@ -123,6 +118,24 @@ if (keyIsDown(65)) {                  // A = Left
      }
    }
 
+
+
+  // Font folder to win!
+  // Display
+  push();
+  let folderXValue = bgLeft + 60;
+  let folderYValue = bgUp + 200;
+  imageMode(CENTER);
+  image(fontFolderImg, folderXValue, folderYValue, fontFolder.size, fontFolder.size);
+  console.log("folderXValue is " + folderXValue);
+  console.log("folderYValue is " + folderXValue);
+  pop();
+
+  let d = dist(folderXValue, folderYValue, fontIcon.x, fontIcon.y);
+   // print(d);
+  if (d < fontFolder.size / 2  + fontIcon.size / 2) {
+   noLoop();
+  }
 
 
 
