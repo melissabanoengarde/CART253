@@ -8,8 +8,8 @@
 
 //VARIABLES
 let bg;
-let bgLeft = -1272;
-let bgUp = -280;
+let bgLeft = -1272;       // Bg's beginning x-value
+let bgUp = -280;          // Bg's beginning y-value
 
 let typeFaceImg;
 let typeFace = {
@@ -17,10 +17,9 @@ let typeFace = {
   y:520,
   size: 45,
   vx:0,
+  vy:0,
   speed: 3,
-  vy:0
 };
-
 
 let fontFolderImg;
 let fontFolder = {
@@ -38,6 +37,8 @@ function preload (){
 function setup() {
   createCanvas(1000, 600);
 
+  typeFace.vx = typeFace.speed;
+  typeFace.vy = typeFace.speed;     
 }
 
 function draw() {
@@ -46,7 +47,6 @@ function draw() {
 
 
 // Background Movement
-
 function moveBgLeft(){
   let minBgLeft = -bg.width + width;
 
@@ -164,5 +164,5 @@ function canGoDown(){
 
 // Display
   image(typeFaceImg, typeFace.x,typeFace.y,typeFace.size,typeFace.size);
- 
+
   }
