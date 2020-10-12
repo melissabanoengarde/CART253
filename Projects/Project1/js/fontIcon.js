@@ -1,6 +1,7 @@
 class fontIcon {
+  static staticField = 'static field'
 
-  constructor(x, y){
+  constructor(x,y){
     this.x = x;
     this.y = y;
     this.size = 45;
@@ -108,7 +109,7 @@ class fontIcon {
 
 
 
-
+print(fontIcon.size, fontIcon.y);
 
 
 

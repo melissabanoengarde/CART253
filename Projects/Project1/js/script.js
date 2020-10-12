@@ -14,15 +14,21 @@ let bgUp = -280;
 
 let typeFace;
 let typeFaceImg;
-let goSpeed = 50;
+let goSpeed = 60;
 
 let fontFolderImg;
 let fontFolder = {
   x: 0,
   y: 0,
-  size: 80,
+  size: 55,
 };
 
+// let typeFaceSpecs = {
+//   x: width - 50,
+//   y: height - 80,
+//   size: 45,
+//   speed: 60,
+// };
 
 function preload() {
   bg = loadImage("assets/images/bg.jpg");
@@ -33,10 +39,12 @@ function preload() {
 
 function setup() {
   createCanvas(1000, 600);
-  rectMode(CENTER);
+  // rectMode(CENTER);
 
 
   typeFace = new fontIcon(width - 50, height -80);
+
+
 }
 
 
@@ -127,18 +135,20 @@ if (keyIsDown(65)) {                  // A = Left
   let folderYValue = bgUp + 200;
   imageMode(CENTER);
   image(fontFolderImg, folderXValue, folderYValue, fontFolder.size, fontFolder.size);
-  console.log("folderXValue is " + folderXValue);
-  console.log("folderYValue is " + folderXValue);
-  pop();
 
-  let d = dist(folderXValue, folderYValue, fontIcon.x, fontIcon.y);
+
+  // Touch
+  let d = dist(fontFolder.x, fontFolder.y, fontIcon.x, fontIcon.y);
    // print(d);
   if (d < fontFolder.size / 2  + fontIcon.size / 2) {
-   noLoop();
+    fill(255,0,0);
+   ellipse(width/2,height/2,100);
   }
+  pop();
 
 
 
-
+print(fontFolder.size, fontIcon.size);
+// console.log("fontIcon" + fontIcon.x);     //fontIcon x-values are undefined
 
 }

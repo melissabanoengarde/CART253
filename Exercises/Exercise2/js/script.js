@@ -236,6 +236,6 @@ function draw() {
     noLoop();
   }
 
-
+print(user.x, obstacle.y);
 
 }
