@@ -71,6 +71,7 @@ let paint = {
   speed: 0,
 };
 
+let state = `title`;
 
 
 function preload (){
@@ -133,10 +134,63 @@ function draw() {
   background(0);
   image(bg,bgLeft,bgUp);
 
+  if (state === `title`) {
+    title();
+  } else if (state === `simulation`) {
+    simulation();
+  } else if (state === `win`) {
+    win();
+  } else if (state === `lose`) {
+    lose();
+  }
+
+
+function keyPressed() {
+  if (state === `title`) {
+    state = `simulation`;
+    }
+  }
+
+function title() {
+  stroke(0);
+  strokeWeight(2);
+  textSize(40);
+  textAlign(CENTER, CENTER);
+  text(`A Font's Life`, width / 2, height / 2);   //change title name
+}
+
+function simulation() {
   paintMove();
   cdPlayerMove();
   calculatorMove();
   minesweeperMove();
+}
+
+//When user's wins...
+function win() {
+  push();
+  stroke(0);
+  strokeWeight(8);
+  textFont(myFont);
+  textSize(80);
+  fill(255, 219, 88);
+  textAlign(CENTER, CENTER);
+  text(`- Phew! We made it! -`, width / 2, height / 2);
+  pop();
+}
+
+//When user loses...
+function lose() {
+  push();
+  stroke(0);
+  strokeWeight(8);
+  textFont(myFont);
+  textSize(80);
+  fill(255, 0,0);
+  textAlign(CENTER, CENTER);
+  text(`- This font is now corrupt. -`, width / 2, height / 2);
+  pop();
+}
 
 /*=========  cdPlayer ================================= */
 let paintOutScreen = paintOffScreen();
@@ -305,7 +359,7 @@ let d5 = dist (typeFace.x, typeFace.y, paint.x, paint.y);
 
 //win
 if (d < typeFace.size / 3 + fontFolder.size / 3) {
-  noLoop();
+  state = `win`;
 }
 
 //lose
@@ -315,6 +369,7 @@ if (d2 < typeFace.size / 2 + minesweeper.w / 2 || d2 < typeFace.size / 2 + mines
           || d5 < typeFace.size/2 + paint.h /2) {
   fill(0);
   ellipse(width/2, height/2, 200);
+  state = `lose`;
 }
 
 
