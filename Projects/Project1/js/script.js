@@ -35,10 +35,20 @@ let minesweeper = {
   y:0,
   w:200,
   h:300,
-  // size: 230,
   vx: 0,
   vy: 0,
-  speed: 3,
+  speed: 0,
+};
+
+let calculatorImg;
+let calculator = {
+  x:0,
+  y:0,
+  w:200,
+  h:200,
+  vx: 0,
+  vy:0,
+  speed: 0,
 };
 
 
@@ -49,12 +59,14 @@ function preload (){
   typeFaceImg = loadImage("assets/images/typeFace.png");
   fontFolderImg = loadImage("assets/images/fontfolder.png");
   minesweeperImg = loadImage("assets/images/minesweeper.png");
+  calculatorImg = loadImage("assets/images/calculator.png");
 }
 
 function setup() {
   createCanvas(1000, 600);
 
   typeFaceSetup();
+  calculatorReset();
   minesweeperReset();
 
 }
@@ -62,6 +74,13 @@ function setup() {
 function typeFaceSetup(){
   typeFace.vx = typeFace.speed;
   typeFace.vy = typeFace.speed;
+}
+
+function calculatorReset() {
+  calculator.x = width/2;
+  calculator.y = height;
+  calculator.vx = random(-2, 10);
+  calculator.vy = random(-2, 10);
 }
 
 function minesweeperReset() {
@@ -76,8 +95,25 @@ function draw() {
   background(0);
   image(bg,bgLeft,bgUp);
 
+  calculatorMove();
   minesweeperMove();
 
+
+/*=========  Calculator =============================== */
+let calcOffScreen = calculatorOffScreen();
+  if (calcOffScreen){
+    calculatorReset();
+  }
+
+function calculatorOffScreen(){
+  let calcResult = (calculator.x < -1272 || calculator.x > width || calculator.y < -280 || calculator.y > height);
+  return calcResult;
+}
+
+function calculatorMove(){
+  calculator.x +=  calculator.vx;
+  calculator.y +=  calculator.vy;
+}
 
 /*=========  Minesweeper =============================== */
 let offScreen = minesweeperOffScreen();
@@ -189,6 +225,7 @@ let folderYvalue = bgUp + 171;
 
 let d = dist(typeFace.x, typeFace.y, folderXvalue, folderYvalue);
 let d2 = dist (typeFace.x, typeFace.y, minesweeper.x, minesweeper.y);
+let d3 = dist (typeFace.x, typeFace.y, calculator.x, calculator.y);
 
 //win
 if (d < typeFace.size / 3 + fontFolder.size / 3) {
@@ -196,7 +233,7 @@ if (d < typeFace.size / 3 + fontFolder.size / 3) {
 }
 
 //lose
-if (d2 < typeFace.size / 2 + minesweeper.w / 2 || d2 < typeFace.size / 2 + minesweeper.h / 2) {
+if (d2 < typeFace.size / 2 + minesweeper.w / 2 || d2 < typeFace.size / 2 + minesweeper.h / 2 || d3 < typeFace.size/2 + calculator.w/2|| d3 < typeFace.size/2 + calculator.h/2) {
   fill(0);
   ellipse(width/2, height/2, 200);
 }
@@ -205,9 +242,11 @@ if (d2 < typeFace.size / 2 + minesweeper.w / 2 || d2 < typeFace.size / 2 + mines
 // Display
 image(typeFaceImg, typeFace.x,typeFace.y,typeFace.size,typeFace.size);
 image(fontFolderImg, folderXvalue, folderYvalue , fontFolder.size, fontFolder.size);
+fill(255,0,0,70);
 image(minesweeperImg, minesweeper.x, minesweeper.y, minesweeper.w, minesweeper.h);
-fill(255,0,0,70)
 rect(minesweeper.x,minesweeper.y,minesweeper.w,minesweeper.h);
+image(calculatorImg, calculator.x, calculator.y, calculator.w, calculator.h);
+rect(calculator.x,calculator.y,calculator.w,calculator.h);
 
 }
 
