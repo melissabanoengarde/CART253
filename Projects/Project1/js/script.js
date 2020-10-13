@@ -65,8 +65,7 @@ let paintImg;
 let paint = {
   x:0,
   y:0,
-  w: 300,
-  h: 200,
+  size:480,
   vx: 0,
   vy:0,
   speed: 0,
@@ -81,22 +80,31 @@ function preload (){
   minesweeperImg = loadImage("assets/images/minesweeper.png");
   calculatorImg = loadImage("assets/images/calculator.png");
   cdPlayerImg = loadImage("assets/images/CDPlayer.png");
-  paint = loadImage("assets/images/CDPlayer.png");
+  paintImg = loadImage("assets/images/paint.png");
 }
 
 function setup() {
   createCanvas(1000, 600);
 
   typeFaceSetup();
+  paintReset();
   cdPlayerReset();
   calculatorReset();
   minesweeperReset();
 
 }
 
+
 function typeFaceSetup(){
   typeFace.vx = typeFace.speed;
   typeFace.vy = typeFace.speed;
+}
+
+function paintReset(){
+  paint.x = width/3;
+  paint.y = -50;
+  paint.vx = random(-2, 1);
+  paint.vy = random(-2, 1);
 }
 
 function cdPlayerReset() {
@@ -109,8 +117,8 @@ function cdPlayerReset() {
 function calculatorReset() {
   calculator.x = width/2;
   calculator.y = height;
-  calculator.vx = random(-2, 8);
-  calculator.vy = random(-2, 8);
+  calculator.vx = random(-2, 3);
+  calculator.vy = random(-2, 3);
 }
 
 function minesweeperReset() {
@@ -125,9 +133,26 @@ function draw() {
   background(0);
   image(bg,bgLeft,bgUp);
 
+  paintMove();
   cdPlayerMove();
   calculatorMove();
   minesweeperMove();
+
+/*=========  cdPlayer ================================= */
+let paintOutScreen = paintOffScreen();
+  if (paintOutScreen){
+    paintReset();
+  }
+
+function paintOffScreen(){
+  let paintResult = (paint.x < -1272 || paint.x > width || paint.y < -280 || paint.y > height);
+  return paintResult;
+}
+
+function paintMove(){
+  paint.x +=  paint.vx;
+  paint.y +=  paint.vy;
+}
 
 /*=========  cdPlayer ================================= */
 let cdplOffScreen = cdPlayerOffScreen();
@@ -276,6 +301,7 @@ let d = dist(typeFace.x, typeFace.y, folderXvalue, folderYvalue);
 let d2 = dist (typeFace.x, typeFace.y, minesweeper.x, minesweeper.y);
 let d3 = dist (typeFace.x, typeFace.y, calculator.x, calculator.y);
 let d4 = dist (typeFace.x, typeFace.y, cdPlayer.x, cdPlayer.y);
+let d5 = dist (typeFace.x, typeFace.y, paint.x, paint.y);
 
 //win
 if (d < typeFace.size / 3 + fontFolder.size / 3) {
@@ -285,7 +311,8 @@ if (d < typeFace.size / 3 + fontFolder.size / 3) {
 //lose
 if (d2 < typeFace.size / 2 + minesweeper.w / 2 || d2 < typeFace.size / 2 + minesweeper.h / 2
       || d3 < typeFace.size/2 + calculator.size/2 || d4 < typeFace.size/2 + cdPlayer.w /2
-        || d4 < typeFace.size/2 + cdPlayer.h /2) {
+        || d4 < typeFace.size/2 + cdPlayer.h /2 || d5 < typeFace.size/2 + paint.w /2
+          || d5 < typeFace.size/2 + paint.h /2) {
   fill(0);
   ellipse(width/2, height/2, 200);
 }
@@ -309,6 +336,9 @@ rect(calculator.x,calculator.y,calculator.size, calculator.size);
 image(cdPlayerImg, cdPlayer.x, cdPlayer.y, cdPlayer.w, cdPlayer.h);
 rect(cdPlayer.x,cdPlayer.y,cdPlayer.w, cdPlayer.h);
 
+//Paint
+image(paintImg, paint.x, paint.y, paint.size, paint.size);
+rect(paint.x,paint.y, paint.size, paint.size);
 
 }
 
