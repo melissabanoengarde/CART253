@@ -14,6 +14,10 @@ let bgSpeed = 4;
 
 let myFont;
 
+let winSound;
+let loseSound;
+let gameTrack;
+
 let typeFaceImg;
 let typeFace = {
   x:950,
@@ -78,6 +82,11 @@ let state = `title`;
 function preload (){
   bg = loadImage("assets/images/bg.jpg");
   myFont = loadFont ('assets/fonts/px_sans_nouveaux.ttf');
+
+  winSound = loadSound('assets/sounds/TADA.wav');
+  loseSound = loadSound('assets/sounds/windows-95-error-sound-effect.mp3');
+  gameTrack = loadSound('assets/sounds/2020-03-22_-_8_Bit_Surf_-_FesliyanStudios.com_-_David_Renda.mp3');
+
   typeFaceImg = loadImage("assets/images/typeFace.png");
   fontFolderImg = loadImage("assets/images/fontfolder.png");
   minesweeperImg = loadImage("assets/images/minesweeper.png");
@@ -136,6 +145,7 @@ function draw() {
     title();
   } else if (state === `simulation`) {
     simulation();
+
   } else if (state === `win`) {
     win();
   } else if (state === `lose`) {
@@ -146,16 +156,21 @@ function draw() {
 function keyPressed() {
   if (state === `title`) {
     state = `simulation`;
+    gameTrack.play();
+
     }
   }
 
 function title() {
+  push();
   stroke(0);
-  strokeWeight(2);
+  strokeWeight(5);
+  fill(255,0,0);
   textFont(myFont);
   textSize(70);
   textAlign(CENTER, CENTER);
   text(`A Font's Life`, width / 2, height / 2);   //change title name
+  pop();
 }
 
 function simulation() {
@@ -358,6 +373,8 @@ function overLap(){
   //win
     if (d < typeFace.size / 3 + fontFolder.size / 3) {
       state = `win`;
+      winSound.play();
+      gameTrack.stop();
     }
 
   //lose
@@ -365,11 +382,13 @@ function overLap(){
           || d3 < typeFace.size/2 + calculator.size/2 || d4 < typeFace.size/2 + cdPlayer.w /2
             || d4 < typeFace.size/2 + cdPlayer.h /2 || d5 < typeFace.size/2 + paint.w /2
               || d5 < typeFace.size/2 + paint.h /2) {
-                fill(0);
-                ellipse(width/2, height/2, 200);
-                // state = `lose`;
+                // fill(0);
+                // ellipse(width/2, height/2, 200);
+                loseSound.play();
+                state = `lose`;
               }
-}
+
+            }
 
 function elementsDisplay() {
   let folderXvalue = bgLeft + 35;
