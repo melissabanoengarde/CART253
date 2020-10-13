@@ -44,12 +44,23 @@ let calculatorImg;
 let calculator = {
   x:0,
   y:0,
-  w:200,
-  h:200,
+  size:300,
   vx: 0,
   vy:0,
   speed: 0,
 };
+
+let cdPlayerImg;
+let cdPlayer = {
+  x:0,
+  y:0,
+  w: 300,
+  h: 200,
+  vx: 0,
+  vy:0,
+  speed: 0,
+};
+
 
 
 
@@ -60,12 +71,14 @@ function preload (){
   fontFolderImg = loadImage("assets/images/fontfolder.png");
   minesweeperImg = loadImage("assets/images/minesweeper.png");
   calculatorImg = loadImage("assets/images/calculator.png");
+  cdPlayerImg = loadImage("assets/images/CDPlayer.png");
 }
 
 function setup() {
   createCanvas(1000, 600);
 
   typeFaceSetup();
+  cdPlayerReset();
   calculatorReset();
   minesweeperReset();
 
@@ -76,18 +89,25 @@ function typeFaceSetup(){
   typeFace.vy = typeFace.speed;
 }
 
+function cdPlayerReset() {
+  cdPlayer.x = width;
+  cdPlayer.y = -50;
+  cdPlayer.vx = random(-2, 4);
+  cdPlayer.vy = random(-2, 4);
+}
+
 function calculatorReset() {
   calculator.x = width/2;
   calculator.y = height;
-  calculator.vx = random(-2, 10);
-  calculator.vy = random(-2, 10);
+  calculator.vx = random(-2, 8);
+  calculator.vy = random(-2, 8);
 }
 
 function minesweeperReset() {
   minesweeper.x = -200;
   minesweeper.y = 200;
-  minesweeper.vx = random(2, 15);
-  minesweeper.vy = random(2, 15);
+  minesweeper.vx = random(2, 10);
+  minesweeper.vy = random(2, 10);
 }
 
 
@@ -95,8 +115,25 @@ function draw() {
   background(0);
   image(bg,bgLeft,bgUp);
 
+  cdPlayerMove();
   calculatorMove();
   minesweeperMove();
+
+/*=========  cdPlayer ================================= */
+let cdplOffScreen = cdPlayerOffScreen();
+  if (cdplOffScreen){
+    cdPlayerReset();
+  }
+
+function cdPlayerOffScreen(){
+  let cdPlayerResult = (cdPlayer.x < -1272 || cdPlayer.x > width || cdPlayer.y < -280 || cdPlayer.y > height);
+  return cdPlayerResult;
+}
+
+function cdPlayerMove(){
+  cdPlayer.x +=  cdPlayer.vx;
+  cdPlayer.y +=  cdPlayer.vy;
+}
 
 
 /*=========  Calculator =============================== */
@@ -115,6 +152,7 @@ function calculatorMove(){
   calculator.y +=  calculator.vy;
 }
 
+
 /*=========  Minesweeper =============================== */
 let offScreen = minesweeperOffScreen();
   if (offScreen){
@@ -130,6 +168,7 @@ function minesweeperMove() {
   minesweeper.x +=  minesweeper.vx;
   minesweeper.y +=  minesweeper.vy;
 }
+
 
 /*=========  Background Movement ========================*/
 function moveBgLeft(){
@@ -226,6 +265,7 @@ let folderYvalue = bgUp + 171;
 let d = dist(typeFace.x, typeFace.y, folderXvalue, folderYvalue);
 let d2 = dist (typeFace.x, typeFace.y, minesweeper.x, minesweeper.y);
 let d3 = dist (typeFace.x, typeFace.y, calculator.x, calculator.y);
+let d4 = dist (typeFace.x, typeFace.y, cdPlayer.x, cdPlayer.y);
 
 //win
 if (d < typeFace.size / 3 + fontFolder.size / 3) {
@@ -233,7 +273,9 @@ if (d < typeFace.size / 3 + fontFolder.size / 3) {
 }
 
 //lose
-if (d2 < typeFace.size / 2 + minesweeper.w / 2 || d2 < typeFace.size / 2 + minesweeper.h / 2 || d3 < typeFace.size/2 + calculator.w/2|| d3 < typeFace.size/2 + calculator.h/2) {
+if (d2 < typeFace.size / 2 + minesweeper.w / 2 || d2 < typeFace.size / 2 + minesweeper.h / 2
+      || d3 < typeFace.size/2 + calculator.size/2 || d4 < typeFace.size/2 + cdPlayer.w /2
+        || d4 < typeFace.size/2 + cdPlayer.h /2) {
   fill(0);
   ellipse(width/2, height/2, 200);
 }
@@ -242,11 +284,21 @@ if (d2 < typeFace.size / 2 + minesweeper.w / 2 || d2 < typeFace.size / 2 + mines
 // Display
 image(typeFaceImg, typeFace.x,typeFace.y,typeFace.size,typeFace.size);
 image(fontFolderImg, folderXvalue, folderYvalue , fontFolder.size, fontFolder.size);
+
 fill(255,0,0,70);
+
+//Minesweeper
 image(minesweeperImg, minesweeper.x, minesweeper.y, minesweeper.w, minesweeper.h);
 rect(minesweeper.x,minesweeper.y,minesweeper.w,minesweeper.h);
-image(calculatorImg, calculator.x, calculator.y, calculator.w, calculator.h);
-rect(calculator.x,calculator.y,calculator.w,calculator.h);
+
+//Calculator
+image(calculatorImg, calculator.x, calculator.y, calculator.size, calculator.size);
+rect(calculator.x,calculator.y,calculator.size, calculator.size);
+
+//cdPlayer
+image(cdPlayerImg, cdPlayer.x, cdPlayer.y, cdPlayer.w, cdPlayer.h);
+rect(cdPlayer.x,cdPlayer.y,cdPlayer.w, cdPlayer.h);
+
 
 }
 
