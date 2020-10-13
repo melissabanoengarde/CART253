@@ -61,7 +61,16 @@ let cdPlayer = {
   speed: 0,
 };
 
-
+let paintImg;
+let paint = {
+  x:0,
+  y:0,
+  w: 300,
+  h: 200,
+  vx: 0,
+  vy:0,
+  speed: 0,
+};
 
 
 
@@ -72,6 +81,7 @@ function preload (){
   minesweeperImg = loadImage("assets/images/minesweeper.png");
   calculatorImg = loadImage("assets/images/calculator.png");
   cdPlayerImg = loadImage("assets/images/CDPlayer.png");
+  paint = loadImage("assets/images/CDPlayer.png");
 }
 
 function setup() {
