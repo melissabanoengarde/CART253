@@ -12,6 +12,8 @@ let bgLeft = -1272;       // Bg's beginning x-value
 let bgUp = -280;          // Bg's beginning y-value
 let bgSpeed = 4;
 
+let myFont;
+
 let typeFaceImg;
 let typeFace = {
   x:950,
@@ -73,9 +75,9 @@ let paint = {
 
 let state = `title`;
 
-
 function preload (){
   bg = loadImage("assets/images/bg.jpg");
+  myFont = loadFont ('assets/fonts/px_sans_nouveaux.ttf');
   typeFaceImg = loadImage("assets/images/typeFace.png");
   fontFolderImg = loadImage("assets/images/fontfolder.png");
   minesweeperImg = loadImage("assets/images/minesweeper.png");
@@ -83,6 +85,7 @@ function preload (){
   cdPlayerImg = loadImage("assets/images/CDPlayer.png");
   paintImg = loadImage("assets/images/paint.png");
 }
+
 
 function setup() {
   createCanvas(1000, 600);
@@ -92,9 +95,7 @@ function setup() {
   cdPlayerReset();
   calculatorReset();
   minesweeperReset();
-
 }
-
 
 function typeFaceSetup(){
   typeFace.vx = typeFace.speed;
@@ -111,8 +112,8 @@ function paintReset(){
 function cdPlayerReset() {
   cdPlayer.x = width;
   cdPlayer.y = -50;
-  cdPlayer.vx = random(-2, 4);
-  cdPlayer.vy = random(-2, 4);
+  cdPlayer.vx = random(1, 4);
+  cdPlayer.vy = random(1, 4);
 }
 
 function calculatorReset() {
@@ -131,9 +132,6 @@ function minesweeperReset() {
 
 
 function draw() {
-  background(0);
-  image(bg,bgLeft,bgUp);
-
   if (state === `title`) {
     title();
   } else if (state === `simulation`) {
@@ -143,7 +141,7 @@ function draw() {
   } else if (state === `lose`) {
     lose();
   }
-
+}
 
 function keyPressed() {
   if (state === `title`) {
@@ -154,26 +152,28 @@ function keyPressed() {
 function title() {
   stroke(0);
   strokeWeight(2);
-  textSize(40);
+  textFont(myFont);
+  textSize(70);
   textAlign(CENTER, CENTER);
   text(`A Font's Life`, width / 2, height / 2);   //change title name
 }
 
 function simulation() {
-  paintMove();
-  cdPlayerMove();
-  calculatorMove();
-  minesweeperMove();
+
+  obstaclesMove();
+  handleInput();
+  typeFaceMove();
+  overLap();
+  elementsDisplay();
+
 }
 
 //When user's wins...
 function win() {
   push();
-  stroke(0);
-  strokeWeight(8);
+  fill(255, 219, 88);
   textFont(myFont);
   textSize(80);
-  fill(255, 219, 88);
   textAlign(CENTER, CENTER);
   text(`- Phew! We made it! -`, width / 2, height / 2);
   pop();
@@ -192,106 +192,73 @@ function lose() {
   pop();
 }
 
-/*=========  cdPlayer ================================= */
+function obstaclesMove(){
+  // paint window
+  paint.x +=  paint.vx;
+  paint.y +=  paint.vy;
+
+  // cdPlayer window
+  cdPlayer.x +=  cdPlayer.vx;
+  cdPlayer.y +=  cdPlayer.vy;
+
+  // calculaor window
+  calculator.x +=  calculator.vx;
+  calculator.y +=  calculator.vy;
+
+  //minesweeper window
+  minesweeper.x +=  minesweeper.vx;
+  minesweeper.y +=  minesweeper.vy;
+}
+
+//=========  paint ===================================
 let paintOutScreen = paintOffScreen();
   if (paintOutScreen){
     paintReset();
   }
 
 function paintOffScreen(){
-  let paintResult = (paint.x < -1272 || paint.x > width || paint.y < -280 || paint.y > height);
+  let paintResult = (paint.x < -1272 || paint.x > 1000 || paint.y < -280 || paint.y > 600);
   return paintResult;
 }
 
-function paintMove(){
-  paint.x +=  paint.vx;
-  paint.y +=  paint.vy;
-}
-
-/*=========  cdPlayer ================================= */
+//=========  cdPlayer =================================
 let cdplOffScreen = cdPlayerOffScreen();
   if (cdplOffScreen){
     cdPlayerReset();
   }
 
 function cdPlayerOffScreen(){
-  let cdPlayerResult = (cdPlayer.x < -1272 || cdPlayer.x > width || cdPlayer.y < -280 || cdPlayer.y > height);
+  let cdPlayerResult = (cdPlayer.x < -1272 || cdPlayer.x > 1000 || cdPlayer.y < -280 || cdPlayer.y > 600);
   return cdPlayerResult;
 }
 
-function cdPlayerMove(){
-  cdPlayer.x +=  cdPlayer.vx;
-  cdPlayer.y +=  cdPlayer.vy;
-}
-
-
-/*=========  Calculator =============================== */
+//=========  Calculator ===============================
 let calcOffScreen = calculatorOffScreen();
   if (calcOffScreen){
     calculatorReset();
   }
 
 function calculatorOffScreen(){
-  let calcResult = (calculator.x < -1272 || calculator.x > width || calculator.y < -280 || calculator.y > height);
+  let calcResult = (calculator.x < -1272 || calculator.x > 1000|| calculator.y < -280 || calculator.y > 600);
   return calcResult;
 }
 
-function calculatorMove(){
-  calculator.x +=  calculator.vx;
-  calculator.y +=  calculator.vy;
-}
-
-
-/*=========  Minesweeper =============================== */
+//=========  Minesweeper ===============================
 let offScreen = minesweeperOffScreen();
   if (offScreen){
     minesweeperReset();
   }
 
 function minesweeperOffScreen(){
-  let result = (minesweeper.x < -1272 || minesweeper.x > width || minesweeper.y < -280 || minesweeper.y > height);
+  let result = (minesweeper.x < -1272 || minesweeper.x > 1000|| minesweeper.y < -280 || minesweeper.y > 600);
   return result;
 }
 
-function minesweeperMove() {
-  minesweeper.x +=  minesweeper.vx;
-  minesweeper.y +=  minesweeper.vy;
-}
+//========= TYPE FACE ===================================
+function handleInput() {
+  image(bg, bgLeft, bgUp);
 
-
-/*=========  Background Movement ========================*/
-function moveBgLeft(){
-  let minBgLeft = -bg.width + width;
-
-  if (bgLeft - typeFace.speed > minBgLeft){
-    bgLeft -= typeFace.speed + bgSpeed;
-  }
-}
-
-function moveBgRight(){
-  if (bgLeft + typeFace.speed < 0){
-    bgLeft += typeFace.speed +bgSpeed;
-  }
-}
-
-function moveBgUp(){
-  let minBgUp = -bg.height + height;
-
-    if (bgUp - typeFace.speed > minBgUp) {
-      bgUp -= typeFace.speed + bgSpeed;
-    }
-  }
-
-function moveBgDown(){
-  if (bgUp + typeFace.speed < 0) {
-    bgUp += typeFace.speed + bgSpeed;
-  }
-}
-
-//========= TYPE FACE ===================================//
-//========== Handle Input ==========//
-
-  if (keyIsDown(65)) {    //A = LEFT
+  if (keyIsDown(65)) {        //A = LEFT
     canGoLeft();
     moveBgRight();
   }
@@ -300,20 +267,22 @@ function moveBgDown(){
     moveBgLeft();
   }
   else {
-    haltXValue();      //Pressing nothing
+    haltXValue();            //Pressing nothing
   }
 
-  if (keyIsDown(87)) {      //W = UP
+  if (keyIsDown(87)) {       //W = UP
     canGoUp();
     moveBgDown();
   }
-  else if (keyIsDown(83)) { //S = DOWN
+  else if (keyIsDown(83)) {   //S = DOWN
     canGoDown();
     moveBgUp();
   }
   else {
     haltYValue();    //Pressing nothing
   }
+
+}
 
 //========== canGo's ==========//
   function canGoLeft(){
@@ -340,64 +309,95 @@ function moveBgDown(){
     typeFace.vy = 0;
   }
 
-// Movement
+function typeFaceMove(){
   typeFace.x += typeFace.vx;
   typeFace.y += typeFace.vy;
-
-
-
-// Distance
-let folderXvalue = bgLeft + 35;
-let folderYvalue = bgUp + 171;
-
-
-let d = dist(typeFace.x, typeFace.y, folderXvalue, folderYvalue);
-let d2 = dist (typeFace.x, typeFace.y, minesweeper.x, minesweeper.y);
-let d3 = dist (typeFace.x, typeFace.y, calculator.x, calculator.y);
-let d4 = dist (typeFace.x, typeFace.y, cdPlayer.x, cdPlayer.y);
-let d5 = dist (typeFace.x, typeFace.y, paint.x, paint.y);
-
-//win
-if (d < typeFace.size / 3 + fontFolder.size / 3) {
-  state = `win`;
-}
-
-//lose
-if (d2 < typeFace.size / 2 + minesweeper.w / 2 || d2 < typeFace.size / 2 + minesweeper.h / 2
-      || d3 < typeFace.size/2 + calculator.size/2 || d4 < typeFace.size/2 + cdPlayer.w /2
-        || d4 < typeFace.size/2 + cdPlayer.h /2 || d5 < typeFace.size/2 + paint.w /2
-          || d5 < typeFace.size/2 + paint.h /2) {
-  fill(0);
-  ellipse(width/2, height/2, 200);
-  state = `lose`;
 }
 
 
-// Display
-image(typeFaceImg, typeFace.x,typeFace.y,typeFace.size,typeFace.size);
-image(fontFolderImg, folderXvalue, folderYvalue , fontFolder.size, fontFolder.size);
+/*=========  Background Movement ========================*/
+function moveBgLeft(){
+  let minBgLeft = -bg.width + width;
 
-fill(255,0,0,70);
+  if (bgLeft - typeFace.speed > minBgLeft){
+    bgLeft -= typeFace.speed + bgSpeed;
+  }
+}
 
-//Minesweeper
-image(minesweeperImg, minesweeper.x, minesweeper.y, minesweeper.w, minesweeper.h);
-rect(minesweeper.x,minesweeper.y,minesweeper.w,minesweeper.h);
+function moveBgRight(){
+  if (bgLeft + typeFace.speed < 0){
+    bgLeft += typeFace.speed + bgSpeed;
+  }
+}
 
-//Calculator
-image(calculatorImg, calculator.x, calculator.y, calculator.size, calculator.size);
-rect(calculator.x,calculator.y,calculator.size, calculator.size);
+function moveBgUp(){
+  let minBgUp = -bg.height + height;
 
-//cdPlayer
-image(cdPlayerImg, cdPlayer.x, cdPlayer.y, cdPlayer.w, cdPlayer.h);
-rect(cdPlayer.x,cdPlayer.y,cdPlayer.w, cdPlayer.h);
+    if (bgUp - typeFace.speed > minBgUp) {
+      bgUp -= typeFace.speed + bgSpeed;
+    }
+  }
 
-//Paint
-image(paintImg, paint.x, paint.y, paint.size, paint.size);
-rect(paint.x,paint.y, paint.size, paint.size);
+function moveBgDown(){
+  if (bgUp + typeFace.speed < 0) {
+    bgUp += typeFace.speed + bgSpeed;
+  }
+}
 
+
+function overLap(){
+  let folderXvalue = bgLeft + 35;
+  let folderYvalue = bgUp + 171;
+
+  let d = dist(typeFace.x, typeFace.y, folderXvalue, folderYvalue);
+  let d2 = dist (typeFace.x, typeFace.y, minesweeper.x, minesweeper.y);
+  let d3 = dist (typeFace.x, typeFace.y, calculator.x, calculator.y);
+  let d4 = dist (typeFace.x, typeFace.y, cdPlayer.x, cdPlayer.y);
+  let d5 = dist (typeFace.x, typeFace.y, paint.x, paint.y);
+
+  //win
+    if (d < typeFace.size / 3 + fontFolder.size / 3) {
+      state = `win`;
+    }
+
+  //lose
+    if (d2 < typeFace.size / 2 + minesweeper.w / 2 || d2 < typeFace.size / 2 + minesweeper.h / 2
+          || d3 < typeFace.size/2 + calculator.size/2 || d4 < typeFace.size/2 + cdPlayer.w /2
+            || d4 < typeFace.size/2 + cdPlayer.h /2 || d5 < typeFace.size/2 + paint.w /2
+              || d5 < typeFace.size/2 + paint.h /2) {
+                fill(0);
+                ellipse(width/2, height/2, 200);
+                // state = `lose`;
+              }
+}
+
+function elementsDisplay() {
+  let folderXvalue = bgLeft + 35;
+  let folderYvalue = bgUp + 171;
+
+  image(typeFaceImg, typeFace.x,typeFace.y,typeFace.size,typeFace.size);
+  image(fontFolderImg, folderXvalue, folderYvalue , fontFolder.size, fontFolder.size);
+
+  fill(255,0,0,70);
+
+  //Minesweeper
+  image(minesweeperImg, minesweeper.x, minesweeper.y, minesweeper.w, minesweeper.h);
+  rect(minesweeper.x,minesweeper.y,minesweeper.w,minesweeper.h);
+
+  //Calculator
+  image(calculatorImg, calculator.x, calculator.y, calculator.size, calculator.size);
+  rect(calculator.x,calculator.y,calculator.size, calculator.size);
+
+  //cdPlayer
+  image(cdPlayerImg, cdPlayer.x, cdPlayer.y, cdPlayer.w, cdPlayer.h);
+  rect(cdPlayer.x,cdPlayer.y,cdPlayer.w, cdPlayer.h);
+
+  //Paint
+  image(paintImg, paint.x, paint.y, paint.size, paint.size);
+  rect(paint.x,paint.y, paint.size, paint.size);
 }
 
 
 
 // console.log("typeFace.x is " + typeFace.x);
-console.log("fontFolder.x " + minesweeper.x);
+console.log(minesweeper.x);
