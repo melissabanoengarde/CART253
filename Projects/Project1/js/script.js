@@ -13,6 +13,9 @@ let bgUp = -280;          // Bg's beginning y-value
 let bgSpeed = 4;
 
 let myFont;
+let titleImg;
+let windowExample;
+let loseImg;
 
 let winSound;
 let loseSound;
@@ -77,15 +80,24 @@ let paint = {
   speed: 0,
 };
 
+let fontColor = {
+  r:0,
+  g:0,
+  b:0
+};
+
 let state = `title`;
 
 function preload (){
   bg = loadImage("assets/images/bg.jpg");
-  myFont = loadFont ('assets/fonts/px_sans_nouveaux.ttf');
+  titleImg = loadImage ('assets/images/titleimage.jpg');
+  windowExample = loadImage ('assets/images/windowexample.png');
+  loseImg = loadImage ('assets/images/lossimage.jpg');
 
+  myFont = loadFont ('assets/fonts/px_sans_nouveaux.ttf');
   winSound = loadSound('assets/sounds/TADA.wav');
-  loseSound = loadSound('assets/sounds/windows-95-error-sound-effect.mp3');
-  gameTrack = loadSound('assets/sounds/2020-03-22_-_8_Bit_Surf_-_FesliyanStudios.com_-_David_Renda.mp3');
+  loseSound = loadSound('assets/sounds/errorsoundcropped.mp3');
+  gameTrack = loadSound('assets/sounds/cropped.mp3');
 
   typeFaceImg = loadImage("assets/images/typeFace.png");
   fontFolderImg = loadImage("assets/images/fontfolder.png");
@@ -104,6 +116,7 @@ function setup() {
   cdPlayerReset();
   calculatorReset();
   minesweeperReset();
+  textFont(myFont);
 }
 
 function typeFaceSetup(){
@@ -145,7 +158,6 @@ function draw() {
     title();
   } else if (state === `simulation`) {
     simulation();
-
   } else if (state === `win`) {
     win();
   } else if (state === `lose`) {
@@ -162,15 +174,39 @@ function keyPressed() {
   }
 
 function title() {
+  let exampleSize = 50;
+  let objective = `OBJECTIVE – You must reach your designated folder at once!`;
+  let warning = `TO AVOID – Beware of malware-infected windows for you'll turn into a damaged file.`
+  let startSign = `Press any key to being`;
+
   push();
-  stroke(0);
-  strokeWeight(5);
-  fill(255,0,0);
-  textFont(myFont);
-  textSize(70);
+  imageMode(CENTER);
+  image(titleImg, width / 2, height / 2);
+  image(windowExample, width - 118, (height/3) + 70, exampleSize, exampleSize);
+  image(fontFolderImg, width - 260, (height/4) + 40, exampleSize, exampleSize);
+
+  textSize(40);
+  fill(0,0,255);
   textAlign(CENTER, CENTER);
-  text(`A Font's Life`, width / 2, height / 2);   //change title name
+  text(`Curious Typeface`, (width / 2) + 40, height / 13);
+
+  textSize(10);
+  fill(0);
+  textAlign(LEFT);
+  text(objective, (width/3)-20, (height/7)+ 100);
+  text(warning, (width/3)-20, (height/7)+ 180);
+
+  funkyStart();
+  fill(fontColor.r, fontColor.g, fontColor.b);
+  text(startSign, (width/3)-20, (height/2) + 30);
   pop();
+}
+
+//"Press any key to begin"'s flashy colors'
+function funkyStart(){
+  fontColor.r = random(150, 255);
+  fontColor.g = random(160, 255);
+  fontColor.b = random(0, 255);
 }
 
 function simulation() {
@@ -185,26 +221,26 @@ function simulation() {
 
 //When user's wins...
 function win() {
-  push();
   fill(255, 219, 88);
-  textFont(myFont);
-  textSize(80);
+  textSize(50);
   textAlign(CENTER, CENTER);
-  text(`- Phew! We made it! -`, width / 2, height / 2);
-  pop();
+  text(`- Phew! We made it! -`, 600, 100);
 }
 
 //When user loses...
 function lose() {
-  push();
-  stroke(0);
-  strokeWeight(8);
-  textFont(myFont);
-  textSize(80);
-  fill(255, 0,0);
+  let imgWidth= 400;
+  let imgHeight = 150;
+  let loseText = `File "player.ttf" is now damaged.`;
+
+  imageMode(CENTER);
+  image(loseImg, width/2, height/2, imgWidth, imgHeight);
+  textSize(13);
+  fill(0)
   textAlign(CENTER, CENTER);
-  text(`- This font is now corrupt. -`, width / 2, height / 2);
-  pop();
+  text(loseText, (width / 2) + 18, (height / 2)-17);
+  textSize(10);
+  text(`:-(`, (width / 2) , (height / 2)+40);
 }
 
 function obstaclesMove(){
@@ -386,6 +422,7 @@ function overLap(){
                 // ellipse(width/2, height/2, 200);
                 loseSound.play();
                 state = `lose`;
+                gameTrack.stop();
               }
 
             }
