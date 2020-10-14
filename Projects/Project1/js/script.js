@@ -1,6 +1,6 @@
 "use strict"
 /**************************************************
- Project 01: Simulation
+ Project 01: Simulation 
 
  A Typeface's Story
  Melissa Banoen-Garde
