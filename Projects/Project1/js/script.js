@@ -1,6 +1,8 @@
 "use strict"
 /**************************************************
  Project 01: Simulation
+
+ A Typeface's Story
  Melissa Banoen-Garde
  CART 253 - B
 
@@ -8,7 +10,7 @@
  way back to the "font folder", through malware-infected
  windows.
 
- Reference for 'inteactive' background:
+ Reference for 'interactive' background:
  https://www.youtube.com/watch?v=q_pDcE9nyfY&t=353s&ab_channel=JaredDonovan
 **************************************************/
 
@@ -169,7 +171,7 @@ function title() {
   textSize(40);
   fill(0, 0, 255);
   textAlign(CENTER, CENTER);
-  text(`Curious Typeface`, (width / 2) + 40, height / 13);
+  text(`A Typeface's Story`, (width / 2) + 60, height / 13);
 
   textSize(10);
   fill(0);
