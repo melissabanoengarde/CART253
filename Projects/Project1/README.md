@@ -1,5 +1,5 @@
-#Project 01: Simulation
-A Typeface's Story
+<h1>Project 01: Simulation</h1>
+<h2>A Typeface's Story</h2>
 
 <p>
 <strong> Melissa Banoen-Garde </strong> <br>
