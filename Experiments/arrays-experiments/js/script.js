@@ -31,7 +31,7 @@ function createFish(x, y) {
     vx: 0,
     vy: 0,
     speed: 2
-  };
+  }; 
   return fish;
 }
 
