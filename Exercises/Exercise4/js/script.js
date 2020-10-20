@@ -7,6 +7,7 @@ Melissa Banoen-Garde
 Using arrays and all that was covered in week 6.
 **************************************************/
 
+/* Variables + Arrays */
 // User's specs
 let user = {
   x: 0,
@@ -53,6 +54,7 @@ function draw() {
   userInput();
   userMove();
   trailPosition();
+  moveFood();
   displayUser();
 
   for (let i = 0; i < food.length; i++) {
@@ -62,21 +64,11 @@ function draw() {
 }
 
   // Check whether the user has eaten either food
-  checkFood(food1);
-  checkFood(food2);
-  checkFood(food3);
-  checkFood(food4);
-  checkFood(food5);
-  checkFood(food6);
+  checkFood(food);
 
   // Display the user and foods
-  /*displayFood(food1);
-  displayFood(food2);
-  displayFood(food3);
-  displayFood(food4);
-  displayFood(food5);
-  displayFood(food6); */
-// }
+  displayFood(food);
+
 
 // Sets the user position to the mouse position
 function userInput() {
@@ -103,8 +95,8 @@ function userInput() {
 
 // Allows user to move   (thank you for the constrain suggestion from E3, Samuel!)
 function userMove() {
-  user.x = constrain( user.x + user.vx, 0, width);
-  user.y = constrain( user.y + user.vy, 0, height);
+  user.x = constrain(user.x + user.vx, 0, width);
+  user.y = constrain(user.y + user.vy, 0, height);
 }
 
 function trailPosition(){
@@ -128,24 +120,30 @@ function trailPosition(){
  }
 }
 
-// When user eats the food
+function moveFood(food){
+  let swap = random(0,1);
+  if (swap < 0.05) {
+    food.vx = random(-food.speed,food.speed);
+    fish.vy = random(-food.speed, food.speed);
+  }
+
+  food.x = food.x + food.vx;
+  food.y = food.y + food.vy;
+
+  food.x = constrain(food.x, 0, width);
+  food.y = constrain(food.y, 0, height);
+}
+
+
+// When user EATS the food
 function checkFood(food){
-  if (!food1.eaten) {
+  if (!food.eaten) {
     let d = dist(user.x, user.y, food.x, food.y);
     if (d < user.size / 2 + food.size / 2) {
       food.eaten = true;
     }
   }
 }
-
-
-
-
-
-
-
-
-
 
 
 // Draws the user as a square
