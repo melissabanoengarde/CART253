@@ -17,9 +17,17 @@ let red = {
   speed: 5,
 };
 
+let endOfWeekBar = {
+  x:25,
+  y:865,
+  w:350,
+  h:1.5
+};
+
 
 function setup(){
   createCanvas(400,900);
+
 }
 
 
@@ -56,4 +64,8 @@ function draw(){
   // Red's display
   fill(255,0,0);
   ellipse(red.x,red.y,red.size);
+
+  //Bar display
+  fill(0);
+  rect(endOfWeekBar.x, endOfWeekBar.y, endOfWeekBar.w, endOfWeekBar.h);
 }
