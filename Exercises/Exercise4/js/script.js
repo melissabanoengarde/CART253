@@ -7,9 +7,8 @@ Melissa Banoen-Garde
 Using arrays and all that was covered in week 6.
 **************************************************/
 
-/* Variables + Arrays */
 // User's specs
-let user = {
+let red = {
   x: 0,
   y: 0,
   size: 30,
@@ -17,24 +16,25 @@ let user = {
   vy:0,
   speed: 4,
   trail: [],
-  trailSize: 10
+  trailSize: 7
 };
 
 // Food's specs
-let food = [];
-let foodAmount = 15;
+let mass = [];
+let massAmount = 15;
 
 
 function setup() {
   createCanvas(500, 500);
 
-  for (let i = 0; i < foodAmount; i++) {
-    food[i] = createFood(random(0,width), random(0,height));
+// movement of blues all over screen
+  for (let i = 0; i < massAmount; i++) {
+    mass[i] = createBlues(random(0,width), random(0,height));
   }
 }
 
-// Creates new JS object of the food and returns it
-function createFood(x,y) {
+// Creates BLUES
+function createBlues(x,y) {
   let food = {
     x: x,
     y: y,
