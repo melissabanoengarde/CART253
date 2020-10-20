@@ -19,7 +19,7 @@ let red = {
   vx: 0,
   vy: 0,
   speed: 5,
-};
+}; 
 
 // End of week specs
 let endOfWeek = {
