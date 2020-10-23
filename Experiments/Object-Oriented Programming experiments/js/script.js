@@ -56,12 +56,12 @@ function draw() {
     let flower = garden.flowers[i];
     flower.display(); // NEW! Call the display() method for this flower
   }
+}
 
-  function mousePressed(){
-    for (let i = 0; i < garden.flowers.length; i++) {
-      let flower = garden.flowers[i];
-      flower.mousePressed();
-    }
+function mousePressed(){
+  for (let i = 0; i < garden.flowers.length; i++) {
+    let flower = garden.flowers[i];
+    flower.mousePressed();
   }
 }
 
