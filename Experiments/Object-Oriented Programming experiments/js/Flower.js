@@ -23,7 +23,7 @@ class Flower {
   }
 
   //displays flowers
-  display() {      //another method name, replaced "flower" with "this"
+  display() { //another method name, replaced "flower" with "this"
     push();
     // Draw a line for the stem
     strokeWeight(this.stemThickness);
@@ -35,6 +35,15 @@ class Flower {
     stroke(this.petalColor.r, this.petalColor.g, this.petalColor.b);
     ellipse(this.x, this.y, this.size);
     pop();
+  }
+
+  mousePressed() {
+    let d = dist(this.x, this.y, mouseX, mouseY);
+
+    if (d < this.size / 2 + this.petalThickness) {
+      this.stemLength = this.stemLength + 5;
+      this.y = this.y - 5;
+    }
   }
 
 }
