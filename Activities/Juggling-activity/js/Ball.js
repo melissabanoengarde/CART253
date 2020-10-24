@@ -14,7 +14,7 @@ class Ball {
 
   // defining gravity method with a parameter called "force"
   gravity(force) {
-    this.ay += force;
+    this.ay += force;  //accelerates downwards
   }
 
   // defining move method
