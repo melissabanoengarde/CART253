@@ -1,4 +1,4 @@
-"use strict";
+// "use strict";
 
 /**************************************************
 Exercise 05: Juggle Garden
@@ -11,21 +11,32 @@ Melissa Banoen-Garde
 Juggling with "true" identity
 **************************************************/
 
+/* Variables to store our entities
+let = palm; */
+
+// Variables to store images
 let = palmsImg;
+
+// Preloading png's
+function preload() {
+  palmsImg = loadImage('assets/images/palms.png');
+}
+
 
 // Description of setup() goes here.
 function setup() {
- createCanvas(900,900);
+ createCanvas(1100,900);
+
+ palm = new Palms(200, 240, palmsImg);
+
 }
 
-function preload() {
-  palmsImg loadImage(assets/images/palms.png);
-}
-
-// draw()
-//
 // Description of draw() goes here.
 function draw() {
   background(250, 255, 176);
+
+  // calling Palms.js's methods
+  palm.move();
+  palm.display();
 
 }
