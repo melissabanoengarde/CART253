@@ -18,7 +18,7 @@ let gravityForce = 0.0025;
 
 // Declaring balls variables with empty array
 let balls = [];
-let numBalls = 3;
+let numBalls = 30;
 
 // setup()
 //
@@ -52,9 +52,11 @@ function draw() {
   // for-loop that counts from 0 up to balls.length
   for (let i = 0; i < balls.length; i++) {
     let ball = balls[i]; // pulling out ball at current index we're counting from
-    ball.gravity(gravityForce);   // calling gravity() with gravityForce as an argument
-    ball.move();
-    ball.bounce();
-    ball.display();
+     if (ball.active) {  // is it active?
+       ball.gravity(gravityForce);   // calling gravity() with gravityForce as an argument
+       ball.move();
+       ball.bounce(paddle);
+       ball.display();
+     }
   }
 }

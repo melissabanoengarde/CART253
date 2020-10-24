@@ -29,19 +29,34 @@ class Ball {
     // Adding velocity to position
     this.x += this.vx;
     this.y += this.vy;
+
+    // if ball has fallen off canvas
+    if (this.y - this.size/2 > height) {
+      this.active = false;   //to deactivate it
+    }
   }
 
-  bounce() {
-    if (this.y + this.size / 2 >= height) { // "this.y + this.size/2" is bottom of the ball
+  bounce(paddle) {  //4 conditions
+    if (this.x >= paddle.x - paddle.width/2 &&                 // "paddle.x - paddle.width/2" is left edge of paddle. x-axis always begin to the left & we're substracting the other half (right edge).
+        this.x <= paddle.x + paddle.width/2 &&                 // right edge of paddle
+        this.y + this.size/2 > paddle.y - paddle.height/2 &&   // to make sure that VERTICALLY it's also overlapping w the paddle. this.y = center of the ball, adding this.size/2 adds the BOTTOM of the ball.
+        this.y - this.size/2 < paddle.y + paddle.height/2) {   // it's the same for paddle since rectMode is CENTERed. paddle.y is center of the paddle, -paddle.height/2 is top half of paddle
+
+      // BOUNCE
+      this.vy = -this.vy;
+      this.ay = 0;
+    }
+    // if (this.y + this.size / 2 >= height) { // "this.y + this.size/2" is bottom of the ball
+      /* Bounce
       this.vy = -this.vy; //reverse the velocity
       this.ay = 0; //BOUNCE effect
-    }
+    } */
   }
 
   display() {
     push();
     fill(0);
-    stroke(255,0,0);
+    // stroke(255,0,0);
     ellipse(this.x, this.y, this.size);
     pop();
   }
