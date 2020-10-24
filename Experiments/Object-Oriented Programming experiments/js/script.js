@@ -7,13 +7,16 @@ Melissa Banoen-Garde
 Experimenting with object-oriented programming.
 **************************************************/
 
-
 // Our garden
 let garden = {
   // An array to store the individual flowers
   flowers: [],
   // How many flowers in the garden
   numFlowers: 20,
+  // An array of bees
+  bees: [],
+  //how many bees in garden
+  numBees: 7,
   // The color of the grass (background)
   grassColor: {
     r: 120,
@@ -28,22 +31,29 @@ function setup() {
 
   // Create our flowers by counting up to the number of the flowers
   for (let i = 0; i < garden.numFlowers; i++) {
-    let x = random(0,width);
-    let y= random(0,height);
-    let size = random(50,80);
-    let stemLength = random(50,100);
+    // Create variables for our arguments for clarity
+    let x = random(0, width);
+    let y = random(0, height);
+    let size = random(50, 80);
+    let stemLength = random(50, 100);
     let petalColor = {
-      r: random(100,255),
-      g: random(100,255),
-      b: random(100,255)
-    };
-
-    // NEW! Create a new flower
-    let flower = new Flower(x, y ,size, stemLength, petalColor);
+      r: random(100, 255),
+      g: random(100, 255),
+      b: random(100, 255)
+    }
+    // Create a new flower using the arguments
+    let flower = new Flower(x, y, size, stemLength, petalColor);
     // Add the flower to the array of flowers
     garden.flowers.push(flower);
   }
+
+  // Create the bees
+  for (let i = 0; i < garden.numBees; i++) {
+    let bee = new Bee(random(0,width), random(0,height));
+    garden.bees.push(bee);
+  }
 }
+
 
 // draw()
 // Displays our flowers
@@ -54,16 +64,32 @@ function draw() {
   // Loop through all the flowers in the array and display them
   for (let i = 0; i < garden.flowers.length; i++) {
     let flower = garden.flowers[i];
-    flower.display(); // NEW! Call the display() method for this flower
+
+    if (flower.alive) {  //is the flower's alive property true?
+      flower.shrink();      // if it is, it will shrink and it will display
+      flower.display();
+    }
+  }
+
+  for (let i = 0; i < garden.bees.length; i++) {
+    let bee = garden.bees[i];
+    if (bee.alive){
+      bee.shrink();
+      bee.move();
+      bee.display();
+
+      //nested for-Loop
+      for (let j = 0; j < garden.flowers.length; j++) { //bee looks at every single flower in the garden
+        let flower = garden.flowers[j];
+        if (flower.alive){
+          bee.tryToPollinate(flower);
+        }
+      }
+    }
   }
 }
 
-function mousePressed(){
-  for (let i = 0; i < garden.flowers.length; i++) {
-    let flower = garden.flowers[i];
-    flower.mousePressed();
-  }
-}
+
 
 /*
 NOTES:
