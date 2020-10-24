@@ -6,14 +6,20 @@ Melissa Banoen-Garde
 
 1 - add a form of user control
 2 - add new class and objects
-3- add at least two endings
+3 - add at least two endings
+
+Juggling with "true" identity
 **************************************************/
 
-// setup()
-//
+let = palmsImg;
+
 // Description of setup() goes here.
 function setup() {
- createCanvas(800,800);
+ createCanvas(900,900);
+}
+
+function preload() {
+  palmsImg loadImage(assets/images/palms.png);
 }
 
 // draw()
