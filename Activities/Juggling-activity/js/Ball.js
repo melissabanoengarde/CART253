@@ -43,6 +43,12 @@ class Ball {
         this.y - this.size/2 < paddle.y + paddle.height/2) {   // it's the same for paddle since rectMode is CENTERed. paddle.y is center of the paddle, -paddle.height/2 is top half of paddle
 
       // BOUNCE
+      let dx = this.x - paddle.x; // how far away it was from the CENTER
+      this.vx = this.vx + map(dx, -paddle.width/2, paddle.width/2, -1, 1);
+
+
+
+      //changing y
       this.vy = -this.vy;
       this.ay = 0;
     }
@@ -51,7 +57,7 @@ class Ball {
       this.vy = -this.vy; //reverse the velocity
       this.ay = 0; //BOUNCE effect
     } */
-  } 
+  }
 
   display() {
     push();
