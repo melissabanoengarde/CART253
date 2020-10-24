@@ -51,7 +51,7 @@ class Ball {
       this.vy = -this.vy; //reverse the velocity
       this.ay = 0; //BOUNCE effect
     } */
-  }
+  } 
 
   display() {
     push();
