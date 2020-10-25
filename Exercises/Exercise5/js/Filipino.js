@@ -1,6 +1,6 @@
-class Flag {
+class Filipino {
 
-  constructor(x, y, flagImgs) {
+  constructor(x, y, filipinoFlag) {
     this.x = x;
     this.y = y;
     this.vx = 0;
@@ -9,7 +9,7 @@ class Flag {
     this.ay = 0;
     this.maxSpeed = 10;
     this.size = 50;
-    this.img = flagImgs;
+    this.img = filipinoFlag;
     this.active = true;
   }
 

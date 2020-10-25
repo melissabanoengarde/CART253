@@ -13,26 +13,29 @@ Juggling with "true" identity
 
 // Variables to store our entities
 let palm;
-let flags = [];
+let canadianFlags = [];
+let filipinoFlags = [];
 
 // Variables to store images
 let palmsImg;
-let flagImgs;
+let canadianFlag;
+let filipinoFlag;
 
 //Declaring gravity Variable
 let gravityForce = 0.0025;
 
-// Variable to store the flags we'll display
-let displayFlags;
-let numFlags = 30;
+// Variable to store the canadianFlags we'll display
+let numCanadianFlags = 30;
+let numFilipinoFlags = 30;
 
-let state = title;
+// let state = title;
 /*------------------------------------------------------------*/
 
 // Preloading png's
 function preload() {
   palmsImg = loadImage('assets/images/palms.png');
-  flagImgs = loadImage('assets/images/canadian.png');
+  canadianFlag = loadImage('assets/images/canadian.png');
+  filipinoFlag = loadImage('assets/images/filipino.png');
 }
 
 
@@ -42,14 +45,23 @@ function setup() {
 
  palm = new Palms(200, 240, palmsImg);
 
- // for-loop for numFlags; allows many to appear
- for (let i = 0; i < numFlags; i++) {
+ // for-loop for numCanadiancanadianFlags; allows many to appear
+ for (let i = 0; i < numCanadianFlags; i++) {
    let x = random(0, width);
    let y = random(-500, -200);
 
-   let flag = new Flag(x, y, flagImgs);
-   flags.push(flag);
+   let canadian = new Canadian(x, y, canadianFlag);
+   canadianFlags.push(canadian);
   }
+
+// for-loop for numFilipinoFlags
+  for (let i = 0; i < numFilipinoFlags; i++) {
+    let x = random(0, width);
+    let y = random(-500, -200);
+
+    let filipino = new Filipino(x, y, filipinoFlag);
+    filipinoFlags.push(filipino);
+   }
 }
 
 // Description of draw() goes here.
@@ -60,14 +72,30 @@ function draw() {
   palm.move();
   palm.display();
 
-  // for-loop that counts from 0 up to flags.legth
-  for (let i = 0; i < flags.length; i++) {
-    let flag = flags[i];
-    if (flag.active) {
-      flag.gravity(gravityForce);
-      flag.move();
-      flag.bounce(palm);
-      flag.display();
+
+// for-loop that counts from 0 up to canadianFlags.legth
+  /* CANDIAN */
+  for (let i = 0; i < canadianFlags.length; i++) {
+    let canadianFlag = canadianFlags[i];
+    if (canadianFlag.active) {
+      canadianFlag.gravity(gravityForce);
+      canadianFlag.move();
+      canadianFlag.bounce(palm);
+      canadianFlag.display();
     }
   }
+
+  /* FILIPINO */
+  for (let i = 0; i < filipinoFlags.length; i++) {
+    let filipinoFlag = filipinoFlags[i];
+    if (filipinoFlag.active) {
+      filipinoFlag.gravity(gravityForce);
+      filipinoFlag.move();
+      filipinoFlag.bounce(palm);
+      filipinoFlag.display();
+    }
+  }
+
+  /* QUEBECOIS */
+
 }
