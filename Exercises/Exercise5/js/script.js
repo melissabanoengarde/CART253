@@ -1,4 +1,4 @@
-// "use strict";
+"use strict";
 
 /**************************************************
 Exercise 05: Juggle Garden
