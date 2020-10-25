@@ -15,18 +15,21 @@ Juggling with "true" identity
 let palm;
 let canadianFlags = [];
 let filipinoFlags = [];
+let quebecoisFlags = [];
 
 // Variables to store images
 let palmsImg;
 let canadianFlag;
 let filipinoFlag;
+let quebecoisFlag;
 
 //Declaring gravity Variable
 let gravityForce = 0.0025;
 
-// Variable to store the canadianFlags we'll display
+// Variable to store the flags displayed
 let numCanadianFlags = 30;
 let numFilipinoFlags = 30;
+let numQuebecFlags = 30;
 
 // let state = title;
 /*------------------------------------------------------------*/
@@ -36,6 +39,7 @@ function preload() {
   palmsImg = loadImage('assets/images/palms.png');
   canadianFlag = loadImage('assets/images/canadian.png');
   filipinoFlag = loadImage('assets/images/filipino.png');
+  quebecoisFlag = loadImage('assets/images/quebecois.png');
 }
 
 
@@ -48,7 +52,7 @@ function setup() {
  // for-loop for numCanadiancanadianFlags; allows many to appear
  for (let i = 0; i < numCanadianFlags; i++) {
    let x = random(0, width);
-   let y = random(-500, -200);
+   let y = random(-600, -200);
 
    let canadian = new Canadian(x, y, canadianFlag);
    canadianFlags.push(canadian);
@@ -57,16 +61,25 @@ function setup() {
 // for-loop for numFilipinoFlags
   for (let i = 0; i < numFilipinoFlags; i++) {
     let x = random(0, width);
-    let y = random(-500, -200);
+    let y = random(-600, -200);
 
     let filipino = new Filipino(x, y, filipinoFlag);
     filipinoFlags.push(filipino);
    }
+
+  // for-loop for numQuebecFlags
+   for (let i = 0; i < numQuebecFlags; i++) {
+     let x = random(0, width);
+     let y = random(-600, -200);
+
+     let quebecois = new Quebecois(x, y, quebecoisFlag);
+     quebecoisFlags.push(quebecois);
+    }
 }
 
 // Description of draw() goes here.
 function draw() {
-  background(250, 255, 176);
+  background(255);
 
   // calling Palms.js's methods
   palm.move();
@@ -97,5 +110,14 @@ function draw() {
   }
 
   /* QUEBECOIS */
+  for (let i = 0; i < quebecoisFlags.length; i++) {
+    let quebecoisFlag = quebecoisFlags[i];
+    if (quebecoisFlag.active) {
+      quebecoisFlag.gravity(gravityForce);
+      quebecoisFlag.move();
+      quebecoisFlag.bounce(palm);
+      quebecoisFlag.display();
+    }
+  }
 
 }

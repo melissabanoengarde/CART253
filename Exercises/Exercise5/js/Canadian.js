@@ -40,7 +40,7 @@ class Canadian {
 
     // BOUNCE
     let dx = this.x - palm.x; // how far away it was from the CENTER
-    this.vx = this.vx + map(dx, -palm.width/2, palm.width/2, -1, 1);
+    this.vx = this.vx + map(dx, -palm.width/2, palm.width/2, -0.5, 0.5);
 
     //changing y movement
     this.vy = -this.vy;
