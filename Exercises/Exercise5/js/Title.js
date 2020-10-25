@@ -8,8 +8,8 @@ class Title extends State {
   }
 
   draw() {
+    background(255);
     super.draw();
-
     this.displayTitle();
   }
 
@@ -25,5 +25,4 @@ class Title extends State {
     super.mousePressed();
     currentState = new Animation();
   }
-
 }

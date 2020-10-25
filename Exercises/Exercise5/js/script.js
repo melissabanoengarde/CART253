@@ -37,7 +37,9 @@ let numQuebecFlags = 30;
 // Description of setup() goes here.
 function setup() {
  createCanvas(1100,900);
+
  currentState = new Title();
+ 
  // Text settings
   textSize(32);
   textAlign(CENTER, CENTER);
