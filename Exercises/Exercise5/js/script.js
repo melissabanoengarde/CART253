@@ -11,15 +11,27 @@ Melissa Banoen-Garde
 Juggling with "true" identity
 **************************************************/
 
-/* Variables to store our entities
-let = palm; */
+// Variables to store our entities
+let palm;
+let flags = [];
 
 // Variables to store images
-let = palmsImg;
+let palmsImg;
+let flagImgs;
+
+//Declaring gravity Variable
+let gravityForce = 0.0025;
+
+// Variable to store the flags we'll display
+let displayFlags;
+let numFlags = 30;
+
+/*------------------------------------------------------------*/
 
 // Preloading png's
 function preload() {
   palmsImg = loadImage('assets/images/palms.png');
+  flagImgs = loadImage('assets/images/flag-0.png');
 }
 
 
@@ -29,7 +41,16 @@ function setup() {
 
  palm = new Palms(200, 240, palmsImg);
 
+ // for-loop for numFlags; allows many to appear
+ for (let i = 0; i < numFlags; i++) {
+   let x = random(0, width);
+   let y = random(-500, -200);
+
+   let flag = new Flag(x, y, flagImgs);
+   flags.push(flag);
+  }
 }
+
 
 // Description of draw() goes here.
 function draw() {
@@ -39,4 +60,14 @@ function draw() {
   palm.move();
   palm.display();
 
+  // for-loop that counts from 0 up to flags.legth
+  for (let i = 0; i < flags.length; i++) {
+    let flag = flags[i];
+    if (flag.active) {
+      flag.gravity(gravityForce);
+      flag.move();
+      flag.bounce(palm);
+      flag.display();
+    }
+  }
 }
