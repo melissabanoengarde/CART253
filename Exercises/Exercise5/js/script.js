@@ -73,7 +73,7 @@ function setup() {
      let y = random(-600, -200);
 
      let quebecois = new Quebecois(x, y, quebecoisFlag);
-     quebecoisFlags.push(quebecois);
+     quebecoisFlags.push(quebecois); 
     }
 }
 
