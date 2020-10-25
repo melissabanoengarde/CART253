@@ -26,12 +26,13 @@ let gravityForce = 0.0025;
 let displayFlags;
 let numFlags = 30;
 
+let state = title;
 /*------------------------------------------------------------*/
 
 // Preloading png's
 function preload() {
   palmsImg = loadImage('assets/images/palms.png');
-  flagImgs = loadImage('assets/images/flag-0.png');
+  flagImgs = loadImage('assets/images/canadian.png');
 }
 
 
@@ -50,7 +51,6 @@ function setup() {
    flags.push(flag);
   }
 }
-
 
 // Description of draw() goes here.
 function draw() {
