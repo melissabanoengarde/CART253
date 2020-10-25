@@ -3,7 +3,7 @@ class Palms {
   constructor(w, h, palmsImg) {
     this.width = w;
     this.height = h;
-    this.x = 0;
+    this.x = 550;
     this.y = (height + 25) - this.height/2;
     this.img = palmsImg;
   }

@@ -11,6 +11,8 @@ Melissa Banoen-Garde
 Juggling with "true" identity
 **************************************************/
 
+// let currentState;
+
 // Variables to store our entities
 let palm;
 let canadianFlags = [];
@@ -31,7 +33,6 @@ let numCanadianFlags = 30;
 let numFilipinoFlags = 30;
 let numQuebecFlags = 30;
 
-// let state = title;
 /*------------------------------------------------------------*/
 
 // Preloading png's
@@ -47,7 +48,12 @@ function preload() {
 function setup() {
  createCanvas(1100,900);
 
- palm = new Palms(200, 240, palmsImg);
+ // currentState = new Title();
+ // // Text settings
+ //  textSize(32);
+ //  textAlign(CENTER, CENTER);
+
+ palm = new Palms(150, 180, palmsImg);
 
  // for-loop for numCanadiancanadianFlags; allows many to appear
  for (let i = 0; i < numCanadianFlags; i++) {
@@ -73,13 +79,15 @@ function setup() {
      let y = random(-600, -200);
 
      let quebecois = new Quebecois(x, y, quebecoisFlag);
-     quebecoisFlags.push(quebecois); 
+     quebecoisFlags.push(quebecois);
     }
 }
 
 // Description of draw() goes here.
 function draw() {
   background(255);
+
+  // currentState.draw();
 
   // calling Palms.js's methods
   palm.move();
@@ -119,5 +127,8 @@ function draw() {
       quebecoisFlag.display();
     }
   }
-
 }
+
+// function mousePressed() {
+//    currentState.keyPressed();
+// }
