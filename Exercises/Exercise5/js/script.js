@@ -39,10 +39,7 @@ function setup() {
  createCanvas(1100,900);
 
  currentState = new Title();
- 
- // Text settings
-  textSize(32);
-  textAlign(CENTER, CENTER);
+
 }
 
 // Description of draw() goes here.
