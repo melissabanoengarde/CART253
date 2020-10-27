@@ -17,7 +17,7 @@ class FilipinoIdentityEnding extends State {
     textAlign(CENTER, CENTER);
     textSize(40);
     text(this.textString, width/2, height /2);
-    pop(); 
+    pop();
   }
 
 }
