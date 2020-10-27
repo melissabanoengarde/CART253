@@ -24,7 +24,7 @@
         filipinoFlags.push(filipino);
        }
 
-      // for-loop for numQuebecFlags
+    // for-loop for numQuebecFlags
        for (let i = 0; i < numQuebecFlags; i++) {
          let x = random(0, width);
          let y = random(-600, -200);
@@ -33,6 +33,8 @@
          quebecoisFlags.push(quebecois);
         }
       }
+
+
 
   // Calling all png's
   preload() {
@@ -62,6 +64,13 @@
          canadianFlag.bounce(palm);
          canadianFlag.display();
        }
+
+       // removing canadian flags from the array with splice()
+       if (canadianFlag.y > height) {
+         this.canadianFlags.splice(i, 1);
+         // breaks them out of the for-loop after it goes off screen
+         break;
+         }
      }
 
      /* FILIPINO */
@@ -73,6 +82,13 @@
          filipinoFlag.bounce(palm);
          filipinoFlag.display();
        }
+
+       // removing filipino flags from the array with splice()
+       if (filipinoFlag.y > height) {
+         this.filipinoFlags.splice(i, 1);
+         // breaks them out of the for-loop after it goes off screen
+         break;
+         }
      }
 
      /* QUEBECOIS */
@@ -84,6 +100,13 @@
          quebecoisFlag.bounce(palm);
          quebecoisFlag.display();
        }
+
+       // removing quebecois flags from the array with splice()
+       if (quebecoisFlag.y > height) {
+         this.quebecoisFlags.splice(i, 1);
+         // breaks them out of the for-loop after it goes off screen
+         break;
+         }
      }
    }
 // don't need mousePressed here

@@ -30,6 +30,10 @@ class Filipino {
     if (this.y - this.size / 2 > height) {
       this.active = false;
     }
+
+    // if (this.active = true) {
+    //   currentState = new filipinoIdentityEnding();
+    // }
   }
 
   bounce(palm) {
