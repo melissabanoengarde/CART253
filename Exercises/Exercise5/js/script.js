@@ -34,9 +34,19 @@ let numCanadianFlags = 30;
 let numFilipinoFlags = 30;
 let numQuebecFlags = 30;
 
+
+// Preloading png's
+function preload() {
+  palmsImg = loadImage('assets/images/palms.png');
+  canadianFlag = loadImage('assets/images/canadian.png');
+  filipinoFlag = loadImage('assets/images/filipino.png');
+  quebecoisFlag = loadImage('assets/images/quebecois.png');
+}
+
+
 // Description of setup() goes here.
 function setup() {
- createCanvas(1100,900);
+ createCanvas(1100, 900);
 
  currentState = new Title();
 

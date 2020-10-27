@@ -34,19 +34,18 @@
         }
       }
 
-    // Preloading png's
+    // Calling all png's
     preload() {
       super.preload();
-      palmsImg = loadImage('assets/images/palms.png');
-      canadianFlag = loadImage('assets/images/canadian.png');
-      filipinoFlag = loadImage('assets/images/filipino.png');
-      quebecoisFlag = loadImage('assets/images/quebecois.png');
+      this.palm.preload();
+      this.canadianFlags.preload();
+      this.filipinoFlags.preload();
+      this.quebecoisFlags.preload();
     }
 
 
    draw() {
      super.draw();
-
      background(255);
 
      // calling Palms.js's methods
