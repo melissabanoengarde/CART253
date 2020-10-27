@@ -4,11 +4,11 @@
 Exercise 05: Juggle Garden
 Melissa Banoen-Garde
 
-1 - add a form of user control
-2 - add new class and objects
-3 - add at least two endings
-
-Juggling with "true" identity
+Juggling with "true" identity. The user juggles between
+three identities; canadian, filipino, and quebecois.
+Whichever flag is last to bounce determines the user's
+true identity. Because it's *that* easy!
+(just a projection of a looming thought i grapple with)
 **************************************************/
 
 // variable storing currently active state object (begins empty)

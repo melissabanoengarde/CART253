@@ -2,7 +2,7 @@ class CanadianIdentityEnding extends State {
 
   constructor() {
     super();
-    this.textString = `You are canadian at heart. It's that easy, right?`
+    this.textString = `You are canadian at heart! \n It's that easy, right?`
   }
 
   draw() {

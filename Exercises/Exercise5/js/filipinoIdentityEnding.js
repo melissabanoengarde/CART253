@@ -2,7 +2,7 @@ class FilipinoIdentityEnding extends State {
 
   constructor() {
     super();
-    this.textString = `You are filipino at heart. It's that easy, right?`
+    this.textString = `You are filipino at heart! \n It's that easy, right?`
   }
 
   draw() {
