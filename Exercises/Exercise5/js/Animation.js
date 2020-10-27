@@ -34,14 +34,14 @@
         }
       }
 
-    // Calling all png's
-    preload() {
-      super.preload();
-      this.palm.preload();
-      this.canadianFlags.preload();
-      this.filipinoFlags.preload();
-      this.quebecoisFlags.preload();
-    }
+  // Calling all png's
+  preload() {
+    super.preload();
+    this.palm.preload();
+    this.canadianFlags.preload();
+    this.filipinoFlags.preload();
+    this.quebecoisFlags.preload();
+  }
 
 
    draw() {

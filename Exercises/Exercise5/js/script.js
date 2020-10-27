@@ -13,6 +13,7 @@ Juggling with "true" identity
 
 // variable storing currently active state object (begins empty)
 let currentState;
+// let timer;
 
 // Variables to store our entities
 let palm;
