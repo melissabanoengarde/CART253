@@ -1,4 +1,4 @@
-class FilipinoIdentityEnding extends State {
+class Filipin0IdentityEnding extends State {
 
   constructor() {
     super();

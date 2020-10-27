@@ -114,11 +114,11 @@
    }
 
    checkEnding() {
-     //if statements to determine which ending the animation is directed to 
+     //if statements to determine which ending the animation is directed to
      if (canadianFlags.length > 0 && filipinoFlags.length < 1 && quebecoisFlags.length < 1) {
        currentState = new CanadianIdentityEnding();
      } else if (filipinoFlags.length > 0 && canadianFlags.length < 1 && quebecoisFlags.length < 1) {
-       currentState = new FilipinoIdentityEnding();
+       currentState = new Filipin0IdentityEnding();
      } else if (quebecoisFlags.length > 0 && filipinoFlags.length < 1 && canadianFlags.length < 1) {
        currentState = new QuebecoisIdentityEnding();
      }
