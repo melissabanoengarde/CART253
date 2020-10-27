@@ -118,7 +118,7 @@
      if (canadianFlags.length > 0 && filipinoFlags.length < 1 && quebecoisFlags.length < 1) {
        currentState = new CanadianIdentityEnding();
      } else if (filipinoFlags.length > 0 && canadianFlags.length < 1 && quebecoisFlags.length < 1) {
-       currentState = new Filipin0IdentityEnding();
+       currentState = new Filipin0IdentityEnding(); 
      } else if (quebecoisFlags.length > 0 && filipinoFlags.length < 1 && canadianFlags.length < 1) {
        currentState = new QuebecoisIdentityEnding();
      }
