@@ -7,7 +7,7 @@ class FilipinoIdentityEnding extends State {
 
   draw() {
     super.draw();
-    this.display();
+    this.display(); 
   }
 
   // What's displayed if this were the ending

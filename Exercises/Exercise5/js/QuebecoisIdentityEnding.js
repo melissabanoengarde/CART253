@@ -13,7 +13,7 @@ class QuebecoisIdentityEnding extends State {
   // What's displayed if this were the ending
   display() {
     push();
-    fill(0);
+    fill(0); 
     textAlign(CENTER, CENTER);
     textSize(40);
     text(this.textString, width/2, height /2);
