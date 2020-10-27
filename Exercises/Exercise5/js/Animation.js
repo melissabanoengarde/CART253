@@ -67,7 +67,7 @@
 
        // removing canadian flags from the array with splice()
        if (canadianFlag.y > height) {
-         this.canadianFlags.splice(i, 1);
+         canadianFlags.splice(i, 1);
          // breaks them out of the for-loop after it goes off screen
          break;
          }
@@ -85,10 +85,12 @@
 
        // removing filipino flags from the array with splice()
        if (filipinoFlag.y > height) {
-         this.filipinoFlags.splice(i, 1);
+         filipinoFlags.splice(i, 1);
          // breaks them out of the for-loop after it goes off screen
          break;
          }
+
+
      }
 
      /* QUEBECOIS */
@@ -103,11 +105,19 @@
 
        // removing quebecois flags from the array with splice()
        if (quebecoisFlag.y > height) {
-         this.quebecoisFlags.splice(i, 1);
+         quebecoisFlags.splice(i, 1);
          // breaks them out of the for-loop after it goes off screen
          break;
          }
      }
+     // Checks which ending user will go to
+     this.checkEnding();
    }
+
+   checkEnding() {
+     //if statements
+
+   }
+
 // don't need mousePressed here
  }

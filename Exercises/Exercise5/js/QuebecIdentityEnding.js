@@ -1,8 +1,8 @@
-class FilipinoIdentityEnding extends State {
+class QuebecoisIdentityEnding {
 
   constructor() {
     super();
-    this.textString = `You are filipino at heart. It's that easy, right?`
+    this.textString = `You are quebecois at heart. It's that easy, right?`
   }
 
   draw() {
@@ -19,5 +19,4 @@ class FilipinoIdentityEnding extends State {
     text(this.textString, width/2, height /2);
     pop();
   }
-
 }
