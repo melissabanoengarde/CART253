@@ -4,7 +4,7 @@ class Title extends State {
     super();
 
     this.titleString = `Juggling with *True* Identity`;
-    this.h2 = `Because' it's that simple!`
+    this.h2 = `Because it's that simple!`
     this.instruction = `[ Click anywhere to begin ]`
   }
 
