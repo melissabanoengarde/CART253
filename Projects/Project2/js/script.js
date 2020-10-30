@@ -10,10 +10,6 @@ Here is a description of this template p5 project.
 let myFont;
 let myFont2;
 
-let pano1;
-let pano2;
-let pano3;
-let pano4;
 let fullpic;
 
 
@@ -23,17 +19,13 @@ let state = `title`;
 function preload() {
   myFont = loadFont('assets/fonts/Baybayin_Mod.ttf');
   myFont2 = loadFont('assets/fonts/Leiko-Regular.otf');
-  pano1 = loadImage('assets/images/1pano.png');
-  pano2 = loadImage('assets/images/2pano.png');
-  pano3 = loadImage('assets/images/pano3.png');
-  pano4 = loadImage('assets/images/4pano.png');
   fullpic = loadImage('assets/images/fullpic.jpg');
 
 }
 
 // Description of setup() goes here.
 function setup() {
-  createCanvas(windowWidth, windowHeight, WEBGL); /* 2000, 1200*/
+  createCanvas(windowWidth, windowHeight, WEBGL);
 }
 
 
@@ -103,15 +95,6 @@ function title() {
 }
 
 function simulation() {
-  // push();
-  // // rotateX(mouseX - 10);
-  // rotateZ(frameCount * 0.01);
-  // textFont(myFont);
-  // fill(255,0,0,70);
-  // textSize(200);
-  // textAlign(CENTER, CENTER);
-  // text(`Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`, -1300, -1750, 3000,3000);
-  // pop();
 
   // sphere
   push();
@@ -131,10 +114,11 @@ function simulation() {
   box(100,100,100);
   pop();
 
-  // enviro
+  // interactive environment
   push();
   noStroke();
-  rotateY(-mouseX);
+  // rotateY(mouseX * 0.003);
+  rotateY(frameCount * 0.003);
   texture(fullpic);
   sphere(width/2,100,300);
   pop();
