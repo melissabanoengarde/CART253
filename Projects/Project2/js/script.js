@@ -9,11 +9,7 @@ Here is a description of this template p5 project.
 
 let myFont;
 let myFont2;
-let fontColor = {
-  r:0,
-  g:0,
-  b:0
-};
+
 
 let state = `title`;
 
@@ -95,27 +91,44 @@ function title() {
 }
 
 function simulation() {
-  push();
-  rotateX(frameCount * -0.009);
-  // rotateY(frameCount * -0.01);
-  fill(255,0,0,80);
-  textFont(myFont);
-  textSize(180);
-  textAlign(CENTER, CENTER);
-  text(`Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.b`, -1300, 0, 3000,3000);
-  pop();
+  // push();
+  // // rotateX(mouseX - 10);
+  // rotateZ(frameCount * 0.01);
+  // textFont(myFont);
+  // fill(255,0,0,70);
+  // textSize(200);
+  // textAlign(CENTER, CENTER);
+  // text(`Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`, -1300, -1750, 3000,3000);
+  // pop();
 
+  // sphere
   push();
   stroke(255,0,0);
   noFill();
   rotateY(frameCount * 0.01);
-  sphere(400);
+  rotateZ(frameCount * 0.005);
+  sphere(300,20,10);
   pop();
 
+  // cube
   push();
-
+  // translate(-100,0);
+  stroke(0,0,255);
+  noFill();
+  rotateX(frameCount * 0.01);
+  rotateZ(frameCount * 0.005);
+  box(100,100,100);
   pop();
 
+  // cube
+  push();
+  // translate(-100,0);
+  stroke(0,0,255);
+  noFill();
+  rotateX(frameCount * -0.01);
+  rotateZ(frameCount * -0.005);
+  box(800,800,800);
+  pop();
 }
 
 
@@ -137,5 +150,7 @@ to set light, think of the world's coordinates
 //                |            |
 // -width/2,height/2--------width/2,height/2
 source: https://p5js.org/reference/#/p5/pointLight
+
+rainforest img source: https://i.redd.it/afjau4hzzsv51.jpg
 
 */
