@@ -10,6 +10,12 @@ Here is a description of this template p5 project.
 let myFont;
 let myFont2;
 
+let pano1;
+let pano2;
+let pano3;
+let pano4;
+let fullpic;
+
 
 let state = `title`;
 
@@ -17,6 +23,12 @@ let state = `title`;
 function preload() {
   myFont = loadFont('assets/fonts/Baybayin_Mod.ttf');
   myFont2 = loadFont('assets/fonts/Leiko-Regular.otf');
+  pano1 = loadImage('assets/images/1pano.png');
+  pano2 = loadImage('assets/images/2pano.png');
+  pano3 = loadImage('assets/images/pano3.png');
+  pano4 = loadImage('assets/images/4pano.png');
+  fullpic = loadImage('assets/images/fullpic.jpg');
+
 }
 
 // Description of setup() goes here.
@@ -103,7 +115,7 @@ function simulation() {
 
   // sphere
   push();
-  stroke(255,0,0);
+  stroke(255);
   noFill();
   rotateY(frameCount * 0.01);
   rotateZ(frameCount * 0.005);
@@ -112,22 +124,19 @@ function simulation() {
 
   // cube
   push();
-  // translate(-100,0);
-  stroke(0,0,255);
+  stroke(255);
   noFill();
   rotateX(frameCount * 0.01);
   rotateZ(frameCount * 0.005);
   box(100,100,100);
   pop();
 
-  // cube
+  // enviro
   push();
-  // translate(-100,0);
-  stroke(0,0,255);
-  noFill();
-  rotateX(frameCount * -0.01);
-  rotateZ(frameCount * -0.005);
-  box(800,800,800);
+  noStroke();
+  rotateY(-mouseX);
+  texture(fullpic);
+  sphere(width/2,100,300);
   pop();
 }
 
