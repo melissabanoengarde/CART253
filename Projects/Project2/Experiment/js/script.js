@@ -9,39 +9,53 @@ draw with accuracy
 **************************************************/
 
 //Texture images of respective planets
-let neptuneImg;
-let earthImg;
+// let neptuneImg;
+// let earthImg;
 
 // A preload of all elements in the simulation (img, sound, font)
-function preload() {
-  neptuneImg = loadImage('assets/images/neptune.jpg');
-  earthImg = loadImage('assets/images/earth.jpg');
-}
+// function preload() {
+//   neptuneImg = loadImage('assets/images/neptune.jpg');
+//   earthImg = loadImage('assets/images/earth.jpg');
+// }
 
 // Description of setup() goes here.
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
-  angleMode(DEGREES);
 }
 
 
 // Description of draw() goes here.
 function draw() {
   background(20);
-  noStroke();
-  orbitControl(); // allows user to drag the screen
+  // orbitControl(); // allows user to drag the screen
+  noFill();
+  strokeWeight(0.5);
+  translate(0,0,0);
+  angleMode(DEGREES);
+  rotateY(frameCount * 0.2);
 
-// neptune
-rotateY(frameCount/2);
-translate(0,0, 0);
-sphere(100,100,100);
-texture(neptuneImg);
 
-// earth
-translate(400, 0, 0);
-rotateY(frameCount * 6);
-sphere(70,70,70);
-texture(earthImg);
+  // sun  (yellow)
+  stroke(255,255,0);
+  sphere(100);
+                                // texture(neptuneImg);
+
+  // earth (green)
+  translate(500, 0, 0);
+  push();
+  rotateY(frameCount * 1);
+  // rotateY(frameCount * 0.05);
+  stroke(0,255,0);
+  sphere(50);
+  pop();
+                                // texture(earthImg);
+
+  // neptune (blue)
+  translate(0,-200,600);
+  rotateY(frameCount *0.01);
+  stroke(0,0,255);
+  sphere(90);
+  // venus (red)
 
 
 
