@@ -18,16 +18,18 @@ class Planet {
 
     this.angle = this.angle + this.speed;       // planets' motion
 
-    rotateY(frameCount * this.rSpeed);       // planet's rotation
+    rotateZ(frameCount * this.rSpeed);       // planet's rotation
   }
 
-  // The planets' appearance 
+  // The planets' appearance
   display() {
     push();
-    noFill();
+    fill(0,255,0, 5);
+    rotateX(1.5);
     stroke(0,255,0);
-    strokeWeight(0.5);
+    strokeWeight(0.1);
     sphere(this.diameter);
+    // texture('assets/images/sun1.gif');
     pop();
   }
 
