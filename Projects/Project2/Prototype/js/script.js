@@ -4,7 +4,8 @@
 Solar System Simulation
 Melissa Banoen-Garde
 
-Prototype of project 2
+This is the prototype of an interactive simulation
+of the solar system for my final project.
 **************************************************/
 
 // Variable for each planet
@@ -63,7 +64,7 @@ function setup() {
 function draw() {
   background(20);
   // camera(0,0,500,0,0,0,0,0,0,0);
-  // orbitControl(1, 1, 0.05);
+  orbitControl(1, 1, 0.05);
 
   // for loop to call Star.js' method and go through each star
   // for (let s = 0; s < stars.length; s++) {

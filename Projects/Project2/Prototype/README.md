@@ -1,3 +1,5 @@
-# Template p5 project
-
-This is the README file for the entire project. For more official projects you should write information here about the nature of the project, your name, any special explanations of how the project works, etc.
+# Prototype
+- Final Project: Interactive Solar System
+- This is the prototype for my final project
+- Melissa Banoen-Garde
+- CART-253 B
