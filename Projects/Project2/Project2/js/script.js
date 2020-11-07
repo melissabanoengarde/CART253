@@ -13,7 +13,7 @@ Ideas I plan to include if time and knowledge permits...
 3) Once enough stars have been accummulated, a 'you've unlocked ____' sound
    (and maybe notification box?) is triggered to appear on screen.
 5) User must avoid asteroids or they may lose a portion of the stars they've collected.
-   Will figure out how to incorporate this. 
+   Will figure out how to incorporate this.
 4) User can move around the simulation in a spaceship. Spaceship's sprite is
    still to be determined. Stars' appearance as well but but for now I'm thinking they'll
    appear as mini spheres with different colors referring to its respective planet.
@@ -31,8 +31,8 @@ let uranus;
 let neptune;
 
 // stars
-// let stars = [];
-// let numStars = 500;
+let stars = [];
+let numStars = 500;
 
 // sun image texture
 let sunImg;
@@ -47,9 +47,9 @@ function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
 
   // for loop to display the stars
-  // for (let s = 0; s < numStars; s++) {
-  //   stars[s] = new Star();
-  // }
+  for (let s = 0; s < numStars; s++) {
+    stars[s] = new Star();
+  }
 
 // OUR SOLAR SYSTEM
 // distance = planet's distance from sun
@@ -74,14 +74,14 @@ function setup() {
 // Description of draw() goes here.
 function draw() {
   background(20);
-  // camera(0,0,500,0,0,0,0,0,0,0);
-  orbitControl(1, 1, 0.05);
+  camera(0, 0, (height/2) / tan(PI/6), 0, 0, 0, 0, 1, 0);
+  // orbitControl(1, 1, 0.05);
 
   // for loop to call Star.js' method and go through each star
-  // for (let s = 0; s < stars.length; s++) {
-  //   stars[s].move();
-  //   stars[s].display();
-  // }
+  for (let s = 0; s < stars.length; s++) {
+    stars[s].move();
+    stars[s].display();
+  }
 
   // P L A N E T S
   // sun
@@ -156,9 +156,17 @@ function draw() {
 
 
 
+
+
 /*
 NOTES:
 new camera([x], [y], [z], [centerX], [centerY], [centerZ], [upX], [upY], [upZ])
+
+camera(0, 0, (height/2) / tan(PI/6), 0, 0, 0, 0, 1, 0)  [default camera position]
+  from https://processing.org/tutorials/p3d/
+
+
+
 
 Planets
 Sun
