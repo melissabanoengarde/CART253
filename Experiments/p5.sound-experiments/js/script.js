@@ -8,6 +8,7 @@ Experimenting with p5.sound
 **************************************************/
 
 let oscillator;
+let angle = 0;
 
 // Description of setup() goes here.
 function setup() {
@@ -18,7 +19,7 @@ function setup() {
   oscillator = new p5.Oscillator(440, `sine`);
 
   // Amplitude
-  oscillator.amp(0.1);
+  oscillator.amp(0.2);
 }
 
 
@@ -26,16 +27,13 @@ function setup() {
 function draw() {
   background(0);
 
-  // Frenquency
-  let newFreq = map(mouseY, height, 0, 20, 20000);   // (20-20000 range of hearing frequency)
+  // as you increase the angle, it oscillates between -1 and 1
+  let sinAngle = sin(angle);
+  let newFreq = map(sinAngle, -1, 1, 30, 90);
   oscillator.freq(newFreq);
 
-  push();
-  textSize(32);
-  textAlign(LEFT, CENTER);
-  fill(255);
-  text(newFreq, 100, height/2) // displays current frequency 
-  pop();
+  // changes the angle which will change the OUTPUT of the sine function [sin(angle)] which will change which frequency will pop out of the map [map(sinAngle, -1, 1, 440, 880)]
+  angle = angle + 0.8;
 }
 
 
