@@ -28,12 +28,12 @@ function draw() {
   background(0);
 
   // as you increase the angle, it oscillates between -1 and 1
-  let sinAngle = sin(angle);
+  let sinAngle = tan(angle);
   let newFreq = map(sinAngle, -1, 1, 30, 90);
   oscillator.freq(newFreq);
 
   // changes the angle which will change the OUTPUT of the sine function [sin(angle)] which will change which frequency will pop out of the map [map(sinAngle, -1, 1, 440, 880)]
-  angle = angle + 0.8;
+  angle = angle + 1;
 }
 
 
