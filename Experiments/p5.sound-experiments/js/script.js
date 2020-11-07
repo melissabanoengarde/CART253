@@ -8,7 +8,7 @@ Experimenting with p5.sound
 **************************************************/
 
 let oscillator;
-let angle = 0;
+let t = 0;
 
 // Description of setup() goes here.
 function setup() {
@@ -16,7 +16,7 @@ function setup() {
   userStartAudio();
 
     // SYNTAX: new p5.Oscillator([freq], [type]), 440Hz is the default frequency & sine wave is usually the default
-  oscillator = new p5.Oscillator(440, `tan`);
+  oscillator = new p5.Oscillator(440, `sine`);
 
   // Amplitude
   oscillator.amp(0.2);
@@ -28,12 +28,11 @@ function draw() {
   background(0);
 
   // as you increase the angle, it oscillates between -1 and 1
-  let sinAngle = tan(angle);
-  let newFreq = map(sinAngle, -1, 1, 30, 90);
+  let noiseValue = noise(t);
+  let newFreq = map(noiseValue, 0, 1, 100, 300);
   oscillator.freq(newFreq);
 
-  // changes the angle which will change the OUTPUT of the sine function [sin(angle)] which will change which frequency will pop out of the map [map(sinAngle, -1, 1, 440, 880)]
-  angle = angle + 0.5;
+  t = t + 0.5;
 }
 
 
