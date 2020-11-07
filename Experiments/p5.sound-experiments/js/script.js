@@ -9,7 +9,8 @@ Experimenting with p5.sound
 
 let synth;
 // Notes array which is our scale
-let notes = [`F4`, `G4`, `Ab4`, `Bb4`, `C4`, `Db`, `Eb4`, `F5`]; // F-minor scale
+let notes = [`F2`, `G2`, `F2`, `C3`, `C3`, `F2`, `Eb3`, `C3`]; // F-minor scale
+let currentNote = 0;
 
 // Description of setup() goes here.
 function setup() {
@@ -28,14 +29,22 @@ function draw() {
 
 function keyPressed() {
  // allows you to call a number every milli seconds
- setInterval(playRandomNote, 500);  // SYNTAX: setInterval(function, milliseconds)
+ setInterval(playRandomNote, 150);  // SYNTAX: setInterval(function, milliseconds)
           // ^ you only need to tell it the name of the function to call
 }
 
+
 function playRandomNote() {
-  let randomNote = random(notes);
-  synth.play(randomNote, 0.2, 0, 1);
+  let note = notes[currentNote];
+  synth.play(note, 1, 0, 0.1);
      // play([note], [velocity], [secondsFromNow], [sustainTime])
+
+  currentNote = currentNote + 1;
+
+  // this RESTARTS the scale to the bottom again
+  if (currentNote === notes.length) {
+    currentNote = 0;
+  }
 }
 
 
