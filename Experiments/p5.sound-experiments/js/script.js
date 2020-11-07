@@ -7,48 +7,45 @@ Melissa Banoen-Garde
 Experimenting with p5.sound
 **************************************************/
 
-let oscillator;
-let t = 0;
+let synth;
+// Notes array which is our scale
+let notes = [`F4`, `G4`, `Ab4`, `Bb4`, `C4`, `Db`, `Eb4`, `F5`]; // F-minor scale
 
 // Description of setup() goes here.
 function setup() {
   createCanvas(600,600);
+
+  synth = new p5.PolySynth();
+
   userStartAudio();
-
-    // SYNTAX: new p5.Oscillator([freq], [type]), 440Hz is the default frequency & sine wave is usually the default
-  oscillator = new p5.Oscillator(440, `sine`);
-
-  // Amplitude
-  oscillator.amp(0.2);
 }
 
 
 // Description of draw() goes here.
 function draw() {
   background(0);
-
-  // as you increase the angle, it oscillates between -1 and 1
-  let noiseValue = noise(t);
-  let newFreq = map(noiseValue, 0, 1, 100, 300);
-  oscillator.freq(newFreq);
-
-  t = t + 0.5;
 }
 
-
-function mousePressed() {
-  oscillator.start();
+function keyPressed() {
+ // allows you to call a number every milli seconds
+ setInterval(playRandomNote, 500);  // SYNTAX: setInterval(function, milliseconds)
+          // ^ you only need to tell it the name of the function to call
 }
 
-function mouseReleased() {
-  oscillator.stop();
+function playRandomNote() {
+  let randomNote = random(notes);
+  synth.play(randomNote, 0.2, 0, 1);
+     // play([note], [velocity], [secondsFromNow], [sustainTime])
 }
 
 
 
 
 /*
-NOTES
-addCue(); – cues sound to play
-rate();
+SYNTAX:
+
+new p5.PolySynth([synthVoice], [maxVoices])
+
+play([note], [velocity], [secondsFromNow], [sustainTime])
+
 */
