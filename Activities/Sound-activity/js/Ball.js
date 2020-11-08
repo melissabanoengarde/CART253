@@ -43,11 +43,17 @@ class Ball {
     // what makes the balls bounce off left and right walls
     if (this.x - this.size / 2 < 0 || this.x + this.size / 2 > width) {
       this.vx = -this.vx;
+      this.playNote();  // ***we add "this." because we're inside a class. Even when calling a method inside a class. 
     }
     // what makes the ball bounce off top and bottom walls
     if (this.y - this.size / 2 < 0 || this.y + this.size / 2 > height) {
       this.vy = -this.vy;
+      this.playNote();
     }
+  }
+
+  playNote() {
+    this.synth.play(this.note, 0.2, 0, 0.3);
   }
 
   // display of each individual ball
