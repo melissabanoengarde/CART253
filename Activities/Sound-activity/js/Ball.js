@@ -1,6 +1,6 @@
 class Ball {
 
-  constructor(x, y) {
+  constructor(x, y, note) {
     this.x = x,
     this.y = y,
     this.size = 50;
@@ -19,6 +19,10 @@ class Ball {
     this.farFreq = 440;   // when it's far from the center of the canvas
     this.oscillator.amp(0.05);
     this.oscillator.start();  // Might as well start the oscillator in the constructor since we want it to start at the beginning
+
+    // Synth
+    this.note = note;
+    this.synth = new p5.PolySynth();
     }
 
 
@@ -30,7 +34,7 @@ class Ball {
     // Update frequency
     let d = dist(this.x, this.y, width/2, height/2); // How far away the ball is from the center
     let maxDist = dist(0,0,width/2,height/2); // range of distance
-    let newFreq = map(d, 0, maxDist, this.nearFreq, this.farFreq); // map which allows frequency to change depending on position of balls 
+    let newFreq = map(d, 0, maxDist, this.nearFreq, this.farFreq); // map which allows frequency to change depending on position of balls
     this.oscillator.freq(newFreq);
   }
 
