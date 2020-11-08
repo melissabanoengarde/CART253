@@ -1,10 +1,11 @@
 "use strict";
 
 /**************************************************
-Sound Activity
+Sound Activity: Musical Toy
 Melissa Banoen-Garde
 
-Here is a description of this template p5 project.
+Using oscillators to add sound to movement and using a
+synth to add sound to collision.
 **************************************************/
 
 // setup()
