@@ -11,7 +11,7 @@ synth to add sound to collision.
 // The balls
 let balls = [];
 // F-minor
-let notes = [`F3`, `G3`, `Ab4`, `Bb4`, `C4`, `Db4`, `Eb4`, `F4`],
+let notes = [`F3`, `G3`, `Ab4`, `Bb4`, `C4`, `Db4`, `Eb4`, `F4`];
 
 // setup()
 //

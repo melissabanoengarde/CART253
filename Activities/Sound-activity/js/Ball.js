@@ -9,7 +9,7 @@ class Ball {
       g: random(200,255),
       b: random(200,255)
      };
-    this.speed = 3;
+    this.speed = 7;
     this.vx = random(-this.speed, this.speed); // can already do this because we've already defined the speed.
     this.vy = random(-this.speed, this.speed);
 
@@ -43,7 +43,7 @@ class Ball {
     // what makes the balls bounce off left and right walls
     if (this.x - this.size / 2 < 0 || this.x + this.size / 2 > width) {
       this.vx = -this.vx;
-      this.playNote();  // ***we add "this." because we're inside a class. Even when calling a method inside a class. 
+      this.playNote();  // ***we add "this." because we're inside a class. Even when calling a method inside a class.
     }
     // what makes the ball bounce off top and bottom walls
     if (this.y - this.size / 2 < 0 || this.y + this.size / 2 > height) {
@@ -53,7 +53,7 @@ class Ball {
   }
 
   playNote() {
-    this.synth.play(this.note, 0.2, 0, 0.3);
+    this.synth.play(this.note, 0.1, 0, 0.3);
   }
 
   // display of each individual ball
