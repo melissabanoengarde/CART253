@@ -26,6 +26,12 @@ class Ball {
   move() {
     this.x += this.vx;
     this.y += this.vy;
+
+    // Update frequency
+    let d = dist(this.x, this.y, width/2, height/2); // How far away the ball is from the center
+    let maxDist = dist(0,0,width/2,height/2); // range of distance
+    let newFreq = map(d, 0, maxDist, this.nearFreq, this.farFreq); // map which allows frequency to change depending on position of balls 
+    this.oscillator.freq(newFreq);
   }
 
   // what allows the balls to bounce off the edges of the canvas
