@@ -1,4 +1,4 @@
-class Mercury extends Planets {
+class Mercury extends Planet {
 
   constructor() {
 

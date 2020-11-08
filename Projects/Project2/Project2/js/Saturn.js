@@ -1,7 +1,7 @@
-class Saturn extends Planets {
+class Saturn extends Planet {
 
   constructor() {
 
   }
-  
+
 }

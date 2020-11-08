@@ -21,3 +21,7 @@ class Star {
   }
 
 }
+
+
+
+// when stars are collected https://pippinbarr.github.io/cart253-2020/topics/functions/intermediate-functions.html
