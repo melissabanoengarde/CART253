@@ -12,8 +12,15 @@ class Ball {
     this.speed = 3;
     this.vx = random(-this.speed, this.speed); // can already do this because we've already defined the speed.
     this.vy = random(-this.speed, this.speed);
+
+    // Oscillator
+    this.oscillator = new p5.Oscillator();
+    this.nearFreq = 220;  //when it's close to center of the canvas
+    this.farFreq = 440;   // when it's far from the center of the canvas
+    this.oscillator.amp(0.05);
+    this.oscillator.start();  // Might as well start the oscillator in the constructor since we want it to start at the beginning
     }
-  }
+
 
   // what allows the balls to move
   move() {
@@ -37,13 +44,12 @@ class Ball {
   display() {
     push();
     noStroke();
-    fill(this.fill.r, this.fill.g, this.fill.b);
+    fill(this.color.r, this.color.g, this.color.b);
     ellipse(this.x, this.y, this.size);
     pop();
   }
 
 }
-
 
 
 /*

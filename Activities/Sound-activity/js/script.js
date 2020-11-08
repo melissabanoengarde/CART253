@@ -16,6 +16,7 @@ let balls = [];
 // Creates the canvas
 function setup() {
  createCanvas(800, 800);
+ userStartAudio();
 }
 
 // draw()
@@ -36,7 +37,6 @@ function draw() {
 function mousePressed() {
   createBall(mouseX, mouseY);  // passes the values of current mouse position to creatBall (x, y)
 }
-
 
 function createBall(x, y) {
   // creating new ball object
