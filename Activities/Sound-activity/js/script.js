@@ -10,6 +10,8 @@ synth to add sound to collision.
 
 // The balls
 let balls = [];
+// F-minor
+let notes = [`F3`, `G3`, `Ab4`, `Bb4`, `C4`, `Db4`, `Eb4`, `F4`],
 
 // setup()
 //
@@ -39,8 +41,9 @@ function mousePressed() {
 }
 
 function createBall(x, y) {
+  let note = random(notes); // note parameters will be using random notes from notes' array
   // creating new ball object
-  let ball = new Ball(x ,y);
+  let ball = new Ball(x ,y, note);
   // adding ball in balls array
   balls.push(ball);
 }
