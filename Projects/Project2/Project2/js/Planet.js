@@ -2,11 +2,11 @@
 
 class Planet {
 
-  constructor() {
-    this.distance = 0;   // distance from the sun (center)
-    this.diameter = undefined;   // size of planet
-    this.speed = 0;         // motion speed
-    this.rSpeed = 0;       // rotation speed
+  constructor(distance, diameter, speed, rSpeed) {
+    this.distance = distance;   // distance from the sun (center)
+    this.diameter = diameter;   // size of planet
+    this.speed = speed;         // motion speed
+    this.rSpeed = rSpeed;       // rotation speed
     this.angle = 0;
   }
 
@@ -23,14 +23,15 @@ class Planet {
     pop();
   }
 
-  // The planets' appearance
+// The planets' appearance
   display() {
+    // This is defined in the planets' subclasses
     push();
     fill(0,255,0, 5);
     rotateX(1.5);
     stroke(0,255,0);
     strokeWeight(0.1);
-    // texture('assets/images/sun1.gif');
+    sphere(this.diameter);
     pop();
   }
 

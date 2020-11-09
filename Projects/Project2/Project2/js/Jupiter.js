@@ -2,8 +2,10 @@
 
 class Jupiter extends Planet {
 
-  constructor() {
+  constructor(distance, diameter, speed, rSpeed) {
 
-  }
+    super(distance, diameter, speed, rSpeed);
+
+    }
 
 }
