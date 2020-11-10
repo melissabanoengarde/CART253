@@ -7,7 +7,7 @@ class Star {
     this.vx = 0;
     this.vy = 0;
     this.speed = 0.15;
-    this.collected= false;
+    this.collected = false;
 
     this.fill = {
       r:0,

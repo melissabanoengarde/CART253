@@ -14,17 +14,17 @@ let numStars = 200;
 // Variable for our Star.js class object
 let star;
 
-
 // User's object variable
 let user;
 
-
-// Our synth variable
+// Synthesizer: synth and reverb variables and notes to be picked randomly from Cmaj7 chord
 let synth;
-// Our reverb variable
 let reverb;
-// Notes to be picked randomly (Cmaj7)
 let notes = [`C5`, `E5`, `G5`, `B5`, `C6`];
+
+// Oscillator
+let oscillator;
+let angle = 0;
 
 
 // setup()
@@ -39,6 +39,10 @@ function setup() {
   synth = new p5.PolySynth();
   reverb = new p5.Reverb();
 
+  // Creating the oscillator and setting the amplitude
+  oscillator = new p5.Oscillator(440, `sine`);
+  oscillator.amp(0.05);
+
   // For-loop to create multiple stars from js Star.js class
   for (let i = 0; i < numStars; i++) {
     let x = random(0, width);    // Defining the parameters of our stars
@@ -46,9 +50,10 @@ function setup() {
     let size = random(2,8);
     let note = random(notes);
     star = new Star (x, y, size, note, synth); // Creating a new object to call the Star.js class
-    stars.push(star);           // Pushing new Star.js object in our "stars" array
+    stars.push(star);   // Pushing new Star.js object in our "stars" array
   }
 }
+
 
 // draw()
 function draw() {
@@ -57,7 +62,6 @@ function draw() {
   // Calling the User.js class methods
   user.motion();
   user.display();
-  user.playOsc();
 
   // for-loop that makes each star in the "stars" array to go through Star.js class methods.
   for (let i = 0; i < stars.length; i++) {
@@ -69,4 +73,23 @@ function draw() {
       star.checkStar(user);
     }
   }
+
+  // Oscillation between -1 and 1
+  let sinAngle = sin(angle);
+  let newFreq = map(sinAngle, -1, 1, 110, 150);
+  oscillator.freq(newFreq);
+
+  // changes the angle which will change the OUTPUT of the sine function [sin(angle)] which will change which frequency will pop out of the map
+  angle = angle + 0.5;
+}
+
+
+// Oscillation starts when key is pressed
+function keyPressed() {
+    oscillator.start();
+}
+
+// Oscillation stops when key is released
+function keyReleased() {
+  oscillator.stop();
 }

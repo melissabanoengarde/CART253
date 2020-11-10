@@ -13,11 +13,6 @@ class User {
       g: 0,
       b: 255
     };
-
-    // Ocillator
-    this.oscillator = new p5.Oscillator(440, `sine`);
-    this.oscillator.amp(0.05);
-    this.angle = 0;
   }
 
   // User's handle input and what allows user to move
@@ -46,27 +41,8 @@ class User {
     else {
       this.vy = 0;
     }
-
-    this.playOsc();
   }
 
-  playOsc() {
-    if (keyIsPressed === true) {
-      // as you increase the angle, it oscillates between -1 and 1
-      let sinAngle = sin(this.angle);
-      let newFreq = map(sinAngle, -1, 1, 110, 150);
-      this.oscillator.freq(newFreq);
-
-      // changes the angle which will change the OUTPUT of the sine function [sin(angle)] which will change which frequency will pop out of the map
-      this.angle = this.angle + 0.5;
-
-      this.oscillator.start();
-      console.log(this.oscillator);
-      }
-       else {
-       this.oscillator.stop();
-      }
-    }
 
   // User's object's appearance
   display() {
