@@ -56,8 +56,8 @@ class Star {
 
   // Method of class object's appearance
   display() {
-    push();
     if (!this.collected) {
+    push();
     noStroke();
     fill(this.fill.r, this.fill.g, this.fill.b);
     ellipse(this.x, this.y, this.size);

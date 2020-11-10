@@ -21,6 +21,7 @@ let user;
 
 // Our synth variable
 let synth;
+// Our reverb variable
 let reverb;
 // Notes to be picked randomly (Cmaj7)
 let notes = [`C5`, `E5`, `G5`, `B5`, `C6`];
@@ -56,6 +57,7 @@ function draw() {
   // Calling the User.js class methods
   user.motion();
   user.display();
+  user.playOsc();
 
   // for-loop that makes each star in the "stars" array to go through Star.js class methods.
   for (let i = 0; i < stars.length; i++) {
