@@ -9,16 +9,21 @@ Working with p5.sound and progressing the final project.
 
 // An array of stars & the amount of stars in the array
 let stars = [];
-let numStars = 400;
+// Amount of stars displayed in simulation and contained in the "stars" array
+let numStars = 200;
+// Variable for our Star.js class object
 let star;
+
 
 // User's object variable
 let user;
 
+
 // Our synth variable
 let synth;
+let reverb;
 // Notes to be picked randomly (Cmaj7)
-let notes = [`C6`, `E6`, `G6`, `B6`, `C5`, `E5`, `G5`, `B5`];
+let notes = [`C5`, `E5`, `G5`, `B5`, `C6`];
 
 
 // setup()
@@ -29,8 +34,9 @@ function setup() {
   // Defining new object to call User.js class
   user = new User(width / 2, height / 2, 25);
 
-  // Creating the synthesizer
+  // Creating the synthesizer and reverb
   synth = new p5.PolySynth();
+  reverb = new p5.Reverb();
 
   // For-loop to create multiple stars from js Star.js class
   for (let i = 0; i < numStars; i++) {
@@ -44,8 +50,6 @@ function setup() {
 }
 
 // draw()
-//
-// Description of draw() goes here.
 function draw() {
   background(10);
 
