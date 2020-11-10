@@ -15,18 +15,21 @@ class Planet {
     push();
     this.x = this.distance * cos(this.angle);
     this.y = this.distance * sin(this.angle);
-    translate(this.x, this.y);                  // what permits the planets to return to its initial position after circulating around the sun
+    // translate(this.x, this.y);                  // what permits the planets to return to its initial position after circulating around the sun
 
     this.angle += this.speed;       // planets' motion
 
-    rotateZ(frameCount * this.rSpeed);       // planet's rotation
     pop();
   }
 
 // The planets' appearance
   display() {
     // This is defined in the planets' subclasses
+
     push();
+    translate(this.x, this.y);
+    rotateZ(frameCount * this.rSpeed);       // planet's rotation
+
     fill(0,255,0, 5);
     rotateX(1.5);
     stroke(0,255,0);
