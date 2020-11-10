@@ -1,6 +1,6 @@
 class Star {
 
-  constructor(x, y, size, note) {
+  constructor(x, y, size, note, synth) {
     this.x = x;
     this.y = y;
     this.size = size;
@@ -16,8 +16,8 @@ class Star {
     };
 
     // Synth for when a star is collected
+    this.synth = synth;
     this.note = note;
-    this.synth = new p5.PolySynth();
   }
 
 
@@ -48,7 +48,7 @@ class Star {
 
   // Method for notes to play
   playNote() {
-    this.synth.play(this.note, 0.1, 0, 0.3);
+    this.synth.play(this.note, 0.1, 0, random(0.1, 0.5));
   }
 
 
@@ -60,7 +60,6 @@ class Star {
     fill(this.fill.r, this.fill.g, this.fill.b);
     ellipse(this.x, this.y, this.size);
     pop();
+    }
   }
-  }
-
 }
