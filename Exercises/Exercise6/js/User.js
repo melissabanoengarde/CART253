@@ -9,17 +9,17 @@ class User {
     this.speed = 5;
 
     this.fill = {
-      r: 0,
-      g: 0,
+      r: 100,
+      g: 255,
       b: 255
     };
   }
 
-  // User's handle input and what allows user to move
+  // User's movement
   motion() {
-    // What allows the user's movements
-    this.x += this.vx;
-    this.y += this.vy;
+    // Creates user's movement and keeps them in simulation box 
+    this.x = constrain(this.x + this.vx, 0, width);
+    this.y = constrain(this.y + this.vy, 0, height);
 
     // Handle input and direction
     if (keyIsDown(65)) {        // left
@@ -47,7 +47,7 @@ class User {
   // User's object's appearance
   display() {
     push();
-    fill(this.fill.r, this.fill.g, this.fill.b);
+    fill(random(this.fill.r), random(this.fill.g), random(this.fill.b));
     ellipse(this.x, this.y, this.size);
     pop();
   }

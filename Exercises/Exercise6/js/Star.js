@@ -50,7 +50,7 @@ class Star {
   // Method for notes to play
   playNote() {
     this.synth.play(this.note, 0.05, 0, random(0.3, 0.8)); //play([note], [velocity], [secondsFromNow], [sustainTime])
-    this.reverb.process(this.synth, 3, 2);  // process(src, [seconds], [decayRate], [reverse])
+    this.reverb.process(this.synth, 2, 1, 0.5);  // process(src, [seconds], [decayRate], [reverse])
   }
 
 

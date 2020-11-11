@@ -4,23 +4,27 @@
 Exercise 06: Make Some Noise
 Melissa Banoen-Garde
 
-Working with p5.sound and progressing the final project.
+Working with p5.sound to be implemented in the final project.
++ Added Oscillator for whenever user moves (AWSD)
++ Used a synthesizer to play random notes for whenever user
+  collects a star
++ Added reverb for when star-is-collected synthesizer is triggered
 **************************************************/
 
 // An array of stars & the amount of stars in the array
 let stars = [];
 // Amount of stars displayed in simulation and contained in the "stars" array
-let numStars = 200;
+let numStars = 300;
 // Variable for our Star.js class object
 let star;
 
-// User's object variable
+// Variable for our User.js class object
 let user;
 
-// Synthesizer: synth and reverb variables and notes to be picked randomly from Cmaj7 chord
+// Synthesizer: synth and reverb variables and notes to be picked randomly from Abm7 chord
 let synth;
 let reverb;
-let notes = [`C5`, `E5`, `G5`, `B5`, `C6`];
+let notes = [`B5`, `Eb5`, `Gb5`, `Ab5`];
 
 // Oscillator
 let oscillator;
@@ -41,7 +45,7 @@ function setup() {
 
   // Creating the oscillator and setting the amplitude
   oscillator = new p5.Oscillator(440, `sine`);
-  oscillator.amp(0.05);
+  oscillator.amp(0.02);
 
   // For-loop to create multiple stars from js Star.js class
   for (let i = 0; i < numStars; i++) {
@@ -75,8 +79,8 @@ function draw() {
   }
 
   // Oscillation between -1 and 1
-  let sinAngle = sin(angle);
-  let newFreq = map(sinAngle, -1, 1, 110, 150);
+  let tanAngle = tan(angle);
+  let newFreq = map(tanAngle, -1, 1, 90, 150);
   oscillator.freq(newFreq);
 
   // changes the angle which will change the OUTPUT of the sine function [sin(angle)] which will change which frequency will pop out of the map
