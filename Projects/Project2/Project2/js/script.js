@@ -22,6 +22,11 @@ Ideas I plan to include if time and knowledge permits...
 // An array that stores the planets
 let planets = [];
 
+// An array of stars, the number of stars in the "stars" array, and a variable for our Star.js class object
+let stars = [];
+let numStars = 2000;
+let star;
+
 
 // Setup of the 3D canvas and our planets
 function setup() {
@@ -55,23 +60,39 @@ function setup() {
 
   let neptune = new Neptune(800, 20, 0.0003, 0.002);
     planets.push(neptune);
+
+
+  // For-loop to create multiple stars from js Star.js class
+  for (let i = 0; i < numStars; i++) {
+    let x = random(-width, width);    // Defining the parameters of our stars
+    let y = random(-height, height);
+    let z = random(-1000, 100);       // "100" so they don't appear too close to the screen
+    let size = random(1,2);
+    star = new Star (x, y, z, size); // Creating a new object to call the Star.js class
+    stars.push(star);   // Pushing new Star.js object in our "stars" array
+  }
 }
 
+
 // draw()
-//
-// Description of draw() goes here.
 function draw() {
   background(20);
-  camera(0, 0, (height/2) / tan(PI/6), 0, 0, 0, 0, 1, 0);
-  // orbitControl(1, 1, 0.05);
+  // camera(0, 0, (height/2) / tan(PI/6), 0, 0, 0, 0, 1, 0);
+  orbitControl(1, 1, 0.05);
 
-
+  // for-loop that pushes the superclass "Planet.js" methods into each star in the "stars" array
   for (let i = 0; i < planets.length; i++) {
     let planet = planets[i];
     planet.motion();
     planet.display();
   }
 
+  // for-loop that makes each star in the "stars" array to go through Star.js class methods.
+  for (let i = 0; i < stars.length; i++) {
+    let star = stars[i];
+      star.motion();
+      star.display();
+    }
 }
 
 console.log(planets);

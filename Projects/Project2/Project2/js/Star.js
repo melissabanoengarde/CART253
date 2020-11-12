@@ -2,26 +2,47 @@
 
 class Star {
 
-  constructor() {
-    this.x = random(-width, width);
-    this.y = random(-height, height);
-    this.z = random(-1000, 1000);
+  constructor(x, y, z, size) {
+    this.x = x;
+    this.y = y;
+    this.z = z;
+    this.size = size;
+    this.vx = 0;
+    this.vy = 0;
+    this.vz = 0;
+    this.speed = 0.15;
+
+    this.fill = {
+      r:0,
+      g:255,
+      b:0
+    };
   }
 
-  move() {
-    this.x += random(-1,1);
-    this.y += random(-1,1);
-    this.z += random(-1,1);
+
+  // Method of class object's Star's movements
+  motion() {
+    let change = random(0, 1);
+    if (change < 0.05) {
+    this.vx = random(-this.speed, this.speed);
+    this.vy = random(-this.speed, this.speed);
+    this.vz = random(-this.speed, this.speed);
+    }
+    // allows stars to move
+    this.x += this.vx;
+    this.y += this.vy;
+    this.z += this.vz;
   }
 
+
+  // Method of class object's Star's appearance
   display() {
-    fill(0, 255, 0);
-    textSize(40);
-    text(`*`, this.x, this.y);
+    push();
+    translate(this.x, this.y, this.z);
+    noStroke();
+    fill(this.fill.r, this.fill.g, this.fill.b);
+    sphere(this.size);
+    pop();
   }
 
 }
-
-
-
-// when stars are collected https://pippinbarr.github.io/cart253-2020/topics/functions/intermediate-functions.html
