@@ -11,10 +11,11 @@ class Star {
     this.vy = 0;
     this.vz = 0;
     this.speed = 0.15;
+    this.collected = false;
 
     this.fill = {
       r:0,
-      g:255,
+      g:200,
       b:0
     };
 
@@ -34,6 +35,17 @@ class Star {
     this.y += this.vy;
     this.z += this.vz;
   }
+
+
+  // Checks when star and user touches and collects it
+  checkStar(user) {
+    if (!this.collected) {
+      let d = dist(this.x, this.y, this.z, user.x, user.y, user.z);
+      if (d < this.size / 2 + user.size / 2) {
+        this.collected = true;
+       }
+      }
+     }
 
 
   // Method of class object's Star's appearance

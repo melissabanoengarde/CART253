@@ -27,6 +27,16 @@ let stars = [];
 let numStars = 2000;
 let star;
 
+// Variable for our User.js class object
+let user;
+
+let spaceshipTexture;
+
+
+// Preloading the assets of the simulation
+function preload() {
+  spaceshipTexture = loadImage('assets/images/spaceshiptexture.jpg');
+}
 // Setup of the 3D canvas and our planets
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
@@ -70,6 +80,10 @@ function setup() {
     star = new Star (x, y, z, size); // Creating a new object to call the Star.js class
     stars.push(star);   // Pushing new Star.js object in our "stars" array
   }
+
+  // Defining new object to call User.js class
+  user = new User(0, 300, 60, 20, spaceshipTexture);
+
 }
 
 
@@ -89,12 +103,20 @@ function draw() {
   // for-loop that makes each star in the "stars" array to go through Star.js class methods.
   for (let i = 0; i < stars.length; i++) {
     let star = stars[i];
+
+    if (!star.collected) {
       star.motion();
       star.display();
+      star.checkStar(user);
+      }
     }
+
+  // Calling the User.js class methods
+  user.motion();
+  user.display();
 }
 
-console.log(planets);
+
 
 
 
@@ -125,4 +147,6 @@ Jupiter
 Saturn
 Uranus
 Neptune
+
+spaceship texte: https://www.pinterest.ca/pin/731975745662291861/
 */
