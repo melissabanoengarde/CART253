@@ -17,6 +17,7 @@ class Star {
       g:255,
       b:0
     };
+
   }
 
 
@@ -38,9 +39,11 @@ class Star {
   // Method of class object's Star's appearance
   display() {
     push();
-    translate(this.x, this.y, this.z);
-    noStroke();
-    fill(this.fill.r, this.fill.g, this.fill.b);
+    translate(this.x, this.y, this.z); // extension of stars' motion
+
+    noFill();
+    strokeWeight(0.05);
+    stroke(this.fill.r, this.fill.g, this.fill.b);
     sphere(this.size);
     pop();
   }

@@ -27,7 +27,6 @@ let stars = [];
 let numStars = 2000;
 let star;
 
-
 // Setup of the 3D canvas and our planets
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
@@ -67,7 +66,7 @@ function setup() {
     let x = random(-width, width);    // Defining the parameters of our stars
     let y = random(-height, height);
     let z = random(-1000, 100);       // "100" so they don't appear too close to the screen
-    let size = random(1,2);
+    let size = random(1,5);
     star = new Star (x, y, z, size); // Creating a new object to call the Star.js class
     stars.push(star);   // Pushing new Star.js object in our "stars" array
   }
@@ -114,8 +113,6 @@ camera(0, 0, (height/2) / tan(PI/6), 0, 0, 0, 0, 1, 0)  [default camera position
   from https://processing.org/tutorials/p3d/
 
 ***Definitely could have put all the planets in a single array to call motion() and display() to save time
-
-
 
 
 Planets
