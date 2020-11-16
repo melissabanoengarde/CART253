@@ -33,10 +33,8 @@ let user;
 // Variable for our user's spaceship texture
 let spaceshipTexture;
 
-// Synthesizer: synth and reverb variables and notes to be picked randomly from Abm7 chord
-let synth;
-let reverb;
-let notes = [`B5`, `Eb5`, `Gb5`, `Ab5`];
+// Sound effect for when a star is collected
+let starCollectedSFX;
 
 // Oscillator
 let oscillator;
@@ -49,8 +47,13 @@ let camY = 0;
 
 // Preloading the assets of the simulation
 function preload() {
+  // textures & images
   spaceshipTexture = loadImage('assets/images/spaceshiptexture.jpg');
+  // sounds
+  starCollectedSFX = loadSound('assets/sounds/starfx.wav');
 }
+
+
 // Setup of the 3D canvas and our planets
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
@@ -90,17 +93,12 @@ function setup() {
     let y = random(-height, height);
     let z = random(-1000, 100);       // "100" so they don't appear too close to the screen
     let size = random(1,5);
-    let note = random(notes);
-    star = new Star (x, y, z, size, note, synth); // Creating a new object to call the Star.js class
+    star = new Star (x, y, z, size, starCollectedSFX); // Creating a new object to call the Star.js class
     stars.push(star);   // Pushing new Star.js object in our "stars" array
   }
 
   // Defining new object to call User.js class
   user = new User(0, 300, 60, 20, spaceshipTexture);
-
-  // Creating the synthesizer and reverb
-  synth = new p5.PolySynth();
-  reverb = new p5.Reverb();
 
   // Creating the oscillator and setting the amplitude
   oscillator = new p5.Oscillator(440, `sine`);
