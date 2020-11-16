@@ -50,11 +50,11 @@ class User {
    }
 
    // Depth function for user to move on z-axis by pressing "o" and "l"
-   if (keyIsDown(79)) {       // forward
+   if (keyIsDown(81)) {       // forward Q
      this.vz = -this.speed;
      camY -= this.speed;
    }
-   else if (keyIsDown(76)) {  // backwards
+   else if (keyIsDown(69)) {  // backwards E
      this.vz = this.speed;
      camY += this.speed;
    }
