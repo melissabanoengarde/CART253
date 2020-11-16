@@ -2,7 +2,7 @@
 
 class Star {
 
-  constructor(x, y, z, size) {
+  constructor(x, y, z, size, note, synth) {
     this.x = x;
     this.y = y;
     this.z = z;
@@ -19,6 +19,10 @@ class Star {
       b:0
     };
 
+    // Synth for when a star is collected
+    this.synth = synth;
+    this.reverb = reverb;
+    this.note = note;
   }
 
 
@@ -43,13 +47,22 @@ class Star {
       let d = dist(this.x, this.y, this.z, user.x, user.y, user.z);
       if (d < this.size / 2 + user.size / 2) {
         this.collected = true;
+        this.playNote(); //plays note when star is collected (or disappears) by user
        }
       }
      }
 
 
+   // Method for notes to play
+   playNote() {
+     this.synth.play(this.note, 0.05, 0, random(0.3, 0.8)); //play([note], [velocity], [secondsFromNow], [sustainTime])
+     this.reverb.process(this.synth, 2, 1, 0.5);  // process(src, [seconds], [decayRate], [reverse])
+   }
+
+
   // Method of class object's Star's appearance
   display() {
+    if (!this.collected) {
     push();
     translate(this.x, this.y, this.z); // extension of stars' motion
 
@@ -58,6 +71,7 @@ class Star {
     stroke(this.fill.r, this.fill.g, this.fill.b);
     sphere(this.size);
     pop();
+  }
   }
 
 }

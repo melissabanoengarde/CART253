@@ -30,7 +30,21 @@ let star;
 // Variable for our User.js class object
 let user;
 
+// Variable for our user's spaceship texture
 let spaceshipTexture;
+
+// Synthesizer: synth and reverb variables and notes to be picked randomly from Abm7 chord
+let synth;
+let reverb;
+let notes = [`B5`, `Eb5`, `Gb5`, `Ab5`];
+
+// Oscillator
+let oscillator;
+let angle = 0;
+
+// Variables for our camera movement
+let camX = 0;
+let camY = 0;
 
 
 // Preloading the assets of the simulation
@@ -40,7 +54,6 @@ function preload() {
 // Setup of the 3D canvas and our planets
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
-
 
   // Declaring all the subclasses by creating their own variables, then pushing them inside "planets" array
   let sun = new Sun(0, 70, 0, 0.003);
@@ -77,12 +90,21 @@ function setup() {
     let y = random(-height, height);
     let z = random(-1000, 100);       // "100" so they don't appear too close to the screen
     let size = random(1,5);
-    star = new Star (x, y, z, size); // Creating a new object to call the Star.js class
+    let note = random(notes);
+    star = new Star (x, y, z, size, note, synth); // Creating a new object to call the Star.js class
     stars.push(star);   // Pushing new Star.js object in our "stars" array
   }
 
   // Defining new object to call User.js class
   user = new User(0, 300, 60, 20, spaceshipTexture);
+
+  // Creating the synthesizer and reverb
+  synth = new p5.PolySynth();
+  reverb = new p5.Reverb();
+
+  // Creating the oscillator and setting the amplitude
+  oscillator = new p5.Oscillator(440, `sine`);
+  oscillator.amp(0.02);
 
 }
 
@@ -90,8 +112,11 @@ function setup() {
 // draw()
 function draw() {
   background(20);
-  // camera(0, 0, (height/2) / tan(PI/6), 0, 0, 0, 0, 1, 0);
-  orbitControl(1, 1, 0.05);
+  camera(camX, 0, (height/2) / tan(PI * 30 / 180) + camY, camX, 0, 0, 0, 1, 0);
+  // new camera([x], [y], [z], [centerX], [centerY], [centerZ], [upX], [upY], [upZ])
+  // orbitControl(1, 1, 0.05);
+
+
 
   // for-loop that pushes the superclass "Planet.js" methods into each star in the "stars" array
   for (let i = 0; i < planets.length; i++) {
@@ -114,9 +139,25 @@ function draw() {
   // Calling the User.js class methods
   user.motion();
   user.display();
+
+  // Oscillation between -1 and 1
+  let tanAngle = tan(angle);
+  let newFreq = map(tanAngle, -1, 1, 90, 150);
+  oscillator.freq(newFreq);
+
+  // changes the angle which will change the OUTPUT of the sine function [sin(angle)] which will change which frequency will pop out of the map
+  angle = angle + 0.5;
 }
 
+// Oscillation starts when key is pressed
+function keyPressed() {
+    oscillator.start();
+}
 
+// Oscillation stops when key is released
+function keyReleased() {
+  oscillator.stop();
+}
 
 
 

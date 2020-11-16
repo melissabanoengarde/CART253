@@ -29,9 +29,11 @@ class User {
   // Handle input and direction
   if (keyIsDown(65)) {        // left
     this.vx = -this.speed;
+    camX -= this.speed;
   }
   else if (keyIsDown(68)) {   // right
     this.vx = this.speed;
+    camX += this.speed;
   }
   else {
     this.vx = 0;
@@ -50,9 +52,11 @@ class User {
    // Depth function for user to move on z-axis by pressing "o" and "l"
    if (keyIsDown(79)) {       // forward
      this.vz = -this.speed;
+     camY -= this.speed;
    }
    else if (keyIsDown(76)) {  // backwards
      this.vz = this.speed;
+     camY += this.speed;
    }
    else {
      this.vz = 0;
@@ -81,6 +85,6 @@ class User {
 
 }
 
-console.log(this.x);
+// console.log(this.x);
 
 /*ascii, o = 79, k = 76*/
