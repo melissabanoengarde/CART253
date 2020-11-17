@@ -1,23 +1,14 @@
 "use strict";
 
 /**************************************************
-Solar System Simulation
+Exercise 7: Progress Report
 Melissa Banoen-Garde
 
-Ideas I plan to include if time and knowledge permits...
 
-1) First state: intro + instructions of what to collect in order to unlock a planet
-2) Only two planets (plus the Sun) are active. User can hover over them for infos.
-   User must accumulate stars of respective planets to 'unlock' its visibility and have access to
-   its infos. Thinking about incorporating change of planet's texture once hovered over it.
-3) Once enough stars have been accummulated, a 'you've unlocked ____' sound
-   (and maybe notification box?) is triggered to appear on screen.
-5) User must avoid asteroids or they may lose a portion of the stars they've collected.
-   Will figure out how to incorporate this.
-4) User can move around the simulation in a spaceship. Spaceship's sprite is
-   still to be determined. Stars' appearance as well but but for now I'm thinking they'll
-   appear as mini spheres with different colors referring to its respective planet.
 **************************************************/
+
+// Background colour
+let bgColour = 20;
 
 // An array that stores the planets
 let planets = [];
@@ -40,9 +31,11 @@ let starCollectedSFX;
 let oscillator;
 let angle = 0;
 
-// Variables for our camera movement
+// Variables for our camera following the user
 let camX = 0;
 let camY = 0;
+let camZ = 0;
+
 
 
 // Preloading the assets of the simulation
@@ -52,6 +45,7 @@ function preload() {
   // sounds
   starCollectedSFX = loadSound('assets/sounds/starSFX2.m4a');
 }
+
 
 
 // Setup of the 3D canvas and our planets
@@ -93,7 +87,7 @@ function setup() {
     let x = random(-width, width);
     let y = random(-height, height);
     // "100" so they don't appear too close to the screen
-    let z = random(-1000, 100);
+    let z = random(-1000, 200);
     let size = random(1,5);
     // Creating a new object to call the Star.js class
     star = new Star (x, y, z, size, starCollectedSFX);
@@ -101,20 +95,29 @@ function setup() {
     stars.push(star);
   }
 
+
   // Defining new object to call User.js class
   user = new User(0, 300, 60, 20, spaceshipTexture);
+
 
   // Creating the oscillator and setting the amplitude
   oscillator = new p5.Oscillator(440, `sine`);
   oscillator.amp(0.02);
-
 }
+
 
 
 // draw()
 function draw() {
-  background(20);
-  camera(camX, 0, (height/2) / tan(PI * 30 / 180) + camY, camX, 0, 0, 0, 1, 0);
+  background(bgColour);
+
+
+  // Camera
+  // mouseX's and mouseY's variables, mapping the range in which the user-controlled camera can move
+  let mousecamXmap = map(mouseX, 0, width, -300, 300);
+  let mousecamYmap = map(mouseY, 0, height, -300, 400);
+  // Camera that follows the spaceship and can be controlled by the user with mouse
+  camera(camX, camY, (height/2) / tan(PI * 30 / 180) + camZ, camX + mousecamXmap, camY + mousecamYmap, mousecamXmap+mousecamYmap, 0, 1, 0);
   // new camera([x], [y], [z], [centerX], [centerY], [centerZ], [upX], [upY], [upZ])
 
 
@@ -137,9 +140,11 @@ function draw() {
       }
     }
 
+
   // Calling the User.js class methods
   user.motion();
   user.display();
+
 
   // Oscillation between -1 and 1
   let tanAngle = tan(angle);
@@ -150,6 +155,7 @@ function draw() {
   angle = angle + 0.5;
 }
 
+
 // Oscillation starts when key is pressed
 function keyPressed() {
     oscillator.start();
@@ -158,8 +164,8 @@ function keyPressed() {
 // Oscillation stops when key is released
 function keyReleased() {
   oscillator.stop();
-}
 
+}
 
 
 

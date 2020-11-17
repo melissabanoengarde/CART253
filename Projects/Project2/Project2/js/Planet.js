@@ -8,6 +8,8 @@ class Planet {
     this.speed = speed;         // motion speed
     this.rSpeed = rSpeed;       // rotation speed
     this.angle = 0;
+    this.rotateX = 1.5;
+    this.strokeWeight = 0.1;
   }
 
   // What permits the planets to orbit
@@ -22,19 +24,20 @@ class Planet {
 
 // The planets' appearance
   display() {
-
     push();
     /* (!) keep translate and rotateZ within push-pops of display */
     translate(this.x, this.y);
     rotateZ(frameCount * this.rSpeed);       // planet's rotation
-
-    rotateX(1.5);
-    stroke(0,255,0);
-    strokeWeight(0.1);
-    // noStroke();
+    rotateX(this.rotateX);
+    stroke(0, 255, 0);
+    strokeWeight(this.strokeWeight);
     sphere(this.diameter);
     pop();
 
+  }
+
+  infoDisplay() {
+    // Customized in Planet.js' subclasses
   }
 
 }

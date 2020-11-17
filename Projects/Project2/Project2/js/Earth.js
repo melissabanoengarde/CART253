@@ -1,4 +1,5 @@
-// a subclass that inherits settings from superclass Planets.js
+// Earth
+// Subclass Earth.js inherits settings from superclass Planets.js
 
 class Earth extends Planet {
 

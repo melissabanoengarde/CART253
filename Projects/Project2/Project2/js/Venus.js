@@ -1,4 +1,5 @@
-// a subclass that inherits settings from superclass Planets.js
+// Venus
+// Subclass Venus.js inherits settings from superclass Planets.js
 
 class Venus extends Planet {
 

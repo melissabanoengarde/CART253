@@ -1,4 +1,5 @@
-// a subclass that inherits settings from superclass Planets.js
+// Neptune
+// Subclass Neptune.js inherits settings from superclass Planets.js
 
 class Neptune extends Planet {
 

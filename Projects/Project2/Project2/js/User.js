@@ -41,22 +41,24 @@ class User {
 
   if (keyIsDown(87)) {        // up
   this.vy = -this.speed;
+  camY -= this.speed;
   }
   else if (keyIsDown(83)) {    // down
     this.vy = this.speed;
+    camY += this.speed;
   }
   else {
     this.vy = 0;
    }
 
    // Depth function for user to move on z-axis by pressing "o" and "l"
-   if (keyIsDown(81)) {       // forward Q
+   if (keyIsDown(69)) {       // forward E
      this.vz = -this.speed;
-     camY -= this.speed;
+     camZ -= this.speed;
    }
-   else if (keyIsDown(69)) {  // backwards E
+   else if (keyIsDown(81)) {  // backwards Q
      this.vz = this.speed;
-     camY += this.speed;
+     camZ += this.speed;
    }
    else {
      this.vz = 0;
