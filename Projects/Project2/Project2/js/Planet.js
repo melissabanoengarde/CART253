@@ -34,6 +34,7 @@ class Planet {
     // noStroke();
     sphere(this.diameter);
     pop();
+
   }
 
 }

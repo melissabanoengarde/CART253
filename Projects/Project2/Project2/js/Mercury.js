@@ -1,3 +1,6 @@
+// Mercury
+// Subclass Mercury.js inherits settings from superclass Planets.js
+
 class Mercury extends Planet {
 
   constructor(distance, diameter, speed, rSpeed) {

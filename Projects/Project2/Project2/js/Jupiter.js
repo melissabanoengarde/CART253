@@ -12,6 +12,7 @@ class Jupiter extends Planet {
     // Custom display method of Jupiter's class object
     display() {
       push();
+      torus(40, 0.1, 10);
       // Custom colour of our Jupiter
       // RGB parameters + position
       // Brown
