@@ -24,14 +24,14 @@ class Planet {
   display() {
 
     push();
-    /* (!) keep translate and rotates within push-pops of display */
+    /* (!) keep translate and rotateZ within push-pops of display */
     translate(this.x, this.y);
     rotateZ(frameCount * this.rSpeed);       // planet's rotation
 
-    fill(0,255,0, 5);
     rotateX(1.5);
     stroke(0,255,0);
     strokeWeight(0.1);
+    // noStroke();
     sphere(this.diameter);
     pop();
   }
@@ -41,3 +41,4 @@ class Planet {
 
 
 // orbitting maths https://www.w3schools.com/graphics/game_movement.asp
+    // fill(0,255,0, 5);

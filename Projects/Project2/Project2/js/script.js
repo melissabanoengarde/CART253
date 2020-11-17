@@ -50,7 +50,7 @@ function preload() {
   // textures & images
   spaceshipTexture = loadImage('assets/images/spaceshiptexture.jpg');
   // sounds
-  starCollectedSFX = loadSound('assets/sounds/starfx.wav');
+  starCollectedSFX = loadSound('assets/sounds/starSFX2.m4a');
 }
 
 
@@ -89,12 +89,16 @@ function setup() {
 
   // For-loop to create multiple stars from js Star.js class
   for (let i = 0; i < numStars; i++) {
-    let x = random(-width, width);    // Defining the parameters of our stars
+    // Defining the parameters of our stars
+    let x = random(-width, width);
     let y = random(-height, height);
-    let z = random(-1000, 100);       // "100" so they don't appear too close to the screen
+    // "100" so they don't appear too close to the screen
+    let z = random(-1000, 100);
     let size = random(1,5);
-    star = new Star (x, y, z, size, starCollectedSFX); // Creating a new object to call the Star.js class
-    stars.push(star);   // Pushing new Star.js object in our "stars" array
+    // Creating a new object to call the Star.js class
+    star = new Star (x, y, z, size, starCollectedSFX);
+    // Pushing new Star.js object in our "stars" array
+    stars.push(star);
   }
 
   // Defining new object to call User.js class
@@ -112,8 +116,6 @@ function draw() {
   background(20);
   camera(camX, 0, (height/2) / tan(PI * 30 / 180) + camY, camX, 0, 0, 0, 1, 0);
   // new camera([x], [y], [z], [centerX], [centerY], [centerZ], [upX], [upY], [upZ])
-  // orbitControl(1, 1, 0.05);
-
 
 
   // for-loop that pushes the superclass "Planet.js" methods into each star in the "stars" array
@@ -122,6 +124,7 @@ function draw() {
     planet.motion();
     planet.display();
   }
+
 
   // for-loop that makes each star in the "stars" array to go through Star.js class methods.
   for (let i = 0; i < stars.length; i++) {

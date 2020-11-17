@@ -9,13 +9,15 @@ class Venus extends Planet {
   }
 
 
+  // Custom display method of Venus's class object
   display() {
     push();
-    fill(0,255,0, 5);
-    rotateX(1.5);
-    stroke(0,255,0);
-    strokeWeight(0.1);
-    sphere(this.diameter);
+    // Custom colour of our Venus
+    // RGB parameters + position
+    // Pale pink
+    pointLight(255, 217, 236, 2000);
+    // Calling the superclass Planet.js' display method
+    super.display();
     pop();
   }
 }

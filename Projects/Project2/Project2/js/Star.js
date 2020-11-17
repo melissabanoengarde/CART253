@@ -45,6 +45,7 @@ class Star {
       if (d < this.size / 2 + user.size / 2) {
         this.collected = true;
         this.starCollectedSFX.play();
+        this.starCollectedSFX.setVolume(0.05);
        }
       }
      }

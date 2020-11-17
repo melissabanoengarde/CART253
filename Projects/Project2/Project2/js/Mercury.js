@@ -6,14 +6,15 @@ class Mercury extends Planet {
 
   }
 
-  // Custom display of mercury
+  // Custom display method of Mercury's class object
   display() {
     push();
-    fill(0,255,0, 5);
-    rotateX(1.5);
-    stroke(0,255,0);
-    strokeWeight(0.1);
-    sphere(this.diameter);
+    // Custom colour of Mercury
+    // RGB parameters + position
+    // Light grey
+    pointLight(224, 224, 224, 2000);
+    // Calling the superclass Planet.js' display method
+    super.display();
     pop();
   }
 
