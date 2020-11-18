@@ -4,7 +4,9 @@
 Exercise 7: Progress Report
 Melissa Banoen-Garde
 
-
+User can control spaceship with keys AWSD + Q (backwards) and E (forward).
+Use mousepad or mouse to control the camera's angle.
+Try to approach a star and collect it!
 **************************************************/
 
 // Background colour
@@ -121,7 +123,7 @@ function draw() {
   // new camera([x], [y], [z], [centerX], [centerY], [centerZ], [upX], [upY], [upZ])
 
 
-  // for-loop that pushes the superclass "Planet.js" methods into each star in the "stars" array
+  // for-loop that pushes the superclass "Planet.js" methods into each star in the "planet" array
   for (let i = 0; i < planets.length; i++) {
     let planet = planets[i];
     planet.motion();
