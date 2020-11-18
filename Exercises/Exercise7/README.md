@@ -1,4 +1,4 @@
-# Final Project: Interactive Solar System
+# Exercise 07: Progress Report
 - Melissa Banoen-Garde
 - Creative Computation I
 - CART-253 B
