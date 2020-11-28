@@ -1,3 +1,4 @@
+// PLANET
 // This will be the superclass in which the subclasses (other planets) will inherit
 
 class Planet {
@@ -43,6 +44,6 @@ class Planet {
 }
 
 
-
+// using if-statements for mousehover on planet is hard because of their motion
 // orbitting maths https://www.w3schools.com/graphics/game_movement.asp
     // fill(0,255,0, 5);

@@ -1,4 +1,5 @@
-// a class of stars
+// STAR
+// A class object of our individual stars
 
 class Star {
 
@@ -51,8 +52,6 @@ class Star {
      }
 
 
-
-
   // Method of class object's Star's appearance
   display() {
     if (!this.collected) {
@@ -64,7 +63,8 @@ class Star {
     stroke(this.fill.r, this.fill.g, this.fill.b);
     sphere(this.size);
     pop();
-  }
+    }
+
   }
 
 }
