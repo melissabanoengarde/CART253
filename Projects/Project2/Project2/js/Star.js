@@ -39,7 +39,8 @@ class Star {
   }
 
 
-  // Checks when star and user touches and collects it
+  // Checks when star and user collides. If they do, user collects the star.
+  // When the star is collected, it disappears from view and sound is triggered.
   checkStar(user) {
     if (!this.collected) {
       let d = dist(this.x, this.y, this.z, user.x, user.y, user.z);

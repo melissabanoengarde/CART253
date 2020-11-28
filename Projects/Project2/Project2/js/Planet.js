@@ -11,6 +11,7 @@ class Planet {
     this.angle = 0;
     this.rotateX = 1.5;
     this.strokeWeight = 0.1;
+    this.active = undefined;    // each planet's "active" status will be customized in their repsective subclass 
   }
 
   // What permits the planets to orbit
@@ -23,7 +24,7 @@ class Planet {
     pop();
   }
 
-// The planets' appearance
+  // The planets' appearance
   display() {
     push();
     /* (!) keep translate and rotateZ within push-pops of display */
@@ -37,7 +38,8 @@ class Planet {
 
   }
 
-  infoDisplay() {
+  // Method that determines whether the planet is displayed or not.
+  active() {
     // Customized in Planet.js' subclasses
   }
 

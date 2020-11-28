@@ -22,6 +22,9 @@ let stars = [];
 let numStars = 2000;
 let star;
 
+// Variable for our Scorebox.js class object
+let scorebox;
+
 // Variable for our User.js class object
 let user;
 
@@ -102,6 +105,10 @@ function setup() {
     stars.push(star);
   }
 
+  // SCOREBOX
+  // Defining new object to call the Scorebox.js class
+  scorebox = new Scorebox();
+
   // USER
   // Defining new object to call User.js class
   user = new User(0, 300, 60, 20, spaceshipTexture);
@@ -149,6 +156,10 @@ function draw() {
       star.checkStar(user);
       }
     }
+
+  // SCOREBOX
+  // Calling the Scorebox.js class methods
+  scorebox.display();
 
 
   // USER
