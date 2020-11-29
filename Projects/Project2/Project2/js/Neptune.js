@@ -22,12 +22,16 @@ class Neptune extends Planet {
   display() {
     push();
     // Custom colour of Neptune
-    // RGB parameters + position
+    // RGB parameters + light position
     // Powder blue
     pointLight(this.fill.r, this.fill.g, this.fill.b, this.fill.lightPosition);
     // Calling the superclass Planet.js' display method
     super.display();
     pop();
+  }
+
+  active() {
+
   }
 
 }

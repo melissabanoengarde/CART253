@@ -46,6 +46,9 @@ class Star {
       let d = dist(this.x, this.y, this.z, user.x, user.y, user.z);
       if (d < this.size / 2 + user.size / 2) {
         this.collected = true;
+        // Score value increases when a star is collected.
+        // Calls the "this.score = 0;" property from the Scorebox.js class property.
+        scorebox.score++;
         this.starCollectedSFX.play();
         this.starCollectedSFX.setVolume(0.05);
        }

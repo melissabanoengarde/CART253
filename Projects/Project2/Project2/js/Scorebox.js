@@ -1,22 +1,21 @@
-"use strict";
-
 // Scorebox
-// Display an update of the amount of stars collected or lost
+// Displays an update of the amount of stars collected or loss
 
 class Scorebox {
 
   constructor() {
+    // Position and dimensions
     this.x = 100;
     this.y = 100;
     this.rectWidth = 80;
     this.rectHeight = 100;
-    this.textString = `Stars Collected:`;
 
-    // Score
     // Scorecount begins at 0
     this.score = 0;
     this.starsCountString = `Stars:`;
 
+    // Aesthetics
+    this.textString = `Stars Collected:`;
     this.fill = {
       r: 0,
       g: 255,
@@ -25,12 +24,6 @@ class Scorebox {
     this.strokeweight = 0.5;
   }
 
-  scoreCount() {
-    // texting with "X" key
-    if (keyIsDown(88)) {
-      this.score++;
-    }
-  }
 
   display() {
     push();

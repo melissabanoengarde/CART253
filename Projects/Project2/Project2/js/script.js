@@ -164,7 +164,6 @@ function draw() {
   // SCOREBOX
   // Calling the Scorebox.js class methods
   scorebox.display();
-  scorebox.scoreCount();
 
 
   // USER
