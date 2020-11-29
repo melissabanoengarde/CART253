@@ -43,6 +43,8 @@ let camX = 0;
 let camY = 0;
 let camZ = 0;
 
+// Variable for the typefaces
+let globalFont;
 
 
 // Preloading the assets of the simulation
@@ -51,6 +53,8 @@ function preload() {
   spaceshipTexture = loadImage('assets/images/spaceshiptexture.jpg');
   // Sounds
   starCollectedSFX = loadSound('assets/sounds/starSFX2.m4a');
+  // Typeface
+  globalFont = loadFont('assets/typeface/IBMPlexMono-Regular.otf');
 }
 
 
@@ -160,6 +164,7 @@ function draw() {
   // SCOREBOX
   // Calling the Scorebox.js class methods
   scorebox.display();
+  scorebox.scoreCount();
 
 
   // USER
