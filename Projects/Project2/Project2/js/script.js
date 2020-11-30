@@ -12,6 +12,8 @@ Try to approach a star and collect it!
 // Background colour
 let bgColour = 20;
 
+let canvasEdge = -4;
+
 // An array that stores the planets
 let planets = [];
 
@@ -61,7 +63,7 @@ function preload() {
 
 // Setup of the 3D canvas and the planets
 function setup() {
-  createCanvas(windowWidth, windowHeight, WEBGL);
+  createCanvas(windowWidth + canvasEdge, windowHeight + canvasEdge, WEBGL);
 
   // PLANETS
   // Declaring all the subclasses by establishing their own variables, then pushing them inside "planets" array
