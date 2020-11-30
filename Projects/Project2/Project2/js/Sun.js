@@ -7,12 +7,21 @@ class Sun extends Planet {
 
     // calling superclass Planet.js' constructor
     super(distance, diameter, speed, rSpeed);
+
+    // Visibility
+    this.visible = true;
   }
+
+  
+  // visible() {
+  //
+  // }
 
   // (!) Don't need to call motion because this subclass already inherits the superclass
 
   // Custom display method of the Sun's class object
   display() {
+    if (this.visible) {
     push();
     // Custom colour of our Sun
     // RGB parameters + position
@@ -20,5 +29,6 @@ class Sun extends Planet {
     // Calling the superclass Planet.js' display method
     super.display();
     pop();
+  }
   }
 }

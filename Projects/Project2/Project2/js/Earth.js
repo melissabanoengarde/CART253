@@ -8,13 +8,17 @@ class Earth extends Planet {
   // calling superclass Planet.js' constructor
   super(distance, diameter, speed, rSpeed);
 
-   }
+  // Visibility
+  this.visible = true;
+
+ }
 
 
  // Don't need to call motion because this subclass already inherits the superclass
 
   // Custom display method of Saturn's class object
   display() {
+    if (this.visible) {
     push();
     // Custom colour of our Earth
     // RGB parameters + position
@@ -23,6 +27,7 @@ class Earth extends Planet {
     // Calling the superclass Planet.js' display method
     super.display();
     pop();
+   }
   }
 
 }

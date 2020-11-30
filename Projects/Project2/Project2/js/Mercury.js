@@ -7,18 +7,37 @@ class Mercury extends Planet {
 
     super(distance, diameter, speed, rSpeed);
 
+    // Custom fill
+    this.fill = {
+      r: 224,
+      g: 224,
+      b: 274,
+      lightPosition: 2000
+    };
+
+    // Visibility
+    this.visible = false;
+    // Total amount of stars needed to enable Neptune's visibility
+    this.totalStars = 5;
   }
+
 
   // Custom display method of Mercury's class object
   display() {
-    push();
-    // Custom colour of Mercury
-    // RGB parameters + position
-    // Light grey
-    pointLight(224, 224, 224, 2000);
-    // Calling the superclass Planet.js' display method
-    super.display();
-    pop();
+    // if 'this.visible' is NOT("!") true (therefor, false), then...
+    if (!this.visible) {
+      if(scorebox.score >= this.totalStars) {
+        push();
+        // Custom colour of Mercury
+        // RGB parameters + position
+        // Light grey
+        pointLight(this.fill.r, this.fill.g, this.fill.b, this.fill.lightPosition);
+
+        // Calling the superclass Planet.js' display method
+        super.display();
+        pop();
+      }
+    }
   }
 
 }

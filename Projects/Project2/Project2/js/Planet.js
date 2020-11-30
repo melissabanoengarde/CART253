@@ -11,7 +11,10 @@ class Planet {
     this.angle = 0;
     this.rotateX = 1.5;
     this.strokeWeight = 0.1;
-    this.active = undefined;    // each planet's "active" status will be customized in their repsective subclass 
+
+    // each planet's "visible" status will be customized in their repsective subclass
+    this.visible = undefined;
+    this.totalStars = undefined;
   }
 
   // What permits the planets to orbit
@@ -27,20 +30,20 @@ class Planet {
   // The planets' appearance
   display() {
     push();
-    /* (!) keep translate and rotateZ within push-pops of display */
+
+    // (!) keep translate and rotateZ within push-pops of display
     translate(this.x, this.y);
-    rotateZ(frameCount * this.rSpeed);       // planet's rotation
+
+    // planet's rotation
+    rotateZ(frameCount * this.rSpeed);
     rotateX(this.rotateX);
+
+    // planet's general appearance
     stroke(0, 255, 0);
     strokeWeight(this.strokeWeight);
     sphere(this.diameter);
     pop();
 
-  }
-
-  // Method that determines whether the planet is displayed or not.
-  active() {
-    // Customized in Planet.js' subclasses
   }
 
 }

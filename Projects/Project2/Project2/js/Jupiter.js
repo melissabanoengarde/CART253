@@ -7,10 +7,15 @@ class Jupiter extends Planet {
 
     super(distance, diameter, speed, rSpeed);
 
+
+    // Visibility
+    this.visible = true;
+
     }
 
     // Custom display method of Jupiter's class object
     display() {
+      if (this.visible) {
       push();
       torus(40, 0.1, 10);
       // Custom colour of our Jupiter
@@ -20,6 +25,7 @@ class Jupiter extends Planet {
       // Calling the superclass Planet.js' display method
       super.display();
       pop();
+      }
     }
 
 }

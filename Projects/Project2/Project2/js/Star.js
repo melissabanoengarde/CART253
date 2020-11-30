@@ -12,13 +12,16 @@ class Star {
     this.vy = 0;
     this.vz = 0;
     this.speed = 0.15;
+
+    // Collect property
     this.collected = false;
     this.starCollectedSFX = starCollectedSFX;
 
+    // Custom display
     this.fill = {
-      r:0,
-      g:200,
-      b:0
+      r:190,
+      g:252,
+      b:3
     };
 
   }
@@ -47,7 +50,7 @@ class Star {
       if (d < this.size / 2 + user.size / 2) {
         this.collected = true;
         // Score value increases when a star is collected.
-        // Calls the "this.score = 0;" property from the Scorebox.js class property.
+        // Calls the "this.score = 0;" property from the Scorebox.js class object.
         scorebox.score++;
         this.starCollectedSFX.play();
         this.starCollectedSFX.setVolume(0.05);

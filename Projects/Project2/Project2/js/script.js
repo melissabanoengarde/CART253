@@ -130,14 +130,8 @@ function setup() {
 function draw() {
   background(bgColour);
 
-
   // CAMERA
-  // mouseX's and mouseY's variables, mapping the range in which the user-controlled camera can move
-  let mousecamXmap = map(mouseX, 0, width, -300, 300);
-  let mousecamYmap = map(mouseY, 0, height, -300, 400);
-  // Camera that follows the spaceship and can be controlled by the user with mouse
-  camera(camX, camY, (height/2) / tan(PI * 30 / 180) + camZ, camX + mousecamXmap, camY + mousecamYmap, mousecamXmap+mousecamYmap, 0, 1, 0);
-  // new camera([x], [y], [z], [centerX], [centerY], [centerZ], [upX], [upY], [upZ])
+  cameraSetup();
 
 
   // PLANETS
@@ -194,7 +188,15 @@ function keyReleased() {
 
 }
 
-
+function cameraSetup() {
+  // CAMERA
+  // mouseX's and mouseY's variables, mapping the range in which the user-controlled camera can move
+  let mousecamXmap = map(mouseX, 0, width, -300, 300);
+  let mousecamYmap = map(mouseY, 0, height, -300, 400);
+  // Camera that follows the spaceship and can be controlled by the user with mouse
+  camera(camX, camY, (height/2) / tan(PI * 30 / 180) + camZ, camX + mousecamXmap, camY + mousecamYmap, mousecamXmap+mousecamYmap, 0, 1, 0);
+  // new camera([x], [y], [z], [centerX], [centerY], [centerZ], [upX], [upY], [upZ])
+}
 
 
 
