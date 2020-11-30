@@ -23,7 +23,6 @@ class Star {
       g:252,
       b:3
     };
-
   }
 
 
@@ -71,7 +70,6 @@ class Star {
     sphere(this.size);
     pop();
     }
-
   }
 
 }

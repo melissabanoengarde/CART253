@@ -12,6 +12,7 @@ Try to approach a star and collect it!
 // Background colour
 let bgColour = 20;
 
+// Canvas' maximum edge to remove potential window's scrollbars
 let canvasEdge = -4;
 
 // An array that stores the planets
@@ -23,6 +24,19 @@ let planets = [];
 let stars = [];
 let numStars = 2000;
 let star;
+
+// An array of asteroids
+// how many asteroids are on sight
+// a variable for the Asteroid.js class object
+let asteroids = [];
+let numAsteroids = 2;
+let asteroid;
+
+// How often an asteroid spawns in milliseconds
+const asteroidSpawnDelay = 1000;
+// Tracking the interval that spawns new asteroids over time
+let spawnInterval;
+
 
 // Variable for our Scorebox.js class object
 let scorebox;
@@ -53,6 +67,7 @@ let globalFont;
 function preload() {
   // Textures & images
   spaceshipTexture = loadImage('assets/images/spaceshiptexture.jpg');
+
   // Sounds
   starCollectedSFX = loadSound('assets/sounds/starSFX2.m4a');
   // Typeface
@@ -96,6 +111,23 @@ function setup() {
     planets.push(neptune);
 
 
+  // ASTEROIDS
+  // For-loop to create multiple asteroids from Asteroid.js class
+  for (let i = 0; i < numAsteroids; i++) {
+    let x = random(-width, width);
+    let y = random(-height, height);
+    // let z = random(-1000, 1000);
+    let size = random(8, 15);
+    let speed = random(5, 10);
+    let asteroid = new Asteroid(x, y /*z*/, size, speed);
+    // pushing the object in asteroids array
+    asteroids.push(asteroid);
+  }
+
+  // Interval spawnning new asteroid
+  spawnInterval = setInterval(spawnAsteroid, asteroidSpawnDelay)
+
+
   // STARS
   // For-loop to create multiple stars from Star.js class
   for (let i = 0; i < numStars; i++) {
@@ -127,10 +159,47 @@ function setup() {
 }
 
 
+// spawnAsteroid
+// Spawns a new asteroid at a random edge or depth of the canvas
+function spawnAsteroid() {
+  let x;
+  let y;
+  // let z;
+  let size = random(8, 15);
+  let speed = random(5, 10);
+
+  let r = random(0, 1);
+
+  if (r < 0.25) {
+    x = -width;
+    y = height/2;
+    // z = random(-900, -500);
+  }
+  else if (r < 0.5) {
+    x = width;
+    y = height/2;
+    // z = random(-900, -500);
+  }
+  else if (r < 0.75) {
+    x = width / 2;
+    y = -height;
+    // z = random(-900, -500);
+  }
+  else {
+    x = width/2;
+    y = height;
+    // z = random(-900, -500);
+  }
+  let asteroid = new Asteroid(x,y/*, z*/,size,speed);
+  asteroids.push(asteroid);
+}
+
+
 
 // draw()
 function draw() {
   background(bgColour);
+
 
   // CAMERA
   cameraSetup();
@@ -144,6 +213,12 @@ function draw() {
     planet.display();
   }
 
+  // ASTEROIDS
+  for (let i = 0; i < asteroids.length; i++){
+    let asteroid = asteroids[i];
+    asteroid.motion();
+    asteroid.display();
+  }
 
   // STARS
   // For-loop that makes each star in the "stars" array to go through Star.js class methods.
