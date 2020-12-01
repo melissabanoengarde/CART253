@@ -19,9 +19,9 @@ class Star {
 
     // Custom display
     this.fill = {
-      r:190,
-      g:252,
-      b:3
+      r:255,
+      g:254,
+      b:212
     };
   }
 
