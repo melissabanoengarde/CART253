@@ -15,8 +15,22 @@ let bgColour = 20;
 // Canvas' maximum edge to remove potential window's scrollbars
 let canvasEdge = -4;
 
-// An array that stores the planets
+// An array that stores the individual planets
 let planets = [];
+
+// An array that stores the asteroids,
+// the number of asteroids spawned per 2 seconds and in the array,
+// and a variable for the Asteroid.js
+let asteroids = [];
+let numAsteroids = 2;
+let asteroid;
+
+// Spawns an asteroid every 2 seconds (2000 milliseconds)
+// (referring to the Traffic Inferno simulation)
+const spawnDelay = 2000;
+
+// tracks the interval that spawns new asteroids
+let spawnInterval;
 
 // An array of stars,
 // the number of stars in the "stars" array,
@@ -24,8 +38,6 @@ let planets = [];
 let stars = [];
 let numStars = 2000;
 let star;
-
-
 
 // Variable for our Scorebox.js class object
 let scorebox;
@@ -100,6 +112,24 @@ function setup() {
     planets.push(neptune);
 
 
+  // ASTEROIDS
+  // For-loop to create multiple asteroids from the Asteroid.js class
+  for (let i = 0; i < numAsteroids; i++) {
+    let x = random(-width, width);
+    let y = random(-height, height);
+    let z = random(-1000, -700);
+
+    // Creating a new object, calling the Asteroid.js class object
+    asteroid = new Asteroid(x,y,z);
+
+    // Pushing new Asteroid.js object in our "asteroids" array
+    asteroids.push(asteroid);
+  }
+
+  // Frequency of asteroids spawned
+  // setInterval(function, milliseconds);
+  spawnInterval = setInterval(spawnAsteroid, spawnDelay);
+
 
   // STARS
   // For-loop to create multiple stars from Star.js class
@@ -110,11 +140,14 @@ function setup() {
     // "100" so they don't appear too close to the screen
     let z = random(-1000, 200);
     let size = random(1,5);
+
     // Creating a new object to call the Star.js class
     star = new Star (x, y, z, size, starCollectedSFX);
+
     // Pushing new Star.js object in our "stars" array
     stars.push(star);
   }
+
 
   // SCOREBOX
   // Defining new object to call the Scorebox.js class
@@ -150,12 +183,6 @@ function draw() {
     planet.display();
   }
 
-  // ASTEROIDS
-  for (let i = 0; i < asteroids.length; i++){
-    let asteroid = asteroids[i];
-    asteroid.motion();
-    asteroid.display();
-  }
 
   // STARS
   // For-loop that makes each star in the "stars" array to go through Star.js class methods.
