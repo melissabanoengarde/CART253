@@ -119,7 +119,7 @@ function setup() {
     // let z = random(-1000, 1000);
     let size = random(8, 15);
     let speed = random(5, 10);
-    let asteroid = new Asteroid(x, y /*z*/, size, speed);
+    asteroid = new Asteroid(x, y /*z*/, size, speed);
     // pushing the object in asteroids array
     asteroids.push(asteroid);
   }
@@ -190,7 +190,7 @@ function spawnAsteroid() {
     y = height;
     // z = random(-900, -500);
   }
-  let asteroid = new Asteroid(x,y/*, z*/,size,speed);
+  asteroid = new Asteroid(x,y/*, z*/,size,speed);
   asteroids.push(asteroid);
 }
 

@@ -34,6 +34,7 @@ class Asteroid {
   // Asteroids' appearance
   display() {
     push();
+    translate(this.x, this.y, this.z);
     fill(255, 0, 0); // testing testing
     sphere(this.size);
     pop();
