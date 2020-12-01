@@ -165,6 +165,38 @@ function setup() {
 }
 
 
+// spawnAsteroid()
+// A function that spawns two asteroids from random edges and depth of the canvas
+// This function is called in the parameters of "setInterval()", in the setup function
+function spawnAsteroid() {
+  let x;
+  let y;
+  let z = random(-1000, -700);
+  let r = random(0, 1);
+
+  if (r < 0.25) {
+    x = width;                // far-right
+    y = 0;                    // y-center
+  }
+  else if (r < 0.5) {
+    x = -width;               // far-left
+    y = 0;                    // y-center
+  }
+  else if (r < 0.75) {
+    x = 0;                    // x-center
+    y = height/3;             //
+  }
+  else {
+    x = 0;                    // x-center
+    y = height/3;             //
+  }
+  // Spawns a new asteroid in that position
+  let asteroid = new Asteroid(x,y,z);
+  asteroids.push(asteroid);
+
+  console.log(`x:` + asteroid.x, `y:` + asteroid.y, `z:` + asteroid.z);
+}
+
 
 // draw()
 function draw() {
@@ -181,6 +213,14 @@ function draw() {
     let planet = planets[i];
     planet.motion();
     planet.display();
+  }
+
+
+  // ASTEROIDS
+  // For-loop that makes each asteroid in the "asteroids" array go through the Asteroid.js class methods
+  for (let i = 0; i < asteroids.length; i++) {
+    asteroid.motion();
+    asteroid.display();
   }
 
 
