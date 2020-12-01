@@ -25,17 +25,6 @@ let stars = [];
 let numStars = 2000;
 let star;
 
-// An array of asteroids
-// how many asteroids are on sight
-// a variable for the Asteroid.js class object
-let asteroids = [];
-let numAsteroids = 2;
-let asteroid;
-
-// How often an asteroid spawns in milliseconds
-const asteroidSpawnDelay = 1000;
-// Tracking the interval that spawns new asteroids over time
-let spawnInterval;
 
 
 // Variable for our Scorebox.js class object
@@ -111,22 +100,6 @@ function setup() {
     planets.push(neptune);
 
 
-  // ASTEROIDS
-  // For-loop to create multiple asteroids from Asteroid.js class
-  for (let i = 0; i < numAsteroids; i++) {
-    let x = random(-width, width);
-    let y = random(-height, height);
-    // let z = random(-1000, 1000);
-    let size = random(8, 15);
-    let speed = random(5, 10);
-    asteroid = new Asteroid(x, y /*z*/, size, speed);
-    // pushing the object in asteroids array
-    asteroids.push(asteroid);
-  }
-
-  // Interval spawnning new asteroid
-  spawnInterval = setInterval(spawnAsteroid, asteroidSpawnDelay)
-
 
   // STARS
   // For-loop to create multiple stars from Star.js class
@@ -156,42 +129,6 @@ function setup() {
   // Creating the oscillator and setting the amplitude
   oscillator = new p5.Oscillator(440, `sine`);
   oscillator.amp(0.02);
-}
-
-
-// spawnAsteroid
-// Spawns a new asteroid at a random edge or depth of the canvas
-function spawnAsteroid() {
-  let x;
-  let y;
-  // let z;
-  let size = random(8, 15);
-  let speed = random(5, 10);
-
-  let r = random(0, 1);
-
-  if (r < 0.25) {
-    x = -width;
-    y = height/2;
-    // z = random(-900, -500);
-  }
-  else if (r < 0.5) {
-    x = width;
-    y = height/2;
-    // z = random(-900, -500);
-  }
-  else if (r < 0.75) {
-    x = width / 2;
-    y = -height;
-    // z = random(-900, -500);
-  }
-  else {
-    x = width/2;
-    y = height;
-    // z = random(-900, -500);
-  }
-  asteroid = new Asteroid(x,y/*, z*/,size,speed);
-  asteroids.push(asteroid);
 }
 
 

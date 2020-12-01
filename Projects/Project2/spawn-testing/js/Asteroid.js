@@ -1,6 +1,6 @@
 class Asteroid {
 
-  constructor(x, y, z, speed, size) {
+  constructor(x, y, z) {
     this.x = x;
     this.y = y;
     this.z = z;
@@ -8,16 +8,17 @@ class Asteroid {
     this.vx = 0;
     this.vy = 0;
     this.vz = 0;
-    this.speed = 20;
+    this.minSpeed = 10;
+    this.maxSpeed = 20;
 
-    this.size = size;
+    this.size = 30;
 
   }
 
   motion() {
-    this.vx = random(-this.speed, this.speed);
-    this.vy = random(-this.speed, this.speed);
-    this.vz = random(-this.speed, this.speed);
+    this.vx = random(this.minSpeed, this.maxSpeed);
+    this.vy = random(this.minSpeed, this.maxSpeed);
+    this.vz = random(this.minSpeed, this.maxSpeed);
 
     this.x += this.vx;
     this.y += this.vy;
@@ -27,9 +28,9 @@ class Asteroid {
   display() {
     push();
 
-    translate(this.x,this.y,this.z);
+    translate(this.x, this.y, this.z);
 
-    fill(255,0,0);
+    fill(255, 0, 0);
     strokeWeight(0.15);
     stroke(0);
     sphere(this.size);
