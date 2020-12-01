@@ -27,7 +27,7 @@ let asteroid;
 
 // Spawns an asteroid every 2 seconds (2000 milliseconds)
 // (referring to the Traffic Inferno simulation)
-const spawnDelay = 2000;
+const spawnDelay = 1500;
 
 // tracks the interval that spawns new asteroids
 let spawnInterval;
@@ -36,7 +36,7 @@ let spawnInterval;
 // the number of stars in the "stars" array,
 // and a variable for our Star.js class object
 let stars = [];
-let numStars = 2000;
+let numStars = 1000;
 let star;
 
 // Variable for our Scorebox.js class object
@@ -171,30 +171,31 @@ function setup() {
 function spawnAsteroid() {
   let x;
   let y;
-  let z = random(-1000, -700);
+  let z = random(-2000, -1500);
   let r = random(0, 1);
 
   if (r < 0.25) {
-    x = width;                // far-right
-    y = 0;                    // y-center
+    x = -width;                           // x, far-left
+    y = random(-height/3, -height/4);     // y, random between top-third & top-quarter
   }
   else if (r < 0.5) {
-    x = -width;               // far-left
-    y = 0;                    // y-center
+    x = random(-width, 0);                // x, random between far-left & center
+    y = random(-height, 0);               // y, random between center & top
   }
   else if (r < 0.75) {
-    x = 0;                    // x-center
-    y = height/3;             //
+    x = -width;                           // x, center
+    y = random(-height/3, -height/4);     // y, random between top-third & top-quarter
   }
   else {
-    x = 0;                    // x-center
-    y = height/3;             //
+    x = random(-width, 0);                // x, random between far-left & center
+    y = random(-height, 0);               // y, random between center & top
   }
   // Spawns a new asteroid in that position
   let asteroid = new Asteroid(x,y,z);
   asteroids.push(asteroid);
 
   console.log(`x:` + asteroid.x, `y:` + asteroid.y, `z:` + asteroid.z);
+  // console.log(`x:` + user.x, `y:` + user.y, `z:` + user.z);
 }
 
 
@@ -219,9 +220,11 @@ function draw() {
   // ASTEROIDS
   // For-loop that makes each asteroid in the "asteroids" array go through the Asteroid.js class methods
   for (let i = 0; i < asteroids.length; i++) {
-    asteroid.motion();
-    asteroid.display();
-  }
+      let asteroid = asteroids[i];
+
+      asteroid.motion();
+      asteroid.display();
+    }
 
 
   // STARS

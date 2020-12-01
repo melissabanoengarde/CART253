@@ -13,9 +13,9 @@ class Asteroid {
     this.vy = 0;
     this.vz = 0;
     this.minSpeed = 10;
-    this.maxSpeed = 20;
+    this.maxSpeed = 40;
 
-    this.size = 30;
+    this.size = 50;
 
   }
 
@@ -38,9 +38,10 @@ class Asteroid {
     // extension of motion
     // (must be placed within the push and pops of 3D primitives)
     translate(this.x, this.y, this.z);
-    
-    fill(255, 0, 0); // testing testing
-    sphere(this.size);
+
+    stroke(161, 148, 119);
+    fill(186, 172, 141); // testing testing
+    sphere(this.size, 10);
     pop();
   }
 
