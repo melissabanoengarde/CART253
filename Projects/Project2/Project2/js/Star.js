@@ -65,7 +65,7 @@ class Star {
     translate(this.x, this.y, this.z); // extension of stars' motion
 
     noFill();
-    strokeWeight(0.05);
+    strokeWeight(0.08);
     stroke(this.fill.r, this.fill.g, this.fill.b);
     sphere(this.size);
     pop();

@@ -10,7 +10,7 @@ class Planet {
     this.rSpeed = rSpeed;       // rotation speed
     this.angle = 0;
     this.rotateX = 1.5;
-    this.strokeWeight = 0.1;
+    this.strokeWeight = 0.05;
 
     // each planet's "visible" status will be customized in their repsective subclass
     this.visible = undefined;
