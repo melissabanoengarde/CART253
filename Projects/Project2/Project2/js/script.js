@@ -242,7 +242,8 @@ function draw() {
 
   // SCOREBOX
   // Calling the Scorebox.js class methods
-  scorebox.display();
+    scorebox.infoPrompt();
+    scorebox.display();
 
 
   // USER
@@ -281,7 +282,7 @@ function mouseWheel(event) {
 }
 
 // Camera
-// The camera follows the user in the simulation 
+// The camera follows the user in the simulation
 function cameraSetup() {
   // mouseX's and mouseY's variables, mapping the range in which the user-controlled camera can move
   let mousecamXmap = map(mouseX, 0, width, -300, 300);
@@ -297,26 +298,12 @@ function cameraSetup() {
 
 
 
-/*
+/*******************************************************************************
 NOTES:
 new camera([x], [y], [z], [centerX], [centerY], [centerZ], [upX], [upY], [upZ])
 
 camera(0, 0, (height/2) / tan(PI/6), 0, 0, 0, 0, 1, 0)  [default camera position]
   from https://processing.org/tutorials/p3d/
-
-***Definitely could have put all the planets in a single array to call motion() and display() to save time
-
-
-Planets
-Sun
-Mercury
-Venus
-Earth
-Mars
-Jupiter
-Saturn
-Uranus
-Neptune
 
 spaceship texture: https://www.pinterest.ca/pin/731975745662291861/
 */

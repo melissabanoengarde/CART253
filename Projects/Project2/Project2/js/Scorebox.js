@@ -8,7 +8,7 @@ class Scorebox {
     // The scorebox follows the user. Properties are defined in display
     this.x = undefined;
     this.y = undefined;
-    this.z - undefined;
+    this.z = undefined;
 
     // Dimension
     this.boardWidth = 150;
@@ -26,33 +26,43 @@ class Scorebox {
       b: 0
     };
     this.strokeweight = 0.5;
-    // this.display = false;
+    this.active = true;
   }
 
+  infoPrompt() {
+    if (keyIsDown(73)) {
+      this.active = false;
+    }
+    else {
+      this.active = true;
+    }
+  }
 
   display() {
-    push();
-    let scoreDisplay = createGraphics(this.boardWidth, this.boardHeight);
+    if (!this.active) {
+      push();
+      let scoreDisplay = createGraphics(this.boardWidth, this.boardHeight);
 
-    scoreDisplay.textFont(globalFont);
-    scoreDisplay.fill(this.fill.r, this.fill.g, this.fill.b);
-    scoreDisplay.textSize(12);
+      scoreDisplay.textFont(globalFont);
+      scoreDisplay.fill(this.fill.r, this.fill.g, this.fill.b);
+      scoreDisplay.textSize(16);
+      // scoreDisplay.textAlign(RIGHT, TOP);
+      // scoreDisplay.text(this.textString, 2.5, 30);
+      scoreDisplay.text(this.starsCountString + this.score, 3, 45);
 
-    scoreDisplay.text(this.textString, 2.5, 30);
-    scoreDisplay.text(this.starsCountString + this.score, 3, 40);
+      // Drawing offscreen buffer with image()
+      push();
+      this.x = camX + 150;
+      this.y = camY + 360;
+      this.z = camZ;
+      translate(this.x, this.y, this.z);
+      noStroke();
+      texture(scoreDisplay);
+      plane(this.boardWidth + 90, this.boardHeight + 90);
+      pop();
 
-    // Drawing offscreen buffer with image()
-    push();
-    this.x = camX - 110;
-    this.y = camY + 350;
-    this.z = camZ;
-    translate(this.x, this.y, this.z);
-    noStroke();
-    texture(scoreDisplay);
-    plane(this.boardWidth, this.boardHeight);
-    pop();
-
-    pop();
+      pop();
+    }
   }
 }
 
