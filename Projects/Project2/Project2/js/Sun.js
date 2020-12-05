@@ -3,16 +3,16 @@
 
 class Sun extends Planet {
 
-  constructor(distance, diameter, speed, rSpeed) {
+  constructor(distance, diameter, speed, rSpeed, hasRings) {
 
     // calling superclass Planet.js' constructor
-    super(distance, diameter, speed, rSpeed);
+    super(distance, diameter, speed, rSpeed, hasRings);
 
     // Visibility
     this.visible = true;
   }
 
-  
+
   // visible() {
   //
   // }

@@ -85,31 +85,31 @@ function setup() {
   // PLANETS
   // Declaring all the subclasses by establishing their own variables, then pushing them inside "planets" array
   // Sun
-  let sun = new Sun(0, 70, 0, 0.003);
+  let sun = new Sun(0, 70, 0, 0.003, false);
     planets.push(sun);
   // Mercury
-  let mercury = new Mercury(100, 7, 0.01, 0.002);
+  let mercury = new Mercury(100, 7, 0.01, 0.002, false);
     planets.push(mercury);
   // Venus
-  let venus = new Venus(130, 12, 0.005, 0.03);
+  let venus = new Venus(130, 12, 0.005, 0.03, false);
     planets.push(venus);
   // Earth
-  let earth = new Earth(170, 13.5, 0.004, 0.01);
+  let earth = new Earth(170, 13.5, 0.004, 0.01, false);
     planets.push(earth);
   // Mars
-  let mars = new Mars(205, 8, 0.004, 0.1);
+  let mars = new Mars(205, 8, 0.004, 0.1, false);
     planets.push(mars);
   // Jupiter
-  let jupiter = new Jupiter(340, 40, 0.0015, 0.02);
+  let jupiter = new Jupiter(340, 40, 0.0015, 0.02, false);
     planets.push(jupiter);
   // Saturn
-  let saturn = new Saturn(500, 35, 0.0008, 0.002);
+  let saturn = new Saturn(500, 35, 0.0008, 0.002, true);
     planets.push(saturn);
   // Uranus
-  let uranus = new Uranus(680, 25, 0.0002, 0.002);
+  let uranus = new Uranus(680, 25, 0.0002, 0.002, false);
     planets.push(uranus);
   // Neptune
-  let neptune = new Neptune(800, 20, 0.0003, 0.002);
+  let neptune = new Neptune(800, 20, 0.0003, 0.002, false);
     planets.push(neptune);
 
 

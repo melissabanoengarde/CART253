@@ -3,10 +3,10 @@
 
 class Saturn extends Planet {
 
-  constructor(distance, diameter, speed, rSpeed) {
+  constructor(distance, diameter, speed, rSpeed, hasRings) {
 
     // calling superclass Planet.js' constructor
-    super(distance, diameter, speed, rSpeed);
+    super(distance, diameter, speed, rSpeed, hasRings);
 
     // Custom fill
     this.fill = {
@@ -19,7 +19,7 @@ class Saturn extends Planet {
     // Visibility
     this.visible = false;
     // Total amount of stars needed to enable Neptune's visibility
-    this.totalStars = 6;
+    this.totalStars = 0;
   }
 
   // Custom display method of Saturn's class object
@@ -32,7 +32,6 @@ class Saturn extends Planet {
         // RGB parameters + position
         // Yellow
         pointLight(this.fill.r,this.fill.g,this.fill.b, this.fill.lightPosition);
-
         // Calling the superclass Planet.js' display method
         super.display();
         pop();

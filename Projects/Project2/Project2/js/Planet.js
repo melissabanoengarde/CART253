@@ -3,7 +3,7 @@
 
 class Planet {
 
-  constructor(distance, diameter, speed, rSpeed) {
+  constructor(distance, diameter, speed, rSpeed, hasRings) {
     this.distance = distance;   // distance from the sun (center)
     this.diameter = diameter;   // size of planet
     this.speed = speed;         // motion speed
@@ -11,6 +11,7 @@ class Planet {
     this.angle = 0;
     this.rotateX = 1.5;
     this.strokeWeight = 0.05;
+    this.hasRings = hasRings;
 
     // each planet's "visible" status will be customized in their repsective subclass
     this.visible = undefined;
@@ -42,8 +43,35 @@ class Planet {
     stroke(0, 255, 0);
     strokeWeight(this.strokeWeight);
     sphere(this.diameter);
-    pop();
 
+    // displays the torus' if this planet has rings (thanks, Sam TA!)
+    push();
+    if (this.hasRings) {
+      rotateX(30);
+
+      fill(101,95,69);
+      torus(45, 0.5, 40);
+
+      fill(216,174,109);
+      torus(50, 0.5, 50);
+
+      fill(255,225,171);
+      torus(55, 0.5, 55);
+
+      fill(219,181,124);
+      torus(60, 0.5, 60);
+
+      fill(101,95,69);
+      torus(65, 0.5, 65);
+
+      fill(219,181,124);
+      torus(70, 0.5, 70);
+
+      fill(184,156,114);
+      torus(75, 0.5, 75);
+    }
+    pop();
+    pop();
   }
 
 }
