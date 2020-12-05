@@ -39,7 +39,9 @@ class Scorebox {
     scoreDisplay.text(this.textString, 2.5, 30);
 
     scoreDisplay.text(this.starsCountString + this.score, 3, 40);
-    // scoreDisplay.rect(this.x, this.y, this.rectWidth, this.rectHeight);
+    // scorebox follows the user
+    this.x = camX;
+    this.y = camY;
     // Drawing offscreen buffer with image()
     image(scoreDisplay, this.x, this.y);
     pop();

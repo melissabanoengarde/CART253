@@ -19,7 +19,7 @@ class Saturn extends Planet {
     // Visibility
     this.visible = false;
     // Total amount of stars needed to enable Neptune's visibility
-    this.totalStars = 15;
+    this.totalStars = 6;
   }
 
   // Custom display method of Saturn's class object

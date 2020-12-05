@@ -11,7 +11,7 @@ class User {
     this.vx = 0;
     this.vy = 0;
     this.vz = 0;
-    this.speed = 5;
+    this.speed = 10;
 
     // Display
     this.fill = {
@@ -99,4 +99,3 @@ class User {
 }
 
 // console.log(this.x);
-// ascii, o = 79, k = 76

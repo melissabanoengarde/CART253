@@ -19,7 +19,7 @@ class Venus extends Planet {
     // Visibility
     this.visible = false;
     // Total amount of stars needed to enable Neptune's visibility
-    this.totalStars = 7;
+    this.totalStars = 4;
   }
 
 

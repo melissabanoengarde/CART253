@@ -71,6 +71,7 @@ function preload() {
 
   // Sounds
   starCollectedSFX = loadSound('assets/sounds/starSFX2.m4a');
+
   // Typeface
   globalFont = loadFont('assets/typeface/IBMPlexMono-Regular.otf');
 }
@@ -263,7 +264,7 @@ function draw() {
 
 // Oscillation starts when key is pressed
 function keyPressed() {
-    oscillator.start();
+  oscillator.start();
 }
 
 // Oscillation stops when key is released
@@ -272,8 +273,16 @@ function keyReleased() {
 
 }
 
+// Allows user to zoom in/out with mouse wheel or touchpad
+// From "Conditionals, 4.5: Mouse Input"
+function mouseWheel(event) {
+  // event.delta contains the distance, in pixels, it scrolled
+  camZ += event.delta;
+}
+
+// Camera
+// The camera follows the user in the simulation 
 function cameraSetup() {
-  // CAMERA
   // mouseX's and mouseY's variables, mapping the range in which the user-controlled camera can move
   let mousecamXmap = map(mouseX, 0, width, -300, 300);
   let mousecamYmap = map(mouseY, 0, height, -300, 400);

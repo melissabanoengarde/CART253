@@ -18,7 +18,7 @@ class Mercury extends Planet {
     // Visibility
     this.visible = false;
     // Total amount of stars needed to enable Neptune's visibility
-    this.totalStars = 5;
+    this.totalStars = 3;
   }
 
 
