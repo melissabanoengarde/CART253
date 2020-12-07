@@ -10,12 +10,16 @@ class Sun extends Planet {
 
     // Visibility
     this.visible = true;
+
+    this.fill = {
+      r: 255,
+      g: 106,
+      b: 0,
+      pointLight: 2000,
+      alpha: 150
+    };
   }
 
-
-  // visible() {
-  //
-  // }
 
   // (!) Don't need to call motion because this subclass already inherits the superclass
 
@@ -23,12 +27,30 @@ class Sun extends Planet {
   display() {
     if (this.visible) {
     push();
+
     // Custom colour of our Sun
     // RGB parameters + position
-    pointLight(255,106,0, 2000);
+    pointLight(this.fill.r, this.fill.g, this.fill.b, this.fill.pointLight);
+
     // Calling the superclass Planet.js' display method
     super.display();
     pop();
+    }
   }
+
+  // Information and display of Sun
+  showInfo() {
+    if (this.visible) {
+      push();
+
+      fill(this.fill.r, this.fill.g, this.fill.b, this.fill.a);
+
+      // Calling the superclass Planet.js' showInfo method
+      super.showInfo();
+      pop();
+    }
   }
 }
+
+
+// new Sun(0, 70, 0, 0.003, false)

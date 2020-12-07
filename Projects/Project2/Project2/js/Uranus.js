@@ -13,14 +13,15 @@ class Uranus extends Planet {
       r: 207,
       g: 255,
       b: 255,
-      lightPosition: 2000
+      lightPosition: 2000,
+      alpha: 150
     };
 
     // Visibility
     // Uranus is not visible at the start
     this.visible = false;
     // Total amount of stars needed to enable Neptune's visibility
-    this.totalStars = 13;
+    this.totalStars = 2;
   }
 
   // Custom display method of Uranus's class object
@@ -37,6 +38,29 @@ class Uranus extends Planet {
         super.display();
         pop();
       }
+    }
+  }
+
+  // Information and display of Uranus
+  showInfo() {
+    if (!this.visible) {
+      push();
+
+      // Uranus's plane colour + alpha value
+      fill(this.fill.r, this.fill.g, this.fill.b, this.fill.alpha);
+
+      // Calling the superclass Planet.js' showInfo method
+      super.showInfo();
+      pop();
+    }
+  }
+
+  // Uranus resumes orbit at its established speed
+  resume() {
+    let resume = 0.0002;
+
+    if (this.speed === 0) {
+      this.speed = resume;
     }
   }
 

@@ -12,7 +12,7 @@ Try to approach a star and collect it!
 // Background colour
 let bgColour = 20;
 
-// Canvas' maximum edge to remove potential window's scrollbars
+// Canvas' maximum edge to remove potential scrollbars
 let canvasEdge = -4;
 
 // An array that stores the individual planets
@@ -195,7 +195,7 @@ function spawnAsteroid() {
   let asteroid = new Asteroid(x,y,z);
   asteroids.push(asteroid);
 
-  console.log(`x:` + asteroid.x, `y:` + asteroid.y, `z:` + asteroid.z);
+  // console.log(`x:` + asteroid.x, `y:` + asteroid.y, `z:` + asteroid.z);
   // console.log(`x:` + user.x, `y:` + user.y, `z:` + user.z);
 }
 
@@ -215,6 +215,10 @@ function draw() {
     let planet = planets[i];
     planet.motion();
     planet.display();
+    // displays information if planet is already visible or after they become visible
+    if (planet.visible === true || !planet.visible) {
+      planet.showInfo();
+    }
   }
 
 
@@ -222,7 +226,6 @@ function draw() {
   // For-loop that makes each asteroid in the "asteroids" array go through the Asteroid.js class methods
   for (let i = 0; i < asteroids.length; i++) {
       let asteroid = asteroids[i];
-
       asteroid.motion();
       asteroid.display();
     }
@@ -242,8 +245,8 @@ function draw() {
 
   // SCOREBOX
   // Calling the Scorebox.js class methods
-    scorebox.infoPrompt();
-    scorebox.display();
+  scorebox.showInfo();
+  scorebox.display();
 
 
   // USER
@@ -271,15 +274,10 @@ function keyPressed() {
 // Oscillation stops when key is released
 function keyReleased() {
   oscillator.stop();
-
 }
 
-// Allows user to zoom in/out with mouse wheel or touchpad
-// From "Conditionals, 4.5: Mouse Input"
-function mouseWheel(event) {
-  // event.delta contains the distance, in pixels, it scrolled
-  camZ += event.delta;
-}
+
+
 
 // Camera
 // The camera follows the user in the simulation
@@ -290,6 +288,13 @@ function cameraSetup() {
   // Camera that follows the spaceship and can be controlled by the user with mouse
   camera(camX, camY, (height/2) / tan(PI * 30 / 180) + camZ, camX + mousecamXmap, camY + mousecamYmap, mousecamXmap+mousecamYmap, 0, 1, 0);
   // new camera([x], [y], [z], [centerX], [centerY], [centerZ], [upX], [upY], [upZ])
+}
+
+// Allows user to zoom in/out with mouse wheel or touchpad
+// From "Conditionals, 4.5: Mouse Input"
+function mouseWheel(event) {
+  // event.delta contains the distance it scrolled in pixels
+  camZ += event.delta;
 }
 
 

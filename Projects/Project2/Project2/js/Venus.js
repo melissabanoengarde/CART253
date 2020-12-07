@@ -13,11 +13,13 @@ class Venus extends Planet {
       r: 255,
       g: 217,
       b: 236,
-      lightPosition: 2000
+      lightPosition: 2000,
+      alpha: 150
     };
 
     // Visibility
     this.visible = false;
+
     // Total amount of stars needed to enable Neptune's visibility
     this.totalStars = 4;
   }
@@ -37,6 +39,29 @@ class Venus extends Planet {
         super.display();
         pop();
       }
+    }
+  }
+
+  // Information and display of Venus
+  showInfo() {
+    if (!this.visible) {
+      push();
+
+      // Venus' plane colour + alpha value
+      fill(this.fill.r, this.fill.g, this.fill.b, this.fill.alpha);
+
+      // Calling the superclass Planet.js' showInfo method
+      super.showInfo();
+      pop();
+    }
+  }
+
+  // Venus resumes orbit at its established speed
+  resume() {
+    let resume = 0.005;
+
+    if (this.speed === 0) {
+      this.speed = resume;
     }
   }
 

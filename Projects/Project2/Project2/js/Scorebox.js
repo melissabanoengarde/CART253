@@ -16,6 +16,8 @@ class Scorebox {
 
     // Scorecount begins at 0
     this.score = 0;
+    // Spacebar
+    this.spacebar = 32;
 
     // Display
     this.starsCountString = `Stars:`;
@@ -29,8 +31,8 @@ class Scorebox {
     this.active = true;
   }
 
-  infoPrompt() {
-    if (keyIsDown(73)) {
+  showInfo() {
+    if (keyIsDown(this.spacebar)) {
       this.active = false;
     }
     else {

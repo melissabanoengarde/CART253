@@ -18,6 +18,14 @@ class Mars extends Planet {
 
   // Visibility
   this.visible = false;
+
+  this.planeFill = {
+    r: 255,
+    g: 0,
+    b: 0,
+    a: 150,
+  };
+
   // Total amount of stars needed to enable Neptune's visibility
   this.totalStars = 5;
   }
@@ -36,6 +44,28 @@ class Mars extends Planet {
         super.display();
         pop();
       }
+    }
+  }
+
+  // Information and display of Mars
+  showInfo() {
+    if (!this.visible) {
+      push();
+
+      fill(this.planeFill.r, this.planeFill.g, this.planeFill.b, this.planeFill.a);
+
+      // Calling the superclass Planet.js' showInfo method
+      super.showInfo();
+      pop();
+    }
+  }
+
+  // Mars resumes orbit at its established speed
+  resume() {
+    let resume = 0.004;
+
+    if (this.speed === 0) {
+      this.speed = resume;
     }
   }
 

@@ -12,11 +12,13 @@ class Mercury extends Planet {
       r: 224,
       g: 224,
       b: 274,
-      lightPosition: 2000
+      lightPosition: 2000,
+      alpha: 150
     };
 
     // Visibility
     this.visible = false;
+
     // Total amount of stars needed to enable Neptune's visibility
     this.totalStars = 3;
   }
@@ -28,6 +30,7 @@ class Mercury extends Planet {
     if (!this.visible) {
       if(scorebox.score >= this.totalStars) {
         push();
+
         // Custom colour of Mercury
         // RGB parameters + position
         // Light grey
@@ -37,6 +40,29 @@ class Mercury extends Planet {
         super.display();
         pop();
       }
+    }
+  }
+
+  // Information and display of Mercury
+  showInfo() {
+    if (!this.visible) {
+      push();
+
+      // Mercury's plane colour + alpha value
+      fill(this.fill.r, this.fill.g, this.fill.b, this.fill.alpha);
+
+      // Calling the superclass Planet.js' showInfo method
+      super.showInfo();
+      pop();
+    }
+  }
+
+  // Mercury resumes orbit at its established speed
+  resume() {
+    let resume = 0.01;
+
+    if (this.speed === 0) {
+      this.speed = resume;
     }
   }
 
