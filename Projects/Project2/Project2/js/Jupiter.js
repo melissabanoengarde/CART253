@@ -39,7 +39,7 @@ class Jupiter extends Planet {
        push();
 
        fill(this.planeFill.r, this.planeFill.g, this.planeFill.b, this.planeFill.a);
-
+       // texture(jupiterClouds);
        // Calling the superclass Planet.js' showInfo method
        super.showInfo();
        pop();
@@ -54,5 +54,14 @@ class Jupiter extends Planet {
        this.speed = resume;
      }
    }
+
+   environment() {
+     push();
+     texture(jupiterClouds);
+
+     super.environment();
+     pop();
+   }
+
 
 }

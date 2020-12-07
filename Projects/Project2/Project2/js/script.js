@@ -18,6 +18,10 @@ let canvasEdge = -4;
 // An array that stores the individual planets
 let planets = [];
 
+let amazonImg;
+let sunGif;
+let jupiterClouds;
+
 // An array that stores the asteroids,
 // the number of asteroids spawned per 2 seconds and in the array,
 // and a variable for the Asteroid.js
@@ -68,6 +72,9 @@ let globalFont;
 function preload() {
   // Textures & images
   spaceshipTexture = loadImage('assets/images/spaceshiptexture.jpg');
+  amazonImg = loadImage('assets/images/earth-jungle.jpg');
+  sunGif = loadImage('assets/images/sun1.gif');
+  jupiterClouds = loadImage('assets/images/jupiter-planet.gif');
 
   // Sounds
   starCollectedSFX = loadSound('assets/sounds/starSFX2.m4a');

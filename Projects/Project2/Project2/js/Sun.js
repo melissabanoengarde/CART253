@@ -50,6 +50,15 @@ class Sun extends Planet {
       pop();
     }
   }
+
+  environment() {
+    push();
+    texture(sunGif);
+
+    super.environment();
+    pop();
+  }
+
 }
 
 

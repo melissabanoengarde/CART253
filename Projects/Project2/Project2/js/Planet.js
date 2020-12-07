@@ -121,6 +121,9 @@ class Planet {
 
       translate(infoXpos, infoYpos, infoZpos);
       plane(280, 250);
+      push();
+      this.environment();
+      pop();
       pop();
     }
     else {
@@ -132,11 +135,17 @@ class Planet {
     // customized in subclasses as each have different speeds
   }
 
+  environment() {
+    push();
+    noStroke();
+    rotateY(frameCount * 0.002);
+    sphere(1200);
+    pop();
+  }
+
 
 
 }
 
 
-// using if-statements for mousehover on planet is hard because of their motion
 // orbitting maths https://www.w3schools.com/graphics/game_movement.asp
-    // fill(0,255,0, 5);

@@ -42,6 +42,7 @@ class Earth extends Planet {
     if (this.visible) {
       push();
 
+      // custom plane colour fill
       fill(this.planeFill.r, this.planeFill.g, this.planeFill.b, this.planeFill.a);
 
       // Calling the superclass Planet.js' showInfo method
@@ -57,6 +58,14 @@ class Earth extends Planet {
     if (this.speed === 0) {
       this.speed = resume;
     }
+  }
+
+  environment() {
+    push();
+    texture(amazonImg);
+
+    super.environment();
+    pop();
   }
 
 }
