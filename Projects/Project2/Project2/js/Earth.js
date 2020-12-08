@@ -17,6 +17,10 @@ class Earth extends Planet {
       b: 191,
       a: 150
      };
+
+     // Title tag
+     this.symbol = `O`;
+     this.title = `EARTH`;
    }
 
   // Don't need to call motion because this subclass already inherits the superclass
@@ -25,6 +29,26 @@ class Earth extends Planet {
   display() {
     if (this.visible) {
       push();
+      // Title of planet
+      push();
+      let tag;
+      let symbol_xPos = this.x + 18;
+      let symbol_yPos = this.y + 32;
+      let text_xPos = this.x - 20;
+      let text_yPos = this.y + 30;
+
+      fill(green.r, green.g, green.b);
+
+      // Symbol
+      textFont(symbolFont);
+      textSize(this.symbolSize);
+      text(this.symbol, symbol_xPos, symbol_yPos);
+
+      // Title
+      textFont(globalFont);
+      textSize(this.titleSize);
+      text(this.title, text_xPos, text_yPos);
+      pop();
 
       // Custom colour of our Earth
       // RGB parameters + position

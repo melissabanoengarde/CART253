@@ -97,7 +97,6 @@ function preload() {
   mercuryEnviro = loadImage('assets/images/mercury-surface.jpg');
   venusEnviro = loadImage('assets/images/venus-surface.jpg');
 
-
   // Sounds
   starCollectedSFX = loadSound('assets/sounds/starSFX2.m4a');
 

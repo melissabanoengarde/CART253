@@ -17,6 +17,12 @@ class Planet {
     // each planet's "visible" status will be customized in their repsective subclass
     this.visible = undefined;
     this.totalStars = undefined;
+
+    // Title tag
+    this.symbol = undefined;
+    this.symbolSize = 18;
+    this.title = undefined;
+    this.titleSize = 12;
   }
 
   // What permits the planets to orbit
@@ -124,9 +130,11 @@ class Planet {
 
       translate(infoXpos, infoYpos, infoZpos);
       plane(280, 250);
+
       push();
       this.environment();
       pop();
+
       pop();
     }
     else {
@@ -143,7 +151,7 @@ class Planet {
     push();
     noStroke();
     rotateY(frameCount * 0.002);
-    sphere(1200);
+    sphere(1000);
     pop();
   }
 

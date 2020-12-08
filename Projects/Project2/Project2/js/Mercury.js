@@ -16,6 +16,10 @@ class Mercury extends Planet {
       alpha: 150
     };
 
+    // Title tag
+    this.symbol = `C`;
+    this.title = `MERCURY`;
+
     // Visibility
     this.visible = false;
 
@@ -30,6 +34,26 @@ class Mercury extends Planet {
     if (!this.visible) {
       if(scorebox.score >= this.totalStars) {
         push();
+        // Title of planet
+        push();
+        let tag;
+        let symbol_xPos = this.x + 28;
+        let symbol_yPos = this.y + 30;
+        let text_xPos = this.x - 28;
+        let text_yPos = this.y + 30;
+
+        fill(green.r, green.g, green.b);
+
+        // Symbol
+        textFont(symbolFont);
+        textSize(this.symbolSize);
+        text(this.symbol, symbol_xPos, symbol_yPos);
+
+        // Title
+        textFont(globalFont);
+        textSize(this.titleSize);
+        text(this.title, text_xPos, text_yPos);
+        pop();
 
         // Custom colour of Mercury
         // RGB parameters + position

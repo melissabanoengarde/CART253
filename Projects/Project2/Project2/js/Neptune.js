@@ -17,6 +17,10 @@ class Neptune extends Planet {
     alpha: 150
   };
 
+  // Title tag
+  this.symbol = `I`;
+  this.title = `NEPTUNE`;
+
   // Visibility
   // Neptune is not visible at the start
   this.visible = false;
@@ -31,6 +35,26 @@ class Neptune extends Planet {
     if (!this.visible) {
       if(scorebox.score >= this.totalStars) {
         push();
+        // Title of planet
+        push();
+        let tag;
+        let symbol_xPos = this.x + 24;
+        let symbol_yPos = this.y + 40;
+        let text_xPos = this.x - 30;
+        let text_yPos = this.y + 40;
+
+        fill(green.r, green.g, green.b);
+
+        // Symbol
+        textFont(symbolFont);
+        textSize(this.symbolSize);
+        text(this.symbol, symbol_xPos, symbol_yPos);
+
+        // Title
+        textFont(globalFont);
+        textSize(this.titleSize);
+        text(this.title, text_xPos, text_yPos);
+        pop();
 
         // Custom colour of Neptune
         // RGB parameters + light position

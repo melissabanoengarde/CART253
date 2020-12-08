@@ -20,11 +20,9 @@ class Sun extends Planet {
       alpha: 150
     };
 
-    // Symbol string
+    // Title tag
     this.symbol = `A`;
-    this.symbolSize = 20;
     this.title = `SUN`;
-    this.titleSize = 15;
   }
 
   // Don't need to call motion because this subclass already inherits the superclass
@@ -33,7 +31,6 @@ class Sun extends Planet {
   display() {
     if (this.visible) {
     push();
-
     // Title of planet
     push();
     let tag;
@@ -42,7 +39,6 @@ class Sun extends Planet {
     let text_xPos = this.x - 22;
     let text_yPos = this.y + 100;
 
-    // tag = createGraphics(100,50);
     fill(green.r, green.g, green.b);
 
     // Symbol
@@ -54,15 +50,9 @@ class Sun extends Planet {
     textFont(globalFont);
     textSize(this.titleSize);
     text(this.title, text_xPos, text_yPos);
-
-    // texture(tag);
-    // translate(this.x, this.y + 100, 0);
-    // plane(100,50);
-
     pop();
 
-    // Custom colour of our Sun
-    // RGB parameters + light position
+    // Custom fill of our Sun: RGB values + light position
     pointLight(this.fill.r, this.fill.g, this.fill.b, this.fill.pointLight);
 
     // Calling the superclass Planet.js' display method

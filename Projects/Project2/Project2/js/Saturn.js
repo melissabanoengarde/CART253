@@ -16,6 +16,10 @@ class Saturn extends Planet {
       lightPosition: 2000
     };
 
+    // Title tag
+    this.symbol = `G`;
+    this.title = `SATURN`;
+
     // Visibility
     this.visible = false;
     // Total amount of stars needed to enable Saturn's visibility
@@ -28,10 +32,28 @@ class Saturn extends Planet {
     if (!this.visible) {
       if(scorebox.score >= this.totalStars) {
         push();
+        // Title of planet
+        push();
+        let tag;
+        let symbol_xPos = this.x + 28;
+        let symbol_yPos = this.y + 100;
+        let text_xPos = this.x - 24;
+        let text_yPos = this.y + 100;
 
-        // Custom colour of our Saturn
-        // RGB parameters + position
-        // Yellow
+        fill(green.r, green.g, green.b);
+
+        // Symbol
+        textFont(symbolFont);
+        textSize(this.symbolSize);
+        text(this.symbol, symbol_xPos, symbol_yPos);
+
+        // Title
+        textFont(globalFont);
+        textSize(this.titleSize);
+        text(this.title, text_xPos, text_yPos);
+        pop();
+
+        // Custom fill of our Sun: RGB values + light position
         pointLight(this.fill.r,this.fill.g,this.fill.b, this.fill.lightPosition);
 
         // Calling the superclass Planet.js' display method
