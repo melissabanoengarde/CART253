@@ -77,6 +77,7 @@ class Planet {
       b: 114
     }
 
+    // Saturn's rings
     if (this.hasRings) {
       rotateX(30);
 

@@ -73,6 +73,14 @@ let camZ = 0;
 
 // Variable for the typefaces
 let globalFont;
+let symbolFont;
+
+// A reusable green (theme colour)
+let green = {
+  r: 0,
+  g: 180,
+  b: 0,
+};
 
 
 // Preloading the assets of the simulation
@@ -95,6 +103,7 @@ function preload() {
 
   // Typeface
   globalFont = loadFont('assets/typeface/IBMPlexMono-Regular.otf');
+  symbolFont = loadFont('assets/typeface/AstroDotBasic.ttf');
 }
 
 
@@ -102,7 +111,7 @@ function preload() {
 // Setup of the 3D canvas and the planets
 function setup() {
   createCanvas(windowWidth + canvasEdge, windowHeight + canvasEdge, WEBGL);
-
+  smooth();
   // PLANETS
   // Declaring all the subclasses by establishing their own variables, then pushing them inside "planets" array
   // Sun
@@ -136,21 +145,21 @@ function setup() {
 
   // ASTEROIDS
   // For-loop to create multiple asteroids from the Asteroid.js class
-  for (let i = 0; i < numAsteroids; i++) {
-    let x = random(-width, width);
-    let y = random(-height, height);
-    let z = random(-1000, -700);
+  // for (let i = 0; i < numAsteroids; i++) {
+  //   let x = random(-width, width);
+  //   let y = random(-height, height);
+  //   let z = random(-1000, -700);
 
     // Creating a new object, calling the Asteroid.js class object
-    asteroid = new Asteroid(x,y,z);
+    // asteroid = new Asteroid(x,y,z);
 
     // Pushing new Asteroid.js object in our "asteroids" array
-    asteroids.push(asteroid);
-  }
+    // asteroids.push(asteroid);
+  // }
 
   // Frequency of asteroids spawned
   // setInterval(function, milliseconds);
-  spawnInterval = setInterval(spawnAsteroid, spawnDelay);
+  // spawnInterval = setInterval(spawnAsteroid, spawnDelay);
 
 
   // STARS
@@ -190,35 +199,35 @@ function setup() {
 // spawnAsteroid()
 // A function that spawns two asteroids from random edges and depth of the canvas
 // This function is called in the parameters of "setInterval()", in the setup function
-function spawnAsteroid() {
-  let x;
-  let y;
-  let z = random(-2000, -1500);
-  let r = random(0, 1);
-
-  if (r < 0.25) {
-    x = -width;                           // x, far-left
-    y = random(-height/3, -height/4);     // y, random between top-third & top-quarter
-  }
-  else if (r < 0.5) {
-    x = random(-width, 0);                // x, random between far-left & center
-    y = random(-height, 0);               // y, random between center & top
-  }
-  else if (r < 0.75) {
-    x = -width;                           // x, center
-    y = random(-height/3, -height/4);     // y, random between top-third & top-quarter
-  }
-  else {
-    x = random(-width, 0);                // x, random between far-left & center
-    y = random(-height, 0);               // y, random between center & top
-  }
+// function spawnAsteroid() {
+//   let x;
+//   let y;
+//   let z = random(-2000, -1500);
+//   let r = random(0, 1);
+//
+//   if (r < 0.25) {
+//     x = -width;                           // x, far-left
+//     y = random(-height/3, -height/4);     // y, random between top-third & top-quarter
+//   }
+//   else if (r < 0.5) {
+//     x = random(-width, 0);                // x, random between far-left & center
+//     y = random(-height, 0);               // y, random between center & top
+//   }
+//   else if (r < 0.75) {
+//     x = -width;                           // x, center
+//     y = random(-height/3, -height/4);     // y, random between top-third & top-quarter
+//   }
+//   else {
+//     x = random(-width, 0);                // x, random between far-left & center
+//     y = random(-height, 0);               // y, random between center & top
+//   }
   // Spawns a new asteroid in that position
-  let asteroid = new Asteroid(x,y,z);
-  asteroids.push(asteroid);
+  // let asteroid = new Asteroid(x,y,z);
+  // asteroids.push(asteroid);
 
   // console.log(`x:` + asteroid.x, `y:` + asteroid.y, `z:` + asteroid.z);
   // console.log(`x:` + user.x, `y:` + user.y, `z:` + user.z);
-}
+// }
 
 
 // draw()
