@@ -62,7 +62,7 @@ class Earth extends Planet {
 
   environment() {
     push();
-    texture(amazonImg);
+    texture(earthEnviro);
 
     super.environment();
     pop();

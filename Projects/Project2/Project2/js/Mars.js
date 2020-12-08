@@ -27,7 +27,7 @@ class Mars extends Planet {
   };
 
   // Total amount of stars needed to enable Neptune's visibility
-  this.totalStars = 5;
+  this.totalStars = 0;
   }
 
   // Custom display method of Mars' class object
@@ -67,6 +67,16 @@ class Mars extends Planet {
     if (this.speed === 0) {
       this.speed = resume;
     }
+  }
+
+  environment() {
+    push();
+    // custom texture of environment simulation
+    texture(marsEnviro);
+
+    // calling the superclass environment() method
+    super.environment();
+    pop();
   }
 
 }

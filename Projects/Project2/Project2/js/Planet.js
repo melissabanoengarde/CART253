@@ -31,6 +31,7 @@ class Planet {
 
   // The planets' appearance
   display() {
+    if (this.visible === true || !this.visible) {
     push();
     // (!) keep translate and rotateZ within push-pops of display
     translate(this.x, this.y, this.z);
@@ -103,11 +104,12 @@ class Planet {
     pop();
     pop();
   }
+  }
 
   showInfo() {
     let d = dist(this.x, this.y, this.z, user.x, user.y, user.z);
     let infoXpos = camX - 180;
-    let infoYpos = camY + 350;
+    let infoYpos = camY + 280;
     let infoZpos = 0;
     let stop = 0;
 
@@ -134,6 +136,7 @@ class Planet {
   resume() {
     // customized in subclasses as each have different speeds
   }
+
 
   environment() {
     push();

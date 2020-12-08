@@ -19,7 +19,7 @@ class Saturn extends Planet {
     // Visibility
     this.visible = false;
     // Total amount of stars needed to enable Saturn's visibility
-    this.totalStars = 6;
+    this.totalStars = 0;
   }
 
   // Custom display method of Saturn's class object
@@ -62,6 +62,16 @@ class Saturn extends Planet {
     if (this.speed === 0) {
       this.speed = resume;
     }
+  }
+
+  environment() {
+    push();
+    // custom texture of environment simulation
+    texture(saturnEnviro);
+
+    // calling the superclass environment() method
+    super.environment();
+    pop();
   }
 
 }

@@ -22,7 +22,7 @@ class Neptune extends Planet {
   this.visible = false;
 
   // Total amount of stars needed to enable Neptune's visibility
-  this.totalStars = 10;
+  this.totalStars = 0;
   }
 
   // Custom display method of Neptune's class object
@@ -65,6 +65,16 @@ class Neptune extends Planet {
     if (this.speed === 0) {
       this.speed = resume;
     }
+  }
+
+  environment() {
+    push();
+    // custom texture of environment simulation
+    texture(neptuneEnviro);
+
+    // calling the superclass environment() method
+    super.environment();
+    pop();
   }
 
 }

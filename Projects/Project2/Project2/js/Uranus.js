@@ -20,6 +20,7 @@ class Uranus extends Planet {
     // Visibility
     // Uranus is not visible at the start
     this.visible = false;
+
     // Total amount of stars needed to enable Neptune's visibility
     this.totalStars = 2;
   }
@@ -62,6 +63,17 @@ class Uranus extends Planet {
     if (this.speed === 0) {
       this.speed = resume;
     }
+  }
+
+  environment() {
+    push();
+
+    // custom texture of environment simulation
+    texture(uranusEnviro);
+
+    // calling the superclass environment() method
+    super.environment();
+    pop();
   }
 
 }

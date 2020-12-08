@@ -15,12 +15,19 @@ let bgColour = 20;
 // Canvas' maximum edge to remove potential scrollbars
 let canvasEdge = -4;
 
-// An array that stores the individual planets
+// An array that stores the individual planets,
+// and variables for each planet's environment
+// when approached by the user
 let planets = [];
-
-let amazonImg;
-let sunGif;
-let jupiterClouds;
+let earthEnviro;
+let sunEnviro;
+let jupiterEnviro;
+let uranusEnviro;
+let marsEnviro;
+let neptuneEnviro;
+let saturnEnviro;
+let mercuryEnviro;
+let venusEnviro;
 
 // An array that stores the asteroids,
 // the number of asteroids spawned per 2 seconds and in the array,
@@ -72,9 +79,16 @@ let globalFont;
 function preload() {
   // Textures & images
   spaceshipTexture = loadImage('assets/images/spaceshiptexture.jpg');
-  amazonImg = loadImage('assets/images/earth-jungle.jpg');
-  sunGif = loadImage('assets/images/sun1.gif');
-  jupiterClouds = loadImage('assets/images/jupiter-planet.gif');
+  earthEnviro = loadImage('assets/images/earth-jungle.jpg');
+  sunEnviro = loadImage('assets/images/sun3.gif');
+  jupiterEnviro = loadImage('assets/images/jupiter-planet.gif');
+  uranusEnviro = loadImage('assets/images/uranus-simulation.jpg');
+  marsEnviro = loadImage('assets/images/mars-surface.jpg');
+  neptuneEnviro = loadImage('assets/images/neptune-surface.jpg');
+  saturnEnviro = loadImage('assets/images/saturn-surface-3.jpg');
+  mercuryEnviro = loadImage('assets/images/mercury-surface.jpg');
+  venusEnviro = loadImage('assets/images/venus-surface.jpg');
+
 
   // Sounds
   starCollectedSFX = loadSound('assets/sounds/starSFX2.m4a');

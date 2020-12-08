@@ -53,7 +53,7 @@ class Sun extends Planet {
 
   environment() {
     push();
-    texture(sunGif);
+    texture(sunEnviro);
 
     super.environment();
     pop();

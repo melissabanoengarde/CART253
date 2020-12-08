@@ -39,7 +39,7 @@ class Jupiter extends Planet {
        push();
 
        fill(this.planeFill.r, this.planeFill.g, this.planeFill.b, this.planeFill.a);
-       // texture(jupiterClouds);
+       // texture(jupiterEnviro);
        // Calling the superclass Planet.js' showInfo method
        super.showInfo();
        pop();
@@ -57,8 +57,10 @@ class Jupiter extends Planet {
 
    environment() {
      push();
-     texture(jupiterClouds);
+     // custom texture of environment simulation 
+     texture(jupiterEnviro);
 
+     // calling the superclass environment() method
      super.environment();
      pop();
    }
