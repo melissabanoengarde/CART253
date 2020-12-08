@@ -21,6 +21,14 @@ class Jupiter extends Planet {
     // Title tag
     this.symbol = `F`;
     this.title = `JUPITER`;
+
+    // Information and display of Earth
+    this.info = `First Recorded: 7th or 8th century BC\n
+                \nRecorded by: Babylonian astronomers
+                \nTemperature: -108 degrees Celsius
+                \nRotation Time: 9.84 Hours
+                \nOrbit Duration: 4 332.82 Earth Days (11.86 Earth Years)
+                \nRuled by: Dias, leader, king and father of thunder and the Olympian gods`;
   }
 
    // Custom display method of Jupiter's class object
@@ -60,11 +68,19 @@ class Jupiter extends Planet {
 
    // Information and display of Jupiter
    showInfo() {
+     let jupiterInfo;
      if (this.visible) {
        push();
+       // Jupiter infos
+       jupiterInfo = createGraphics(280, 250);
+       jupiterInfo.fill(green.r, green.g, green.b);
+       jupiterInfo.background(20, 220);
+       jupiterInfo.textSize(10);
+       jupiterInfo.textFont(globalFont);
+       jupiterInfo.textAlign(LEFT);
+       jupiterInfo.text(this.info, 10, 20, 260, 250);
+       texture(jupiterInfo);
 
-       fill(this.planeFill.r, this.planeFill.g, this.planeFill.b, this.planeFill.a);
-       // texture(jupiterEnviro);
        // Calling the superclass Planet.js' showInfo method
        super.showInfo();
        pop();

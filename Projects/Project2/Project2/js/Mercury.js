@@ -25,6 +25,14 @@ class Mercury extends Planet {
 
     // Total amount of stars needed to enable Neptune's visibility
     this.totalStars = 0;
+
+    // Information on info board
+    this.info = `First Recorded: 14th century BC \n
+                 \nRecorded by: Assyrian astronomers
+                 \nTemperature: -173 to 427 degrees Celsius
+                 \nRotation Time: 59 Earth Days
+                 \nOrbit Duration: 87.97 Earth Days
+                 \nRuled by: Hermes, god of messengers, travel, and commerce`;
   }
 
 
@@ -69,11 +77,18 @@ class Mercury extends Planet {
 
   // Information and display of Mercury
   showInfo() {
+    let mercuryInfo;
     if (!this.visible) {
       push();
-
-      // Mercury's plane colour + alpha value
-      fill(this.fill.r, this.fill.g, this.fill.b, this.fill.alpha);
+      // Mercury infos
+      mercuryInfo = createGraphics(280, 250);
+      mercuryInfo.fill(green.r, green.g, green.b);
+      mercuryInfo.background(20, 220);
+      mercuryInfo.textSize(10);
+      mercuryInfo.textFont(globalFont);
+      mercuryInfo.textAlign(LEFT);
+      mercuryInfo.text(this.info, 10, 20, 260, 250);
+      texture(mercuryInfo);
 
       // Calling the superclass Planet.js' showInfo method
       super.showInfo();

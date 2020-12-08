@@ -24,6 +24,14 @@ class Saturn extends Planet {
     this.visible = false;
     // Total amount of stars needed to enable Saturn's visibility
     this.totalStars = 0;
+
+    // Information on Info board
+    this.info = `First Recorded: 8th century BC\n
+                \nRecorded by: Assyrian Astronomers
+                \nTemperature: -139 degrees Celsius
+                \nRotation Time: 10.2 Hours
+                \nOrbit Duration: 10 755.70 Earth Days (29.45 Earth Years)
+                \nRuled by: Cronus, god of agriculture and father of Jupiter`;
   }
 
   // Custom display method of Saturn's class object
@@ -65,11 +73,18 @@ class Saturn extends Planet {
 
   // Information and display of Saturn
   showInfo() {
+    let saturnInfo;
     if (!this.visible) {
       push();
-
-      // Saturn's plane colour + alpha value
-      fill(this.fill.r, this.fill.g, this.fill.b, this.fill.alpha);
+      // Saturn infos
+      saturnInfo = createGraphics(280, 250);
+      saturnInfo.fill(green.r, green.g, green.b);
+      saturnInfo.background(20, 220);
+      saturnInfo.textSize(10);
+      saturnInfo.textFont(globalFont);
+      saturnInfo.textAlign(LEFT);
+      saturnInfo.text(this.info, 10, 20, 260, 250);
+      texture(saturnInfo);
 
       // Calling the superclass Planet.js' showInfo method
       super.showInfo();

@@ -27,6 +27,14 @@ class Neptune extends Planet {
 
   // Total amount of stars needed to enable Neptune's visibility
   this.totalStars = 0;
+
+  // Information of Info board
+  this.info = `First Recorded: September 23rd, 1846.\n
+               \nRecorded by: Urbain Le Verrier & Johann Galle
+               \nTemperature: -201 degrees Celsius
+               \nRotation Time: 19.1 Hours
+               \nOrbit Duration: 60 190.03 Earth Days (164.79 Earth Years)
+               \nRuled by: Poseidon, god of the sea`;
   }
 
   // Custom display method of Neptune's class object
@@ -70,11 +78,18 @@ class Neptune extends Planet {
 
   // Information and display of Neptune
   showInfo() {
+    let neptuneInfo;
     if (!this.visible) {
       push();
-
-      // Neptune's plane colour + alpha value
-      fill(this.fill.r, this.fill.g, this.fill.b, this.fill.alpha);
+      // Neptune infos
+      neptuneInfo = createGraphics(280, 250);
+      neptuneInfo.fill(green.r, green.g, green.b);
+      neptuneInfo.background(20, 220);
+      neptuneInfo.textSize(10);
+      neptuneInfo.textFont(globalFont);
+      neptuneInfo.textAlign(LEFT);
+      neptuneInfo.text(this.info, 10, 20, 260, 250);
+      texture(neptuneInfo);
 
       // Calling the superclass Planet.js' showInfo method
       super.showInfo();

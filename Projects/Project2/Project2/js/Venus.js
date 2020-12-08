@@ -26,6 +26,13 @@ class Venus extends Planet {
 
     // Total amount of stars needed to enable Neptune's visibility
     this.totalStars = 0;
+
+    this.info = `First Recorded: 17th century BC\n
+                 \nRecorded by: Babylonian astronomers
+                 \nTemperature: 462 ℃
+                 \nRotation Time: 243 Earth Days
+                 \nOrbit Duration: 224.7 Earth Days
+                 \nRuled by: Aphrodite, goddess of romance and lust`;
   }
 
 
@@ -69,11 +76,18 @@ class Venus extends Planet {
 
   // Information and display of Venus
   showInfo() {
+    let venusInfo;
     if (!this.visible) {
       push();
-
-      // Venus' plane colour + alpha value
-      fill(this.fill.r, this.fill.g, this.fill.b, this.fill.alpha);
+      // Venus infos
+      venusInfo = createGraphics(280, 250);
+      venusInfo.fill(green.r, green.g, green.b);
+      venusInfo.background(20, 220);
+      venusInfo.textSize(10);
+      venusInfo.textFont(globalFont);
+      venusInfo.textAlign(LEFT);
+      venusInfo.text(this.info, 10, 20, 260, 250);
+      texture(venusInfo);
 
       // Calling the superclass Planet.js' showInfo method
       super.showInfo();

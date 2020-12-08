@@ -21,6 +21,14 @@ class Earth extends Planet {
      // Title tag
      this.symbol = `O`;
      this.title = `EARTH`;
+
+     // Information on info board
+     this.info = `First Recorded: 5th Century BC \n
+                  \nRecorded by: Greek Philosophers
+                  \nTemperature: -88 to 58 degrees Celsius
+                  \nRotation Time: 1 Earth Day
+                  \nOrbit Duration: 365.25 Earth Days
+                  \nRuled by: Gaea, goddess of the Earth, mother to all gods`;
    }
 
   // Don't need to call motion because this subclass already inherits the superclass
@@ -63,11 +71,18 @@ class Earth extends Planet {
 
   // Information and display of Earth
   showInfo() {
+    let earthInfo;
     if (this.visible) {
       push();
-
-      // custom plane colour fill
-      fill(this.planeFill.r, this.planeFill.g, this.planeFill.b, this.planeFill.a);
+      // Earth infos
+      earthInfo = createGraphics(280, 250);
+      earthInfo.fill(green.r, green.g, green.b);
+      earthInfo.background(20, 220);
+      earthInfo.textSize(10);
+      earthInfo.textFont(globalFont);
+      earthInfo.textAlign(LEFT);
+      earthInfo.text(this.info, 10, 20, 260, 250);
+      texture(earthInfo);
 
       // Calling the superclass Planet.js' showInfo method
       super.showInfo();

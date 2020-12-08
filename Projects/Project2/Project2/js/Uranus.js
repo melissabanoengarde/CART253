@@ -27,6 +27,14 @@ class Uranus extends Planet {
 
     // Total amount of stars needed to enable Neptune's visibility
     this.totalStars = 0;
+
+    // Information on Info board
+    this.info = `First Recorded: March 13th, 1781.\n
+                 \nRecorded by: William Herschel
+                 \nTemperature: -197 degrees Celsius
+                 \nRotation Time: 17.9 Hours
+                 \nOrbit Duration: 30 687.15 Earth Days (84.02 Earth Years)
+                 \nRuled by: Uranos, god of the sky, father of uranus, grandfather of Jupiter`;
   }
 
   // Custom display method of Uranus's class object
@@ -69,11 +77,18 @@ class Uranus extends Planet {
 
   // Information and display of Uranus
   showInfo() {
+    let uranusInfo;
     if (!this.visible) {
       push();
-
-      // Uranus's plane colour + alpha value
-      fill(this.fill.r, this.fill.g, this.fill.b, this.fill.alpha);
+      // Uranus infos
+      uranusInfo = createGraphics(280, 250);
+      uranusInfo.fill(green.r, green.g, green.b);
+      uranusInfo.background(20, 220);
+      uranusInfo.textSize(10);
+      uranusInfo.textFont(globalFont);
+      uranusInfo.textAlign(LEFT);
+      uranusInfo.text(this.info, 10, 20, 260, 250);
+      texture(uranusInfo);
 
       // Calling the superclass Planet.js' showInfo method
       super.showInfo();

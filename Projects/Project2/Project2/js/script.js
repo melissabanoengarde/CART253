@@ -185,7 +185,7 @@ function setup() {
 
   // USER
   // Defining new object to call User.js class
-  user = new User(0, 300, 60, 20, spaceshipTexture);
+  user = new User(0, 300, 250, 20, spaceshipTexture);
 
 
   // OSCILLATOR

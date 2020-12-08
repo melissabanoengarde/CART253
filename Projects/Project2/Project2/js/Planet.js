@@ -145,8 +145,9 @@ class Planet {
   }
 
   // Resumes orbit around the Sun
+  // customized in subclasses as each have different speeds
   resume() {
-    // customized in subclasses as each have different speeds
+    
   }
 
   // 'VR or panoramic' environment that displays and rotates

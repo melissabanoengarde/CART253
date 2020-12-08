@@ -32,6 +32,14 @@ class Mars extends Planet {
 
     // Total amount of stars needed to enable Neptune's visibility
     this.totalStars = 0;
+
+    // Information on Info board
+    this.info = `First Recorded: 2nd Millennium BC \n
+                \nRecorded by: Egyptian astronomers
+                \nTemperature: -87 to -5 degrees Celsius
+                \nRotation Time: 24.6 Hours
+                \nOrbit Duration: 686.98 Earth Days (1.88 Earth Years)
+                \nRuled by: Ares, god of war`;
   }
 
   // Custom display method of Mars' class object
@@ -78,10 +86,18 @@ class Mars extends Planet {
 
   // Information and display of Mars
   showInfo() {
+    let marsInfo;
     if (!this.visible) {
       push();
-
-      fill(this.planeFill.r, this.planeFill.g, this.planeFill.b, this.planeFill.a);
+      // Mars infos
+      marsInfo = createGraphics(280, 250);
+      marsInfo.fill(green.r, green.g, green.b);
+      marsInfo.background(20, 220);
+      marsInfo.textSize(10);
+      marsInfo.textFont(globalFont);
+      marsInfo.textAlign(LEFT);
+      marsInfo.text(this.info, 10, 20, 260, 250);
+      texture(marsInfo);
 
       // Calling the superclass Planet.js' showInfo method
       super.showInfo();
