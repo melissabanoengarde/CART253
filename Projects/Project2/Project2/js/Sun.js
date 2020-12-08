@@ -17,12 +17,21 @@ class Sun extends Planet {
       g: 106,
       b: 0,
       pointLight: 2000,
-      alpha: 150
+      alpha: 100
     };
 
     // Title tag
     this.symbol = `A`;
     this.title = `SUN`;
+
+    // Information on Info board
+    this.info = `The sun is actually a star\n
+                 \nAge: 4.6 Billion Years
+                 \nType: Yellow Dwarf (G2V)
+                 \nTemperature: 5 500 degrees Celsius
+                 \nDiameter: 1 392 684 km (109 times Earth)
+                 \nAtmosphere: 73% Hydrogen, 24% Helium, 1% Oxygen, 0.3% Carbon
+                 \nGreek God: Helious, god of prophecy and solar incarnation`;
   }
 
   // Don't need to call motion because this subclass already inherits the superclass
@@ -63,10 +72,18 @@ class Sun extends Planet {
 
   // Information and display of Sun
   showInfo() {
+    let sunInfo;
     if (this.visible) {
       push();
-
-      fill(this.fill.r, this.fill.g, this.fill.b, this.fill.a);
+      // Sun infos
+      sunInfo = createGraphics(280, 250);
+      sunInfo.fill(green.r, green.g, green.b);
+      sunInfo.background(20, 220);
+      sunInfo.textSize(10);
+      sunInfo.textFont(globalFont);
+      sunInfo.textAlign(LEFT);
+      sunInfo.text(this.info, 10, 20, 260, 250);
+      texture(sunInfo);
 
       // Calling the superclass Planet.js' showInfo method
       super.showInfo();
@@ -74,10 +91,14 @@ class Sun extends Planet {
     }
   }
 
+  // 'VR' or panoramic environment
   environment() {
     push();
+
+    // Image of the view
     texture(sunEnviro);
 
+    // Calling the superclass environment() method
     super.environment();
     pop();
   }

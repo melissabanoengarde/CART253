@@ -51,7 +51,7 @@ class Planet {
     strokeWeight(this.strokeWeight);
     sphere(this.diameter);
 
-    // displays the torus' if this planet has rings (thanks, Sam TA!)
+    // Displays the torus' if this planet has rings (thanks, Sam TA!)
     push();
     let colour1 = {
       r: 101,
@@ -110,7 +110,7 @@ class Planet {
     }
     pop();
     pop();
-  }
+   }
   }
 
   showInfo() {
@@ -125,11 +125,13 @@ class Planet {
       this.speed = stop;
       noStroke();
 
+      // Information board
+      push();
       // rotateY(mouseX * 0.02);
       // rotateX(mouseY * 0.02);
-
       translate(infoXpos, infoYpos, infoZpos);
       plane(280, 250);
+      pop();
 
       push();
       this.environment();
@@ -142,16 +144,19 @@ class Planet {
     }
   }
 
+  // Resumes orbit around the Sun
   resume() {
     // customized in subclasses as each have different speeds
   }
 
-
+  // 'VR or panoramic' environment that displays and rotates
+  // around the user. The 360 effect is based off a very large
+  // sphere. The sphere 'wraps' the viewer inside the simulation.
   environment() {
     push();
     noStroke();
     rotateY(frameCount * 0.002);
-    sphere(1000);
+    sphere(1200);
     pop();
   }
 
