@@ -31,7 +31,7 @@ class Mars extends Planet {
     this.title = `MARS`;
 
     // Total amount of stars needed to enable Neptune's visibility
-    this.totalStars = 0;
+    this.totalStars = 4;
 
     // Information on Info board
     this.info = `First Recorded: 2nd Millennium BC \n

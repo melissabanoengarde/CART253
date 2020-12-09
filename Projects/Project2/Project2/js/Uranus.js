@@ -26,7 +26,7 @@ class Uranus extends Planet {
     this.visible = false;
 
     // Total amount of stars needed to enable Neptune's visibility
-    this.totalStars = 0;
+    this.totalStars = 7;
 
     // Information on Info board
     this.info = `First Recorded: March 13th, 1781.\n

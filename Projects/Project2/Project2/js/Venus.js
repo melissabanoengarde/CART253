@@ -25,7 +25,7 @@ class Venus extends Planet {
     this.visible = false;
 
     // Total amount of stars needed to enable Neptune's visibility
-    this.totalStars = 0;
+    this.totalStars = 5;
 
     // Information on Info board
     this.info = `First Recorded: 17th century BC\n

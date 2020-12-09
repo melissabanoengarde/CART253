@@ -23,7 +23,7 @@ class Saturn extends Planet {
     // Visibility
     this.visible = false;
     // Total amount of stars needed to enable Saturn's visibility
-    this.totalStars = 0;
+    this.totalStars = 10;
 
     // Information on Info board
     this.info = `First Recorded: 8th century BC\n

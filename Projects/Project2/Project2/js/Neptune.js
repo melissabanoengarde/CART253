@@ -26,7 +26,7 @@ class Neptune extends Planet {
   this.visible = false;
 
   // Total amount of stars needed to enable Neptune's visibility
-  this.totalStars = 0;
+  this.totalStars = 8;
 
   // Information of Info board
   this.info = `First Recorded: September 23rd, 1846.\n

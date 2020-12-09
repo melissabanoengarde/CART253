@@ -24,7 +24,7 @@ class Mercury extends Planet {
     this.visible = false;
 
     // Total amount of stars needed to enable Neptune's visibility
-    this.totalStars = 0;
+    this.totalStars = 3;
 
     // Information on info board
     this.info = `First Recorded: 14th century BC \n
