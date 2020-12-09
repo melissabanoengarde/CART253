@@ -27,9 +27,10 @@ class Venus extends Planet {
     // Total amount of stars needed to enable Neptune's visibility
     this.totalStars = 0;
 
+    // Information on Info board
     this.info = `First Recorded: 17th century BC\n
                  \nRecorded by: Babylonian astronomers
-                 \nTemperature: 462 ℃
+                 \nTemperature: 462 degrees Celsius
                  \nRotation Time: 243 Earth Days
                  \nOrbit Duration: 224.7 Earth Days
                  \nRuled by: Aphrodite, goddess of romance and lust`;

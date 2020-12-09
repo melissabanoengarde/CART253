@@ -145,13 +145,12 @@ class Planet {
   }
 
   // Resumes orbit around the Sun
-  // customized in subclasses as each have different speeds
   resume() {
-    
+    // customized in subclasses as each have different speeds to resume
   }
 
   // 'VR or panoramic' environment that displays and rotates
-  // around the user. The 360 effect is based off a very large
+  // around the user. The '360' effect is based off a very large
   // sphere. The sphere 'wraps' the viewer inside the simulation.
   environment() {
     push();
@@ -160,9 +159,6 @@ class Planet {
     sphere(1200);
     pop();
   }
-
-
-
 }
 
 
