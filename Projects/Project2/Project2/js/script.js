@@ -184,8 +184,8 @@ function setup() {
   oscillator.amp(0.02);
 }
 
-
 // draw()
+// The order of states
 function draw() {
   if (state === `title`) {
     titlePage();
@@ -194,10 +194,14 @@ function draw() {
   }
 }
 
+// Title state
 function titlePage() {
+  // Calling the display method of the Title.js class object
   title.display();
 }
 
+// Simulation state
+// This is where all the class object methods are called
 function simulation() {
   background(bgColour);
 
@@ -262,7 +266,13 @@ function keyPressed() {
     state = `simulation`;
   }
 
-  oscillator.start();
+  // This ensures that the oscillation works during the simulation as well,
+  // only when the user's input keys are pressed
+  if (state === `simulation`) {
+    if (keyIsDown(65) || keyIsDown(68) || keyIsDown(87) || keyIsDown(83) || keyIsDown(69) || keyIsDown(81)) {
+    oscillator.start();
+    }
+  }
 }
 
 // Oscillation stops when key is released
@@ -270,22 +280,26 @@ function keyReleased() {
   oscillator.stop();
 }
 
-// Camera
+// CAMERA
 // The camera follows the user in the simulation
 function cameraSetup() {
   // mouseX's and mouseY's variables, mapping the range in which the user-controlled camera can move
   let mousecamXmap = map(mouseX, 0, width, -300, 300);
   let mousecamYmap = map(mouseY, 0, height, -300, 400);
-  // Camera that follows the spaceship and can be controlled by the user with mouse
+
+  // Camera that follows the spaceship and can be controlled by the user with mouse or touchpad
   camera(camX, camY, (height/2) / tan(PI * 30 / 180) + camZ, camX + mousecamXmap, camY + mousecamYmap, mousecamXmap+mousecamYmap, 0, 1, 0);
-  // new camera([x], [y], [z], [centerX], [centerY], [centerZ], [upX], [upY], [upZ])
 }
 
 // Allows user to zoom in/out with mouse wheel or touchpad
 // From "Conditionals, 4.5: Mouse Input"
 function mouseWheel(event) {
+  let minZoom = -50;
+  let maxZoom = 100;
+
   // event.delta contains the distance it scrolled in pixels
   camZ += event.delta;
+  camZ = constrain(camZ, minZoom, maxZoom);
 }
 
 
