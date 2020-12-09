@@ -153,25 +153,6 @@ function setup() {
     planets.push(neptune);
 
 
-  // ASTEROIDS
-  // For-loop to create multiple asteroids from the Asteroid.js class
-  // for (let i = 0; i < numAsteroids; i++) {
-  //   let x = random(-width, width);
-  //   let y = random(-height, height);
-  //   let z = random(-1000, -700);
-
-    // Creating a new object, calling the Asteroid.js class object
-    // asteroid = new Asteroid(x,y,z);
-
-    // Pushing new Asteroid.js object in our "asteroids" array
-    // asteroids.push(asteroid);
-  // }
-
-  // Frequency of asteroids spawned
-  // setInterval(function, milliseconds);
-  // spawnInterval = setInterval(spawnAsteroid, spawnDelay);
-
-
   // STARS
   // For-loop to create multiple stars from Star.js class
   for (let i = 0; i < numStars; i++) {
@@ -189,7 +170,6 @@ function setup() {
     stars.push(star);
   }
 
-
   // SCOREBOX
   // Defining new object to call the Scorebox.js class
   scorebox = new Scorebox();
@@ -198,46 +178,11 @@ function setup() {
   // Defining new object to call User.js class
   user = new User(0, 300, 250, 20, spaceshipTexture);
 
-
   // OSCILLATOR
   // Creating the oscillator and setting the amplitude
   oscillator = new p5.Oscillator(440, `sine`);
   oscillator.amp(0.02);
 }
-
-
-// spawnAsteroid()
-// A function that spawns two asteroids from random edges and depth of the canvas
-// This function is called in the parameters of "setInterval()", in the setup function
-// function spawnAsteroid() {
-//   let x;
-//   let y;
-//   let z = random(-2000, -1500);
-//   let r = random(0, 1);
-//
-//   if (r < 0.25) {
-//     x = -width;                           // x, far-left
-//     y = random(-height/3, -height/4);     // y, random between top-third & top-quarter
-//   }
-//   else if (r < 0.5) {
-//     x = random(-width, 0);                // x, random between far-left & center
-//     y = random(-height, 0);               // y, random between center & top
-//   }
-//   else if (r < 0.75) {
-//     x = -width;                           // x, center
-//     y = random(-height/3, -height/4);     // y, random between top-third & top-quarter
-//   }
-//   else {
-//     x = random(-width, 0);                // x, random between far-left & center
-//     y = random(-height, 0);               // y, random between center & top
-//   }
-  // Spawns a new asteroid in that position
-  // let asteroid = new Asteroid(x,y,z);
-  // asteroids.push(asteroid);
-
-  // console.log(`x:` + asteroid.x, `y:` + asteroid.y, `z:` + asteroid.z);
-  // console.log(`x:` + user.x, `y:` + user.y, `z:` + user.z);
-// }
 
 
 // draw()
