@@ -1,7 +1,7 @@
 "use strict";
 
 /**************************************************
-Final Project: Solar-System Simulation
+Final Project: Solarystem
 Melissa Banoen-Garde
 
 User can control spaceship with keys AWSD + Q (backwards) and E (forward).
@@ -33,20 +33,6 @@ let saturnEnviro;
 let mercuryEnviro;
 let venusEnviro;
 
-// An array that stores the asteroids,
-// the number of asteroids spawned per 2 seconds and in the array,
-// and a variable for the Asteroid.js
-let asteroids = [];
-let numAsteroids = 2;
-let asteroid;
-
-// Spawns an asteroid every 2 seconds (2000 milliseconds)
-// (referring to the Traffic Inferno simulation)
-const spawnDelay = 1500;
-
-// tracks the interval that spawns new asteroids
-let spawnInterval;
-
 // An array of stars,
 // the number of stars in the "stars" array,
 // and a variable for our Star.js class object
@@ -64,7 +50,9 @@ let user;
 let spaceshipTexture;
 
 // Sound effect for when a star is collected
+// and the simulation's 'score'
 let starCollectedSFX;
+let outsideSilence;
 
 // Oscillator
 let oscillator;
@@ -72,7 +60,7 @@ let angle = 0;
 
 // Variables for our camera following the user
 let camX = 0;
-let camY = 0;
+let camY = 200;
 let camZ = 0;
 
 // Variable for the typefaces
@@ -105,6 +93,7 @@ function preload() {
 
   // Sounds
   starCollectedSFX = loadSound('assets/sounds/starSFX2.m4a');
+  outsideSilence = loadSound('assets/sounds/Robin Guthrie & Harold Budd - Outside, Silence.mp3');
 
   // Typeface
   globalFont = loadFont('assets/typeface/IBMPlexMono-Regular.otf');
@@ -113,13 +102,14 @@ function preload() {
 }
 
 
-
+// setup()
 // Setup of the 3D canvas and the planets
 function setup() {
   createCanvas(windowWidth + canvasEdge, windowHeight + canvasEdge, WEBGL);
   smooth();
 
-  // Title state
+  // TITLE STATE
+  // Defining new object to call the Title.js class
   title = new Title();
 
   // PLANETS
@@ -152,7 +142,6 @@ function setup() {
   let neptune = new Neptune(800, 20, 0.0003, 0.002, false);
     planets.push(neptune);
 
-
   // STARS
   // For-loop to create multiple stars from Star.js class
   for (let i = 0; i < numStars; i++) {
@@ -168,6 +157,8 @@ function setup() {
 
     // Pushing new Star.js object in our "stars" array
     stars.push(star);
+
+    // outsideSilence.setVolume(0.05);
   }
 
   // SCOREBOX
@@ -176,7 +167,7 @@ function setup() {
 
   // USER
   // Defining new object to call User.js class
-  user = new User(0, 300, 250, 20, spaceshipTexture);
+  user = new User(0, 300, 250, 10, spaceshipTexture);
 
   // OSCILLATOR
   // Creating the oscillator and setting the amplitude
@@ -191,6 +182,7 @@ function draw() {
     titlePage();
   } else if (state === `simulation`) {
     simulation();
+    // outsideSilence.play();
   }
 }
 
@@ -201,11 +193,12 @@ function titlePage() {
 }
 
 // Simulation state
-// This is where all the class object methods are called
+// This is where all the class object's methods are called
 function simulation() {
   background(bgColour);
 
   // CAMERA
+  // Calling the camera function
   cameraSetup();
 
   // PLANETS
@@ -214,19 +207,12 @@ function simulation() {
     let planet = planets[i];
     planet.motion();
     planet.display();
+
     // displays information if planet is already visible or after they become visible
     if (planet.visible === true || !planet.visible) {
       planet.showInfo();
     }
   }
-
-  // ASTEROIDS
-  // For-loop that makes each asteroid in the "asteroids" array go through the Asteroid.js class methods
-  for (let i = 0; i < asteroids.length; i++) {
-      let asteroid = asteroids[i];
-      asteroid.motion();
-      asteroid.display();
-    }
 
   // STARS
   // For-loop that makes each star in the "stars" array to go through Star.js class methods.
@@ -256,7 +242,8 @@ function simulation() {
   let newFreq = map(tanAngle, -1, 1, 90, 150);
   oscillator.freq(newFreq);
 
-  // changes the angle which will change the OUTPUT of the sine function [sin(angle)] which will change which frequency will pop out of the map
+  // Changes the angle which will change the OUTPUT of the sine function
+  // [sin(angle)] changing which frequency will pop out of the map
   angle = angle + 0.5;
 }
 
@@ -266,8 +253,8 @@ function keyPressed() {
     state = `simulation`;
   }
 
-  // This ensures that the oscillation works during the simulation as well,
-  // only when the user's input keys are pressed
+  // This ensures that the oscillation works during the simulation,
+  // only when the handle input keys are pressed
   if (state === `simulation`) {
     if (keyIsDown(65) || keyIsDown(68) || keyIsDown(87) || keyIsDown(83) || keyIsDown(69) || keyIsDown(81)) {
     oscillator.start();
@@ -295,7 +282,7 @@ function cameraSetup() {
 // From "Conditionals, 4.5: Mouse Input"
 function mouseWheel(event) {
   let minZoom = -50;
-  let maxZoom = 100;
+  let maxZoom = 250;
 
   // event.delta contains the distance it scrolled in pixels
   camZ += event.delta;

@@ -27,14 +27,14 @@ class Mercury extends Planet {
     this.totalStars = 3;
 
     // Information on info board
-    this.info = `First Recorded: 14th century BC \n
+    this.info = `Mercury\n
+                 \nFirst Recorded: 14th century BC
                  \nRecorded by: Assyrian astronomers
                  \nTemperature: -173 to 427 degrees Celsius
                  \nRotation Time: 59 Earth Days
                  \nOrbit Duration: 87.97 Earth Days
                  \nRuled by: Hermes, god of messengers, travel, and commerce`;
   }
-
 
   // Custom display method of Mercury's class object
   display() {

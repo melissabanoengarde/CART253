@@ -25,7 +25,8 @@ class Sun extends Planet {
     this.title = `SUN`;
 
     // Information on Info board
-    this.info = `Age: 4.6 Billion Years\n
+    this.info = `Sun\n
+                 \nAge: 4.6 Billion Years
                  \nType: Yellow Dwarf (G2V)
                  \nTemperature: 5 500 degrees Celsius
                  \nDiameter: 1 392 684 km (109 times Earth)

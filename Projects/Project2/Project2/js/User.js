@@ -4,6 +4,7 @@
 class User {
 
   constructor(x, y, z, size, spaceshipTexture) {
+    // Position and motion
     this.x = x;
     this.y = y;
     this.z = z;
@@ -58,12 +59,14 @@ class User {
     this.vy = 0;
    }
 
-   // Allows user to move on z-axis by pressing "E" and "Q"
-   if (keyIsDown(69)) {       // forward E
+   // Allows user to move on z-axis by pressing "E" or "Q"
+   // Forward, E
+   if (keyIsDown(69)) {
      this.vz = -this.speed;
      camZ -= this.speed;
    }
-   else if (keyIsDown(81)) {  // backwards Q
+   // Backwards, Q
+   else if (keyIsDown(81)) {
      this.vz = this.speed;
      camZ += this.speed;
    }
@@ -95,7 +98,4 @@ class User {
   pop();
   pop();
   }
-
 }
-
-// console.log(this.x);
