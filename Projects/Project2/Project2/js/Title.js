@@ -10,6 +10,13 @@ class Title {
     this.instrucSize = 40;
   }
 
-  
+  display() {
+    push();
+    fill(green.r,green.g2,green.b);
+    textFont(titleFont);
+    textSize(this.titleSize);
+    text(this.title, 0, 0);
+    pop();
+  }
 
 }

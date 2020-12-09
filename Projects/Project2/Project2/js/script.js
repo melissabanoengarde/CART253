@@ -9,6 +9,10 @@ Use mousepad or mouse to control the camera's angle.
 Try to approach a star and collect it!
 **************************************************/
 
+// Variables for starting state and the Title.js class object
+let state = `title`;
+let title;
+
 // Background colour
 let bgColour = 20;
 
@@ -74,11 +78,13 @@ let camZ = 0;
 // Variable for the typefaces
 let globalFont;
 let symbolFont;
+let titleFont;
 
 // A reusable green (theme colour)
 let green = {
   r: 0,
   g: 180,
+  g2: 250,
   b: 0,
 };
 
@@ -103,6 +109,7 @@ function preload() {
   // Typeface
   globalFont = loadFont('assets/typeface/IBMPlexMono-Regular.otf');
   symbolFont = loadFont('assets/typeface/AstroDotBasic.ttf');
+  titleFont = loadFont('assets/typeface/ENGIN.otf');
 }
 
 
@@ -111,6 +118,10 @@ function preload() {
 function setup() {
   createCanvas(windowWidth + canvasEdge, windowHeight + canvasEdge, WEBGL);
   smooth();
+
+  // Title state
+  title = new Title();
+
   // PLANETS
   // Declaring all the subclasses by establishing their own variables, then pushing them inside "planets" array
   // Sun
@@ -231,12 +242,22 @@ function setup() {
 
 // draw()
 function draw() {
-  background(bgColour);
+  if (state === `title`) {
+    titlePage();
+  } else if (state === `simulation`) {
+    simulation();
+  }
+}
 
+function titlePage() {
+  title.display();
+}
+
+function simulation() {
+  background(bgColour);
 
   // CAMERA
   cameraSetup();
-
 
   // PLANETS
   // For-loop that pushes the superclass "Planet.js" methods into each star in the "planet" array
@@ -250,7 +271,6 @@ function draw() {
     }
   }
 
-
   // ASTEROIDS
   // For-loop that makes each asteroid in the "asteroids" array go through the Asteroid.js class methods
   for (let i = 0; i < asteroids.length; i++) {
@@ -258,7 +278,6 @@ function draw() {
       asteroid.motion();
       asteroid.display();
     }
-
 
   // STARS
   // For-loop that makes each star in the "stars" array to go through Star.js class methods.
@@ -277,12 +296,10 @@ function draw() {
   scorebox.showInfo();
   scorebox.display();
 
-
   // USER
   // Calling the User.js class methods
   user.motion();
   user.display();
-
 
   // OSCILLATOR
   // Oscillation between -1 and 1
@@ -294,9 +311,12 @@ function draw() {
   angle = angle + 0.5;
 }
 
-
 // Oscillation starts when key is pressed
 function keyPressed() {
+  if (keyIsDown(13)  && state === `title`) {
+    state = `simulation`;
+  }
+
   oscillator.start();
 }
 
@@ -304,9 +324,6 @@ function keyPressed() {
 function keyReleased() {
   oscillator.stop();
 }
-
-
-
 
 // Camera
 // The camera follows the user in the simulation
@@ -327,17 +344,10 @@ function mouseWheel(event) {
 }
 
 
-
-
-
-
-
 /*******************************************************************************
 NOTES:
-new camera([x], [y], [z], [centerX], [centerY], [centerZ], [upX], [upY], [upZ])
-
-camera(0, 0, (height/2) / tan(PI/6), 0, 0, 0, 0, 1, 0)  [default camera position]
+- new camera([x], [y], [z], [centerX], [centerY], [centerZ], [upX], [upY], [upZ])
+- camera(0, 0, (height/2) / tan(PI/6), 0, 0, 0, 0, 1, 0)  [default camera position]
   from https://processing.org/tutorials/p3d/
-
-spaceship texture: https://www.pinterest.ca/pin/731975745662291861/
-*/
+- spaceship texture: https://www.pinterest.ca/pin/731975745662291861/
+*******************************************************************************/
