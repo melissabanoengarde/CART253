@@ -11,11 +11,12 @@ class Jupiter extends Planet {
     // Visibility
     this.visible = true;
 
-    this.planeFill = {
-      r: 255,
-      g: 209,
-      b: 163,
-      a: 150
+    // Custom fill
+    this.fill = {
+      r: 196,
+      g: 157,
+      b: 98,
+      pointLight: 2000
     };
 
     // Title tag
@@ -23,7 +24,8 @@ class Jupiter extends Planet {
     this.title = `JUPITER`;
 
     // Information and display of Earth
-    this.info = `First Recorded: 7th or 8th century BC\n
+    this.info = `Jupiter\n
+                \nFirst Recorded: 7th or 8th century BC
                 \nRecorded by: Babylonian astronomers
                 \nTemperature: -108 degrees Celsius
                 \nRotation Time: 9.84 Hours
@@ -33,7 +35,7 @@ class Jupiter extends Planet {
 
    // Custom display method of Jupiter's class object
    display() {
-     if (this.visible) {
+     if (this.visible = true) {
        push();
        // Title of planet
        push();
@@ -42,13 +44,33 @@ class Jupiter extends Planet {
        let symbol_yPos = this.y + 60;
        let text_xPos = this.x - 32;
        let text_yPos = this.y + 60;
+       let planeWidth = textWidth(this.symbol);
+       let planeHeight = textAscent() + textDescent();
 
        fill(green.r, green.g, green.b);
 
        // Symbol
        textFont(symbolFont);
        textSize(this.symbolSize);
-       text(this.symbol, symbol_xPos, symbol_yPos);
+
+       // Creating text with transparent background fill
+       // I was able to do this with Pippin's help!
+       tag = createGraphics(planeWidth, planeHeight);
+       tag.background(0, 0, 0, 0);
+       tag.textFont(symbolFont);
+       tag.textAlign(CENTER);
+       tag.textSize(this.symbolSize);
+       tag.fill(green.r, green.g, green.b);
+       tag.text(this.symbol, tag.width / 2, tag.height / 2);
+
+       push();
+       fill(255, 0, 0);
+       noFill();
+       noStroke();
+       texture(tag); // using the transparent background tag created above
+       translate(symbol_xPos, symbol_yPos);
+       plane(planeWidth, planeHeight);
+       pop();
 
        // Title
        textFont(globalFont);
@@ -59,7 +81,8 @@ class Jupiter extends Planet {
        // Custom colour of our Jupiter
        // RGB parameters + position
        // Brown
-       pointLight(196, 157, 98, 2000);
+       pointLight(this.fill.r, this.fill.g, this.fill.b, this.fill.pointLight);
+
        // Calling the superclass Planet.js' display method
        super.display();
        pop();
@@ -90,12 +113,13 @@ class Jupiter extends Planet {
    // Jupiter resumes orbit at its established speed
    resume() {
      let resume = 0.0015;
-
+     // resumes to its initial speed
      if (this.speed === 0) {
        this.speed = resume;
      }
    }
 
+   // Creating Jupiter's 360 environment
    environment() {
      push();
      // custom texture of environment simulation
@@ -105,6 +129,4 @@ class Jupiter extends Planet {
      super.environment();
      pop();
    }
-
-
 }

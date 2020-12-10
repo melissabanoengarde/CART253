@@ -28,7 +28,8 @@ class Venus extends Planet {
     this.totalStars = 5;
 
     // Information on Info board
-    this.info = `First Recorded: 17th century BC\n
+    this.info = `Venus\n
+                 \nFirst Recorded: 17th century BC
                  \nRecorded by: Babylonian astronomers
                  \nTemperature: 462 degrees Celsius
                  \nRotation Time: 243 Earth Days
@@ -99,12 +100,13 @@ class Venus extends Planet {
   // Venus resumes orbit at its established speed
   resume() {
     let resume = 0.005;
-
+    // resumes to its initial speed
     if (this.speed === 0) {
       this.speed = resume;
     }
   }
 
+  // Creates Venus' 360 environment
   environment() {
     push();
     // custom texture of environment simulation

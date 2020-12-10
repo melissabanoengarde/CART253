@@ -29,7 +29,8 @@ class Neptune extends Planet {
   this.totalStars = 8;
 
   // Information of Info board
-  this.info = `First Recorded: September 23rd, 1846.\n
+  this.info = `Neptune\n
+               \nFirst Recorded: September 23rd, 1846.
                \nRecorded by: Urbain Le Verrier & Johann Galle
                \nTemperature: -201 degrees Celsius
                \nRotation Time: 19.1 Hours
@@ -100,12 +101,13 @@ class Neptune extends Planet {
   // Neptune resumes orbit at its established speed
   resume() {
     let resume = 0.0003;
-
+    // resumes to its initial environment
     if (this.speed === 0) {
       this.speed = resume;
     }
   }
 
+  // Creates Neptune's 360 environment
   environment() {
     push();
     // custom texture of environment simulation

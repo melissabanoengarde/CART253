@@ -91,7 +91,7 @@ class Sun extends Planet {
     }
   }
 
-  // 'VR' or panoramic environment
+  // Creates the Sun's 360 enviroment
   environment() {
     push();
 

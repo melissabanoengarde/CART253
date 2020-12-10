@@ -29,7 +29,8 @@ class Uranus extends Planet {
     this.totalStars = 7;
 
     // Information on Info board
-    this.info = `First Recorded: March 13th, 1781.\n
+    this.info = `Uranus\n
+                 \nFirst Recorded: March 13th, 1781.
                  \nRecorded by: William Herschel
                  \nTemperature: -197 degrees Celsius
                  \nRotation Time: 17.9 Hours
@@ -80,7 +81,7 @@ class Uranus extends Planet {
     let uranusInfo;
     if (!this.visible) {
       push();
-      // Uranus infos
+      // Uranus' infos
       uranusInfo = createGraphics(280, 250);
       uranusInfo.fill(green.r, green.g, green.b);
       uranusInfo.background(20, 220);
@@ -99,12 +100,13 @@ class Uranus extends Planet {
   // Uranus resumes orbit at its established speed
   resume() {
     let resume = 0.0002;
-
+    // resumes to its initial speed
     if (this.speed === 0) {
       this.speed = resume;
     }
   }
 
+  // Creates Uranus' 360 environment
   environment() {
     push();
 

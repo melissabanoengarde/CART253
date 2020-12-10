@@ -99,12 +99,13 @@ class Mercury extends Planet {
   // Mercury resumes orbit at its established speed
   resume() {
     let resume = 0.01;
-
+    // resumes to its initial speed
     if (this.speed === 0) {
       this.speed = resume;
     }
   }
 
+  // Creates Mercury's 360 environment
   environment() {
     push();
     // custom texture of environment simulation

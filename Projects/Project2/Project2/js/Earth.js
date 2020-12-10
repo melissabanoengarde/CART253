@@ -23,7 +23,8 @@ class Earth extends Planet {
      this.title = `EARTH`;
 
      // Information on info board
-     this.info = `First Recorded: 5th Century BC \n
+     this.info = `Earth\n
+                  \nFirst Recorded: 5th Century BC
                   \nRecorded by: Greek Philosophers
                   \nTemperature: -88 to 58 degrees Celsius
                   \nRotation Time: 1 Earth Day
@@ -93,16 +94,18 @@ class Earth extends Planet {
   // Earth resumes orbit at its established speed
   resume() {
     let resume = 0.004;
-
+    // resumes to its initial speed
     if (this.speed === 0) {
       this.speed = resume;
     }
   }
 
+  // Creates Earth's 360 environment
   environment() {
     push();
     texture(earthEnviro);
 
+    // Calling the superclass' environment method
     super.environment();
     pop();
   }

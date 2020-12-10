@@ -52,7 +52,7 @@ let spaceshipTexture;
 // Sound effect for when a star is collected
 // and the simulation's 'score'
 let starCollectedSFX;
-let outsideSilence;
+let soundtrack;
 
 // Oscillator
 let oscillator;
@@ -93,7 +93,7 @@ function preload() {
 
   // Sounds
   starCollectedSFX = loadSound('assets/sounds/starSFX2.m4a');
-  outsideSilence = loadSound('assets/sounds/Robin Guthrie & Harold Budd - Outside, Silence.mp3');
+  soundtrack = loadSound('assets/sounds/soundtrack.wav');
 
   // Typeface
   globalFont = loadFont('assets/typeface/IBMPlexMono-Regular.otf');
@@ -103,7 +103,7 @@ function preload() {
 
 
 // setup()
-// Setup of the 3D canvas and the planets
+// Setup of the 3D canvas and initializing the class objects and other elements of the simulation
 function setup() {
   createCanvas(windowWidth + canvasEdge, windowHeight + canvasEdge, WEBGL);
   smooth();
@@ -157,8 +157,6 @@ function setup() {
 
     // Pushing new Star.js object in our "stars" array
     stars.push(star);
-
-    // outsideSilence.setVolume(0.05);
   }
 
   // SCOREBOX
@@ -182,7 +180,9 @@ function draw() {
     titlePage();
   } else if (state === `simulation`) {
     simulation();
-    // outsideSilence.play();
+    soundtrack.play();  // Begins soundtrack
+    soundtrack.setVolume(0.002);
+    soundtrack.loop();
   }
 }
 
@@ -197,24 +197,23 @@ function titlePage() {
 function simulation() {
   background(bgColour);
 
-  // CAMERA
   // Calling the camera function
   cameraSetup();
 
-  // PLANETS
+  // Planets
   // For-loop that pushes the superclass "Planet.js" methods into each star in the "planet" array
   for (let i = 0; i < planets.length; i++) {
     let planet = planets[i];
     planet.motion();
     planet.display();
 
-    // displays information if planet is already visible or after they become visible
+    // Displays information if planet is already visible or after they become visible
     if (planet.visible === true || !planet.visible) {
       planet.showInfo();
     }
   }
 
-  // STARS
+  // Stars
   // For-loop that makes each star in the "stars" array to go through Star.js class methods.
   for (let i = 0; i < stars.length; i++) {
     let star = stars[i];
@@ -226,17 +225,17 @@ function simulation() {
       }
     }
 
-  // SCOREBOX
+  // Scorebox
   // Calling the Scorebox.js class methods
   scorebox.showInfo();
   scorebox.display();
 
-  // USER
+  // User
   // Calling the User.js class methods
   user.motion();
   user.display();
 
-  // OSCILLATOR
+  // Oscillator
   // Oscillation between -1 and 1
   let tanAngle = tan(angle);
   let newFreq = map(tanAngle, -1, 1, 90, 150);

@@ -19,13 +19,6 @@ class Mars extends Planet {
     // Visibility
     this.visible = false;
 
-    this.planeFill = {
-      r: 255,
-      g: 0,
-      b: 0,
-      a: 150,
-    };
-
     // Title tag
     this.symbol = `E`;
     this.title = `MARS`;
@@ -34,7 +27,8 @@ class Mars extends Planet {
     this.totalStars = 4;
 
     // Information on Info board
-    this.info = `First Recorded: 2nd Millennium BC \n
+    this.info = `Mars\n
+                \nFirst Recorded: 2nd Millennium BC
                 \nRecorded by: Egyptian astronomers
                 \nTemperature: -87 to -5 degrees Celsius
                 \nRotation Time: 24.6 Hours
@@ -108,12 +102,13 @@ class Mars extends Planet {
   // Mars resumes orbit at its established speed
   resume() {
     let resume = 0.004;
-
+    // resumes to its initial speed
     if (this.speed === 0) {
       this.speed = resume;
     }
   }
 
+  // Creating Mars' 360 environment
   environment() {
     push();
     // custom texture of environment simulation

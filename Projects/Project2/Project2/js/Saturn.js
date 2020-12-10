@@ -26,7 +26,8 @@ class Saturn extends Planet {
     this.totalStars = 10;
 
     // Information on Info board
-    this.info = `First Recorded: 8th century BC\n
+    this.info = `Saturn\n
+                \nFirst Recorded: 8th century BC
                 \nRecorded by: Assyrian Astronomers
                 \nTemperature: -139 degrees Celsius
                 \nRotation Time: 10.2 Hours
@@ -95,12 +96,13 @@ class Saturn extends Planet {
   // Saturn resumes orbit at its established speed
   resume() {
     let resume = 0.0008;
-
+    // resumes to its initial speed
     if (this.speed === 0) {
       this.speed = resume;
     }
   }
 
+  // Creates Saturn's 360 environment
   environment() {
     push();
     // custom texture of environment simulation
