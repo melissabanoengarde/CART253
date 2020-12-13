@@ -9,7 +9,8 @@ class Sun extends Planet {
     super(distance, diameter, speed, rSpeed, hasRings);
 
     // Visibility
-    this.visible = true;
+    this.visible = false;
+    this.totalStars = 0;
 
     // Custom fill
     this.fill = {
@@ -38,7 +39,7 @@ class Sun extends Planet {
 
   // Custom display method of the Sun's class object
   display() {
-    if (this.visible) {
+    if (!this.visible) {
     push();
     // Title of planet
     push();
@@ -73,7 +74,7 @@ class Sun extends Planet {
   // Information and display of Sun
   showInfo() {
     let sunInfo;
-    if (this.visible) {
+    if (!this.visible) {
       push();
       // Sun infos
       sunInfo = createGraphics(280, 250);
@@ -93,6 +94,7 @@ class Sun extends Planet {
 
   // Creates the Sun's 360 enviroment
   environment() {
+    if (!this.visible) {
     push();
 
     // Image of the view
@@ -101,6 +103,7 @@ class Sun extends Planet {
     // Calling the superclass environment() method
     super.environment();
     pop();
+    }
   }
 
 }

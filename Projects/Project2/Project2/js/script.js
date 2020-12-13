@@ -108,10 +108,21 @@ function setup() {
   createCanvas(windowWidth + canvasEdge, windowHeight + canvasEdge, WEBGL);
   smooth();
 
-  // TITLE STATE
+  initializeStates();
+  initializePlanets();
+  initializeStars();
+  initializeUI();
+  initializeSound();
+
+}
+
+function initializeStates() {
+  // Title
   // Defining new object to call the Title.js class
   title = new Title();
+}
 
+function initializePlanets() {
   // PLANETS
   // Declaring all the subclasses by establishing their own variables, then pushing them inside "planets" array
   // Sun
@@ -141,7 +152,9 @@ function setup() {
   // Neptune
   let neptune = new Neptune(800, 20, 0.0003, 0.002, false);
     planets.push(neptune);
+}
 
+function initializeStars() {
   // STARS
   // For-loop to create multiple stars from Star.js class
   for (let i = 0; i < numStars; i++) {
@@ -158,7 +171,9 @@ function setup() {
     // Pushing new Star.js object in our "stars" array
     stars.push(star);
   }
+}
 
+function initializeUI() {
   // SCOREBOX
   // Defining new object to call the Scorebox.js class
   scorebox = new Scorebox();
@@ -166,12 +181,15 @@ function setup() {
   // USER
   // Defining new object to call User.js class
   user = new User(0, 300, 250, 10, spaceshipTexture);
+}
 
+function initializeSound() {
   // OSCILLATOR
   // Creating the oscillator and setting the amplitude
   oscillator = new p5.Oscillator(440, `sine`);
   oscillator.amp(0.02);
 }
+
 
 // draw()
 // The order of states
@@ -198,8 +216,15 @@ function simulation() {
   background(bgColour);
 
   // Calling the camera function
-  cameraSetup();
+  runCamera();
+  runPlanets();
+  runStars();
+  runUI();
+  runSound();
 
+}
+
+function runPlanets() {
   // Planets
   // For-loop that pushes the superclass "Planet.js" methods into each star in the "planet" array
   for (let i = 0; i < planets.length; i++) {
@@ -208,11 +233,13 @@ function simulation() {
     planet.display();
 
     // Displays information if planet is already visible or after they become visible
-    if (planet.visible === true || !planet.visible) {
+    if (!planet.visible) {
       planet.showInfo();
     }
   }
+}
 
+function runStars() {
   // Stars
   // For-loop that makes each star in the "stars" array to go through Star.js class methods.
   for (let i = 0; i < stars.length; i++) {
@@ -224,27 +251,31 @@ function simulation() {
       star.checkStar(user);
       }
     }
+ }
 
-  // Scorebox
-  // Calling the Scorebox.js class methods
-  scorebox.showInfo();
-  scorebox.display();
+ function runUI() {
+   // Scorebox
+   // Calling the Scorebox.js class methods
+   scorebox.showInfo();
+   scorebox.display();
 
-  // User
-  // Calling the User.js class methods
-  user.motion();
-  user.display();
+   // User
+   // Calling the User.js class methods
+   user.motion();
+   user.display();
+ }
 
-  // Oscillator
-  // Oscillation between -1 and 1
-  let tanAngle = tan(angle);
-  let newFreq = map(tanAngle, -1, 1, 90, 150);
-  oscillator.freq(newFreq);
+ function runSound() {
+   // Oscillator
+   // Oscillation between -1 and 1
+   let tanAngle = tan(angle);
+   let newFreq = map(tanAngle, -1, 1, 90, 150);
+   oscillator.freq(newFreq);
 
-  // Changes the angle which will change the OUTPUT of the sine function
-  // [sin(angle)] changing which frequency will pop out of the map
-  angle = angle + 0.5;
-}
+   // Changes the angle which will change the OUTPUT of the sine function
+   // [sin(angle)] changing which frequency will pop out of the map
+   angle = angle + 0.5;
+ }
 
 // Oscillation starts when key is pressed
 function keyPressed() {
@@ -268,7 +299,7 @@ function keyReleased() {
 
 // CAMERA
 // The camera follows the user in the simulation
-function cameraSetup() {
+function runCamera() {
   // mouseX's and mouseY's variables, mapping the range in which the user-controlled camera can move
   let mousecamXmap = map(mouseX, 0, width, -300, 300);
   let mousecamYmap = map(mouseY, 0, height, -300, 400);

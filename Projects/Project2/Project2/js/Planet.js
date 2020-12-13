@@ -15,7 +15,7 @@ class Planet {
     this.hasRings = hasRings;
 
     // each planet's "visible" status will be customized in their repsective subclass
-    this.visible = undefined;
+    this.visible = false;
     this.totalStars = undefined;
 
     // Title tag
@@ -37,7 +37,7 @@ class Planet {
 
   // The planets' appearance
   display() {
-    if (this.visible === true || !this.visible) {
+    if (!this.visible) {
     push();
     // (!) keep translate and rotateZ within push-pops of display
     translate(this.x, this.y, this.z);
@@ -114,33 +114,35 @@ class Planet {
   }
 
   showInfo() {
-    let d = dist(this.x, this.y, this.z, user.x, user.y, user.z);
-    let infoXpos = camX - 180;
-    let infoYpos = camY + 280;
-    let infoZpos = 0;
-    let stop = 0;
+    if (!this.visible) {
+      let d = dist(this.x, this.y, this.z, user.x, user.y, user.z);
+      let infoXpos = camX - 180;
+      let infoYpos = camY + 280;
+      let infoZpos = 0;
+      let stop = 0;
 
-    if (d < ((this.diameter + 10) + (user.size + 10))) {
-      push();
-      this.speed = stop;
-      noStroke();
+      if (d < ((this.diameter + 10) + (user.size + 10))) {
+        push();
+        this.speed = stop;
+        noStroke();
 
-      // Information board
-      push();
-      // rotateY(mouseX * 0.02);
-      // rotateX(mouseY * 0.02);
-      translate(infoXpos, infoYpos, infoZpos);
-      plane(280, 250);
-      pop();
+        // Information board
+        push();
+        // rotateY(mouseX * 0.02);
+        // rotateX(mouseY * 0.02);
+        translate(infoXpos, infoYpos, infoZpos);
+        plane(280, 250);
+        pop();
 
-      push();
-      this.environment();
-      pop();
+        push();
+        this.environment();
+        pop();
 
-      pop();
-    }
-    else {
-      this.resume();
+        pop();
+      }
+      else {
+        this.resume();
+      }
     }
   }
 
@@ -153,12 +155,15 @@ class Planet {
   // around the user. The '360' effect is based off a very large
   // sphere. The sphere 'wraps' the viewer inside the simulation.
   environment() {
-    push();
-    noStroke();
-    rotateY(frameCount * 0.002);
-    sphere(1200);
-    pop();
+    if (!this.visible) {
+      push();
+      noStroke();
+      rotateY(frameCount * 0.002);
+      sphere(1200);
+      pop();
+    }
   }
+
 }
 
 

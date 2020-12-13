@@ -9,7 +9,8 @@ class Jupiter extends Planet {
 
 
     // Visibility
-    this.visible = true;
+    this.visible = false;
+    this.totalStars = 0;
 
     // Custom fill
     this.fill = {
@@ -35,7 +36,7 @@ class Jupiter extends Planet {
 
    // Custom display method of Jupiter's class object
    display() {
-     if (this.visible = true) {
+     if (!this.visible) {
        push();
        // Title of planet
        push();
@@ -92,7 +93,7 @@ class Jupiter extends Planet {
    // Information and display of Jupiter
    showInfo() {
      let jupiterInfo;
-     if (this.visible) {
+     if (!this.visible) {
        push();
        // Jupiter infos
        jupiterInfo = createGraphics(280, 250);
@@ -121,6 +122,7 @@ class Jupiter extends Planet {
 
    // Creating Jupiter's 360 environment
    environment() {
+     if (!this.visible) {
      push();
      // custom texture of environment simulation
      texture(jupiterEnviro);
@@ -128,5 +130,6 @@ class Jupiter extends Planet {
      // calling the superclass environment() method
      super.environment();
      pop();
+     }
    }
 }

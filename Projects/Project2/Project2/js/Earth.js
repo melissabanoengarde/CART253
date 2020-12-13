@@ -9,7 +9,8 @@ class Earth extends Planet {
     super(distance, diameter, speed, rSpeed, hasRings);
 
     // Visibility
-    this.visible = true;
+    this.visible = false;
+    this.totalStars = 0;
 
     this.planeFill = {
       r: 217,
@@ -36,7 +37,7 @@ class Earth extends Planet {
 
   // Custom display method of Saturn's class object
   display() {
-    if (this.visible) {
+    if (!this.visible) {
       push();
       // Title of planet
       push();
@@ -73,7 +74,7 @@ class Earth extends Planet {
   // Information and display of Earth
   showInfo() {
     let earthInfo;
-    if (this.visible) {
+    if (!this.visible) {
       push();
       // Earth infos
       earthInfo = createGraphics(280, 250);
@@ -102,12 +103,14 @@ class Earth extends Planet {
 
   // Creates Earth's 360 environment
   environment() {
+    if (!this.visible) {
     push();
     texture(earthEnviro);
 
     // Calling the superclass' environment method
     super.environment();
     pop();
+    }
   }
 
 }

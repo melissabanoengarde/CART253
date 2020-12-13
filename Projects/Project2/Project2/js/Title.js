@@ -8,8 +8,10 @@ class Title {
     this.title = `solarystem`;
     this.titleSize = 100;
     // Instruction
-    this.instruction = `Press 'Enter' to Start`;
-    this.instrucSize = 20;
+    this.prompt = `Press 'Enter' to Start`;
+    this.promptSize = 20;
+
+    this.instruction1 = `Spacebar = `
   }
 
   display() {
@@ -36,8 +38,8 @@ class Title {
     // Instruction
     push();
     textFont(globalFont);
-    textSize(this.instrucSize);
-    text(this.instruction, (-width/10) * 0.8, height/5);
+    textSize(this.promptSize);
+    text(this.prompt, (-width/10) * 0.8, height/5);
     pop();
 
     pop();
