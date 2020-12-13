@@ -91,11 +91,13 @@ class User {
   stroke(random(this.fill.r), random(this.fill.g), random(this.fill.b));
   texture(spaceshipTexture);
   sphere(this.size, 3, 10);
+
   // A second sphere to give the spaceship its displayed shape
   // as opposed to a simple sphere
   push();
   sphere(this.size, 4, 11);
   pop();
+
   pop();
   }
 }

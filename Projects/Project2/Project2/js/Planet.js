@@ -128,8 +128,6 @@ class Planet {
 
         // Information board
         push();
-        // rotateY(mouseX * 0.02);
-        // rotateX(mouseY * 0.02);
         translate(infoXpos, infoYpos, infoZpos);
         plane(280, 250);
         pop();

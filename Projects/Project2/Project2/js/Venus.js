@@ -17,15 +17,14 @@ class Venus extends Planet {
       alpha: 150
     };
 
+    // Visibility
+    // Total amount of stars needed to enable Neptune's visibility
+    this.visible = false;
+    this.totalStars = 3;
+
     // Title tag
     this.symbol = `D`;
     this.title = `VENUS`;
-
-    // Visibility
-    this.visible = false;
-
-    // Total amount of stars needed to enable Neptune's visibility
-    this.totalStars = 5;
 
     // Information on Info board
     this.info = `Venus\n
@@ -100,21 +99,25 @@ class Venus extends Planet {
   // Venus resumes orbit at its established speed
   resume() {
     let resume = 0.005;
-    // resumes to its initial speed
-    if (this.speed === 0) {
-      this.speed = resume;
+    if (!this.visible) {
+      // resumes to its initial speed
+      if (this.speed === 0) {
+        this.speed = resume;
+      }
     }
   }
 
   // Creates Venus' 360 environment
   environment() {
-    push();
-    // custom texture of environment simulation
-    texture(venusEnviro);
+    if (!this.visible) {
+      push();
+      // custom texture of environment simulation
+      texture(venusEnviro);
 
-    // calling the superclass environment() method
-    super.environment();
-    pop();
+      // calling the superclass environment() method
+      super.environment();
+      pop();
+    }
   }
 
 }

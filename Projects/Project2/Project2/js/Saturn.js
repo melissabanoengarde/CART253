@@ -21,9 +21,9 @@ class Saturn extends Planet {
     this.title = `SATURN`;
 
     // Visibility
-    this.visible = false;
     // Total amount of stars needed to enable Saturn's visibility
-    this.totalStars = 10;
+    this.visible = false;
+    this.totalStars = 4;
 
     // Information on Info board
     this.info = `Saturn\n
@@ -96,21 +96,25 @@ class Saturn extends Planet {
   // Saturn resumes orbit at its established speed
   resume() {
     let resume = 0.0008;
-    // resumes to its initial speed
-    if (this.speed === 0) {
-      this.speed = resume;
+    if (!this.visible) {
+      // resumes to its initial speed
+      if (this.speed === 0) {
+        this.speed = resume;
+      }
     }
   }
 
   // Creates Saturn's 360 environment
   environment() {
-    push();
-    // custom texture of environment simulation
-    texture(saturnEnviro);
+    if (!this.visible) {
+      push();
+      // custom texture of environment simulation
+      texture(saturnEnviro);
 
-    // calling the superclass environment() method
-    super.environment();
-    pop();
+      // calling the superclass environment() method
+      super.environment();
+      pop();
+    }
   }
 
 }

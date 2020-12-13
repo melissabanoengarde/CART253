@@ -187,7 +187,7 @@ function initializeSound() {
   // OSCILLATOR
   // Creating the oscillator and setting the amplitude
   oscillator = new p5.Oscillator(440, `sine`);
-  oscillator.amp(0.02);
+  oscillator.amp(0.008);
 }
 
 
@@ -198,9 +198,7 @@ function draw() {
     titlePage();
   } else if (state === `simulation`) {
     simulation();
-    soundtrack.play();  // Begins soundtrack
-    soundtrack.setVolume(0.002);
-    soundtrack.loop();
+
   }
 }
 
@@ -221,7 +219,6 @@ function simulation() {
   runStars();
   runUI();
   runSound();
-
 }
 
 function runPlanets() {
@@ -229,12 +226,13 @@ function runPlanets() {
   // For-loop that pushes the superclass "Planet.js" methods into each star in the "planet" array
   for (let i = 0; i < planets.length; i++) {
     let planet = planets[i];
-    planet.motion();
-    planet.display();
 
     // Displays information if planet is already visible or after they become visible
     if (!planet.visible) {
+      planet.motion();
+      planet.display();
       planet.showInfo();
+      planet.environment();
     }
   }
 }
@@ -275,6 +273,11 @@ function runStars() {
    // Changes the angle which will change the OUTPUT of the sine function
    // [sin(angle)] changing which frequency will pop out of the map
    angle = angle + 0.5;
+
+   // soundtrack.play();  // Begins soundtrack
+   // soundtrack.amp(0.002);
+   // soundtrack.loop(1,1,0.002, 5, 5);
+   //loop([startTime], [rate], [amp], [cueLoopStart], [duration])
  }
 
 // Oscillation starts when key is pressed

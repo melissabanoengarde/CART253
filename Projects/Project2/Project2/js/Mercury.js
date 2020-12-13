@@ -16,15 +16,14 @@ class Mercury extends Planet {
       alpha: 150
     };
 
+    // Visibility
+    // Total amount of stars needed to enable Neptune's visibility
+    this.visible = false;
+    this.totalStars = 1;
+
     // Title tag
     this.symbol = `C`;
     this.title = `MERCURY`;
-
-    // Visibility
-    this.visible = false;
-
-    // Total amount of stars needed to enable Neptune's visibility
-    this.totalStars = 3;
 
     // Information on info board
     this.info = `Mercury\n
@@ -99,14 +98,17 @@ class Mercury extends Planet {
   // Mercury resumes orbit at its established speed
   resume() {
     let resume = 0.01;
-    // resumes to its initial speed
-    if (this.speed === 0) {
-      this.speed = resume;
+    if (!this.visible) {
+      // resumes to its initial speed
+      if (this.speed === 0) {
+        this.speed = resume;
+      }
     }
   }
 
   // Creates Mercury's 360 environment
   environment() {
+    if (!this.visible) {
     push();
     // custom texture of environment simulation
     texture(mercuryEnviro);
@@ -114,6 +116,7 @@ class Mercury extends Planet {
     // calling the superclass environment() method
     super.environment();
     pop();
+    }
   }
 
 }

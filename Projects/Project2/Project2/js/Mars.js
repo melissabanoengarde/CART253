@@ -17,14 +17,13 @@ class Mars extends Planet {
     };
 
     // Visibility
+    // Total amount of stars needed to enable Neptune's visibility
     this.visible = false;
+    this.totalStars = 2;
 
     // Title tag
     this.symbol = `E`;
     this.title = `MARS`;
-
-    // Total amount of stars needed to enable Neptune's visibility
-    this.totalStars = 4;
 
     // Information on Info board
     this.info = `Mars\n
@@ -102,14 +101,17 @@ class Mars extends Planet {
   // Mars resumes orbit at its established speed
   resume() {
     let resume = 0.004;
-    // resumes to its initial speed
-    if (this.speed === 0) {
-      this.speed = resume;
+    if (!this.visible) {
+      // resumes to its initial speed
+      if (this.speed === 0) {
+        this.speed = resume;
+      }
     }
   }
 
   // Creating Mars' 360 environment
   environment() {
+    if (!this.visible) {
     push();
     // custom texture of environment simulation
     texture(marsEnviro);
@@ -117,6 +119,7 @@ class Mars extends Planet {
     // calling the superclass environment() method
     super.environment();
     pop();
+    }
   }
 
 }

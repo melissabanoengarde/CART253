@@ -17,16 +17,14 @@ class Uranus extends Planet {
       alpha: 150
     };
 
+    // Visibility - not visible at the start
+    // Total amount of stars needed to enable Neptune's visibility
+    this.visible = false;
+    this.totalStars = 6;
+
     // Title tag
     this.symbol = `H`;
     this.title = `URANUS`;
-
-    // Visibility
-    // Uranus is not visible at the start
-    this.visible = false;
-
-    // Total amount of stars needed to enable Neptune's visibility
-    this.totalStars = 7;
 
     // Information on Info board
     this.info = `Uranus\n
@@ -100,22 +98,26 @@ class Uranus extends Planet {
   // Uranus resumes orbit at its established speed
   resume() {
     let resume = 0.0002;
-    // resumes to its initial speed
-    if (this.speed === 0) {
-      this.speed = resume;
+    if (!this.visible) {
+      // resumes to its initial speed
+      if (this.speed === 0) {
+        this.speed = resume;
+      }
     }
   }
 
   // Creates Uranus' 360 environment
   environment() {
-    push();
+    if (!this.visible) {
+      push();
 
-    // custom texture of environment simulation
-    texture(uranusEnviro);
+      // custom texture of environment simulation
+      texture(uranusEnviro);
 
-    // calling the superclass environment() method
-    super.environment();
-    pop();
+      // calling the superclass environment() method
+      super.environment();
+      pop();
+    }
   }
 
 }
