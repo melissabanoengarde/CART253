@@ -82,15 +82,15 @@ let green = {
 function preload() {
   // Textures & images
   spaceshipTexture = loadImage('assets/images/spaceshiptexture.jpg');
-  earthEnviro = loadImage('assets/images/earth-jungle.jpg');
-  sunEnviro = loadImage('assets/images/sun3.gif');
-  jupiterEnviro = loadImage('assets/images/jupiter-planet.gif');
-  uranusEnviro = loadImage('assets/images/uranus-simulation.jpg');
-  marsEnviro = loadImage('assets/images/mars-surface.jpg');
-  neptuneEnviro = loadImage('assets/images/neptune-surface.jpg');
-  saturnEnviro = loadImage('assets/images/saturn-surface-3.jpg');
-  mercuryEnviro = loadImage('assets/images/mercury-surface.jpg');
-  venusEnviro = loadImage('assets/images/venus-surface.jpg');
+  earthEnviro = loadImage('assets/images/earth-surface pano.jpg');
+  sunEnviro = loadImage('assets/images/sun-pano.gif');
+  jupiterEnviro = loadImage('assets/images/jupiter-surface pano.jpg');
+  uranusEnviro = loadImage('assets/images/uranus-surface pano.jpg');
+  marsEnviro = loadImage('assets/images/mars-surface pano.jpg');
+  neptuneEnviro = loadImage('assets/images/neptune-surface pano.jpg');
+  saturnEnviro = loadImage('assets/images/saturn-surface pano.jpg');
+  mercuryEnviro = loadImage('assets/images/mercury-surface pano.jpg');
+  venusEnviro = loadImage('assets/images/venus-surface pano.jpg');
 
   // Sounds
   starCollectedSFX = loadSound('assets/sounds/starSFX2.m4a');
