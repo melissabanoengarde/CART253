@@ -79,20 +79,22 @@ class Venus extends Planet {
   showInfo() {
     let venusInfo;
     if (!this.visible) {
-      push();
-      // Venus infos
-      venusInfo = createGraphics(280, 250);
-      venusInfo.fill(green.r, green.g, green.b);
-      venusInfo.background(20, 220);
-      venusInfo.textSize(10);
-      venusInfo.textFont(globalFont);
-      venusInfo.textAlign(LEFT);
-      venusInfo.text(this.info, 10, 20, 260, 250);
-      texture(venusInfo);
+      if(scorebox.score >= this.totalStars) {
+        push();
+        // Venus infos
+        venusInfo = createGraphics(280, 250);
+        venusInfo.fill(green.r, green.g, green.b);
+        venusInfo.background(20, 220);
+        venusInfo.textSize(10);
+        venusInfo.textFont(globalFont);
+        venusInfo.textAlign(LEFT);
+        venusInfo.text(this.info, 10, 20, 260, 250);
+        texture(venusInfo);
 
-      // Calling the superclass Planet.js' showInfo method
-      super.showInfo();
-      pop();
+        // Calling the superclass Planet.js' showInfo method
+        super.showInfo();
+        pop();
+      }
     }
   }
 
@@ -100,9 +102,11 @@ class Venus extends Planet {
   resume() {
     let resume = 0.005;
     if (!this.visible) {
-      // resumes to its initial speed
-      if (this.speed === 0) {
-        this.speed = resume;
+      if(scorebox.score >= this.totalStars) {
+        // resumes to its initial speed
+        if (this.speed === 0) {
+          this.speed = resume;
+        }
       }
     }
   }
@@ -110,13 +114,15 @@ class Venus extends Planet {
   // Creates Venus' 360 environment
   environment() {
     if (!this.visible) {
-      push();
-      // custom texture of environment simulation
-      texture(venusEnviro);
+      if(scorebox.score >= this.totalStars) {
+        push();
+        // custom texture of environment simulation
+        texture(venusEnviro);
 
-      // calling the superclass environment() method
-      super.environment();
-      pop();
+        // calling the superclass environment() method
+        super.environment();
+        pop();
+      }
     }
   }
 

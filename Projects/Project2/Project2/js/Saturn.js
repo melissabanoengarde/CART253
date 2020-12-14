@@ -76,20 +76,22 @@ class Saturn extends Planet {
   showInfo() {
     let saturnInfo;
     if (!this.visible) {
-      push();
-      // Saturn infos
-      saturnInfo = createGraphics(280, 250);
-      saturnInfo.fill(green.r, green.g, green.b);
-      saturnInfo.background(20, 220);
-      saturnInfo.textSize(10);
-      saturnInfo.textFont(globalFont);
-      saturnInfo.textAlign(LEFT);
-      saturnInfo.text(this.info, 10, 20, 260, 250);
-      texture(saturnInfo);
+      if(scorebox.score >= this.totalStars) {
+        push();
+        // Saturn infos
+        saturnInfo = createGraphics(280, 250);
+        saturnInfo.fill(green.r, green.g, green.b);
+        saturnInfo.background(20, 220);
+        saturnInfo.textSize(10);
+        saturnInfo.textFont(globalFont);
+        saturnInfo.textAlign(LEFT);
+        saturnInfo.text(this.info, 10, 20, 260, 250);
+        texture(saturnInfo);
 
-      // Calling the superclass Planet.js' showInfo method
-      super.showInfo();
-      pop();
+        // Calling the superclass Planet.js' showInfo method
+        super.showInfo();
+        pop();
+      }
     }
   }
 
@@ -97,9 +99,11 @@ class Saturn extends Planet {
   resume() {
     let resume = 0.0008;
     if (!this.visible) {
-      // resumes to its initial speed
-      if (this.speed === 0) {
-        this.speed = resume;
+      if(scorebox.score >= this.totalStars) {
+        // resumes to its initial speed
+        if (this.speed === 0) {
+          this.speed = resume;
+        }
       }
     }
   }
@@ -107,13 +111,15 @@ class Saturn extends Planet {
   // Creates Saturn's 360 environment
   environment() {
     if (!this.visible) {
-      push();
-      // custom texture of environment simulation
-      texture(saturnEnviro);
+      if(scorebox.score >= this.totalStars) {
+        push();
+        // custom texture of environment simulation
+        texture(saturnEnviro);
 
-      // calling the superclass environment() method
-      super.environment();
-      pop();
+        // calling the superclass environment() method
+        super.environment();
+        pop();
+      }
     }
   }
 

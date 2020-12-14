@@ -81,20 +81,22 @@ class Mars extends Planet {
   showInfo() {
     let marsInfo;
     if (!this.visible) {
-      push();
-      // Mars infos
-      marsInfo = createGraphics(280, 250);
-      marsInfo.fill(green.r, green.g, green.b);
-      marsInfo.background(20, 220);
-      marsInfo.textSize(10);
-      marsInfo.textFont(globalFont);
-      marsInfo.textAlign(LEFT);
-      marsInfo.text(this.info, 10, 20, 260, 250);
-      texture(marsInfo);
+      if(scorebox.score >= this.totalStars) {
+        push();
+        // Mars infos
+        marsInfo = createGraphics(280, 250);
+        marsInfo.fill(green.r, green.g, green.b);
+        marsInfo.background(20, 220);
+        marsInfo.textSize(10);
+        marsInfo.textFont(globalFont);
+        marsInfo.textAlign(LEFT);
+        marsInfo.text(this.info, 10, 20, 260, 250);
+        texture(marsInfo);
 
-      // Calling the superclass Planet.js' showInfo method
-      super.showInfo();
-      pop();
+        // Calling the superclass Planet.js' showInfo method
+        super.showInfo();
+        pop();
+      }
     }
   }
 
@@ -102,9 +104,11 @@ class Mars extends Planet {
   resume() {
     let resume = 0.004;
     if (!this.visible) {
-      // resumes to its initial speed
-      if (this.speed === 0) {
-        this.speed = resume;
+      if(scorebox.score >= this.totalStars) {
+        // resumes to its initial speed
+        if (this.speed === 0) {
+          this.speed = resume;
+        }
       }
     }
   }
@@ -112,13 +116,15 @@ class Mars extends Planet {
   // Creating Mars' 360 environment
   environment() {
     if (!this.visible) {
-    push();
-    // custom texture of environment simulation
-    texture(marsEnviro);
+      if(scorebox.score >= this.totalStars) {
+        push();
+        // custom texture of environment simulation
+        texture(marsEnviro);
 
-    // calling the superclass environment() method
-    super.environment();
-    pop();
+        // calling the superclass environment() method
+        super.environment();
+        pop();
+      }
     }
   }
 

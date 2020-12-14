@@ -15,8 +15,8 @@ class Planet {
     this.hasRings = hasRings;
 
     // each planet's "visible" status will be customized in their repsective subclass
-    this.visible = false;
-    this.totalStars = undefined;
+    // this.visible = false;
+    // this.totalStars = undefined;
 
     // Title tag
     this.symbol = undefined;
@@ -30,14 +30,14 @@ class Planet {
     push();
     this.x = this.distance * cos(this.angle);
     this.y = this.distance * sin(this.angle);
-    // what permits the planets to return to its initial position after circulating around the sun
-    this.angle += this.speed;       // planets' motion
+
+    // planets' motion
+    this.angle += this.speed;
     pop();
   }
 
   // The planets' appearance
   display() {
-    if (!this.visible) {
     push();
     // (!) keep translate and rotateZ within push-pops of display
     translate(this.x, this.y, this.z);
@@ -51,7 +51,7 @@ class Planet {
     strokeWeight(this.strokeWeight);
     sphere(this.diameter);
 
-    // Displays the torus' if this planet has rings (thanks, Sam TA!)
+    // Displays the torus if this planet has rings (thanks, Sam TA!)
     push();
     let colour1 = {
       r: 101,
@@ -110,38 +110,38 @@ class Planet {
     }
     pop();
     pop();
-   }
+
   }
 
   showInfo() {
-    if (!this.visible) {
-      let d = dist(this.x, this.y, this.z, user.x, user.y, user.z);
-      let infoXpos = camX - 180;
-      let infoYpos = camY + 280;
-      let infoZpos = 0;
-      let stop = 0;
+    let d = dist(this.x, this.y, this.z, user.x, user.y, user.z);
+    let infoXpos = camX - 180;
+    let infoYpos = camY + 280;
+    let infoZpos = 0;
+    let stop = 0;
 
-      if (d < ((this.diameter + 10) + (user.size + 10))) {
-        push();
-        this.speed = stop;
-        noStroke();
+    if (d < ((this.diameter + 10) + (user.size + 10))) {
+      push();
 
-        // Information board
-        push();
-        translate(infoXpos, infoYpos, infoZpos);
-        plane(280, 250);
-        pop();
+      this.speed = stop;
+      noStroke();
 
-        push();
-        this.environment();
-        pop();
+      // Information board
+      push();
+      translate(infoXpos, infoYpos, infoZpos);
+      plane(280, 250);
+      pop();
 
-        pop();
-      }
-      else {
-        this.resume();
-      }
+      push();
+      this.environment();
+      pop();
+
+      pop();
     }
+    else {
+      this.resume();
+    }
+
   }
 
   // Resumes orbit around the Sun
@@ -153,13 +153,11 @@ class Planet {
   // around the user. The '360' effect is based off a very large
   // sphere. The sphere 'wraps' the viewer inside the simulation.
   environment() {
-    if (!this.visible) {
-      push();
-      noStroke();
-      rotateY(frameCount * 0.002);
-      sphere(1200);
-      pop();
-    }
+    push();
+    noStroke();
+    rotateY(frameCount * 0.002);
+    sphere(1200);
+    pop();
   }
 
 }

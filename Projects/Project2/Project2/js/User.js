@@ -78,26 +78,26 @@ class User {
 
   // User's object appearance
   display() {
-  push();
-  // I would've placed this in the 'motion' method but the
-  // translate, rotateX, and rotateY function only works
-  // within the push and pop in which the 3D primitive is situated.
-  translate(this.x, this.y, this.z);
-  rotateX(1);
-  rotateY(frameCount * 0.02);
+    push();
+    // I would've placed this in the 'motion' method but the
+    // translate, rotateX, and rotateY function only works
+    // within the push and pop in which the 3D primitive is situated.
+    translate(this.x, this.y, this.z);
+    rotateX(1);
+    rotateY(frameCount * 0.02);
 
-  noFill();
-  strokeWeight(0.05);
-  stroke(random(this.fill.r), random(this.fill.g), random(this.fill.b));
-  texture(spaceshipTexture);
-  sphere(this.size, 3, 10);
+    noFill();
+    strokeWeight(0.05);
+    stroke(random(this.fill.r), random(this.fill.g), random(this.fill.b));
+    texture(spaceshipTexture);
+    sphere(this.size, 3, 10);
 
-  // A second sphere to give the spaceship its displayed shape
-  // as opposed to a simple sphere
-  push();
-  sphere(this.size, 4, 11);
-  pop();
+    // A second sphere to give the spaceship its displayed shape
+    // as opposed to a simple sphere
+    push();
+    sphere(this.size, 4, 11);
+    pop();
 
-  pop();
-  }
+    pop();
+    }
 }

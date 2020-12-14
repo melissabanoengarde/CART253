@@ -78,20 +78,22 @@ class Mercury extends Planet {
   showInfo() {
     let mercuryInfo;
     if (!this.visible) {
-      push();
-      // Mercury infos
-      mercuryInfo = createGraphics(280, 250);
-      mercuryInfo.fill(green.r, green.g, green.b);
-      mercuryInfo.background(20, 220);
-      mercuryInfo.textSize(10);
-      mercuryInfo.textFont(globalFont);
-      mercuryInfo.textAlign(LEFT);
-      mercuryInfo.text(this.info, 10, 20, 260, 250);
-      texture(mercuryInfo);
+      if(scorebox.score >= this.totalStars) {
+        push();
+        // Mercury infos
+        mercuryInfo = createGraphics(280, 250);
+        mercuryInfo.fill(green.r, green.g, green.b);
+        mercuryInfo.background(20, 220);
+        mercuryInfo.textSize(10);
+        mercuryInfo.textFont(globalFont);
+        mercuryInfo.textAlign(LEFT);
+        mercuryInfo.text(this.info, 10, 20, 260, 250);
+        texture(mercuryInfo);
 
-      // Calling the superclass Planet.js' showInfo method
-      super.showInfo();
-      pop();
+        // Calling the superclass Planet.js' showInfo method
+        super.showInfo();
+        pop();
+      }
     }
   }
 
@@ -99,9 +101,11 @@ class Mercury extends Planet {
   resume() {
     let resume = 0.01;
     if (!this.visible) {
-      // resumes to its initial speed
-      if (this.speed === 0) {
-        this.speed = resume;
+      if(scorebox.score >= this.totalStars) {
+        // resumes to its initial speed
+        if (this.speed === 0) {
+          this.speed = resume;
+        }
       }
     }
   }
@@ -109,13 +113,15 @@ class Mercury extends Planet {
   // Creates Mercury's 360 environment
   environment() {
     if (!this.visible) {
-    push();
-    // custom texture of environment simulation
-    texture(mercuryEnviro);
+      if(scorebox.score >= this.totalStars) {
+        push();
+        // custom texture of environment simulation
+        texture(mercuryEnviro);
 
-    // calling the superclass environment() method
-    super.environment();
-    pop();
+        // calling the superclass environment() method
+        super.environment();
+        pop();
+      }
     }
   }
 

@@ -37,56 +37,42 @@ class Jupiter extends Planet {
    // Custom display method of Jupiter's class object
    display() {
      if (!this.visible) {
-       push();
-       // Title of planet
-       push();
-       let tag;
-       let symbol_xPos = this.x + 22;
-       let symbol_yPos = this.y + 60;
-       let text_xPos = this.x - 32;
-       let text_yPos = this.y + 60;
-       let planeWidth = textWidth(this.symbol);
-       let planeHeight = textAscent() + textDescent();
+       if (scorebox.score = this.totalStars) {
+         push();
+         // Title of planet
+         push();
+         let tag;
+         let symbol_xPos = this.x + 24;
+         let symbol_yPos = this.y + 40;
+         let text_xPos = this.x - 30;
+         let text_yPos = this.y + 40;
 
-       fill(green.r, green.g, green.b);
+         fill(green.r, green.g, green.b);
 
-       // Symbol
-       textFont(symbolFont);
-       textSize(this.symbolSize);
+         // push();
+         // Symbol
+         textFont(symbolFont);
+         textSize(this.symbolSize);
+         text(this.symbol, symbol_xPos, symbol_yPos);
 
-       // Creating text with transparent background fill
-       // I was able to do this with Pippin's help!
-       tag = createGraphics(planeWidth, planeHeight);
-       tag.background(0, 0, 0, 0);
-       tag.textFont(symbolFont);
-       tag.textAlign(CENTER);
-       tag.textSize(this.symbolSize);
-       tag.fill(green.r, green.g, green.b);
-       tag.text(this.symbol, tag.width / 2, tag.height / 2);
+         // push();
+         // Title
+         textFont(globalFont);
+         textSize(this.titleSize);
+         text(this.title, text_xPos, text_yPos);
+         pop();
 
-       push();
-       fill(255, 0, 0);
-       noFill();
-       noStroke();
-       texture(tag); // using the transparent background tag created above
-       translate(symbol_xPos, symbol_yPos);
-       plane(planeWidth, planeHeight);
-       pop();
+         push();
+         // Custom colour of our Jupiter
+         // RGB parameters + position
+         // Brown
+         pointLight(this.fill.r, this.fill.g, this.fill.b, this.fill.pointLight);
 
-       // Title
-       textFont(globalFont);
-       textSize(this.titleSize);
-       text(this.title, text_xPos, text_yPos);
-       pop();
-
-       // Custom colour of our Jupiter
-       // RGB parameters + position
-       // Brown
-       pointLight(this.fill.r, this.fill.g, this.fill.b, this.fill.pointLight);
-
-       // Calling the superclass Planet.js' display method
-       super.display();
-       pop();
+         // Calling the superclass Planet.js' display method
+         super.display();
+         pop();
+         pop();
+       }
      }
    }
 
@@ -94,42 +80,52 @@ class Jupiter extends Planet {
    showInfo() {
      let jupiterInfo;
      if (!this.visible) {
-       push();
-       // Jupiter infos
-       jupiterInfo = createGraphics(280, 250);
-       jupiterInfo.fill(green.r, green.g, green.b);
-       jupiterInfo.background(20, 220);
-       jupiterInfo.textSize(10);
-       jupiterInfo.textFont(globalFont);
-       jupiterInfo.textAlign(LEFT);
-       jupiterInfo.text(this.info, 10, 20, 260, 250);
-       texture(jupiterInfo);
+       if(scorebox.score = this.totalStars) {
+         push();
+         // Jupiter infos
+         jupiterInfo = createGraphics(280, 250);
+         jupiterInfo.fill(green.r, green.g, green.b);
+         jupiterInfo.background(20, 220);
+         jupiterInfo.textSize(10);
+         jupiterInfo.textFont(globalFont);
+         jupiterInfo.textAlign(LEFT);
+         jupiterInfo.text(this.info, 10, 20, 260, 250);
+         texture(jupiterInfo);
 
-       // Calling the superclass Planet.js' showInfo method
-       super.showInfo();
-       pop();
+         // Calling the superclass Planet.js' showInfo method
+         super.showInfo();
+         pop();
+       }
      }
    }
 
    // Jupiter resumes orbit at its established speed
    resume() {
      let resume = 0.0015;
-     // resumes to its initial speed
-     if (this.speed === 0) {
-       this.speed = resume;
+     if (!this.visible) {
+       if(scorebox.score = this.totalStars) {
+         // resumes to its initial speed
+         if (this.speed === 0) {
+           this.speed = resume;
+         }
+       }
      }
    }
 
    // Creating Jupiter's 360 environment
    environment() {
      if (!this.visible) {
-     push();
-     // custom texture of environment simulation
-     texture(jupiterEnviro);
+       if(scorebox.score = this.totalStars) {
 
-     // calling the superclass environment() method
-     super.environment();
-     pop();
+         push();
+         // custom texture of environment simulation
+         texture(jupiterEnviro);
+
+         // calling the superclass environment() method
+         super.environment();
+         pop();
+       }
      }
    }
+
 }

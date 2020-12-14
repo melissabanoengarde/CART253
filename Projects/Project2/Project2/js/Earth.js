@@ -10,7 +10,7 @@ class Earth extends Planet {
 
     // Visibility
     this.visible = false;
-    this.totalStars = 0;
+    this.totalStars = 1;
 
     this.planeFill = {
       r: 217,
@@ -38,36 +38,39 @@ class Earth extends Planet {
   // Custom display method of Saturn's class object
   display() {
     if (!this.visible) {
-      push();
-      // Title of planet
-      push();
-      let tag;
-      let symbol_xPos = this.x + 18;
-      let symbol_yPos = this.y + 32;
-      let text_xPos = this.x - 20;
-      let text_yPos = this.y + 30;
+      if(scorebox.score = this.totalStars) {
 
-      fill(green.r, green.g, green.b);
+        push();
+        // Title of planet
+        push();
+        let tag;
+        let symbol_xPos = this.x + 18;
+        let symbol_yPos = this.y + 32;
+        let text_xPos = this.x - 20;
+        let text_yPos = this.y + 30;
 
-      // Symbol
-      textFont(symbolFont);
-      textSize(this.symbolSize);
-      text(this.symbol, symbol_xPos, symbol_yPos);
+        fill(green.r, green.g, green.b);
 
-      // Title
-      textFont(globalFont);
-      textSize(this.titleSize);
-      text(this.title, text_xPos, text_yPos);
-      pop();
+        // Symbol
+        textFont(symbolFont);
+        textSize(this.symbolSize);
+        text(this.symbol, symbol_xPos, symbol_yPos);
 
-      // Custom colour of our Earth
-      // RGB parameters + position
-      // Green
-      pointLight(16, 156, 0, 2000);
+        // Title
+        textFont(globalFont);
+        textSize(this.titleSize);
+        text(this.title, text_xPos, text_yPos);
+        pop();
 
-      // Calling the superclass Planet.js' display method
-      super.display();
-      pop();
+        // Custom colour of our Earth
+        // RGB parameters + position
+        // Green
+        pointLight(16, 156, 0, 2000);
+
+        // Calling the superclass Planet.js' display method
+        super.display();
+        pop();
+      }
     }
   }
 
@@ -104,13 +107,16 @@ class Earth extends Planet {
   // Creates Earth's 360 environment
   environment() {
     if (!this.visible) {
-    push();
-    texture(earthEnviro);
+      // if(scorebox.score = this.totalStars) {
 
-    // Calling the superclass' environment method
-    super.environment();
-    pop();
-    }
+        push();
+        texture(earthEnviro);
+
+        // Calling the superclass' environment method
+        super.environment();
+        pop();
+        // }
+      }
   }
 
 }
