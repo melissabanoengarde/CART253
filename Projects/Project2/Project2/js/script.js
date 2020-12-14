@@ -12,6 +12,7 @@ Try to approach a star and collect it!
 // Variables for starting state and the Title.js class object
 let state = `title`;
 let title;
+let instructions;
 
 // Background colour
 let bgColour = 20;
@@ -120,6 +121,7 @@ function initializeStates() {
   // Title
   // Defining new object to call the Title.js class
   title = new Title();
+  instructions = new Instruction();
 }
 
 function initializePlanets() {
@@ -180,7 +182,7 @@ function initializeUI() {
 
   // USER
   // Defining new object to call User.js class
-  user = new User(0, 300, 250, 10, spaceshipTexture);
+  user = new User(0, 300, 350, 10, spaceshipTexture);
 }
 
 function initializeSound() {
@@ -196,6 +198,8 @@ function initializeSound() {
 function draw() {
   if (state === `title`) {
     titlePage();
+  } else if (state === `instructions`) {
+    instructionsPage();
   } else if (state === `simulation`) {
     simulation();
 
@@ -206,6 +210,10 @@ function draw() {
 function titlePage() {
   // Calling the display method of the Title.js class object
   title.display();
+}
+
+function instructionsPage() {
+  instructions.display();
 }
 
 // Simulation state
@@ -282,10 +290,18 @@ function runStars() {
    //loop([startTime], [rate], [amp], [cueLoopStart], [duration])
  }
 
-// Oscillation starts when key is pressed
 function keyPressed() {
-  if (keyIsDown(13)  && state === `title`) {
+  // if "I" is pressed, user is directed to the instruction page
+  if (keyIsDown(73) && state === `title`) {
+    state = `instructions`;
+  }
+  // if "enter" is pressed, user is directed to the simulation
+  else if (keyIsDown(13) && state === `title`) {
     state = `simulation`;
+  }
+  // if user is on the instruction page and presses "B", user is directed back to the title page
+  else if (keyIsDown(66) && state ===`instructions`) {
+    state = `title`;
   }
 
   // This ensures that the oscillation works during the simulation,

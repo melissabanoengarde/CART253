@@ -7,11 +7,12 @@ class Title {
     // Title
     this.title = `solarystem`;
     this.titleSize = 100;
+
     // Instruction
     this.prompt = `Press 'Enter' to Start`;
     this.promptSize = 20;
 
-    this.instruction1 = `Spacebar = `
+    // this.instruction1 = `Spacebar = `
   }
 
   display() {
@@ -35,7 +36,7 @@ class Title {
     text(this.title, (-width/3) * 0.95, 0);
     pop();
 
-    // Instruction
+    // "start" prompt
     push();
     textFont(globalFont);
     textSize(this.promptSize);
