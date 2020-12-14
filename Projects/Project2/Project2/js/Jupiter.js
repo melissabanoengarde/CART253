@@ -10,7 +10,7 @@ class Jupiter extends Planet {
 
     // Visibility
     this.visible = false;
-    this.totalStars = 0;
+    // this.totalStars = 0;
 
     // Custom fill
     this.fill = {
@@ -37,15 +37,14 @@ class Jupiter extends Planet {
    // Custom display method of Jupiter's class object
    display() {
      if (!this.visible) {
-       if (scorebox.score = this.totalStars) {
          push();
          // Title of planet
          push();
          let tag;
          let symbol_xPos = this.x + 24;
-         let symbol_yPos = this.y + 40;
+         let symbol_yPos = this.y + 60;
          let text_xPos = this.x - 30;
-         let text_yPos = this.y + 40;
+         let text_yPos = this.y + 60;
 
          fill(green.r, green.g, green.b);
 
@@ -72,7 +71,6 @@ class Jupiter extends Planet {
          super.display();
          pop();
          pop();
-       }
      }
    }
 
@@ -80,7 +78,6 @@ class Jupiter extends Planet {
    showInfo() {
      let jupiterInfo;
      if (!this.visible) {
-       if(scorebox.score = this.totalStars) {
          push();
          // Jupiter infos
          jupiterInfo = createGraphics(280, 250);
@@ -95,37 +92,28 @@ class Jupiter extends Planet {
          // Calling the superclass Planet.js' showInfo method
          super.showInfo();
          pop();
-       }
      }
    }
 
    // Jupiter resumes orbit at its established speed
    resume() {
      let resume = 0.0015;
-     if (!this.visible) {
-       if(scorebox.score = this.totalStars) {
-         // resumes to its initial speed
-         if (this.speed === 0) {
-           this.speed = resume;
-         }
-       }
+
+       // resumes to its initial speed
+       if (this.speed === 0) {
+         this.speed = resume;
      }
    }
 
    // Creating Jupiter's 360 environment
    environment() {
-     if (!this.visible) {
-       if(scorebox.score = this.totalStars) {
+     push();
+     // custom texture of environment simulation
+     texture(jupiterEnviro);
 
-         push();
-         // custom texture of environment simulation
-         texture(jupiterEnviro);
-
-         // calling the superclass environment() method
-         super.environment();
-         pop();
-       }
-     }
+     // calling the superclass environment() method
+     super.environment();
+     pop();
    }
 
 }

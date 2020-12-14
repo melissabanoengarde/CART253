@@ -78,7 +78,6 @@ class Mercury extends Planet {
   showInfo() {
     let mercuryInfo;
     if (!this.visible) {
-      if(scorebox.score >= this.totalStars) {
         push();
         // Mercury infos
         mercuryInfo = createGraphics(280, 250);
@@ -93,27 +92,20 @@ class Mercury extends Planet {
         // Calling the superclass Planet.js' showInfo method
         super.showInfo();
         pop();
-      }
     }
   }
 
   // Mercury resumes orbit at its established speed
   resume() {
     let resume = 0.01;
-    if (!this.visible) {
-      if(scorebox.score >= this.totalStars) {
         // resumes to its initial speed
         if (this.speed === 0) {
           this.speed = resume;
         }
-      }
-    }
   }
 
   // Creates Mercury's 360 environment
   environment() {
-    if (!this.visible) {
-      if(scorebox.score >= this.totalStars) {
         push();
         // custom texture of environment simulation
         texture(mercuryEnviro);
@@ -121,8 +113,6 @@ class Mercury extends Planet {
         // calling the superclass environment() method
         super.environment();
         pop();
-      }
-    }
   }
 
 }

@@ -226,13 +226,15 @@ function runPlanets() {
   // For-loop that pushes the superclass "Planet.js" methods into each star in the "planet" array
   for (let i = 0; i < planets.length; i++) {
     let planet = planets[i];
+    // planet.motion();
+    // planet.display();
 
     // Displays information if planet is already visible or after they become visible
     if (!planet.visible) {
       planet.motion();
       planet.display();
       planet.showInfo();
-      planet.environment();
+      // planet.environment();
     }
   }
 }

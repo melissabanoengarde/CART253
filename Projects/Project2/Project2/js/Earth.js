@@ -10,13 +10,14 @@ class Earth extends Planet {
 
     // Visibility
     this.visible = false;
-    this.totalStars = 1;
+    // this.totalStars = 0;
 
-    this.planeFill = {
-      r: 217,
-      g: 245,
-      b: 191,
-      a: 150
+    this.fill = {
+      r: 19,
+      g: 154,
+      b: 161,
+      lightPosition: 2000,
+      alpha: 150
      };
 
      // Title tag
@@ -38,39 +39,37 @@ class Earth extends Planet {
   // Custom display method of Saturn's class object
   display() {
     if (!this.visible) {
-      if(scorebox.score = this.totalStars) {
 
-        push();
-        // Title of planet
-        push();
-        let tag;
-        let symbol_xPos = this.x + 18;
-        let symbol_yPos = this.y + 32;
-        let text_xPos = this.x - 20;
-        let text_yPos = this.y + 30;
+      push();
+      // Title of planet
+      push();
+      let tag;
+      let symbol_xPos = this.x + 18;
+      let symbol_yPos = this.y + 32;
+      let text_xPos = this.x - 20;
+      let text_yPos = this.y + 30;
 
-        fill(green.r, green.g, green.b);
+      fill(green.r, green.g, green.b);
 
-        // Symbol
-        textFont(symbolFont);
-        textSize(this.symbolSize);
-        text(this.symbol, symbol_xPos, symbol_yPos);
+      // Symbol
+      textFont(symbolFont);
+      textSize(this.symbolSize);
+      text(this.symbol, symbol_xPos, symbol_yPos);
 
-        // Title
-        textFont(globalFont);
-        textSize(this.titleSize);
-        text(this.title, text_xPos, text_yPos);
-        pop();
+      // Title
+      textFont(globalFont);
+      textSize(this.titleSize);
+      text(this.title, text_xPos, text_yPos);
+      pop();
 
-        // Custom colour of our Earth
-        // RGB parameters + position
-        // Green
-        pointLight(16, 156, 0, 2000);
+      // Custom colour of our Earth
+      // RGB parameters + position
+      // Green
+      pointLight(this.fill.r, this.fill.g, this.fill.b, this.fill.lightPosition);
 
-        // Calling the superclass Planet.js' display method
-        super.display();
-        pop();
-      }
+      // Calling the superclass Planet.js' display method
+      super.display();
+      pop();
     }
   }
 
@@ -106,17 +105,13 @@ class Earth extends Planet {
 
   // Creates Earth's 360 environment
   environment() {
-    if (!this.visible) {
-      // if(scorebox.score = this.totalStars) {
 
-        push();
-        texture(earthEnviro);
+      push();
+      texture(earthEnviro);
 
-        // Calling the superclass' environment method
-        super.environment();
-        pop();
-        // }
-      }
+      // Calling the superclass' environment method
+      super.environment();
+      pop();
   }
 
 }

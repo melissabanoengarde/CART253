@@ -81,7 +81,6 @@ class Mars extends Planet {
   showInfo() {
     let marsInfo;
     if (!this.visible) {
-      if(scorebox.score >= this.totalStars) {
         push();
         // Mars infos
         marsInfo = createGraphics(280, 250);
@@ -96,36 +95,27 @@ class Mars extends Planet {
         // Calling the superclass Planet.js' showInfo method
         super.showInfo();
         pop();
-      }
     }
   }
 
   // Mars resumes orbit at its established speed
   resume() {
     let resume = 0.004;
-    if (!this.visible) {
-      if(scorebox.score >= this.totalStars) {
-        // resumes to its initial speed
-        if (this.speed === 0) {
-          this.speed = resume;
-        }
-      }
+    // resumes to its initial speed
+    if (this.speed === 0) {
+      this.speed = resume;
     }
   }
 
   // Creating Mars' 360 environment
   environment() {
-    if (!this.visible) {
-      if(scorebox.score >= this.totalStars) {
-        push();
-        // custom texture of environment simulation
-        texture(marsEnviro);
+    push();
+    // custom texture of environment simulation
+    texture(marsEnviro);
 
-        // calling the superclass environment() method
-        super.environment();
-        pop();
-      }
-    }
+    // calling the superclass environment() method
+    super.environment();
+    pop();
   }
 
 }

@@ -52,20 +52,17 @@ class Neptune extends Planet {
 
         fill(green.r, green.g, green.b);
 
-  			push();
         // Symbol
         textFont(symbolFont);
         textSize(this.symbolSize);
         text(this.symbol, symbol_xPos, symbol_yPos);
 
-  			push();
         // Title
         textFont(globalFont);
         textSize(this.titleSize);
         text(this.title, text_xPos, text_yPos);
         pop();
 
-  			pop();
 
         // Custom colour of Neptune
         // RGB parameters + light position
@@ -83,7 +80,6 @@ class Neptune extends Planet {
   showInfo() {
     let neptuneInfo;
     if (!this.visible) {
-      if(scorebox.score >= this.totalStars) {
       push();
       // Neptune infos
       neptuneInfo = createGraphics(280, 250);
@@ -98,37 +94,27 @@ class Neptune extends Planet {
       // Calling the superclass Planet.js' showInfo method
       super.showInfo();
       pop();
-      }
     }
   }
 
   // Neptune resumes orbit at its established speed
   resume() {
     let resume = 0.0003;
-    if (!this.visible) {
-      if(scorebox.score >= this.totalStars) {
-        // resumes to its initial environment
-        if (this.speed === 0) {
-          this.speed = resume;
-        }
-      }
+    // resumes to its initial environment
+    if (this.speed === 0) {
+      this.speed = resume;
     }
   }
 
   // Creates Neptune's 360 environment
   environment() {
-    if (!this.visible) {
-      if (scorebox.score >= this.totalStars) {
+    push();
+    // custom texture of environment simulation
+    texture(neptuneEnviro);
 
-        push();
-        // custom texture of environment simulation
-        texture(neptuneEnviro);
-
-        // calling the superclass environment() method
-        super.environment();
-        pop();
-      }
-    }
+    // calling the superclass environment() method
+    super.environment();
+    pop();
   }
 
 }

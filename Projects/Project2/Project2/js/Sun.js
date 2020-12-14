@@ -10,7 +10,7 @@ class Sun extends Planet {
 
     // Visibility
     this.visible = false;
-    this.totalStars = 0;
+    // this.totalStars = 0;
 
     // Custom fill
     this.fill = {
@@ -40,7 +40,6 @@ class Sun extends Planet {
   // Custom display method of the Sun's class object
   display() {
     if (!this.visible) {
-      if(scorebox.score >= this.totalStars) {
         push();
         // Title of planet
         push();
@@ -69,7 +68,6 @@ class Sun extends Planet {
         // Calling the superclass Planet.js' display method
         super.display();
         pop();
-      }
     }
   }
 
@@ -77,7 +75,6 @@ class Sun extends Planet {
   showInfo() {
     let sunInfo;
     if (!this.visible) {
-      if(scorebox.score >= this.totalStars) {
         push();
         // Sun infos
         sunInfo = createGraphics(280, 250);
@@ -92,24 +89,20 @@ class Sun extends Planet {
         // Calling the superclass Planet.js' showInfo method
         super.showInfo();
         pop();
-      }
     }
   }
 
   // Creates the Sun's 360 enviroment
   environment() {
-    if (!this.visible) {
-      if(scorebox.score >= this.totalStars) {
-        push();
+    push();
 
-        // Image of the view
-        texture(sunEnviro);
+    // Image of the view
+    texture(sunEnviro);
 
-        // Calling the superclass environment() method
-        super.environment();
-        pop();
-      }
-    }
+    // Calling the superclass environment() method
+    super.environment();
+    pop();
+
   }
 
 }
