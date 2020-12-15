@@ -31,6 +31,7 @@ class Scorebox {
     this.active = true;
   }
 
+  // Score only appears when the spacebar is pressed
   showInfo() {
     if (keyIsDown(this.spacebar)) {
       this.active = false;
@@ -40,6 +41,7 @@ class Scorebox {
     }
   }
 
+  // Appearance and position of the scorecount
   display() {
     if (!this.active) {
       push();
@@ -54,8 +56,8 @@ class Scorebox {
 
       // Drawing offscreen buffer with image()
       push();
-      this.x = camX + 150;
-      this.y = camY + 360;
+      this.x = camX + 200;
+      this.y = camY + 200;
       this.z = camZ;
       translate(this.x, this.y, this.z);
       noStroke();
@@ -67,7 +69,3 @@ class Scorebox {
     }
   }
 }
-
-// https://p5js.org/reference/#/p5/createGraphics
-// https://p5js.org/examples/structure-create-graphics.html
-// text(str, x, y, textboxW, textboxH)

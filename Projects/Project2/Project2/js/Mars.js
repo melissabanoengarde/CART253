@@ -19,7 +19,7 @@ class Mars extends Planet {
     // Visibility
     // Total amount of stars needed to enable Neptune's visibility
     this.visible = false;
-    this.totalStars = 2;
+    this.totalStars = 3;
 
     // Title tag
     this.symbol = `E`;

@@ -33,7 +33,7 @@ class Uranus extends Planet {
                  \nTemperature: -197 degrees Celsius
                  \nRotation Time: 17.9 Hours
                  \nOrbit Duration: 30 687.15 Earth Days (84.02 Earth Years)
-                 \nRuled by: Uranos, god of the sky, father of uranus, grandfather of Jupiter`;
+                 \nRuled by: Uranus, god of the sky, father of uranus, grandfather of Jupiter`;
   }
 
   // Custom display method of Uranus's class object
@@ -67,6 +67,7 @@ class Uranus extends Planet {
         // RGB parameters + light position
         // Pale aqua
         pointLight(this.fill.r, this.fill.g, this.fill.b, this.fill.lightPosition);
+
         // Calling the superclass Planet.js' display method
         super.display();
         pop();

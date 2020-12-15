@@ -114,6 +114,8 @@ class Planet {
     }
   }
 
+  // When the user approaches a planet, the information of approached planet is displayed
+  // and the 'VR' effect is activated
   showInfo() {
       let d = dist(this.x, this.y, this.z, user.x, user.y, user.z);
       let infoXpos = camX - 180;
@@ -133,6 +135,7 @@ class Planet {
         plane(280, 250);
         pop();
 
+        // Calling the 'VR' method to generate when the user approaches a specific planet
         push();
         this.environment();
         pop();

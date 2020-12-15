@@ -9,6 +9,15 @@ A = Left    W = UP     E = Forward
 D = Right   S = DOWN   Q = Backwards
 
 Use mousepad or mouse to control the camera's angle.
+
+Solarystem begins with simply two planets and the sun.
+The user is to control a spaceship around the solar system and
+collect stars. Following the feedback of my proposal, I figured
+out a way to exemplify — although miniature in comparison to the
+actual efforts — the lengths undergone by the human race, in its array of
+celestial discoveries. Therefore, the user must collect a precise amount of
+stars to unlock a new planet. Once appeared, the user may approach it
+to view its description and occupy its environment.
 **************************************************/
 
 // Variables for the starting state, the Title.js and Instruction.js
@@ -40,7 +49,7 @@ let venusEnviro;
 // the number of stars in the "stars" array,
 // and a variable for our Star.js class object
 let stars = [];
-let numStars = 500;
+let numStars = 800;
 let star;
 
 // Variable for our Scorebox.js class object
@@ -96,7 +105,7 @@ function preload() {
 
   // Sounds
   starCollectedSFX = loadSound('assets/sounds/starSFX2.m4a');
-  soundtrack = loadSound('assets/sounds/soundtrack.wav');
+  soundtrack = loadSound('assets/sounds/p2soundtrack.m4a');
 
   // Typeface
   globalFont = loadFont('assets/typeface/IBMPlexMono-Regular.otf');
@@ -191,6 +200,9 @@ function initializeSound() {
   // Creating the oscillator and setting the amplitude
   oscillator = new p5.Oscillator(440, `sine`);
   oscillator.amp(0.008);
+
+  // Setting soundtrack volume
+  soundtrack.setVolume(0.5);
 }
 
 
@@ -203,7 +215,6 @@ function draw() {
     instructionsPage();
   } else if (state === `simulation`) {
     simulation();
-
   }
 }
 
@@ -296,11 +307,6 @@ function runSound() {
   // Changes the angle which will change the OUTPUT of the sine function
   // [sin(angle)] changing which frequency will pop out of the map
   angle = angle + 0.5;
-
-  // soundtrack.play();  // Begins soundtrack
-  // soundtrack.amp(0.002);
-  // soundtrack.loop(1,1,0.002, 5, 5);
-  //loop([startTime], [rate], [amp], [cueLoopStart], [duration])
 }
 
 // Coordinates which key directs the user to the according state
@@ -312,6 +318,10 @@ function keyPressed() {
   // if "enter" is pressed, user is directed to the simulation
   else if (keyIsDown(13) && state === `title`) {
     state = `simulation`;
+
+    // Begins soundtrack, loop is placed here so distortion doesn't grow
+    // from drawing over and over again
+    soundtrack.loop();
   }
   // if user is on the instruction page and presses "B", user is directed back to the title page
   else if (keyIsDown(66) && state === `instructions`) {

@@ -19,7 +19,7 @@ class Mercury extends Planet {
     // Visibility
     // Total amount of stars needed to enable Neptune's visibility
     this.visible = false;
-    this.totalStars = 1;
+    this.totalStars = 2;
 
     // Title tag
     this.symbol = `C`;
@@ -69,6 +69,7 @@ class Mercury extends Planet {
 
         // Calling the superclass Planet.js' display method
         super.display();
+
         pop();
       }
     }

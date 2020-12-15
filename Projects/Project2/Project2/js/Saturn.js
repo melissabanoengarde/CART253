@@ -23,7 +23,7 @@ class Saturn extends Planet {
     // Visibility
     // Total amount of stars needed to enable Saturn's visibility
     this.visible = false;
-    this.totalStars = 4;
+    this.totalStars = 5;
 
     // Information on Info board
     this.info = `Saturn\n
