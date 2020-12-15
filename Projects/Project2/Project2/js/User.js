@@ -1,5 +1,5 @@
-// USER
-// a class for the User (spaceship)
+// User
+// A class for the User (spaceship)
 
 class User {
 
@@ -8,7 +8,6 @@ class User {
     this.x = x;
     this.y = y;
     this.z = z;
-    this.size = size;
     this.vx = 0;
     this.vy = 0;
     this.vz = 0;
@@ -20,22 +19,23 @@ class User {
       g: 250,
       b: 250
     };
+    this.size = size;
     this.spaceshipTexture = spaceshipTexture;
   }
 
-  // User's movement
+  // Allows the user to move within the simulation
   motion() {
     this.x += this.vx;
     this.y += this.vy;
     this.z += this.vz;
 
-  // Handle input and direction
-  // Left
+  // Handle input, direction, and camera trailing
+  // A = Left
   if (keyIsDown(65)) {
     this.vx = -this.speed;
     camX -= this.speed;
   }
-  // Right
+  // D = Right
   else if (keyIsDown(68)) {
     this.vx = this.speed;
     camX += this.speed;
@@ -44,12 +44,12 @@ class User {
   else {
     this.vx = 0;
   }
-  // Up
+  // W = Up
   if (keyIsDown(87)) {
   this.vy = -this.speed;
   camY -= this.speed;
   }
-  // Down
+  // S = Down
   else if (keyIsDown(83)) {
     this.vy = this.speed;
     camY += this.speed;
@@ -58,14 +58,13 @@ class User {
   else {
     this.vy = 0;
    }
-
-   // Allows user to move on z-axis by pressing "E" or "Q"
-   // Forward, E
+   // Allows the user to move on the z-axis by pressing "E" or "Q"
+   // E = Forward
    if (keyIsDown(69)) {
      this.vz = -this.speed;
      camZ -= this.speed;
    }
-   // Backwards, Q
+   // Q = Backwards
    else if (keyIsDown(81)) {
      this.vz = this.speed;
      camZ += this.speed;
@@ -76,7 +75,7 @@ class User {
    }
  }
 
-  // User's object appearance
+  // User's (spaceship) appearance
   display() {
     push();
     // I would've placed this in the 'motion' method but the

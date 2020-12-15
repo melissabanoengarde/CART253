@@ -4,10 +4,10 @@
 class Star {
 
   constructor(x, y, z, size, starCollectedSFX) {
+    // Position and motion
     this.x = x;
     this.y = y;
     this.z = z;
-    this.size = size;
     this.vx = 0;
     this.vy = 0;
     this.vz = 0;
@@ -18,6 +18,7 @@ class Star {
     this.starCollectedSFX = starCollectedSFX;
 
     // Custom display
+    this.size = size;
     this.fill = {
       r:255,
       g:254,
@@ -30,10 +31,11 @@ class Star {
   motion() {
     let change = random(0, 1);
     if (change < 0.05) {
-    this.vx = random(-this.speed, this.speed);
-    this.vy = random(-this.speed, this.speed);
-    this.vz = random(-this.speed, this.speed);
+      this.vx = random(-this.speed, this.speed);
+      this.vy = random(-this.speed, this.speed);
+      this.vz = random(-this.speed, this.speed);
     }
+
     // allows stars to move
     this.x += this.vx;
     this.y += this.vy;
@@ -54,21 +56,21 @@ class Star {
         this.starCollectedSFX.play();
         this.starCollectedSFX.setVolume(0.05);
        }
-      }
      }
+   }
 
 
   // Method of class object's Star's appearance
   display() {
     if (!this.collected) {
-    push();
-    translate(this.x, this.y, this.z); // extension of stars' motion
+      push();
+      translate(this.x, this.y, this.z); // extension of stars' motion
 
-    noFill();
-    strokeWeight(0.08);
-    stroke(this.fill.r, this.fill.g, this.fill.b);
-    sphere(this.size);
-    pop();
+      noFill();
+      strokeWeight(0.08);
+      stroke(this.fill.r, this.fill.g, this.fill.b);
+      sphere(this.size);
+      pop();
     }
   }
 

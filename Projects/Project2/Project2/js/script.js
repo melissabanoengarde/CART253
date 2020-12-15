@@ -1,15 +1,18 @@
 "use strict";
 
 /**************************************************
-Final Project: Solarystem
+Project 2: SOLARYSTEM
 Melissa Banoen-Garde
 
-User can control spaceship with keys AWSD + Q (backwards) and E (forward).
+Controls:
+A = Left    W = UP     E = Forward
+D = Right   S = DOWN   Q = Backwards
+
 Use mousepad or mouse to control the camera's angle.
-Try to approach a star and collect it!
 **************************************************/
 
-// Variables for starting state and the Title.js class object
+// Variables for the starting state, the Title.js and Instruction.js
+// class object states
 let state = `title`;
 let title;
 let instructions;
@@ -21,8 +24,7 @@ let bgColour = 20;
 let canvasEdge = -4;
 
 // An array that stores the individual planets,
-// and variables for each planet's environment
-// when approached by the user
+// and variables for each planet's 'VR' environment
 let planets = [];
 let earthEnviro;
 let sunEnviro;
@@ -38,7 +40,7 @@ let venusEnviro;
 // the number of stars in the "stars" array,
 // and a variable for our Star.js class object
 let stars = [];
-let numStars = 1000;
+let numStars = 500;
 let star;
 
 // Variable for our Scorebox.js class object
@@ -51,7 +53,7 @@ let user;
 let spaceshipTexture;
 
 // Sound effect for when a star is collected
-// and the simulation's 'score'
+// and the simulation's 'score' / soundtrack
 let starCollectedSFX;
 let soundtrack;
 
@@ -103,8 +105,7 @@ function preload() {
 }
 
 
-// setup()
-// Setup of the 3D canvas and initializing the class objects and other elements of the simulation
+// Setting up the 3D canvas, initializing the class objects, and other elements of the simulation
 function setup() {
   createCanvas(windowWidth + canvasEdge, windowHeight + canvasEdge, WEBGL);
   smooth();
@@ -114,87 +115,87 @@ function setup() {
   initializeStars();
   initializeUI();
   initializeSound();
-
 }
 
+// Initializing and defining the new objects to call the Title.js and Instruction.js class object states
 function initializeStates() {
-  // Title
-  // Defining new object to call the Title.js class
   title = new Title();
   instructions = new Instruction();
 }
 
+// Initializing the planets class objects
+// Declaring all the subclasses by establishing their own variables, then pushing them inside "planets" array
 function initializePlanets() {
-  // PLANETS
-  // Declaring all the subclasses by establishing their own variables, then pushing them inside "planets" array
   // Sun
   let sun = new Sun(0, 70, 0, 0.003, false);
-    planets.push(sun);
+  planets.push(sun);
   // Mercury
   let mercury = new Mercury(100, 7, 0.01, 0.002, false);
-    planets.push(mercury);
+  planets.push(mercury);
   // Venus
   let venus = new Venus(130, 12, 0.005, 0.03, false);
-    planets.push(venus);
+  planets.push(venus);
   // Earth
   let earth = new Earth(170, 13.5, 0.004, 0.01, false);
-    planets.push(earth);
+  planets.push(earth);
   // Mars
   let mars = new Mars(205, 8, 0.004, 0.1, false);
-    planets.push(mars);
+  planets.push(mars);
   // Jupiter
   let jupiter = new Jupiter(340, 40, 0.0015, 0.02, false);
-    planets.push(jupiter);
+  planets.push(jupiter);
   // Saturn
   let saturn = new Saturn(500, 35, 0.0008, 0.002, true);
-    planets.push(saturn);
+  planets.push(saturn);
   // Uranus
   let uranus = new Uranus(680, 25, 0.0002, 0.002, false);
-    planets.push(uranus);
+  planets.push(uranus);
   // Neptune
   let neptune = new Neptune(800, 20, 0.0003, 0.002, false);
-    planets.push(neptune);
+  planets.push(neptune);
 }
 
+// Initializing the Star.js class object
 function initializeStars() {
-  // STARS
   // For-loop to create multiple stars from Star.js class
   for (let i = 0; i < numStars; i++) {
+
     // Defining the parameters of our stars
     let x = random(-width, width);
     let y = random(-height, height);
-    // "100" so they don't appear too close to the screen
+
+    // "200" so they don't appear too close to the screen
     let z = random(-1000, 200);
-    let size = random(1,5);
+    let size = random(1, 5);
 
     // Creating a new object to call the Star.js class
-    star = new Star (x, y, z, size, starCollectedSFX);
+    star = new Star(x, y, z, size, starCollectedSFX);
 
     // Pushing new Star.js object in our "stars" array
     stars.push(star);
   }
 }
 
+// Initializing the User.js class object and the user's "tools" such as their scorecount
 function initializeUI() {
-  // SCOREBOX
   // Defining new object to call the Scorebox.js class
   scorebox = new Scorebox();
 
-  // USER
   // Defining new object to call User.js class
   user = new User(0, 300, 350, 10, spaceshipTexture);
 }
 
+// Initializing all sounds in the simulation
 function initializeSound() {
-  // OSCILLATOR
+  // Oscillator
   // Creating the oscillator and setting the amplitude
   oscillator = new p5.Oscillator(440, `sine`);
   oscillator.amp(0.008);
 }
 
 
-// draw()
-// The order of states
+// Setting the order of the states. The states will switch according to the key
+// pressed by the user (see keyPressed function)
 function draw() {
   if (state === `title`) {
     titlePage();
@@ -207,21 +208,23 @@ function draw() {
 }
 
 // Title state
+// Calling the display method of the Title.js class object
 function titlePage() {
-  // Calling the display method of the Title.js class object
+  title.globe();
   title.display();
 }
 
+// Instructions state
+// Calling the display method of the Instruction.js class object
 function instructionsPage() {
   instructions.display();
 }
 
 // Simulation state
-// This is where all the class object's methods are called
+// This is where all the class objects' methods are called
 function simulation() {
   background(bgColour);
 
-  // Calling the camera function
   runCamera();
   runPlanets();
   runStars();
@@ -229,67 +232,78 @@ function simulation() {
   runSound();
 }
 
+// Camera function that follows the user in the simulation
+function runCamera() {
+  // mouseX's and mouseY's variables, mapping the mouse's display range
+  let mousecamXmap = map(mouseX, 0, width, -300, 300);
+  let mousecamYmap = map(mouseY, 0, height, -300, 400);
+
+  // Camera that follows the spaceship and can be controlled by the user with mouse or touchpad
+  camera(camX, camY, (height / 2) / tan(PI * 30 / 180) + camZ, camX + mousecamXmap, camY + mousecamYmap, mousecamXmap + mousecamYmap, 0, 1, 0);
+}
+
+// Planet function that runs the superclass' methods through all the elements in the "planet" array
 function runPlanets() {
-  // Planets
   // For-loop that pushes the superclass "Planet.js" methods into each star in the "planet" array
   for (let i = 0; i < planets.length; i++) {
     let planet = planets[i];
-    // planet.motion();
-    // planet.display();
 
     // Displays information if planet is already visible or after they become visible
     if (!planet.visible) {
       planet.motion();
       planet.display();
       planet.showInfo();
-      // planet.environment();
     }
   }
 }
 
+// Star function to call the Star.js class object's methods
 function runStars() {
-  // Stars
-  // For-loop that makes each star in the "stars" array to go through Star.js class methods.
+  // For-loop that makes each star in the "stars" array to go through Star.js class methods
   for (let i = 0; i < stars.length; i++) {
     let star = stars[i];
 
+    // Star dissappears from view when it is collected
     if (!star.collected) {
       star.motion();
       star.display();
       star.checkStar(user);
-      }
     }
- }
+  }
+}
 
- function runUI() {
-   // Scorebox
-   // Calling the Scorebox.js class methods
-   scorebox.showInfo();
-   scorebox.display();
+// Runs the user's and Scorebox.js' methods
+function runUI() {
+  // Scorebox
+  // Calling the Scorebox.js class methods
+  scorebox.showInfo();
+  scorebox.display();
 
-   // User
-   // Calling the User.js class methods
-   user.motion();
-   user.display();
- }
+  // User
+  // Calling the User.js class methods
+  user.motion();
+  user.display();
+}
 
- function runSound() {
-   // Oscillator
-   // Oscillation between -1 and 1
-   let tanAngle = tan(angle);
-   let newFreq = map(tanAngle, -1, 1, 90, 150);
-   oscillator.freq(newFreq);
+// Runs all sounds in the simulation
+function runSound() {
+  // Oscillator
+  // Oscillation between -1 and 1
+  let tanAngle = tan(angle);
+  let newFreq = map(tanAngle, -1, 1, 90, 150);
+  oscillator.freq(newFreq);
 
-   // Changes the angle which will change the OUTPUT of the sine function
-   // [sin(angle)] changing which frequency will pop out of the map
-   angle = angle + 0.5;
+  // Changes the angle which will change the OUTPUT of the sine function
+  // [sin(angle)] changing which frequency will pop out of the map
+  angle = angle + 0.5;
 
-   // soundtrack.play();  // Begins soundtrack
-   // soundtrack.amp(0.002);
-   // soundtrack.loop(1,1,0.002, 5, 5);
-   //loop([startTime], [rate], [amp], [cueLoopStart], [duration])
- }
+  // soundtrack.play();  // Begins soundtrack
+  // soundtrack.amp(0.002);
+  // soundtrack.loop(1,1,0.002, 5, 5);
+  //loop([startTime], [rate], [amp], [cueLoopStart], [duration])
+}
 
+// Coordinates which key directs the user to the according state
 function keyPressed() {
   // if "I" is pressed, user is directed to the instruction page
   if (keyIsDown(73) && state === `title`) {
@@ -300,7 +314,7 @@ function keyPressed() {
     state = `simulation`;
   }
   // if user is on the instruction page and presses "B", user is directed back to the title page
-  else if (keyIsDown(66) && state ===`instructions`) {
+  else if (keyIsDown(66) && state === `instructions`) {
     state = `title`;
   }
 
@@ -308,7 +322,7 @@ function keyPressed() {
   // only when the handle input keys are pressed
   if (state === `simulation`) {
     if (keyIsDown(65) || keyIsDown(68) || keyIsDown(87) || keyIsDown(83) || keyIsDown(69) || keyIsDown(81)) {
-    oscillator.start();
+      oscillator.start();
     }
   }
 }
@@ -316,17 +330,6 @@ function keyPressed() {
 // Oscillation stops when key is released
 function keyReleased() {
   oscillator.stop();
-}
-
-// CAMERA
-// The camera follows the user in the simulation
-function runCamera() {
-  // mouseX's and mouseY's variables, mapping the range in which the user-controlled camera can move
-  let mousecamXmap = map(mouseX, 0, width, -300, 300);
-  let mousecamYmap = map(mouseY, 0, height, -300, 400);
-
-  // Camera that follows the spaceship and can be controlled by the user with mouse or touchpad
-  camera(camX, camY, (height/2) / tan(PI * 30 / 180) + camZ, camX + mousecamXmap, camY + mousecamYmap, mousecamXmap+mousecamYmap, 0, 1, 0);
 }
 
 // Allows user to zoom in/out with mouse wheel or touchpad
